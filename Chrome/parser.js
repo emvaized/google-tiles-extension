@@ -269,7 +269,6 @@ function setTiles(elements) {
     function focusLastTile() {
       focusedTile = elements.length - 1;
       elements[focusedTile].parentNode.focus();
-      elements[focusedTile].parentNode.scrollIntoView();
     }
   }
 }

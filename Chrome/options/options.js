@@ -21,8 +21,29 @@ function resetOptions() {
   restoreOptions();
 }
 
-function updatePreviewTileStyle() {
+function saveOptions() {
+  chrome.storage.local.set({
+    innerPadding: document.querySelector("#innerPadding").value,
+    externalPadding: document.querySelector("#externalPadding").value,
+    hoverTransitionDuration: document.querySelector("#hoverTransitionDuration").value,
+    borderRadius: document.querySelector("#borderRadius").value,
+    hoverBackground: document.querySelector("#hoverBackground").value,
+    shadowEnabled: document.querySelector("#shadowEnabled").checked,
+    shadowOpacity: document.querySelector("#shadowOpacity").value,
+    moveSuggestionsToBottom: document.querySelector("#moveSuggestionsToBottom").checked,
+    addFavicons: document.querySelector("#addFavicons").checked,
+    faviconRadius: document.querySelector("#faviconRadius").value,
+    navigateWithKeyboard: document.querySelector("#navigateWithKeyboard").checked,
+    keyboardCycle: document.querySelector("#keyboardCycle").checked,
+    keyboardFocusBorderColor: document.querySelector("#keyboardFocusBorderColor").value,
+    focusedBorderWidth: document.querySelector("#focusedBorderWidth").value,
+    numericNavigation: document.querySelector("#numericNavigation").checked,
+    addTileCounter: document.querySelector("#addTileCounter").checked,
+    indexHintOpacity: document.querySelector("#indexHintOpacity").value,
+  });
+}
 
+function updatePreviewTileStyle() {
   saveOptions();
 
   var innerPadding = document.querySelector("#innerPadding").value;
@@ -49,38 +70,10 @@ function updatePreviewTileStyle() {
   /// Set mouse listeners
   tile.onmouseover = function () { tile.style.backgroundColor = hoverBackground || '#f0f2f4'; }
   tile.onmouseout = function () { tile.style.backgroundColor = "transparent"; }
-
-  tile.onmousedown = function () {
-    tile.style.boxShadow = (shadowEnabled ?? true) ? `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity / 2})` : 'unset';
-  }
-  tile.onmouseup = function () {
-    tile.style.boxShadow = (shadowEnabled ?? true) ? `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity})` : 'unset';
-  }
-
+  tile.onmousedown = function () { tile.style.boxShadow = (shadowEnabled ?? true) ? `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity / 2})` : 'unset'; }
+  tile.onmouseup = function () { tile.style.boxShadow = (shadowEnabled ?? true) ? `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity})` : 'unset'; }
 }
 
-function saveOptions() {
-  chrome.storage.local.set({
-    innerPadding: document.querySelector("#innerPadding").value,
-    externalPadding: document.querySelector("#externalPadding").value,
-    hoverTransitionDuration: document.querySelector("#hoverTransitionDuration").value,
-    borderRadius: document.querySelector("#borderRadius").value,
-    hoverBackground: document.querySelector("#hoverBackground").value,
-    shadowEnabled: document.querySelector("#shadowEnabled").checked,
-    shadowOpacity: document.querySelector("#shadowOpacity").value,
-    moveSuggestionsToBottom: document.querySelector("#moveSuggestionsToBottom").checked,
-    addFavicons: document.querySelector("#addFavicons").checked,
-    faviconRadius: document.querySelector("#faviconRadius").value,
-    navigateWithKeyboard: document.querySelector("#navigateWithKeyboard").checked,
-    keyboardCycle: document.querySelector("#keyboardCycle").checked,
-    keyboardFocusBorderColor: document.querySelector("#keyboardFocusBorderColor").value,
-    focusedBorderWidth: document.querySelector("#focusedBorderWidth").value,
-    numericNavigation: document.querySelector("#numericNavigation").checked,
-    addTileCounter: document.querySelector("#addTileCounter").checked,
-    indexHintOpacity: document.querySelector("#indexHintOpacity").value,
-  });
-
-}
 
 function restoreOptions() {
 
@@ -106,12 +99,8 @@ function restoreOptions() {
     updatePreviewTileStyle();
 
     var inputs = document.querySelectorAll('#indexHintOpacity,#innerPadding,#numericNavigation, #focusedBorderWidth, #keyboardFocusBorderColor,#keyboardCycle,#navigateWithKeyboard, #externalPadding, #borderRadius, #hoverTransitionDuration, #hoverBackground, #addTileCounter, #shadowEnabled, #shadowOpacity, #addFavicons, #addFavicons,  #faviconRadius');
-
-    inputs.forEach(function (input) {
-      input.addEventListener("input", updatePreviewTileStyle)
-    });
+    inputs.forEach(function (input) { input.addEventListener("input", updatePreviewTileStyle) });
   }
-
 
   chrome.storage.local.get([
     'innerPadding',
@@ -132,13 +121,9 @@ function restoreOptions() {
     'addTileCounter',
     'indexHintOpacity'
   ], setCurrentChoices);
-
-
-
 }
 
 document.addEventListener("DOMContentLoaded", restoreOptions);
-// document.querySelector("form").addEventListener("submit", saveOptions);
 document.querySelector("form").addEventListener("reset", resetOptions);
 document.querySelector("#donateButton").addEventListener("click", function (val) {
   window.open('https://www.liqpay.ua/checkout/i17319531101', '_blank');
