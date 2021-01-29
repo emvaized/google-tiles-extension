@@ -1,0 +1,43 @@
+{
+  "manifest_version": 2,
+  "name": "Google Tiles",
+  "version": "1.0",
+  "description": "Customize the looks of your Google search output",
+  "icons": {
+    "48": "icon.png"
+  },
+  "applications": {
+    "gecko": {
+      "id": "google_tiles@mozilla.org",
+      "strict_min_version": "52.0"
+    }
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "google_tiles@mozilla.org"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://www.google.com/*"
+      ],
+      "js": [
+        "parser.js"
+      ]
+    }
+  ],
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_title": "Google Tiles",
+    "default_popup": "popup/popup.html"
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "browser_style": true,
+    "chrome_style": true
+  },
+  "permissions": [
+    "storage"
+  ]
+}

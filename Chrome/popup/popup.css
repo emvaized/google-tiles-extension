@@ -1,0 +1,39 @@
+ html, body {
+  min-width: 100px;
+}
+
+.button {
+  margin: 3% auto;
+  padding: 4px;
+  text-align: center;
+  font-size: 1.0em;
+  cursor: pointer;
+  width: 100%;
+}
+
+h3 {
+    color: grey;
+    text-align: center;
+
+}
+
+.enabled-checkbox {
+    padding: 0px 0px 6px 0px;
+    text-align: center;
+    cursor: pointer;
+}
+
+#tilesEnabled {
+  cursor: pointer;
+
+}
+
+
+.clear {
+ background-color: #FBFBC9;
+}
+
+.clear:hover {
+ background-color: #EAEAC9;
+}
+

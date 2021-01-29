@@ -1,0 +1,103 @@
+/* body {
+    background-color: rgba(0, 0 , 0, 0.15);
+} */
+html, body {
+    /* width: 300px; */
+    background-color: transparent;
+    align-items:flex-start;
+  }
+
+button {
+    cursor: pointer;
+}
+
+form {
+    /* text-align: center; */
+    padding: 0px 15px;
+}
+
+
+.option {
+    padding: 3px;
+    display: flex;
+}
+
+.option input {
+    max-width: 65px;
+    margin-right: 6px;
+    cursor: pointer;
+
+}
+
+h3 {
+    color: grey;
+    padding-top: 10px;
+}
+
+
+#footer-buttons {
+    display: flex;
+    padding-top: 40px;
+    
+    /* width: 100%; */
+    /* align-items: center; */
+}
+
+button {
+    /* flex: 1 6 50%; */
+   /* margin-top: 40px; */
+    margin-left: 6px;
+    width: 100%;
+    /* padding: 5px; */
+    text-align: center;
+    margin-right: 6px;
+    margin-bottom: 12px;
+}
+
+
+ /* Tooltip container */
+ .tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+  }
+  
+  /* Tooltip text */
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 180px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+  
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+  
+    /* Fade in tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  /* Tooltip arrow */
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+  
+  /* Show the tooltip text when you mouse over the tooltip container */
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  } 

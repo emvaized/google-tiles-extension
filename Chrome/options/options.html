@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+      <meta charset="utf-8">
+      <link rel="stylesheet" href="options.css" />
+</head>
+
+<body>
+
+      <form>
+            <h3>Tiles</h3>
+            <div class='option'> <label><input type="number" min="0" max="50" id="borderRadius"> Border radius</label>
+            </div>
+
+            <div class='option'><label> <input type="number" id="externalPadding" min="0" max="50"
+                              oninput="this.nextElementSibling.value = this.value"> Padding between tiles</label>
+            </div>
+            <div class='option'><label> <input type="number" min="0" max="50" id="innerPadding"> Inner padding</label>
+            </div>
+
+
+            <div class='option'> <label><input type="checkbox" id="shadowEnabled">Shadows enabled </label> </div>
+            <div class='option'> <label><input type="number" step='0.05' min='0.0' max='1.0' id="shadowOpacity">Shadow
+                        opacity (%) </label> </div>
+
+            <h3>Hover</h3>
+            <div class='option'> <label> <input type="color" id="hoverBackground"> Tile color on hover</label>
+            </div>
+            <div class='option'> <label><input type="number" min='0' id="hoverTransitionDuration"> Transition duration
+                        (ms) </label>
+            </div>
+
+
+            <h3>Keyboard navigation</h3>
+            <div class='option tooltip'> <label><input type="checkbox" id="navigateWithKeyboard"> Use arrow keys for
+                        navigation
+                  </label>
+                  <span class="tooltiptext">Use ↑ and ↓ keys to navigate results, ← and → to focus first/last,
+                        and 'Enter' to open </span>
+            </div>
+
+            <div class='option'> <label> <input type="checkbox" id="keyboardCycle"> Cycle navigation (jump to first
+                        after last)</label> </div>
+            <div class='option'> <label><input type="color" id="keyboardFocusBorderColor">Focused border color </label>
+            </div>
+            <div class='option'> <label> <input type="number" min='0' max='10' id="focusedBorderWidth"> Focused border
+                        width (px)</label>
+            </div>
+
+            <div class='option tooltip'> <label><input type="checkbox" id="numericNavigation"> Numeric keys navigation
+                  </label>
+                  <span class="tooltiptext">Pressing '1' will focus first search result, '2' will focus second result,
+                        and so
+                        on. Pressing '0' will focus search field</span>
+            </div>
+            <div class='option'> <label><input type="checkbox" id="addTileCounter"> Show index hints in top right
+                        corner</label> </div>
+
+
+            <h3>Search results</h3>
+
+            <div class='option tooltip'> <label> <input type="checkbox" id="moveSuggestionsToBottom">Move
+                        suggestion
+                        cards to
+                        bottom</label>
+                  <span class="tooltiptext">Images/video/news search results will be moved on
+                        bottom of page</span>
+            </div>
+
+            <div class='option'> <label><input type="checkbox" id="addFavicons">Show favicons </label>
+            </div>
+            <div class='option'> <label><input type="number" id="faviconRadius">Favicons size </label> </div>
+
+            <div id='footer-buttons'>
+                  <button type="submit">Apply and save</button>
+                  <button type="reset">Restore defaults</button>
+                  <button id='donateButton'>Buy me a coffee <img height='18px' width='18px'
+                              style="position: relative; left: 3px; top: 3px;"
+                              src="https://image.flaticon.com/icons/png/128/3071/3071581.png" </button>
+
+                        <!-- <button type="submit">Apply and save <img height='12px' width='12px'
+                              style="position relative; left 3px; top 1px; "
+                              src="https//cdn2.iconfinder.com/data/icons/flat-ui-icons-24-px/24/checkmark-24-512.png"></button> -->
+
+                        <!-- <button type="reset">Restore defaults <img height='12px' width='12px'
+                              style="position relative; left 3px; top 1px; "
+                              src="https//e7.pngegg.com/pngimages/609/740/png-clipart-black-arrow-logo-computer-icons-reboot-reset-icon-symbol-restart-text-trademark-thumbnail.png"></button> -->
+            </div>
+      </form>
+
+      <script src="options.js"></script>
+
+</body>
+
+</html>
