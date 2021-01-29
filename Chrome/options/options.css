@@ -103,7 +103,7 @@ button {
   } 
 
  
-/* 
-  #previewTile:hover{
-    background-color: blue;
-  } */
+
+  #previewTitle{
+    margin-top: 9px;
+  }

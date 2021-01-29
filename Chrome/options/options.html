@@ -26,7 +26,8 @@
                                     style='color:grey; opacity:0.7; font-style:normal;position:absolute; top: 0px; right: 0px;'>1</cite>
                         </div>
                         <div>
-                              <h3 id='previewTitle' style='color: blue; margin: 0px; padding: 0px;'> Lorem ipsum dolor
+                              <h3 id='previewTitle' style='color: blue; margin: 0px; padding: 6px 0px;'> Lorem ipsum
+                                    dolor
                                     sit amet
                               </h3>
                               <span style="color:black">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -55,12 +56,7 @@
             <div class='option'> <label><input type="number" step='0.05' min='0.0' max='1.0' id="shadowOpacity">Shadow
                         opacity (%) </label> </div>
             <div class='option'> <label><input type="checkbox" id="shadowEnabled">Shadows enabled </label> </div>
-            <div class='option tooltip'> <label><input type="checkbox" id="addTileCounter"> Show index hints in
-                        top
-                        right
-                        corner</label>
-                  <span class="tooltiptext">Useful for keyboard numeric navigation</span>
-            </div>
+
 
             <h3>Favicons</h3>
             <div class='option'> <label><input type="checkbox" id="addFavicons">Show favicons </label>
@@ -119,6 +115,17 @@
                         on. Pressing '0' will focus search field</span>
             </div>
 
+            <div class='option tooltip'> <label><input type="checkbox" id="addTileCounter"> Show index hints in
+                        top
+                        right
+                        corner of title</label>
+                  <span class="tooltiptext">Useful for keyboard numeric navigation</span>
+            </div>
+
+            <div class='option'> <label> <input type="number" step='0.1' min='0.0' max='1.0' id="indexHintOpacity">
+                        Index hint opacity</label>
+            </div>
+
 
 
 
@@ -130,7 +137,7 @@
                   </button> -->
                   <button type="reset">Restore defaults</button>
                   <button id='donateButton'>Buy me a coffee <img height='18px' width='18px'
-                              style="position: relative; left: 3px; top: 4px;"
+                              style="position: relative; left: 3px; top: 3px;"
                               src="https://image.flaticon.com/icons/png/128/3071/3071581.png" </button>
 
             </div>

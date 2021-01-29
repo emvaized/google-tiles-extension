@@ -15,8 +15,9 @@ var keyboardFocusBorderColor;
 var focusedBorderWidth;
 var numericNavigation;
 var addTileCounter;
-var counterHintFocusColor = 'red';
+var indexHintOpacity;
 
+var counterHintFocusColor = 'red';
 var focusedTile = 0;
 
 
@@ -124,36 +125,39 @@ function setTiles(elements) {
     var elements_array_reversed = elements_array.reverse();
 
     elements_array_reversed.forEach(function (item) {
-      /// Don't move suggestion cards with tag name 'g-inner-card' on top
-      if (item !== elements_array_reversed[0] && item.tagName !== 'G-INNER-CARD')
+      /// Don't move suggestion cards with tag name 'wp-tabs-container'
+      if (item.id !== 'wp-tabs-container')
         document.getElementById('rso').prepend(item);
     });
   }
 
-  /// Add text field '0' hint
-  if (addTileCounter) {
+  /// Add '0' index hint for search field
+  if (addTileCounter && numericNavigation) {
     var zeroCounter = document.createElement('p');
-    zeroCounter.setAttribute("style", "color: grey;opacity: 0.7; margin-right: 15px; transition: all 200ms ease-out");
-
+    zeroCounter.setAttribute("style", `color: grey;opacity: ${indexHintOpacity}; margin-right: 15px; transition: all 300ms ease-out`);
     zeroCounter.innerHTML = '0';
     counterHints.push(zeroCounter);
-
     document.querySelector(`[class^= 'clear-button']`).prepend(zeroCounter);
-
   }
 
   /// Set tiles for each search result  
   elements.forEach(function (divChild) {
-    /// Add tile counter
-    if (addTileCounter) {
+    /// Add index hint
+    if (addTileCounter && numericNavigation) {
       var counter = document.createElement('p');
-      counter.setAttribute("style", "color: grey;opacity: 0.7;position:absolute; top: -12px; right: 0px;transition: all 200ms ease-out");
+      counter.setAttribute("style", `color: grey;opacity: ${indexHintOpacity};position:absolute; top: -12px; right: 0px;transition: all 300ms ease-out`);
       var i = Array.prototype.indexOf.call(elements, divChild) + 1;
       counter.innerHTML = i;
       if (i < 10) {
         counterHints.push(counter);
 
-        divChild.querySelector('a').appendChild(counter);
+        if (divChild.id == 'wp-tabs-container') {
+          counter.style.right = '12px';
+          counter.style.top = '-3px';
+          divChild.appendChild(counter);
+        } else {
+          divChild.querySelector('a').appendChild(counter);
+        }
       }
 
     }
@@ -222,9 +226,11 @@ function setTiles(elements) {
 
     function animateCounterFocus(index) {
       counterHints[index].style.color = counterHintFocusColor;
+      counterHints[index].style.opacity = 1.0;
       setTimeout(function () {
         counterHints[index].style.color = 'grey';
-      }, 400);
+        counterHints[index].style.opacity = indexHintOpacity;
+      }, 300);
     }
 
 
@@ -266,9 +272,6 @@ function setTiles(elements) {
 
 
 
-
-
-
 var elements = document.querySelectorAll(`[class='g'],[id='wp-tabs-container']`);
 chrome.storage.local.get(['innerPadding',
   'externalPadding',
@@ -286,6 +289,7 @@ chrome.storage.local.get(['innerPadding',
   'focusedBorderWidth',
   'numericNavigation',
   'addTileCounter',
+  'indexHintOpacity',
   'faviconRadius'], function (value) {
 
     enabled = value.tilesEnabled ?? true;
@@ -305,7 +309,7 @@ chrome.storage.local.get(['innerPadding',
     focusedBorderWidth = value.focusedBorderWidth || 1;
     numericNavigation = value.numericNavigation ?? true;
     addTileCounter = value.addTileCounter ?? true;
-
+    indexHintOpacity = value.indexHintOpacity || 0.5;
 
     if (enabled)
       setTiles(elements);
