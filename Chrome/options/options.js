@@ -108,7 +108,7 @@ function restoreOptions() {
     var inputs = document.querySelectorAll('#indexHintOpacity,#innerPadding,#numericNavigation, #focusedBorderWidth, #keyboardFocusBorderColor,#keyboardCycle,#navigateWithKeyboard, #externalPadding, #borderRadius, #hoverTransitionDuration, #hoverBackground, #addTileCounter, #shadowEnabled, #shadowOpacity, #addFavicons, #addFavicons,  #faviconRadius');
 
     inputs.forEach(function (input) {
-      input.addEventListener("change", updatePreviewTileStyle)
+      input.addEventListener("input", updatePreviewTileStyle)
     });
   }
 

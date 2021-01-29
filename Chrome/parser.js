@@ -170,7 +170,11 @@ function setTiles(elements) {
 
     if (navigateWithKeyboard) elements[0].parentNode.focus();
 
+    var inputField = document.querySelector(`[name = 'q']`);
+
     function checkKey(e) {
+
+      if (document.activeElement === inputField) return;
 
       e = e || window.event;
 
@@ -206,7 +210,7 @@ function setTiles(elements) {
         if (parsed == 0) {
           /// Focus the search field
           e.preventDefault();
-          var inputField = document.querySelector(`[name = 'q']`);
+
           inputField.focus();
           var val = inputField.value; // /store the value of the element
           inputField.value = ''; /// clear the value of the element
