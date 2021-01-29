@@ -1,6 +1,4 @@
 function resetOptions() {
-
-
   chrome.storage.local.set({
     innerPadding: 12,
     externalPadding: 24,
@@ -22,8 +20,43 @@ function resetOptions() {
   restoreOptions();
 }
 
-function saveOptions(e) {
+function updatePreviewTileStyle() {
 
+  saveOptions();
+
+  var innerPadding = document.querySelector("#innerPadding").value;
+  var externalPadding = document.querySelector("#externalPadding").value;
+  var hoverTransitionDuration = document.querySelector("#hoverTransitionDuration").value;
+  var borderRadius = document.querySelector("#borderRadius").value;
+  var hoverBackground = document.querySelector("#hoverBackground").value;
+  var shadowEnabled = document.querySelector("#shadowEnabled").checked;
+  var shadowOpacity = document.querySelector("#shadowOpacity").value;
+  var addFavicons = document.querySelector("#addFavicons").checked;
+  var focusedBorderWidth = document.querySelector("#focusedBorderWidth").value;
+  var addTileCounter = document.querySelector("#addTileCounter").checked;
+
+  /// Set preview tile style
+  var tile = document.querySelector('#previewTile');
+  tile.setAttribute("style", `cursor:pointer;border:solid ${focusedBorderWidth || '1'}px transparent;border-radius: ${borderRadius || '6'}px;transition:all ${hoverTransitionDuration || '300'}ms ease-out;padding: ${innerPadding || '12'}px;margin: 0px 0px ${externalPadding || 24}px;box-shadow: ${(shadowEnabled ?? true) ? `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity || '0.15'})` : 'unset'};`);
+
+  /// Change favicon and counter hint visibility
+  document.querySelector('#previewFavicon').setAttribute("style", addFavicons == false ? 'display:none' : 'display:inline');
+  document.querySelector('#previewCounter').style.visibility = addTileCounter == false ? 'collapse' : 'visible';
+
+  /// Set mouse listeners
+  tile.onmouseover = function () { tile.style.backgroundColor = hoverBackground || '#f0f2f4'; }
+  tile.onmouseout = function () { tile.style.backgroundColor = "transparent"; }
+
+  tile.onmousedown = function () {
+    tile.style.boxShadow = (shadowEnabled ?? true) ? `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity / 2})` : 'unset';
+  }
+  tile.onmouseup = function () {
+    tile.style.boxShadow = (shadowEnabled ?? true) ? `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity})` : 'unset';
+  }
+
+}
+
+function saveOptions() {
   chrome.storage.local.set({
     innerPadding: document.querySelector("#innerPadding").value,
     externalPadding: document.querySelector("#externalPadding").value,
@@ -42,7 +75,8 @@ function saveOptions(e) {
     numericNavigation: document.querySelector("#numericNavigation").checked,
     addTileCounter: document.querySelector("#addTileCounter").checked,
   });
-  e.preventDefault();
+
+  // e.preventDefault();
 }
 
 function restoreOptions() {
@@ -66,11 +100,15 @@ function restoreOptions() {
     document.querySelector("#numericNavigation").checked = result.numericNavigation ?? true;
     document.querySelector("#addTileCounter").checked = result.addTileCounter ?? true;
 
+    updatePreviewTileStyle();
+
+    var inputs = document.querySelectorAll('#innerPadding, #externalPadding, #borderRadius, #hoverTransitionDuration, #hoverBackground, #addTileCounter, #shadowEnabled, #shadowOpacity, #addFavicons, #addFavicons,  #faviconRadius');
+
+    inputs.forEach(function (input) {
+      input.addEventListener("change", updatePreviewTileStyle)
+    });
   }
 
-  function onError(error) {
-    console.log(`Error: ${error}`);
-  }
 
   chrome.storage.local.get([
     'innerPadding',
@@ -96,9 +134,8 @@ function restoreOptions() {
 }
 
 document.addEventListener("DOMContentLoaded", restoreOptions);
-document.querySelector("form").addEventListener("submit", saveOptions);
+// document.querySelector("form").addEventListener("submit", saveOptions);
 document.querySelector("form").addEventListener("reset", resetOptions);
 document.querySelector("#donateButton").addEventListener("click", function (val) {
-  // alert('https://www.liqpay.ua/checkout/i17319531101');
   window.open('https://www.liqpay.ua/checkout/i17319531101', '_blank');
 });

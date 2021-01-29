@@ -93,7 +93,6 @@ function configureTile(element) {
 
 
 
-
   /// Wrap element with 'a' created element
   element.wrap(wrapper);
 
@@ -137,7 +136,6 @@ function setTiles(elements) {
     zeroCounter.setAttribute("style", "color: grey;opacity: 0.7; margin-right: 15px; transition: all 200ms ease-out");
 
     zeroCounter.innerHTML = '0';
-    // counterHints[0] = zeroCounter;
     counterHints.push(zeroCounter);
 
     document.querySelector(`[class^= 'clear-button']`).prepend(zeroCounter);

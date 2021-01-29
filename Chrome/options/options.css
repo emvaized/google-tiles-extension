@@ -18,8 +18,8 @@ form {
 
 
 .option {
-    padding: 3px;
-    display: flex;
+    padding: 4px;
+    /* display: flex; */
 }
 
 .option input {
@@ -59,7 +59,7 @@ button {
  .tooltip {
     position: relative;
     display: inline-block;
-    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+    border-bottom: 1px dotted grey; /* If you want dots under the hoverable text */
   }
   
   /* Tooltip text */
@@ -101,3 +101,9 @@ button {
     visibility: visible;
     opacity: 1;
   } 
+
+ 
+/* 
+  #previewTile:hover{
+    background-color: blue;
+  } */

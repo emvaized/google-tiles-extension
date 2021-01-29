@@ -10,20 +10,62 @@
 <body>
 
       <form>
+
+            <div>
+                  <h3>Preview</h3>
+                  <div id='previewTile'>
+                        <div style='position: relative;'>
+                              <div>
+                                    <img id='previewFavicon'
+                                          src="https://www.google.com/s2/favicons?domain=https://www.google.com.ua"
+                                          style="height: 12px; width: 12px; ">
+                                    <cite style='color:black; font-style:normal'>www.google.com.ua</cite>
+
+                              </div>
+                              <cite id='previewCounter'
+                                    style='color:grey; opacity:0.7; font-style:normal;position:absolute; top: 0px; right: 0px;'>1</cite>
+                        </div>
+                        <div>
+                              <h3 id='previewTitle' style='color: blue; margin: 0px; padding: 0px;'> Lorem ipsum dolor
+                                    sit amet
+                              </h3>
+                              <span style="color:black">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Sed
+                                    malesuada
+                                    neque vel ipsum malesuada posuere. Nullam sem ipsum, blandit sit amet vehicula
+                                    non,
+                                    suscipit non elit. </span>
+                        </div>
+
+
+
+
+                  </div>
+            </div>
+
             <h3>Tiles</h3>
             <div class='option'> <label><input type="number" min="0" max="50" id="borderRadius"> Border radius</label>
             </div>
 
-            <div class='option'><label> <input type="number" id="externalPadding" min="0" max="50"
-                              oninput="this.nextElementSibling.value = this.value"> Padding between tiles</label>
-            </div>
             <div class='option'><label> <input type="number" min="0" max="50" id="innerPadding"> Inner padding</label>
             </div>
 
 
-            <div class='option'> <label><input type="checkbox" id="shadowEnabled">Shadows enabled </label> </div>
+
             <div class='option'> <label><input type="number" step='0.05' min='0.0' max='1.0' id="shadowOpacity">Shadow
                         opacity (%) </label> </div>
+            <div class='option'> <label><input type="checkbox" id="shadowEnabled">Shadows enabled </label> </div>
+            <div class='option tooltip'> <label><input type="checkbox" id="addTileCounter"> Show index hints in
+                        top
+                        right
+                        corner</label>
+                  <span class="tooltiptext">Useful for keyboard numeric navigation</span>
+            </div>
+
+            <h3>Favicons</h3>
+            <div class='option'> <label><input type="checkbox" id="addFavicons">Show favicons </label>
+            </div>
+            <div class='option'> <label><input type="number" id="faviconRadius">Favicons size </label> </div>
 
             <h3>Hover</h3>
             <div class='option'> <label> <input type="color" id="hoverBackground"> Tile color on hover</label>
@@ -33,7 +75,33 @@
             </div>
 
 
+
+
+
+            <h3>Search results</h3>
+
+
+            <div class='option'><label> <input type="number" id="externalPadding" min="0" max="50"> Padding between
+                        results</label>
+            </div>
+
+            <div class='option tooltip'> <label> <input type="checkbox" id="moveSuggestionsToBottom">Move
+                        suggestion
+                        cards to
+                        bottom</label>
+                  <span class="tooltiptext">Images/video/news search results will be moved to
+                        bottom of page</span>
+            </div>
+
+
             <h3>Keyboard navigation</h3>
+
+            <div class='option'> <label><input type="color" id="keyboardFocusBorderColor">Focused border color </label>
+            </div>
+            <div class='option'> <label> <input type="number" min='0' max='10' id="focusedBorderWidth"> Focused border
+                        width (px)</label>
+            </div>
+
             <div class='option tooltip'> <label><input type="checkbox" id="navigateWithKeyboard"> Use arrow keys for
                         navigation
                   </label>
@@ -43,11 +111,6 @@
 
             <div class='option'> <label> <input type="checkbox" id="keyboardCycle"> Cycle navigation (jump to first
                         after last)</label> </div>
-            <div class='option'> <label><input type="color" id="keyboardFocusBorderColor">Focused border color </label>
-            </div>
-            <div class='option'> <label> <input type="number" min='0' max='10' id="focusedBorderWidth"> Focused border
-                        width (px)</label>
-            </div>
 
             <div class='option tooltip'> <label><input type="checkbox" id="numericNavigation"> Numeric keys navigation
                   </label>
@@ -55,38 +118,21 @@
                         and so
                         on. Pressing '0' will focus search field</span>
             </div>
-            <div class='option'> <label><input type="checkbox" id="addTileCounter"> Show index hints in top right
-                        corner</label> </div>
 
 
-            <h3>Search results</h3>
 
-            <div class='option tooltip'> <label> <input type="checkbox" id="moveSuggestionsToBottom">Move
-                        suggestion
-                        cards to
-                        bottom</label>
-                  <span class="tooltiptext">Images/video/news search results will be moved on
-                        bottom of page</span>
-            </div>
 
-            <div class='option'> <label><input type="checkbox" id="addFavicons">Show favicons </label>
-            </div>
-            <div class='option'> <label><input type="number" id="faviconRadius">Favicons size </label> </div>
 
             <div id='footer-buttons'>
-                  <button type="submit">Apply and save</button>
+                  <!-- <button type="submit"><img height='15px' width='15px'
+                              style="position: relative; right: 6px; top: 3px; "
+                              src="https://icons.iconarchive.com/icons/icons8/windows-8/512/Programming-Save-icon.png">Save
+                  </button> -->
                   <button type="reset">Restore defaults</button>
                   <button id='donateButton'>Buy me a coffee <img height='18px' width='18px'
-                              style="position: relative; left: 3px; top: 3px;"
+                              style="position: relative; left: 3px; top: 4px;"
                               src="https://image.flaticon.com/icons/png/128/3071/3071581.png" </button>
 
-                        <!-- <button type="submit">Apply and save <img height='12px' width='12px'
-                              style="position relative; left 3px; top 1px; "
-                              src="https//cdn2.iconfinder.com/data/icons/flat-ui-icons-24-px/24/checkmark-24-512.png"></button> -->
-
-                        <!-- <button type="reset">Restore defaults <img height='12px' width='12px'
-                              style="position relative; left 3px; top 1px; "
-                              src="https//e7.pngegg.com/pngimages/609/740/png-clipart-black-arrow-logo-computer-icons-reboot-reset-icon-symbol-restart-text-trademark-thumbnail.png"></button> -->
             </div>
       </form>
 
