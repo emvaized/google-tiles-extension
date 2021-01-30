@@ -1,3 +1,4 @@
+/// Settings
 var enabled;
 var innerPadding;
 var externalPadding;
@@ -17,13 +18,25 @@ var numericNavigation;
 var addTileCounter;
 var indexHintOpacity;
 var wholeTileIsClickable;
-
+var countedHintColor = 'grey';
 var counterHintFocusColor = 'red';
+
+/// CSS selectors
+var searchResultsSelector = `[class='g'],[id='wp-tabs-container']`;
+var searchFieldClearButtonSelector = `[class^= 'clear-button']`;
+var searchFieldSelector = `[name = 'q']`;
+var resultStatsSelector = `[id='result-stats']`;
+var navBarSelector = `[id='top_nav']`;
+var domainNameSelector = `cite`;
+var dropdownMenuSelector = `[class='action-menu']`;
+var translatePageSelector = `[class*='fl ']`;
+var quickAnswerCardId = 'wp-tabs-container';
+
 var focusedTile = 0;
 var counterHints = [];
 
 function init() {
-  var elements = document.querySelectorAll(`[class='g'],[id='wp-tabs-container']`);
+  var elements = document.querySelectorAll(searchResultsSelector);
   chrome.storage.local.get([
     'innerPadding',
     'externalPadding',
@@ -80,7 +93,7 @@ function setLayout(elements) {
 
     elements_array_reversed.forEach(function (item) {
       /// Don't move big side card with quick answer on top
-      if (item.id !== 'wp-tabs-container')
+      if (item.id !== quickAnswerCardId)
         document.getElementById('rso').prepend(item);
     });
   }
@@ -88,10 +101,10 @@ function setLayout(elements) {
   /// Add '0' index hint for search field
   if (addTileCounter && numericNavigation) {
     var zeroCounter = document.createElement('p');
-    zeroCounter.setAttribute("style", `color: grey;opacity: ${indexHintOpacity}; margin-right: 15px; transition: all 300ms ease-out`);
+    zeroCounter.setAttribute("style", `color: ${countedHintColor};opacity: ${indexHintOpacity}; margin-right: 15px; transition: all 300ms ease-out`);
     zeroCounter.innerHTML = '0';
     counterHints.push(zeroCounter);
-    document.querySelector(`[class^= 'clear-button']`).prepend(zeroCounter);
+    document.querySelector(searchFieldClearButtonSelector).prepend(zeroCounter);
   }
 
   /// Set tiles for each search result  
@@ -99,13 +112,13 @@ function setLayout(elements) {
     /// Add index hint
     if (addTileCounter && numericNavigation) {
       var counter = document.createElement('p');
-      counter.setAttribute("style", `color: grey;opacity: ${indexHintOpacity};position:absolute; top: -12px; right: 0px;transition: all 300ms ease-out`);
+      counter.setAttribute("style", `color: ${countedHintColor};opacity: ${indexHintOpacity};position:absolute; top: -12px; right: 0px;transition: all 300ms ease-out`);
       var i = Array.prototype.indexOf.call(elements, divChild) + 1;
       counter.innerHTML = i;
       if (i < 10) {
         counterHints.push(counter);
 
-        if (divChild.id == 'wp-tabs-container') {
+        if (divChild.id == quickAnswerCardId) {
           counter.style.right = '12px';
           counter.style.top = '-3px';
           divChild.appendChild(counter);
@@ -124,11 +137,11 @@ function setLayout(elements) {
 
     if (navigateWithKeyboard) elements[0].parentNode.focus();
 
-    var inputField = document.querySelector(`[name = 'q']`);
+    var searchField = document.querySelector(searchFieldSelector);
 
     function checkKey(e) {
 
-      if (document.activeElement === inputField) return;
+      if (document.activeElement === searchField) return;
 
       e = e || window.event;
 
@@ -163,10 +176,10 @@ function setLayout(elements) {
           /// Focus the search field
           e.preventDefault();
 
-          inputField.focus();
-          var val = inputField.value; // /store the value of the element
-          inputField.value = ''; /// clear the value of the element
-          inputField.value = val;/// assign old value again, to move selection at the end
+          searchField.focus();
+          var val = searchField.value; // /store the value of the element
+          searchField.value = ''; /// clear the value of the element
+          searchField.value = val;/// assign old value again, to move selection at the end
 
           /// Animate color of hint
           animateCounterFocus(0);
@@ -184,7 +197,7 @@ function setLayout(elements) {
       counterHints[index].style.color = counterHintFocusColor;
       counterHints[index].style.opacity = 1.0;
       setTimeout(function () {
-        counterHints[index].style.color = 'grey';
+        counterHints[index].style.color = countedHintColor;
         counterHints[index].style.opacity = indexHintOpacity;
       }, 300);
     }
@@ -233,7 +246,7 @@ function configureTile(tile) {
 
   /// Set url for 'a' wrapper
   var url;
-  if (tile.id == 'wp-tabs-container') {
+  if (tile.id == quickAnswerCardId) {
     /// For 'quick answer' card on the right, try to use 'wikipedia' link
     var links = tile.querySelectorAll('a');
 
@@ -252,8 +265,8 @@ function configureTile(tile) {
   tile.setAttribute("style", `border:solid ${focusedBorderWidth}px transparent;border-radius: ${borderRadius}px;transition:all ${hoverTransitionDuration}ms ease-out;padding: ${innerPadding}px;margin: 0px 0px ${tile.tagName === 'G-INNER-CARD' ? '0px' : externalPadding}px;box-shadow: ${shadowEnabled ? `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity})` : 'unset'};`);
 
   /// Adding the same padding for 'results count' text on and navbar for better visual symmetry
-  document.getElementById('result-stats').setAttribute("style", `padding: 0px ${innerPadding}px;`);
-  document.getElementById('top_nav').setAttribute("style", `padding: 0px ${innerPadding}px;`);
+  document.querySelector(resultStatsSelector).setAttribute("style", `padding: 0px ${innerPadding}px;`);
+  document.querySelector(navBarSelector).setAttribute("style", `padding: 0px ${innerPadding}px;`);
 
   /// Set 'on hover' styling for each tile
   tile.onmouseover = function () { this.style.backgroundColor = hoverBackground; }
@@ -291,7 +304,7 @@ function configureTile(tile) {
 
   /// Add favicons to website titles
   if (addFavicons) {
-    var websiteTitle = tile.querySelector(`cite`);
+    var websiteTitle = tile.querySelector(domainNameSelector);
     var favicon = document.createElement('img');
     favicon.setAttribute("src", 'https://www.google.com/s2/favicons?domain=' + url);
     favicon.style.cssText = `height:${faviconRadius}px; width:${faviconRadius}px;  padding-right: 5px;`;
@@ -300,12 +313,12 @@ function configureTile(tile) {
       websiteTitle.parentNode.prepend(favicon);
 
       /// Shift dropdown button to the right
-      var dropdownMenu = tile.querySelector(`[class='action-menu']`);
+      var dropdownMenu = tile.querySelector(dropdownMenuSelector);
       if (dropdownMenu != null)
         dropdownMenu.style.cssText = `padding-left: 3px;position: relative; left: ${faviconRadius}px`;
 
       /// Shift 'translate page' button to the right
-      var translateButton = tile.querySelector(`[class*='fl ']`);
+      var translateButton = tile.querySelector(translatePageSelector);
       if (translateButton != null)
         translateButton.style.cssText = `margin-left: 3px;position: relative; left: ${faviconRadius}px`;
     }
