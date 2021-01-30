@@ -28,7 +28,7 @@
         "description": ""
     },
     "shadowEnabled": {
-        "message": "Тень включена",
+        "message": "Тени включены",
         "description": ""
     },
     "shadowOpacity": {

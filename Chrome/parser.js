@@ -67,11 +67,11 @@ function init() {
     wholeTileIsClickable = value.wholeTileIsClickable ?? true;
 
     if (enabled)
-      setTiles(elements);
+      setLayout(elements);
   });
 }
 
-function setTiles(elements) {
+function setLayout(elements) {
 
   /// Display search results first
   if (moveSuggestionsToBottom) {
@@ -79,7 +79,7 @@ function setTiles(elements) {
     var elements_array_reversed = elements_array.reverse();
 
     elements_array_reversed.forEach(function (item) {
-      /// Don't move suggestion cards with tag name 'wp-tabs-container'
+      /// Don't move big side card with quick answer on top
       if (item.id !== 'wp-tabs-container')
         document.getElementById('rso').prepend(item);
     });
@@ -152,8 +152,6 @@ function setTiles(elements) {
           focusLastTile();
         }
       }
-
-
 
       /// Numeric keyboard focus
       if (numericNavigation) {
@@ -228,7 +226,6 @@ function setTiles(elements) {
 }
 
 
-
 function configureTile(tile) {
   /// Create 'a' wrapper
   var wrapper = document.createElement('a');
@@ -258,26 +255,18 @@ function configureTile(tile) {
   document.getElementById('result-stats').setAttribute("style", `padding: 0px ${innerPadding}px;`);
   document.getElementById('top_nav').setAttribute("style", `padding: 0px ${innerPadding}px;`);
 
-  /// Limiting max height for news cards
-  if (tile.tagName === 'G-INNER-CARD') {
-    tile.style.maxHeight = '200px';
-  }
-
   /// Set 'on hover' styling for each tile
   tile.onmouseover = function () { this.style.backgroundColor = hoverBackground; }
   tile.onmouseout = function () { this.style.backgroundColor = "transparent"; }
 
   if (navigateWithKeyboard || numericNavigation) {
     /// Highlight item focused with keyboard
-
     wrapper.addEventListener('focus', (event) => {
-      // wrapper.firstChild.style.background = hoverBackground;
       wrapper.firstChild.style.border = `solid ${focusedBorderWidth}px ${keyboardFocusBorderColor}`;
     });
 
     /// Remove the highlight from item on focus loss
     wrapper.addEventListener("blur", (e) => {
-      // wrapper.firstChild.style.background = 'transparent';
       wrapper.firstChild.style.border = `solid ${focusedBorderWidth}px transparent`;
     });
   }
@@ -314,6 +303,11 @@ function configureTile(tile) {
       var dropdownMenu = tile.querySelector(`[class='action-menu']`);
       if (dropdownMenu != null)
         dropdownMenu.style.cssText = `padding-left: 3px;position: relative; left: ${faviconRadius}px`;
+
+      /// Shift 'translate page' button to the right
+      var translateButton = tile.querySelector(`[class*='fl ']`);
+      if (translateButton != null)
+        translateButton.style.cssText = `margin-left: 3px;position: relative; left: ${faviconRadius}px`;
     }
   }
 }
@@ -322,8 +316,6 @@ HTMLElement.prototype.wrap = function (wrapper) {
   this.parentNode.insertBefore(wrapper, this);
   wrapper.appendChild(this);
 }
-
-
 
 init();
 
