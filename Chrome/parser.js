@@ -20,102 +20,56 @@ var wholeTileIsClickable;
 
 var counterHintFocusColor = 'red';
 var focusedTile = 0;
-
-
-HTMLElement.prototype.wrap = function (wrapper) {
-  this.parentNode.insertBefore(wrapper, this);
-  wrapper.appendChild(this);
-}
-
-function configureTile(element) {
-  /// Create 'a' wrapper
-  var wrapper = document.createElement('a');
-  wrapper.setAttribute("style", "outline: none !important;text-decoration: none !important;color: transparent !important;");
-
-  /// Set url for 'a' wrapper
-  var url;
-  if (element.id == 'wp-tabs-container') {
-    /// For 'quick answer' card on the right, try to use 'wikipedia' link
-    var links = element.querySelectorAll('a');
-
-    links.forEach(function (link) {
-      if (link.href.includes('wikipedia')) url = link.href;
-    });
-    if (url === undefined) url = element.querySelector('a').href;
-
-  } else {
-    /// For regular search result, use first found link inside html element
-    url = element.querySelector('a').href;
-  }
-  wrapper.href = url;
-
-  /// Add default style for tile
-  element.setAttribute("style", `border:solid ${focusedBorderWidth}px transparent;border-radius: ${borderRadius}px;transition:all ${hoverTransitionDuration}ms ease-out;padding: ${innerPadding}px;margin: 0px 0px ${element.tagName === 'G-INNER-CARD' ? '0px' : externalPadding}px;box-shadow: ${shadowEnabled ? `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity})` : 'unset'};`);
-
-  /// Adding the same padding for 'results count' text on and navbar for better visual symmetry
-  document.getElementById('result-stats').setAttribute("style", `padding: 0px ${innerPadding}px;`);
-  document.getElementById('top_nav').setAttribute("style", `padding: 0px ${innerPadding}px;`);
-
-  /// Limiting max height for news cards
-  if (element.tagName === 'G-INNER-CARD') {
-    element.style.maxHeight = '200px';
-  }
-
-  /// Set 'on hover' styling for each tile
-  element.onmouseover = function () { this.style.backgroundColor = hoverBackground; }
-  element.onmouseout = function () { this.style.backgroundColor = "transparent"; }
-
-  if (navigateWithKeyboard || numericNavigation) {
-    /// Highlight item focused with keyboard
-
-    wrapper.addEventListener('focus', (event) => {
-      // wrapper.firstChild.style.background = hoverBackground;
-      wrapper.firstChild.style.border = `solid ${focusedBorderWidth}px ${keyboardFocusBorderColor}`;
-    });
-
-    /// Remove the highlight from item on focus loss
-    wrapper.addEventListener("blur", (e) => {
-      // wrapper.firstChild.style.background = 'transparent';
-      wrapper.firstChild.style.border = `solid ${focusedBorderWidth}px transparent`;
-    });
-  }
-
-
-  if (shadowEnabled && wholeTileIsClickable) {
-    /// Append onClick listeners to visually emulate button press on card by changing shadow 
-    element.onmousedown = function () {
-      this.style.boxShadow = `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity / 2})`;
-
-    }
-
-    element.onmouseup = function () {
-      this.style.boxShadow = `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity})`;
-    }
-  }
-
-  /// Wrap element with 'a' created element
-  if (wholeTileIsClickable)
-    element.wrap(wrapper);
-
-
-  /// Add favicons to website titles
-  if (addFavicons) {
-    var websiteTitle = element.querySelector(`cite`);
-    var favicon = document.createElement('img');
-    favicon.setAttribute("src", 'https://www.google.com/s2/favicons?domain=' + url);
-    favicon.style.cssText = `height:${faviconRadius}px; width:${faviconRadius}px;  padding-right: 5px;`;
-
-    if (websiteTitle != null) {
-      websiteTitle.parentNode.prepend(favicon);
-
-      /// Shift dropdown button to the right
-      var dropdownMenu = element.querySelector(`[class='action-menu']`);
-      if (dropdownMenu != null)
-        dropdownMenu.style.cssText = `padding-left: 3px;position: relative; left: ${faviconRadius}px`;
-    }
-  }
-}
 var counterHints = [];
+
+function init() {
+  var elements = document.querySelectorAll(`[class='g'],[id='wp-tabs-container']`);
+  chrome.storage.local.get([
+    'innerPadding',
+    'externalPadding',
+    'tilesEnabled',
+    'hoverTransitionDuration',
+    'borderRadius',
+    'hoverBackground',
+    'shadowEnabled',
+    'shadowOpacity',
+    'moveSuggestionsToBottom',
+    'addFavicons',
+    'navigateWithKeyboard',
+    'keyboardFocusBorderColor',
+    'keyboardCycle',
+    'focusedBorderWidth',
+    'numericNavigation',
+    'addTileCounter',
+    'indexHintOpacity',
+    'wholeTileIsClickable',
+    'faviconRadius'
+  ], function (value) {
+
+    enabled = value.tilesEnabled ?? true;
+    innerPadding = value.innerPadding || 12;
+    externalPadding = value.externalPadding || 24;
+    hoverTransitionDuration = value.hoverTransitionDuration || 75;
+    borderRadius = value.borderRadius ?? 6;
+    hoverBackground = value.hoverBackground || '#f0f2f4';
+    shadowEnabled = value.shadowEnabled ?? true;
+    shadowOpacity = value.shadowOpacity || 0.15;
+    moveSuggestionsToBottom = value.moveSuggestionsToBottom ?? true;
+    addFavicons = value.addFavicons ?? true;
+    faviconRadius = value.faviconRadius || 12;
+    navigateWithKeyboard = value.navigateWithKeyboard ?? false;
+    keyboardFocusBorderColor = value.keyboardFocusBorderColor ?? '#210DAB';
+    keyboardCycle = value.keyboardCycle ?? true;
+    focusedBorderWidth = value.focusedBorderWidth || 1;
+    numericNavigation = value.numericNavigation ?? true;
+    addTileCounter = value.addTileCounter ?? true;
+    indexHintOpacity = value.indexHintOpacity || 0.5;
+    wholeTileIsClickable = value.wholeTileIsClickable ?? true;
+
+    if (enabled)
+      setTiles(elements);
+  });
+}
 
 function setTiles(elements) {
 
@@ -275,51 +229,104 @@ function setTiles(elements) {
 
 
 
-var elements = document.querySelectorAll(`[class='g'],[id='wp-tabs-container']`);
-chrome.storage.local.get([
-  'innerPadding',
-  'externalPadding',
-  'tilesEnabled',
-  'hoverTransitionDuration',
-  'borderRadius',
-  'hoverBackground',
-  'shadowEnabled',
-  'shadowOpacity',
-  'moveSuggestionsToBottom',
-  'addFavicons',
-  'navigateWithKeyboard',
-  'keyboardFocusBorderColor',
-  'keyboardCycle',
-  'focusedBorderWidth',
-  'numericNavigation',
-  'addTileCounter',
-  'indexHintOpacity',
-  'wholeTileIsClickable',
-  'faviconRadius'
-], function (value) {
+function configureTile(tile) {
+  /// Create 'a' wrapper
+  var wrapper = document.createElement('a');
+  wrapper.setAttribute("style", "outline: none !important;text-decoration: none !important;color: transparent !important;");
 
-  enabled = value.tilesEnabled ?? true;
-  innerPadding = value.innerPadding || 12;
-  externalPadding = value.externalPadding || 24;
-  hoverTransitionDuration = value.hoverTransitionDuration || 75;
-  borderRadius = value.borderRadius ?? 6;
-  hoverBackground = value.hoverBackground || '#f0f2f4';
-  shadowEnabled = value.shadowEnabled ?? true;
-  shadowOpacity = value.shadowOpacity || 0.15;
-  moveSuggestionsToBottom = value.moveSuggestionsToBottom ?? true;
-  addFavicons = value.addFavicons ?? true;
-  faviconRadius = value.faviconRadius || 12;
-  navigateWithKeyboard = value.navigateWithKeyboard ?? false;
-  keyboardFocusBorderColor = value.keyboardFocusBorderColor ?? '#210DAB';
-  keyboardCycle = value.keyboardCycle ?? true;
-  focusedBorderWidth = value.focusedBorderWidth || 1;
-  numericNavigation = value.numericNavigation ?? true;
-  addTileCounter = value.addTileCounter ?? true;
-  indexHintOpacity = value.indexHintOpacity || 0.5;
-  wholeTileIsClickable = value.wholeTileIsClickable ?? true;
+  /// Set url for 'a' wrapper
+  var url;
+  if (tile.id == 'wp-tabs-container') {
+    /// For 'quick answer' card on the right, try to use 'wikipedia' link
+    var links = tile.querySelectorAll('a');
 
-  if (enabled)
-    setTiles(elements);
-});
+    links.forEach(function (link) {
+      if (link.href.includes('wikipedia')) url = link.href;
+    });
+    if (url === undefined) url = tile.querySelector('a').href;
+
+  } else {
+    /// For regular search result, use first found link inside html element
+    url = tile.querySelector('a').href;
+  }
+  wrapper.href = url;
+
+  /// Add default style for tile
+  tile.setAttribute("style", `border:solid ${focusedBorderWidth}px transparent;border-radius: ${borderRadius}px;transition:all ${hoverTransitionDuration}ms ease-out;padding: ${innerPadding}px;margin: 0px 0px ${tile.tagName === 'G-INNER-CARD' ? '0px' : externalPadding}px;box-shadow: ${shadowEnabled ? `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity})` : 'unset'};`);
+
+  /// Adding the same padding for 'results count' text on and navbar for better visual symmetry
+  document.getElementById('result-stats').setAttribute("style", `padding: 0px ${innerPadding}px;`);
+  document.getElementById('top_nav').setAttribute("style", `padding: 0px ${innerPadding}px;`);
+
+  /// Limiting max height for news cards
+  if (tile.tagName === 'G-INNER-CARD') {
+    tile.style.maxHeight = '200px';
+  }
+
+  /// Set 'on hover' styling for each tile
+  tile.onmouseover = function () { this.style.backgroundColor = hoverBackground; }
+  tile.onmouseout = function () { this.style.backgroundColor = "transparent"; }
+
+  if (navigateWithKeyboard || numericNavigation) {
+    /// Highlight item focused with keyboard
+
+    wrapper.addEventListener('focus', (event) => {
+      // wrapper.firstChild.style.background = hoverBackground;
+      wrapper.firstChild.style.border = `solid ${focusedBorderWidth}px ${keyboardFocusBorderColor}`;
+    });
+
+    /// Remove the highlight from item on focus loss
+    wrapper.addEventListener("blur", (e) => {
+      // wrapper.firstChild.style.background = 'transparent';
+      wrapper.firstChild.style.border = `solid ${focusedBorderWidth}px transparent`;
+    });
+  }
+
+
+  if (shadowEnabled && wholeTileIsClickable) {
+    /// Append onClick listeners to visually emulate button press on card by changing shadow 
+    tile.onmousedown = function () {
+      this.style.boxShadow = `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity / 2})`;
+
+    }
+
+    tile.onmouseup = function () {
+      this.style.boxShadow = `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity})`;
+    }
+  }
+
+  /// Wrap element with 'a' created element
+  if (wholeTileIsClickable)
+    tile.wrap(wrapper);
+
+
+  /// Add favicons to website titles
+  if (addFavicons) {
+    var websiteTitle = tile.querySelector(`cite`);
+    var favicon = document.createElement('img');
+    favicon.setAttribute("src", 'https://www.google.com/s2/favicons?domain=' + url);
+    favicon.style.cssText = `height:${faviconRadius}px; width:${faviconRadius}px;  padding-right: 5px;`;
+
+    if (websiteTitle != null) {
+      websiteTitle.parentNode.prepend(favicon);
+
+      /// Shift dropdown button to the right
+      var dropdownMenu = tile.querySelector(`[class='action-menu']`);
+      if (dropdownMenu != null)
+        dropdownMenu.style.cssText = `padding-left: 3px;position: relative; left: ${faviconRadius}px`;
+    }
+  }
+}
+
+HTMLElement.prototype.wrap = function (wrapper) {
+  this.parentNode.insertBefore(wrapper, this);
+  wrapper.appendChild(this);
+}
+
+
+
+init();
+
+
 
 
