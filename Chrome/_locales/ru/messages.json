@@ -40,7 +40,7 @@
         "description": ""
     },
     "moveSuggestionsToBottomTooltip": {
-        "message": "Результаты поиска картинок/видео/новостей будут размещены в конце выдачи",
+        "message": "Результаты поиска картинок/видео/новостей будут размещены в конце поисковой выдачи",
         "description": ""
     },
     "addFavicons": {
@@ -96,7 +96,7 @@
         "description": ""
     },
     "resetDefaults": {
-        "message": "Восстановить по умолчанию",
+        "message": "Сбросить настройки",
         "description": ""
     },
     "buyMeCoffee": {

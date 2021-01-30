@@ -29,20 +29,6 @@ h4 {
 }
 
 
-#footer-buttons {
-    display: flex;
-    padding-top: 40px;
-}
-
-button {
-    margin-left: 6px;
-    width: 100%;
-    text-align: center;
-    margin-right: 6px;
-    margin-bottom: 12px;
-}
-
-
  /* Tooltip container */
  .tooltip {
     position: relative;
@@ -90,7 +76,6 @@ button {
     opacity: 1;
   } 
 
- 
 
   #previewTitle{
     margin-top: 9px;
@@ -101,3 +86,46 @@ button {
     text-decoration:underline;
   }
 
+
+
+  #footer-buttons {
+    display: flex;
+    padding-top: 30px;
+}
+
+button {
+    margin-left: 6px;
+    width: 100%;
+    text-align: center;
+    margin-right: 6px;
+    margin-bottom: 12px;
+}
+
+   /* Style the collapsible content. Note: hidden by default */
+  /* .collapsible {
+    margin-top: 25px;
+    margin-bottom: 5px;
+  }
+ 
+  .content {
+    padding: 6px 18px;
+    margin-bottom: 15px;
+    display: none;
+    overflow: hidden;
+    background-color: #f1f1f1;
+  }
+
+  .content p {
+    color: grey;
+  }
+
+  .collapsible:after {
+    content: '\02795'; 
+    font-size: 10px;
+    color: grey;
+    float: right;
+  }
+  
+  .active:after {
+    content: "\2796"; /
+  } */
