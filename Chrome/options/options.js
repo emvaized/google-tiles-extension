@@ -17,6 +17,7 @@ function resetOptions() {
     addTileCounter: true,
     numericNavigation: true,
     indexHintOpacity: 0.5,
+    wholeTileIsClickable: true
   });
   restoreOptions();
 }
@@ -40,6 +41,7 @@ function saveOptions() {
     numericNavigation: document.querySelector("#numericNavigation").checked,
     addTileCounter: document.querySelector("#addTileCounter").checked,
     indexHintOpacity: document.querySelector("#indexHintOpacity").value,
+    wholeTileIsClickable: document.querySelector("#wholeTileIsClickable").checked,
   });
 }
 
@@ -57,10 +59,11 @@ function updatePreviewTileStyle() {
   var focusedBorderWidth = document.querySelector("#focusedBorderWidth").value;
   var addTileCounter = document.querySelector("#addTileCounter").checked;
   var indexHintOpacity = document.querySelector("#indexHintOpacity").value;
+  var wholeTileIsClickable = document.querySelector("#wholeTileIsClickable").checked;
 
   /// Set preview tile style
   var tile = document.querySelector('#previewTile');
-  tile.setAttribute("style", `cursor:pointer;border:solid ${focusedBorderWidth || '1'}px transparent;border-radius: ${borderRadius || '6'}px;transition:all ${hoverTransitionDuration || '300'}ms ease-out;padding: ${innerPadding || '12'}px;margin: 0px 0px ${externalPadding || 24}px;box-shadow: ${(shadowEnabled ?? true) ? `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity || '0.15'})` : 'unset'};`);
+  tile.setAttribute("style", `cursor:${wholeTileIsClickable ? 'pointer' : 'auto'};border:solid ${focusedBorderWidth || '1'}px transparent;border-radius: ${borderRadius || '6'}px;transition:all ${hoverTransitionDuration || '300'}ms ease-out;padding: ${innerPadding || '12'}px;margin: 0px 0px ${externalPadding || 24}px;box-shadow: ${(shadowEnabled ?? true) ? `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity || '0.15'})` : 'unset'};`);
 
   /// Change favicon and counter hint visibility
   document.querySelector('#previewFavicon').setAttribute("style", addFavicons == false ? 'display:none' : 'display:inline');
@@ -70,8 +73,8 @@ function updatePreviewTileStyle() {
   /// Set mouse listeners
   tile.onmouseover = function () { tile.style.backgroundColor = hoverBackground || '#f0f2f4'; }
   tile.onmouseout = function () { tile.style.backgroundColor = "transparent"; }
-  tile.onmousedown = function () { tile.style.boxShadow = (shadowEnabled ?? true) ? `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity / 2})` : 'unset'; }
-  tile.onmouseup = function () { tile.style.boxShadow = (shadowEnabled ?? true) ? `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity})` : 'unset'; }
+  tile.onmousedown = function () { if (wholeTileIsClickable == false) return; tile.style.boxShadow = (shadowEnabled ?? true) ? `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity / 2})` : 'unset'; }
+  tile.onmouseup = function () { if (wholeTileIsClickable == false) return; tile.style.boxShadow = (shadowEnabled ?? true) ? `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity})` : 'unset'; }
 }
 
 
@@ -95,10 +98,11 @@ function restoreOptions() {
     document.querySelector("#numericNavigation").checked = result.numericNavigation ?? true;
     document.querySelector("#addTileCounter").checked = result.addTileCounter ?? true;
     document.querySelector("#indexHintOpacity").value = result.indexHintOpacity || 0.5;
+    document.querySelector("#wholeTileIsClickable").checked = result.wholeTileIsClickable ?? true;
 
     updatePreviewTileStyle();
 
-    var inputs = document.querySelectorAll('#indexHintOpacity,#innerPadding,#numericNavigation, #focusedBorderWidth, #keyboardFocusBorderColor,#keyboardCycle,#navigateWithKeyboard, #externalPadding, #borderRadius, #hoverTransitionDuration, #hoverBackground, #addTileCounter, #shadowEnabled, #shadowOpacity, #addFavicons, #addFavicons,  #faviconRadius');
+    var inputs = document.querySelectorAll('#indexHintOpacity,#wholeTileIsClickable,#innerPadding,#numericNavigation, #focusedBorderWidth, #keyboardFocusBorderColor,#keyboardCycle,#navigateWithKeyboard, #externalPadding, #borderRadius, #hoverTransitionDuration, #hoverBackground, #addTileCounter, #shadowEnabled, #shadowOpacity, #addFavicons, #addFavicons,  #faviconRadius');
     inputs.forEach(function (input) { input.addEventListener("input", updatePreviewTileStyle) });
   }
 
@@ -119,7 +123,8 @@ function restoreOptions() {
     'focusedBorderWidth',
     'numericNavigation',
     'addTileCounter',
-    'indexHintOpacity'
+    'indexHintOpacity',
+    'wholeTileIsClickable'
   ], setCurrentChoices);
 }
 

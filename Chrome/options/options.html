@@ -9,10 +9,12 @@
 
 <body>
 
-      <form>
+      <h4>All changes are saved automatically</h4>
 
+      <form>
             <div>
-                  <h3>Preview</h3>
+                  <h3>Preview </h3>
+
                   <div id='previewTile'>
                         <div style='position: relative;'>
                               <div>
@@ -26,10 +28,13 @@
                                     style='color:grey; opacity:0.7; font-style:normal;position:absolute; top: 0px; right: 0px;'>1</cite>
                         </div>
                         <div>
-                              <h3 id='previewTitle' style='color: blue; margin: 0px; padding: 6px 0px;'> Lorem ipsum
+
+                              <h3 id='previewTitle' style='color: blue; margin: 0px; padding: 6px 0px;'> Lorem
+                                    ipsum
                                     dolor
                                     sit amet
                               </h3>
+
                               <span style="color:black">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                                     Sed
                                     malesuada
@@ -55,7 +60,12 @@
 
             <div class='option'> <label><input type="number" step='0.05' min='0.0' max='1.0' id="shadowOpacity">Shadow
                         opacity (%) </label> </div>
-            <div class='option'> <label><input type="checkbox" id="shadowEnabled">Shadows enabled </label> </div>
+
+            <div class='option'> <label><input type="checkbox" id="wholeTileIsClickable">Whole tile is clickable
+                  </label></div>
+            <div class='option'> <label><input type="checkbox" id="shadowEnabled">Shadow enabled </label> </div>
+
+
 
 
             <h3>Favicons</h3>
@@ -63,54 +73,67 @@
             </div>
             <div class='option'> <label><input type="number" id="faviconRadius">Favicons size </label> </div>
 
+
+
             <h3>Hover</h3>
             <div class='option'> <label> <input type="color" id="hoverBackground"> Tile color on hover</label>
             </div>
-            <div class='option'> <label><input type="number" min='0' id="hoverTransitionDuration"> Transition duration
+            <div class='option'> <label><input type="number" min='0' id="hoverTransitionDuration"> Transition
+                        duration
                         (ms) </label>
             </div>
-
-
-
 
 
             <h3>Search results</h3>
 
 
-            <div class='option'><label> <input type="number" id="externalPadding" min="0" max="50"> Padding between
-                        results</label>
-            </div>
-
             <div class='option tooltip'> <label> <input type="checkbox" id="moveSuggestionsToBottom">Move
-                        suggestion
-                        cards to
+                        suggestions to
                         bottom</label>
                   <span class="tooltiptext">Images/video/news search results will be moved to
                         bottom of page</span>
             </div>
 
 
+            <div class='option'><label> <input type="number" id="externalPadding" min="0" max="50"> Padding
+                        between
+                        results</label>
+            </div>
+
+
+
+
             <h3>Keyboard navigation</h3>
 
-            <div class='option'> <label><input type="color" id="keyboardFocusBorderColor">Focused border color </label>
-            </div>
-            <div class='option'> <label> <input type="number" min='0' max='10' id="focusedBorderWidth"> Focused border
-                        width (px)</label>
-            </div>
 
-            <div class='option tooltip'> <label><input type="checkbox" id="navigateWithKeyboard"> Use arrow keys for
+
+            <div class='option tooltip'> <label><input type="checkbox" id="navigateWithKeyboard"> Use arrow keys
+                        for
                         navigation
                   </label>
                   <span class="tooltiptext">Use ↑ and ↓ keys to navigate results, ← and → to focus first/last,
                         and 'Enter' to open </span>
             </div>
 
-            <div class='option'> <label> <input type="checkbox" id="keyboardCycle"> Cycle navigation (jump to first
+            <div class='option'> <label> <input type="checkbox" id="keyboardCycle"> Cycle navigation (jump to
+                        first
                         after last)</label> </div>
 
-            <div class='option tooltip'> <label><input type="checkbox" id="numericNavigation"> Numeric keys navigation
+            <div class='option'> <label><input type="color" id="keyboardFocusBorderColor">Focused border color
                   </label>
-                  <span class="tooltiptext">Pressing '1' will focus first search result, '2' will focus second result,
+            </div>
+            <div class='option'> <label> <input type="number" min='0' max='10' id="focusedBorderWidth"> Focused
+                        border
+                        width (px)</label>
+            </div>
+
+            <br />
+
+            <div class='option tooltip'> <label><input type="checkbox" id="numericNavigation"> Numeric keys
+                        navigation
+                  </label>
+                  <span class="tooltiptext">Pressing '1' will focus first search result, '2' will focus second
+                        result,
                         and so
                         on. Pressing '0' will focus search field</span>
             </div>
@@ -125,9 +148,6 @@
             <div class='option'> <label> <input type="number" step='0.1' min='0.0' max='1.0' id="indexHintOpacity">
                         Index hint opacity</label>
             </div>
-
-
-
 
 
             <div id='footer-buttons'>

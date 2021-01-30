@@ -16,6 +16,7 @@ var focusedBorderWidth;
 var numericNavigation;
 var addTileCounter;
 var indexHintOpacity;
+var wholeTileIsClickable;
 
 var counterHintFocusColor = 'red';
 var focusedTile = 0;
@@ -29,7 +30,7 @@ HTMLElement.prototype.wrap = function (wrapper) {
 function configureTile(element) {
   /// Create 'a' wrapper
   var wrapper = document.createElement('a');
-  wrapper.setAttribute("style", "outline: none !important;text-decoration: none !important;color: transparent;");
+  wrapper.setAttribute("style", "outline: none !important;text-decoration: none !important;color: transparent !important;");
 
   /// Set url for 'a' wrapper
   var url;
@@ -80,7 +81,7 @@ function configureTile(element) {
   }
 
 
-  if (shadowEnabled) {
+  if (shadowEnabled && wholeTileIsClickable) {
     /// Append onClick listeners to visually emulate button press on card by changing shadow 
     element.onmousedown = function () {
       this.style.boxShadow = `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity / 2})`;
@@ -92,10 +93,9 @@ function configureTile(element) {
     }
   }
 
-
-
   /// Wrap element with 'a' created element
-  element.wrap(wrapper);
+  if (wholeTileIsClickable)
+    element.wrap(wrapper);
 
 
   /// Add favicons to website titles
@@ -293,6 +293,7 @@ chrome.storage.local.get(['innerPadding',
   'numericNavigation',
   'addTileCounter',
   'indexHintOpacity',
+  'wholeTileIsClickable',
   'faviconRadius'], function (value) {
 
     enabled = value.tilesEnabled ?? true;
@@ -313,6 +314,7 @@ chrome.storage.local.get(['innerPadding',
     numericNavigation = value.numericNavigation ?? true;
     addTileCounter = value.addTileCounter ?? true;
     indexHintOpacity = value.indexHintOpacity || 0.5;
+    wholeTileIsClickable = value.wholeTileIsClickable ?? true;
 
     if (enabled)
       setTiles(elements);

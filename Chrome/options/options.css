@@ -1,25 +1,13 @@
-/* body {
-    background-color: rgba(0, 0 , 0, 0.15);
-} */
-html, body {
-    /* width: 300px; */
-    background-color: transparent;
-    align-items:flex-start;
-  }
-
 button {
     cursor: pointer;
 }
 
 form {
-    /* text-align: center; */
     padding: 0px 15px;
 }
 
-
 .option {
     padding: 4px;
-    /* display: flex; */
 }
 
 .option input {
@@ -34,21 +22,21 @@ h3 {
     padding-top: 10px;
 }
 
+h4 {
+  color: grey;
+  text-align: center;
+  opacity: 0.65;
+}
+
 
 #footer-buttons {
     display: flex;
     padding-top: 40px;
-    
-    /* width: 100%; */
-    /* align-items: center; */
 }
 
 button {
-    /* flex: 1 6 50%; */
-   /* margin-top: 40px; */
     margin-left: 6px;
     width: 100%;
-    /* padding: 5px; */
     text-align: center;
     margin-right: 6px;
     margin-bottom: 12px;
@@ -106,4 +94,10 @@ button {
 
   #previewTitle{
     margin-top: 9px;
+    cursor: pointer;
   }
+
+  #previewTitle:hover{
+    text-decoration:underline;
+  }
+
