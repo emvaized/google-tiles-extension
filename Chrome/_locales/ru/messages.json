@@ -1,0 +1,138 @@
+{
+    "extensionDescription": {
+        "message": "Настройте вид и поведение страницы Google-поиска",
+        "description": ""
+    },
+    "innerPadding": {
+        "message": "Внутренний отступ",
+        "description": ""
+    },
+    "externalPadding": {
+        "message": "Отступ между результатами поиска",
+        "description": ""
+    },
+    "enabled": {
+        "message": "Включено",
+        "description": ""
+    },
+    "hoverTransitionDuration": {
+        "message": "Продолжительность анимации (ms)",
+        "description": ""
+    },
+    "borderRadius": {
+        "message": "Закругление углов (px)",
+        "description": ""
+    },
+    "hoverBackground": {
+        "message": "Цвет фона при наведении мыши",
+        "description": ""
+    },
+    "shadowEnabled": {
+        "message": "Тень включена",
+        "description": ""
+    },
+    "shadowOpacity": {
+        "message": "Прозрачность тени (%)",
+        "description": ""
+    },
+    "moveSuggestionsToBottom": {
+        "message": "Переместить карточки предложений вниз",
+        "description": ""
+    },
+    "moveSuggestionsToBottomTooltip": {
+        "message": "Результаты поиска картинок/видео/новостей будут размещены в конце выдачи",
+        "description": ""
+    },
+    "addFavicons": {
+        "message": "Добавить иконки сайтов",
+        "description": ""
+    },
+    "navigateWithKeyboard": {
+        "message": "Использовать клавиши стрелок для навигации",
+        "description": ""
+    },
+    "navigateWithKeyboardTooltip": {
+        "message": "Использовать ↑ и ↓ для переключения между результатами, ← и → для фокусировки первого/последнего, и 'Enter' чтобы открыть",
+        "description": ""
+    },
+    "keyboardFocusBorderColor": {
+        "message": "Цвет рамки выделения",
+        "description": ""
+    },
+    "keyboardCycle": {
+        "message": "Циклическая навигация (прыгнуть к первому после последнего)",
+        "description": ""
+    },
+    "focusedBorderWidth": {
+        "message": "Ширина рамки выделения (px)",
+        "description": ""
+    },
+    "numericNavigation": {
+        "message": "Навигация клавишами цифр",
+        "description": ""
+    },
+    "numericNavigationTooltip": {
+        "message": "Клавиша 1 сфокусирует первый результат поиска, 2 сфокусирует второй, и так далее. Клавиша 0 сфокусирует поисковую строку",
+        "description": ""
+    },
+    "addTileCounter": {
+        "message": "Показывать номерные подсказки в правом верхнем углу",
+        "description": ""
+    },
+    "indexHintOpacity": {
+        "message": "Прозрачность номерных подсказок",
+        "description": ""
+    },
+    "wholeTileIsClickable": {
+        "message": "Можно кликать по всей плитке",
+        "description": ""
+    },
+    "faviconRadius": {
+        "message": "Размер иконки сайта",
+        "description": ""
+    },
+    "configure": {
+        "message": "Настроить",
+        "description": ""
+    },
+    "resetDefaults": {
+        "message": "Восстановить по умолчанию",
+        "description": ""
+    },
+    "buyMeCoffee": {
+        "message": "Купить мне кофе",
+        "description": ""
+    },
+    "appearance": {
+        "message": "Внешний вид",
+        "description": ""
+    },
+    "tiles": {
+        "message": "Плитки",
+        "description": ""
+    },
+    "favicons": {
+        "message": "Иконки",
+        "description": ""
+    },
+    "hover": {
+        "message": "Наведение мыши",
+        "description": ""
+    },
+    "searchResults": {
+        "message": "Поисковая выдача",
+        "description": ""
+    },
+    "keyboardNavigation": {
+        "message": "Клавиатура",
+        "description": ""
+    },
+    "preview": {
+        "message": "Превью",
+        "description": ""
+    },
+    "allChangesSavedAutomatically": {
+        "message": "Все изменения сохраняются автоматически",
+        "description": ""
+    }
+}

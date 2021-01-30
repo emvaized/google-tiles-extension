@@ -276,7 +276,8 @@ function setTiles(elements) {
 
 
 var elements = document.querySelectorAll(`[class='g'],[id='wp-tabs-container']`);
-chrome.storage.local.get(['innerPadding',
+chrome.storage.local.get([
+  'innerPadding',
   'externalPadding',
   'tilesEnabled',
   'hoverTransitionDuration',
@@ -294,30 +295,31 @@ chrome.storage.local.get(['innerPadding',
   'addTileCounter',
   'indexHintOpacity',
   'wholeTileIsClickable',
-  'faviconRadius'], function (value) {
+  'faviconRadius'
+], function (value) {
 
-    enabled = value.tilesEnabled ?? true;
-    innerPadding = value.innerPadding || 12;
-    externalPadding = value.externalPadding || 24;
-    hoverTransitionDuration = value.hoverTransitionDuration || 75;
-    borderRadius = value.borderRadius ?? 6;
-    hoverBackground = value.hoverBackground || '#f0f2f4';
-    shadowEnabled = value.shadowEnabled ?? true;
-    shadowOpacity = value.shadowOpacity || 0.15;
-    moveSuggestionsToBottom = value.moveSuggestionsToBottom ?? true;
-    addFavicons = value.addFavicons ?? true;
-    faviconRadius = value.faviconRadius || 12;
-    navigateWithKeyboard = value.navigateWithKeyboard ?? false;
-    keyboardFocusBorderColor = value.keyboardFocusBorderColor ?? '#210DAB';
-    keyboardCycle = value.keyboardCycle ?? true;
-    focusedBorderWidth = value.focusedBorderWidth || 1;
-    numericNavigation = value.numericNavigation ?? true;
-    addTileCounter = value.addTileCounter ?? true;
-    indexHintOpacity = value.indexHintOpacity || 0.5;
-    wholeTileIsClickable = value.wholeTileIsClickable ?? true;
+  enabled = value.tilesEnabled ?? true;
+  innerPadding = value.innerPadding || 12;
+  externalPadding = value.externalPadding || 24;
+  hoverTransitionDuration = value.hoverTransitionDuration || 75;
+  borderRadius = value.borderRadius ?? 6;
+  hoverBackground = value.hoverBackground || '#f0f2f4';
+  shadowEnabled = value.shadowEnabled ?? true;
+  shadowOpacity = value.shadowOpacity || 0.15;
+  moveSuggestionsToBottom = value.moveSuggestionsToBottom ?? true;
+  addFavicons = value.addFavicons ?? true;
+  faviconRadius = value.faviconRadius || 12;
+  navigateWithKeyboard = value.navigateWithKeyboard ?? false;
+  keyboardFocusBorderColor = value.keyboardFocusBorderColor ?? '#210DAB';
+  keyboardCycle = value.keyboardCycle ?? true;
+  focusedBorderWidth = value.focusedBorderWidth || 1;
+  numericNavigation = value.numericNavigation ?? true;
+  addTileCounter = value.addTileCounter ?? true;
+  indexHintOpacity = value.indexHintOpacity || 0.5;
+  wholeTileIsClickable = value.wholeTileIsClickable ?? true;
 
-    if (enabled)
-      setTiles(elements);
-  });
+  if (enabled)
+    setTiles(elements);
+});
 
 

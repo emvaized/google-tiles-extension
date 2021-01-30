@@ -1,8 +1,9 @@
 {
   "manifest_version": 2,
+  "default_locale": "en",
   "name": "Google Tiles",
   "version": "1.0",
-  "description": "Customize the looks of your Google search output",
+  "description": "Customize the looks and behaviour of your Google search output",
   "icons": {
     "48": "icon.png"
   },

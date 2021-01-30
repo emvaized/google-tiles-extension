@@ -9,11 +9,11 @@
 
 <body>
 
-      <h4>All changes are saved automatically</h4>
+      <h4 id='allChangesSavedAutomaticallyHeader'></h4>
 
       <form>
             <div>
-                  <h3>Preview </h3>
+                  <h3 id='previewHeader'> </h3>
 
                   <div id='previewTile'>
                         <div style='position: relative;'>
@@ -49,114 +49,96 @@
                   </div>
             </div>
 
-            <h3>Tiles</h3>
-            <div class='option'> <label><input type="number" min="0" max="50" id="borderRadius"> Border radius</label>
+            <h3 id='appearanceHeader'></h3>
+            <div class='option'> <label><input type="number" min="0" max="50" id="borderRadius"> </label>
             </div>
 
-            <div class='option'><label> <input type="number" min="0" max="50" id="innerPadding"> Inner padding</label>
+            <div class='option'><label> <input type="number" min="0" max="50" id="innerPadding"></label>
             </div>
 
 
 
-            <div class='option'> <label><input type="number" step='0.05' min='0.0' max='1.0' id="shadowOpacity">Shadow
-                        opacity (%) </label> </div>
+            <div class='option'> <label><input type="number" step='0.05' min='0.0' max='1.0' id="shadowOpacity">
+                  </label> </div>
 
-            <div class='option'> <label><input type="checkbox" id="wholeTileIsClickable">Whole tile is clickable
+            <div class='option'> <label><input type="checkbox" id="wholeTileIsClickable">
                   </label></div>
-            <div class='option'> <label><input type="checkbox" id="shadowEnabled">Shadow enabled </label> </div>
+            <div class='option'> <label><input type="checkbox" id="shadowEnabled"> </label> </div>
 
 
 
 
-            <h3>Favicons</h3>
-            <div class='option'> <label><input type="checkbox" id="addFavicons">Show favicons </label>
+            <h3 id='faviconsHeader'></h3>
+            <div class='option'> <label><input type="checkbox" id="addFavicons"> </label>
             </div>
-            <div class='option'> <label><input type="number" id="faviconRadius">Favicons size </label> </div>
+            <div class='option'> <label><input type="number" id="faviconRadius"> </label> </div>
 
 
 
-            <h3>Hover</h3>
-            <div class='option'> <label> <input type="color" id="hoverBackground"> Tile color on hover</label>
+            <h3 id='hoverHeader'></h3>
+            <div class='option'> <label> <input type="color" id="hoverBackground"> </label>
             </div>
-            <div class='option'> <label><input type="number" min='0' id="hoverTransitionDuration"> Transition
-                        duration
-                        (ms) </label>
+            <div class='option'> <label><input type="number" min='0' id="hoverTransitionDuration"> </label>
             </div>
 
 
-            <h3>Search results</h3>
+            <h3 id='searchResultsHeader'></h3>
 
 
-            <div class='option tooltip'> <label> <input type="checkbox" id="moveSuggestionsToBottom">Move
-                        suggestions to
-                        bottom</label>
-                  <span class="tooltiptext">Images/video/news search results will be moved to
+            <div class='option tooltip'> <label> <input type="checkbox" id="moveSuggestionsToBottom"></label>
+                  <span id="moveSuggestionsToBottomTooltip" class="tooltiptext">Images/video/news search results will be
+                        moved to
                         bottom of page</span>
             </div>
 
 
-            <div class='option'><label> <input type="number" id="externalPadding" min="0" max="50"> Padding
-                        between
-                        results</label>
+            <div class='option'><label> <input type="number" id="externalPadding" min="0" max="50"></label>
             </div>
 
 
 
 
-            <h3>Keyboard navigation</h3>
+            <h3 id='keyboardNavigationHeader'></h3>
 
 
 
-            <div class='option tooltip'> <label><input type="checkbox" id="navigateWithKeyboard"> Use arrow keys
-                        for
-                        navigation
+            <div class='option tooltip'> <label><input type="checkbox" id="navigateWithKeyboard">
                   </label>
-                  <span class="tooltiptext">Use ↑ and ↓ keys to navigate results, ← and → to focus first/last,
+                  <span id="navigateWithKeyboardTooltip" class="tooltiptext">Use ↑ and ↓ keys to navigate results, ← and
+                        → to focus first/last,
                         and 'Enter' to open </span>
             </div>
 
-            <div class='option'> <label> <input type="checkbox" id="keyboardCycle"> Cycle navigation (jump to
-                        first
-                        after last)</label> </div>
+            <div class='option'> <label> <input type="checkbox" id="keyboardCycle"> </label> </div>
 
-            <div class='option'> <label><input type="color" id="keyboardFocusBorderColor">Focused border color
+            <div class='option'> <label><input type="color" id="keyboardFocusBorderColor">
                   </label>
             </div>
-            <div class='option'> <label> <input type="number" min='0' max='10' id="focusedBorderWidth"> Focused
-                        border
-                        width (px)</label>
+            <div class='option'> <label> <input type="number" min='0' max='10' id="focusedBorderWidth"> </label>
             </div>
 
             <br />
 
-            <div class='option tooltip'> <label><input type="checkbox" id="numericNavigation"> Numeric keys
-                        navigation
+            <div class='option tooltip'> <label><input type="checkbox" id="numericNavigation">
                   </label>
-                  <span class="tooltiptext">Pressing '1' will focus first search result, '2' will focus second
+                  <span id="numericNavigationTooltip" class="tooltiptext">Pressing '1' will focus first search result,
+                        '2' will focus second
                         result,
                         and so
                         on. Pressing '0' will focus search field</span>
             </div>
 
-            <div class='option tooltip'> <label><input type="checkbox" id="addTileCounter"> Show index hints in
-                        top
-                        right
-                        corner of title</label>
-                  <span class="tooltiptext">Useful for keyboard numeric navigation</span>
+            <div class='option'> <label><input type="checkbox" id="addTileCounter"> </label>
             </div>
 
             <div class='option'> <label> <input type="number" step='0.1' min='0.0' max='1.0' id="indexHintOpacity">
-                        Index hint opacity</label>
+                  </label>
             </div>
 
 
             <div id='footer-buttons'>
-                  <!-- <button type="submit"><img height='15px' width='15px'
-                              style="position: relative; right: 6px; top: 3px; "
-                              src="https://icons.iconarchive.com/icons/icons8/windows-8/512/Programming-Save-icon.png">Save
-                  </button> -->
-                  <button type="reset">Restore defaults</button>
-                  <button id='donateButton'>Buy me a coffee <img height='18px' width='18px'
+                  <button id='resetButton' type="reset">Restore defaults</button>
+                  <button id='donateButton'> <img height='18px' width='18px'
                               style="position: relative; left: 3px; top: 3px;"
                               src="https://image.flaticon.com/icons/png/128/3071/3071581.png" </button>
 

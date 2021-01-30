@@ -81,6 +81,47 @@ function updatePreviewTileStyle() {
 function restoreOptions() {
 
   function setCurrentChoices(result) {
+
+    /// Set translated labels for inputs
+    document.querySelector("#innerPadding").parentNode.innerHTML += chrome.i18n.getMessage("innerPadding");
+    document.querySelector("#externalPadding").parentNode.innerHTML += chrome.i18n.getMessage("externalPadding");
+    document.querySelector("#borderRadius").parentNode.innerHTML += chrome.i18n.getMessage("borderRadius");
+    document.querySelector("#hoverTransitionDuration").parentNode.innerHTML += chrome.i18n.getMessage("hoverTransitionDuration");
+    document.querySelector("#hoverBackground").parentNode.innerHTML += chrome.i18n.getMessage("hoverBackground");
+    document.querySelector("#shadowEnabled").parentNode.innerHTML += chrome.i18n.getMessage("shadowEnabled");
+    document.querySelector("#shadowOpacity").parentNode.innerHTML += chrome.i18n.getMessage("shadowOpacity");
+    document.querySelector("#addFavicons").parentNode.innerHTML += chrome.i18n.getMessage("addFavicons");
+    document.querySelector("#faviconRadius").parentNode.innerHTML += chrome.i18n.getMessage("faviconRadius");
+    document.querySelector("#keyboardCycle").parentNode.innerHTML += chrome.i18n.getMessage("keyboardCycle");
+    document.querySelector("#keyboardFocusBorderColor").parentNode.innerHTML += chrome.i18n.getMessage("keyboardFocusBorderColor");
+    document.querySelector("#focusedBorderWidth").parentNode.innerHTML += chrome.i18n.getMessage("focusedBorderWidth");
+    document.querySelector("#addTileCounter").parentNode.innerHTML += chrome.i18n.getMessage("addTileCounter");
+    document.querySelector("#indexHintOpacity").parentNode.innerHTML += chrome.i18n.getMessage("indexHintOpacity");
+    document.querySelector("#wholeTileIsClickable").parentNode.innerHTML += chrome.i18n.getMessage("wholeTileIsClickable");
+    document.querySelector("#moveSuggestionsToBottom").parentNode.innerHTML += chrome.i18n.getMessage("moveSuggestionsToBottom");
+    document.querySelector("#numericNavigation").parentNode.innerHTML += chrome.i18n.getMessage("numericNavigation");
+    document.querySelector("#navigateWithKeyboard").parentNode.innerHTML += chrome.i18n.getMessage("navigateWithKeyboard");
+
+    /// Set translated tooltips
+    document.querySelector("#moveSuggestionsToBottomTooltip").innerHTML = chrome.i18n.getMessage("moveSuggestionsToBottomTooltip");
+    document.querySelector("#numericNavigationTooltip").innerHTML = chrome.i18n.getMessage("numericNavigationTooltip");
+    document.querySelector("#navigateWithKeyboardTooltip").innerHTML = chrome.i18n.getMessage("navigateWithKeyboardTooltip");
+
+    /// Set translated headers
+    document.querySelector("#previewHeader").innerHTML = chrome.i18n.getMessage("preview");
+    document.querySelector("#appearanceHeader").innerHTML = chrome.i18n.getMessage("appearance");
+    document.querySelector("#faviconsHeader").innerHTML = chrome.i18n.getMessage("favicons");
+    document.querySelector("#hoverHeader").innerHTML = chrome.i18n.getMessage("hover");
+    document.querySelector("#searchResultsHeader").innerHTML = chrome.i18n.getMessage("searchResults");
+    document.querySelector("#keyboardNavigationHeader").innerHTML = chrome.i18n.getMessage("keyboardNavigation");
+    document.querySelector("#allChangesSavedAutomaticallyHeader").innerHTML = chrome.i18n.getMessage("allChangesSavedAutomatically");
+
+    /// Translate footer buttons
+    document.querySelector("#resetButton").innerHTML = chrome.i18n.getMessage("resetDefaults");
+    document.querySelector("#donateButton").innerHTML = chrome.i18n.getMessage("buyMeCoffee") + document.querySelector("#donateButton").innerHTML;
+
+
+    /// Set inputs values
     document.querySelector("#innerPadding").value = result.innerPadding || 12;
     document.querySelector("#externalPadding").value = result.externalPadding || 24;
     document.querySelector("#borderRadius").value = result.borderRadius || 6;

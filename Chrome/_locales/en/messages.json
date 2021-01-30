@@ -1,0 +1,138 @@
+{
+  "extensionDescription": {
+    "message": "Customize the looks and behaviour of your Google search output",
+    "description": ""
+  },
+  "innerPadding": {
+    "message": "Inner padding",
+    "description": ""
+  },
+  "externalPadding": {
+    "message": "Padding between results",
+    "description": ""
+  },
+  "enabled": {
+    "message": "Enabled",
+    "description": ""
+  },
+  "hoverTransitionDuration": {
+    "message": "Transition duration (ms)",
+    "description": ""
+  },
+  "borderRadius": {
+    "message": "Border radius (px)",
+    "description": ""
+  },
+  "hoverBackground": {
+    "message": "Background color on hover",
+    "description": ""
+  },
+  "shadowEnabled": {
+    "message": "Shadows enabled",
+    "description": ""
+  },
+  "shadowOpacity": {
+    "message": "Shadows opacity (%)",
+    "description": ""
+  },
+  "moveSuggestionsToBottom": {
+    "message": "Move suggestions to bottom",
+    "description": ""
+  },
+  "moveSuggestionsToBottomTooltip": {
+    "message": "Images/video/news search results will be moved to bottom of page",
+    "description": ""
+  },
+  "addFavicons": {
+    "message": "Add favicons",
+    "description": ""
+  },
+  "navigateWithKeyboard": {
+    "message": "Use arrow keys for navigation",
+    "description": ""
+  },
+  "navigateWithKeyboardTooltip": {
+    "message": "Use ↑ and ↓ keys to navigate results, ← and → to focus first/last, and 'Enter' to open",
+    "description": ""
+  },
+  "keyboardFocusBorderColor": {
+    "message": "Focused border color",
+    "description": ""
+  },
+  "keyboardCycle": {
+    "message": "Cycle navigation (jump to first after last)",
+    "description": ""
+  },
+  "focusedBorderWidth": {
+    "message": "Focused border width (px)",
+    "description": ""
+  },
+  "numericNavigation": {
+    "message": "Numeric keys navigation",
+    "description": ""
+  },
+  "numericNavigationTooltip": {
+    "message": "Pressing key 1 will focus first search result, 2 will focus second result, and so on. Pressing 0 will focus search field",
+    "description": ""
+  },
+  "addTileCounter": {
+    "message": "Show index hints in top right corner of tile",
+    "description": ""
+  },
+  "indexHintOpacity": {
+    "message": "Index hint opacity",
+    "description": ""
+  },
+  "wholeTileIsClickable": {
+    "message": "Whole tile is clickable",
+    "description": ""
+  },
+  "faviconRadius": {
+    "message": "Favicon size",
+    "description": ""
+  },
+  "configure": {
+    "message": "Configure",
+    "description": ""
+  },
+  "resetDefaults": {
+    "message": "Restore defaults",
+    "description": ""
+  },
+  "buyMeCoffee": {
+    "message": "Buy me a coffee",
+    "description": ""
+  },
+  "tiles": {
+    "message": "Tiles",
+    "description": ""
+  },
+  "appearance": {
+    "message": "Appearance",
+    "description": ""
+  },
+  "favicons": {
+    "message": "Favicons",
+    "description": ""
+  },
+  "hover": {
+    "message": "Hover",
+    "description": ""
+  },
+  "searchResults": {
+    "message": "Search results",
+    "description": ""
+  },
+  "keyboardNavigation": {
+    "message": "Keyboard navigation",
+    "description": ""
+  },
+  "preview": {
+    "message": "Preview",
+    "description": ""
+  },
+  "allChangesSavedAutomatically": {
+    "message": "All changes are saved automatically",
+    "description": ""
+  }
+}

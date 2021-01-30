@@ -7,13 +7,15 @@ function saveOptions(e) {
 }
 
 function restoreOptions() {
+  var settingsButton = document.querySelector('#settingsButton');
+  settingsButton.innerHTML = settingsButton.innerHTML + ' ' + chrome.i18n.getMessage("configure");
+  var enabledCheckbox = document.querySelector('.enabled-checkbox');
+  enabledCheckbox.innerHTML = chrome.i18n.getMessage("enabled") + enabledCheckbox.innerHTML;
+
   chrome.storage.local.get(
     'tilesEnabled', function (res) {
       document.querySelector("#tilesEnabled").checked = res.tilesEnabled ?? true;
     });
-  // gettingItem.then((res) => {
-  //   document.querySelector("tilesEnabled").checked = res.tilesEnabled ?? true;
-  // });
 }
 
 
