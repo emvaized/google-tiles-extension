@@ -3,7 +3,7 @@
   "default_locale": "en",
   "name": "Google Tiles",
   "version": "1.0",
-  "description": "Customize the looks and behaviour of your Google search output",
+  "description": "__MSG_extensionDescription__",
   "icons": {
     "48": "icon.png"
   },

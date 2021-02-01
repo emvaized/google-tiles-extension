@@ -138,13 +138,14 @@ function setLayout(elements) {
         sidebarContainer = divContainer;
       }
 
-      quickAnswers.forEach(function (suggestionTile) {
-        // if (suggestionTile.tagName == imageResultsSelector)
-        suggestionTile.setAttribute("style", `margin-bottom: 20px;`);
+      if (quickAnswers.length > 2)
+        quickAnswers.forEach(function (suggestionTile) {
+          // if (suggestionTile.tagName == imageResultsSelector)
+          suggestionTile.setAttribute("style", `margin-bottom: 20px;`);
 
-        sidebarContainer.appendChild(suggestionTile);
-        // configureTile(suggestionTile);
-      });
+          sidebarContainer.appendChild(suggestionTile);
+          // configureTile(suggestionTile);
+        });
 
     }
 
