@@ -140,7 +140,7 @@ function setLayout(elements) {
 
       quickAnswers.forEach(function (suggestionTile) {
         // if (suggestionTile.tagName == imageResultsSelector)
-        //   suggestionTile.setAttribute("style", `padding-top: 15px;`);
+        suggestionTile.setAttribute("style", `margin-bottom: 20px;`);
 
         sidebarContainer.appendChild(suggestionTile);
         // configureTile(suggestionTile);
