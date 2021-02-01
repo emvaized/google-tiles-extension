@@ -70,7 +70,7 @@ function restoreOptions() {
     /// Set inputs values
     document.querySelector("#innerPadding").value = result.innerPadding || 12;
     document.querySelector("#externalPadding").value = result.externalPadding || 24;
-    document.querySelector("#borderRadius").value = result.borderRadius || 6;
+    document.querySelector("#borderRadius").value = result.borderRadius || 12;
     document.querySelector("#hoverTransitionDuration").value = result.hoverTransitionDuration || 75;
     document.querySelector("#hoverBackground").value = result.hoverBackground || '#f0f2f4';
     document.querySelector("#shadowEnabled").checked = result.shadowEnabled ?? true;
@@ -176,7 +176,7 @@ function resetOptions() {
     innerPadding: 12,
     externalPadding: 24,
     hoverTransitionDuration: 75,
-    borderRadius: 6,
+    borderRadius: 12,
     hoverBackground: '#f0f2f4',
     shadowEnabled: true,
     shadowOpacity: 0.15,

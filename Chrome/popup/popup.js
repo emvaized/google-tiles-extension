@@ -25,8 +25,8 @@ document.addEventListener("click", (e) => {
     chrome.runtime.openOptionsPage();
     window.close();
   }
-  // else if (e.target.classList.contains("checkbox") || e.target.classList.contains("checkboxLabel")) {
-  else if (e.target.classList.contains("enabled-checkbox") || e.target.classList.contains('checkboxLabel')) {
+  else if (e.target.classList.contains("checkbox") || e.target.classList.contains("checkboxLabel")) {
+    // else if (e.target.classList.contains("enabled-checkbox") || e.target.classList.contains('checkboxLabel')) {
     saveOptions(e);
   }
 });

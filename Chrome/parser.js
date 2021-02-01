@@ -37,6 +37,10 @@ var translateWidgetSelector = '#tw-container';
 var imageResultsSelector = 'g-section-with-header';
 var weatherResultsSelector = '#wob_wc';
 var columnWithRegularResultsSelector = '#center_col';
+var similarResultsSelector = '#botstuff';
+var videoResultsSelector = `[class*=' xpd ']`;
+var summaryInfoResultSelector = `[class='OlejJc']`;
+var dictionaryWidgetSelector = `[class*='obcontainer']`;
 
 var focusedTile = 0;
 var counterHints = [];
@@ -72,7 +76,7 @@ function init() {
     innerPadding = value.innerPadding || 12;
     externalPadding = value.externalPadding || 24;
     hoverTransitionDuration = value.hoverTransitionDuration || 75;
-    borderRadius = value.borderRadius ?? 6;
+    borderRadius = value.borderRadius ?? 12;
     hoverBackground = value.hoverBackground || '#f0f2f4';
     shadowEnabled = value.shadowEnabled ?? true;
     shadowOpacity = value.shadowOpacity || 0.15;
@@ -119,7 +123,10 @@ function setLayout(elements) {
     if (tryToPlaceSuggestionsOnTheSide) {
       /// If page contains 'quick answer', like currency conversion widget, move it to the right side
 
-      var quickAnswers = document.querySelectorAll(`[class^='${genericQuickAnswerCardClass}'],${translateWidgetSelector}, ${imageResultsSelector},${weatherResultsSelector}`);
+      /// TODO: 
+      /// Rewrite the selector in order to select all children except regular search results (like 'div:not(.g)').
+      /// This way code will not depend on bunch of selectors for each type of 'quick answer' card
+      var quickAnswers = document.querySelectorAll(`[class^='${genericQuickAnswerCardClass}'],${summaryInfoResultSelector},${videoResultsSelector},${dictionaryWidgetSelector},${similarResultsSelector},${translateWidgetSelector}, ${imageResultsSelector},${weatherResultsSelector}`);
 
       var sidebarContainer;
       if (bigSideCard !== null && bigSideCard !== undefined) {
