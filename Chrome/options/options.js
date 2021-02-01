@@ -67,20 +67,6 @@ function restoreOptions() {
     document.querySelector("#githubButton").innerHTML = chrome.i18n.getMessage("visitGithub") + document.querySelector("#githubButton").innerHTML;
     document.querySelector("#donateButton").innerHTML = chrome.i18n.getMessage("buyMeCoffee") + document.querySelector("#donateButton").innerHTML;
 
-
-    /// Collapsible CSS rules section
-    // var coll = document.querySelector(".collapsible");
-    // coll.addEventListener("click", function () {
-    //   this.classList.toggle("active");
-    //   var content = this.nextElementSibling;
-    //   if (content.style.display === "block") {
-    //     content.style.display = "none";
-    //   } else {
-    //     content.style.display = "block";
-    //   }
-    // });
-
-
     /// Set inputs values
     document.querySelector("#innerPadding").value = result.innerPadding || 12;
     document.querySelector("#externalPadding").value = result.externalPadding || 24;
