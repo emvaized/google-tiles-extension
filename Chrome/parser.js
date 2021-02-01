@@ -79,7 +79,7 @@ function init() {
     moveSuggestionsToBottom = value.moveSuggestionsToBottom ?? true;
     addFavicons = value.addFavicons ?? true;
     faviconRadius = value.faviconRadius || 12;
-    navigateWithKeyboard = value.navigateWithKeyboard ?? false;
+    navigateWithKeyboard = value.navigateWithKeyboard ?? true;
     keyboardFocusBorderColor = value.keyboardFocusBorderColor ?? '#210DAB';
     keyboardCycle = value.keyboardCycle ?? true;
     focusedBorderWidth = value.focusedBorderWidth || 1;

@@ -92,7 +92,11 @@
         "description": ""
     },
     "buyMeCoffee": {
-        "message": "Купить мне кофе",
+        "message": "Купить автору кофе",
+        "description": ""
+    },
+    "visitGithub": {
+        "message": "Посетить страницу на GitHub",
         "description": ""
     },
     "appearance": {

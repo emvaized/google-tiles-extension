@@ -64,6 +64,7 @@ function restoreOptions() {
 
     /// Translate footer buttons
     document.querySelector("#resetButton").innerHTML = chrome.i18n.getMessage("resetDefaults");
+    document.querySelector("#githubButton").innerHTML = chrome.i18n.getMessage("visitGithub") + document.querySelector("#githubButton").innerHTML;
     document.querySelector("#donateButton").innerHTML = chrome.i18n.getMessage("buyMeCoffee") + document.querySelector("#donateButton").innerHTML;
 
 
@@ -91,7 +92,7 @@ function restoreOptions() {
     document.querySelector("#moveSuggestionsToBottom").checked = result.moveSuggestionsToBottom ?? true;
     document.querySelector("#addFavicons").checked = result.addFavicons ?? true;
     document.querySelector("#faviconRadius").value = result.faviconRadius || 12;
-    document.querySelector("#navigateWithKeyboard").checked = result.navigateWithKeyboard ?? false;
+    document.querySelector("#navigateWithKeyboard").checked = result.navigateWithKeyboard ?? true;
     document.querySelector("#keyboardCycle").checked = result.keyboardCycle ?? true;
     document.querySelector("#keyboardFocusBorderColor").value = result.keyboardFocusBorderColor ?? '#210DAB';
     document.querySelector("#focusedBorderWidth").value = result.focusedBorderWidth || 1;
@@ -196,7 +197,7 @@ function resetOptions() {
     moveSuggestionsToBottom: true,
     addFavicons: true,
     faviconRadius: 12,
-    navigateWithKeyboard: false,
+    navigateWithKeyboard: true,
     keyboardCycle: true,
     keyboardFocusBorderColor: '#210DAB',
     focusedBorderWidth: 1,
@@ -214,4 +215,7 @@ document.addEventListener("DOMContentLoaded", restoreOptions);
 document.querySelector("form").addEventListener("reset", resetOptions);
 document.querySelector("#donateButton").addEventListener("click", function (val) {
   window.open('https://emvaized.diaka.ua/donate', '_blank');
+});
+document.querySelector("#githubButton").addEventListener("click", function (val) {
+  window.open('https://github.com/emvaized/google-tiles-extension', '_blank');
 });

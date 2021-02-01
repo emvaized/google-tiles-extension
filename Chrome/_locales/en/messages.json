@@ -92,7 +92,11 @@
     "description": ""
   },
   "buyMeCoffee": {
-    "message": "Buy me a coffee",
+    "message": "Buy author a coffee",
+    "description": ""
+  },
+  "visitGithub": {
+    "message": "Visit GitHub page",
     "description": ""
   },
   "tiles": {
