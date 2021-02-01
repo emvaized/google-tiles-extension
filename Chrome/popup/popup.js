@@ -3,7 +3,6 @@ function saveOptions(e) {
   chrome.storage.local.set({
     tilesEnabled: document.querySelector("#tilesEnabled").checked,
   });
-  // e.preventDefault();
 }
 
 function restoreOptions() {
@@ -21,13 +20,13 @@ function restoreOptions() {
 
 
 document.addEventListener('DOMContentLoaded', restoreOptions);
-// document.querySelector("tilesEnabled").addEventListener("change", saveOptions);
 document.addEventListener("click", (e) => {
   if (e.target.classList.contains("settings")) {
     chrome.runtime.openOptionsPage();
     window.close();
   }
-  else if (e.target.classList.contains("checkbox")) {
+  // else if (e.target.classList.contains("checkbox") || e.target.classList.contains("checkboxLabel")) {
+  else if (e.target.classList.contains("enabled-checkbox") || e.target.classList.contains('checkboxLabel')) {
     saveOptions(e);
   }
 });

@@ -20,7 +20,7 @@
     "description": ""
   },
   "borderRadius": {
-    "message": "Border radius (px)",
+    "message": "Corner radius (px)",
     "description": ""
   },
   "hoverBackground": {
@@ -124,7 +124,7 @@
     "description": ""
   },
   "allChangesSavedAutomatically": {
-    "message": "All changes are saved automatically",
+    "message": "Changes are saved automatically",
     "description": ""
   },
   "moveSuggestionsToBottom": {
@@ -136,7 +136,7 @@
     "description": ""
   },
   "tryToPlaceSuggestionsOnTheSide": {
-    "message": "Try to move suggestions to column on the right",
+    "message": "Move search widgets to the right column",
     "description": ""
   }
 }

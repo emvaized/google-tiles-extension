@@ -124,7 +124,7 @@
         "description": ""
     },
     "allChangesSavedAutomatically": {
-        "message": "Все изменения сохраняются автоматически",
+        "message": "Изменения сохраняются автоматически",
         "description": ""
     },
     "moveSuggestionsToBottom": {
@@ -136,7 +136,7 @@
         "description": ""
     },
     "tryToPlaceSuggestionsOnTheSide": {
-        "message": "Попробовать переместить предложения в колонку справа",
+        "message": "Переместить поисковые виджеты в колонку справа",
         "description": ""
     }
 }

@@ -60,7 +60,7 @@ function restoreOptions() {
     document.querySelector("#hoverHeader").innerHTML = chrome.i18n.getMessage("hover");
     document.querySelector("#searchResultsHeader").innerHTML = chrome.i18n.getMessage("searchResults");
     document.querySelector("#keyboardNavigationHeader").innerHTML = chrome.i18n.getMessage("keyboardNavigation");
-    document.querySelector("#allChangesSavedAutomaticallyHeader").innerHTML = chrome.i18n.getMessage("allChangesSavedAutomatically");
+    document.querySelector("#allChangesSavedAutomaticallyHeader").innerHTML = '💾 ' + chrome.i18n.getMessage("allChangesSavedAutomatically");
 
     /// Translate footer buttons
     document.querySelector("#resetButton").innerHTML = chrome.i18n.getMessage("resetDefaults");
