@@ -61,9 +61,11 @@ h3 {
 
 h4 {
   color: grey;
-  /* text-align: center; */
+  text-align: center;
   opacity: 0.65;
   margin-left: 15px;
+  padding-top: 30px;
+
 }
 
 
@@ -127,7 +129,7 @@ h4 {
 
   #footer-buttons {
     display: flex;
-    padding-top: 30px;
+    /* padding-top: 30px; */
 }
 
 button {

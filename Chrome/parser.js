@@ -132,13 +132,17 @@ function setLayout(elements) {
       } else {
         /// Otherwise, just append it to the right of main results column
         var divContainer = document.createElement('div');
-        divContainer.setAttribute("style", `position: absolute; top: 0; right:-630px;max-width: 600px;`);
+        divContainer.setAttribute("style", `position: absolute; top: 0; right:-530px;max-width: 500px;`);
         document.querySelector(columnWithRegularResultsSelector).appendChild(divContainer);
         sidebarContainer = divContainer;
       }
 
       quickAnswers.forEach(function (suggestionTile) {
+        // if (suggestionTile.tagName == imageResultsSelector)
+        //   suggestionTile.setAttribute("style", `padding-top: 15px;`);
+
         sidebarContainer.appendChild(suggestionTile);
+        // configureTile(suggestionTile);
       });
 
     }
