@@ -35,6 +35,7 @@ var quickAnswerCardId = 'wp-tabs-container';
 var genericQuickAnswerCardClass = 'card-section';
 var translateWidgetSelector = '#tw-container';
 var imageResultsSelector = 'g-section-with-header';
+var weatherResultsSelector = '#wob_wc';
 var columnWithRegularResultsSelector = '#center_col';
 
 var focusedTile = 0;
@@ -115,36 +116,31 @@ function setLayout(elements) {
     });
 
 
-    /// If page contains 'quick answer', like currency conversion widget, move it to the right side
     if (tryToPlaceSuggestionsOnTheSide) {
-      var suggestionTile;
-      /// proccess 'convert' widget. Usually search suggestions on bottom also meet the selector, so we try to filter it out.
-      var quickAnswers = document.querySelectorAll(`[class^='${genericQuickAnswerCardClass}']`);
-      if (quickAnswers.length >= 2) {
-        suggestionTile = quickAnswers[0];
-      } else {
-        /// proccess 'translate' widget
-        suggestionTile = document.querySelector(translateWidgetSelector);
-        if (suggestionTile == null) {
-          /// Proccess image search results
-          suggestionTile = document.querySelector(imageResultsSelector);
-        }
-      }
+      /// If page contains 'quick answer', like currency conversion widget, move it to the right side
 
-      if (suggestionTile !== null) {
+      var quickAnswers = document.querySelectorAll(`[class^='${genericQuickAnswerCardClass}'],${translateWidgetSelector}, ${imageResultsSelector},${weatherResultsSelector}`);
 
+      var sidebarContainer;
+      if (bigSideCard !== null && bigSideCard !== undefined) {
         /// if there's big side answer card (usually containing info from Wikipedia), append after it
-        if (bigSideCard !== null && bigSideCard !== undefined) {
-          suggestionTile.setAttribute("style", `padding-top: 45px;max-width: 500px;`);
-          bigSideCard.parentNode.appendChild(suggestionTile);
-        } else {
-
-          /// Otherwise, just append it to the right of main results column
-          suggestionTile.setAttribute("style", `position: absolute; top: 0; right:-550px;max-width: 500px;`);
-          document.querySelector(columnWithRegularResultsSelector).appendChild(suggestionTile);
-        }
-
+        var divContainer = document.createElement('div');
+        divContainer.setAttribute("style", `margin-top: 35px !important;`);
+        // sidebarContainer = bigSideCard.parentNode;
+        bigSideCard.parentNode.appendChild(divContainer);
+        sidebarContainer = divContainer;
+      } else {
+        /// Otherwise, just append it to the right of main results column
+        var divContainer = document.createElement('div');
+        divContainer.setAttribute("style", `position: absolute; top: 0; right:-630px;max-width: 600px;`);
+        document.querySelector(columnWithRegularResultsSelector).appendChild(divContainer);
+        sidebarContainer = divContainer;
       }
+
+      quickAnswers.forEach(function (suggestionTile) {
+        sidebarContainer.appendChild(suggestionTile);
+      });
+
     }
 
   }
@@ -180,6 +176,7 @@ function setLayout(elements) {
 
     }
 
+    /// Apply tile styling
     if (!divChild.className.includes(genericQuickAnswerCardClass))
       configureTile(divChild);
   });
@@ -194,7 +191,7 @@ function setLayout(elements) {
     var searchField = document.querySelector(searchFieldSelector);
 
     function checkKey(e) {
-
+      /// Dont listen for number or arrow keys when searchfield is focused
       if (document.activeElement === searchField) return;
 
       e = e || window.event;

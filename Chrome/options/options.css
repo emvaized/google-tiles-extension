@@ -8,12 +8,38 @@ form {
 
 .option {
     padding: 4px;
+  cursor: pointer;
 }
+
+.option:hover {
+  cursor: pointer;
+  background-color: rgb(0, 0, 0, 0.1);
+  border-radius: 3px;
+  transition: all 200ms ease-in-out;
+}
+
+label {
+  cursor: pointer;
+}
+
+/* label {
+  cursor: pointer;
+  padding: 4px 0px;
+}
+
+label:hover {
+  background-color: rgb(0, 0, 0, 0.1);
+  border-radius: 3px;
+  transition: all 200ms ease-in-out;
+} */
 
 .option input {
     max-width: 65px;
     margin-right: 6px;
-    cursor: pointer;
+}
+
+.option input[type="checkbox"]  {
+  cursor: pointer;
 }
 
 .disabled-option {
@@ -50,7 +76,7 @@ h4 {
   /* Tooltip text */
   .tooltip .tooltiptext {
     visibility: hidden;
-    width: 180px;
+    width: 200px;
     background-color: #555;
     color: #fff;
     text-align: center;

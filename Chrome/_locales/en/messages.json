@@ -52,7 +52,7 @@
     "description": ""
   },
   "keyboardCycle": {
-    "message": "Cycle navigation (jump to first after last)",
+    "message": "Cycle navigation (jump to first result after last)",
     "description": ""
   },
   "focusedBorderWidth": {
@@ -136,7 +136,7 @@
     "description": ""
   },
   "tryToPlaceSuggestionsOnTheSide": {
-    "message": "Try to move suggestions to the right (experimental)",
+    "message": "Try to move suggestions to column on the right",
     "description": ""
   }
 }
