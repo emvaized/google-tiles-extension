@@ -124,7 +124,7 @@
         "description": ""
     },
     "allChangesSavedAutomatically": {
-        "message": "Изменения сохраняются автоматически",
+        "message": "Настройки сохраняются автоматически. <br /> Обновите страницу, чтобы увидеть изменения",
         "description": ""
     },
     "moveSuggestionsToBottom": {

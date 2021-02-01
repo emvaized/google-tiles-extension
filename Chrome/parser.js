@@ -132,7 +132,8 @@ function setLayout(elements) {
       } else {
         /// Otherwise, just append it to the right of main results column
         var divContainer = document.createElement('div');
-        divContainer.setAttribute("style", `position: absolute; top: 0; right:-530px;max-width: 500px;`);
+        // divContainer.setAttribute("style", `position: absolute; top: 0; right:-530px;max-width: 500px;`);
+        divContainer.setAttribute("style", `position: absolute; top: 0; right:-108%;max-width: 100%;`);
         document.querySelector(columnWithRegularResultsSelector).appendChild(divContainer);
         sidebarContainer = divContainer;
       }
