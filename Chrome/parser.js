@@ -8,6 +8,7 @@ var hoverBackground;
 var shadowEnabled;
 var shadowOpacity;
 var moveSuggestionsToBottom;
+var tryToPlaceSuggestionsOnTheSide;
 var addFavicons;
 var faviconRadius;
 var navigateWithKeyboard;
@@ -31,12 +32,17 @@ var domainNameSelector = `cite`;
 var dropdownMenuSelector = `[class='action-menu']`;
 var translatePageSelector = `[class*='fl ']`;
 var quickAnswerCardId = 'wp-tabs-container';
+var genericQuickAnswerCardClass = 'card-section';
+var translateWidgetSelector = '#tw-container';
+var imageResultsSelector = 'g-section-with-header';
+var columnWithRegularResultsSelector = '#center_col';
 
 var focusedTile = 0;
 var counterHints = [];
 
 function init() {
   var elements = document.querySelectorAll(searchResultsSelector);
+
   chrome.storage.local.get([
     'innerPadding',
     'externalPadding',
@@ -56,7 +62,8 @@ function init() {
     'addTileCounter',
     'indexHintOpacity',
     'wholeTileIsClickable',
-    'faviconRadius'
+    'faviconRadius',
+    'tryToPlaceSuggestionsOnTheSide'
   ], function (value) {
 
     enabled = value.tilesEnabled ?? true;
@@ -78,6 +85,7 @@ function init() {
     addTileCounter = value.addTileCounter ?? true;
     indexHintOpacity = value.indexHintOpacity || 0.5;
     wholeTileIsClickable = value.wholeTileIsClickable ?? true;
+    tryToPlaceSuggestionsOnTheSide = value.tryToPlaceSuggestionsOnTheSide ?? true;
 
     if (enabled)
       setLayout(elements);
@@ -88,14 +96,56 @@ function setLayout(elements) {
 
   /// Display search results first
   if (moveSuggestionsToBottom) {
+
+    var bigSideCard;
+
+    /// Proccess elements
     var elements_array = Array.prototype.slice.call(elements);
     var elements_array_reversed = elements_array.reverse();
 
     elements_array_reversed.forEach(function (item) {
       /// Don't move big side card with quick answer on top
-      if (item.id !== quickAnswerCardId)
+      if (item.id == quickAnswerCardId) {
+        bigSideCard = item;
+      }
+
+      if (item.id !== quickAnswerCardId && !item.className.includes(genericQuickAnswerCardClass))
         document.getElementById('rso').prepend(item);
     });
+
+
+    /// If page contains 'quick answer', like currency conversion widget, move it to the right side
+    if (tryToPlaceSuggestionsOnTheSide) {
+      var suggestionTile;
+      /// proccess 'convert' widget. Usually search suggestions on bottom also meet the selector, so we try to filter it out.
+      var quickAnswers = document.querySelectorAll(`[class^='${genericQuickAnswerCardClass}']`);
+      if (quickAnswers.length >= 2) {
+        suggestionTile = quickAnswers[0];
+      } else {
+        /// proccess 'translate' widget
+        suggestionTile = document.querySelector(translateWidgetSelector);
+        if (suggestionTile == null) {
+          /// Proccess image search results
+          suggestionTile = document.querySelector(imageResultsSelector);
+        }
+      }
+
+      if (suggestionTile !== null) {
+
+        /// if there's big side answer card (usually containing info from Wikipedia), append after it
+        if (bigSideCard !== null && bigSideCard !== undefined) {
+          suggestionTile.setAttribute("style", `padding-top: 45px;max-width: 500px;`);
+          bigSideCard.parentNode.appendChild(suggestionTile);
+        } else {
+
+          /// Otherwise, just append it to the right of main results column
+          suggestionTile.setAttribute("style", `position: absolute; top: 0; right:-550px;max-width: 500px;`);
+          document.querySelector(columnWithRegularResultsSelector).appendChild(suggestionTile);
+        }
+
+      }
+    }
+
   }
 
   /// Add '0' index hint for search field
@@ -129,7 +179,8 @@ function setLayout(elements) {
 
     }
 
-    configureTile(divChild);
+    if (!divChild.className.includes(genericQuickAnswerCardClass))
+      configureTile(divChild);
   });
 
   if (navigateWithKeyboard || numericNavigation) {

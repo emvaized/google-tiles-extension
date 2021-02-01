@@ -35,14 +35,6 @@
         "message": "Прозрачность тени (%)",
         "description": ""
     },
-    "moveSuggestionsToBottom": {
-        "message": "Переместить карточки предложений вниз",
-        "description": ""
-    },
-    "moveSuggestionsToBottomTooltip": {
-        "message": "Результаты поиска картинок/видео/новостей будут размещены в конце поисковой выдачи",
-        "description": ""
-    },
     "addFavicons": {
         "message": "Добавить иконки сайтов",
         "description": ""
@@ -133,6 +125,18 @@
     },
     "allChangesSavedAutomatically": {
         "message": "Все изменения сохраняются автоматически",
+        "description": ""
+    },
+    "moveSuggestionsToBottom": {
+        "message": "Обычные результаты сверху",
+        "description": ""
+    },
+    "moveSuggestionsToBottomTooltip": {
+        "message": "Результаты поиска картинок/видео/новостей будут показаны после обычных результатов",
+        "description": ""
+    },
+    "tryToPlaceSuggestionsOnTheSide": {
+        "message": "Попробовать переместить предложения в правую колонку (экспериментально)",
         "description": ""
     }
 }

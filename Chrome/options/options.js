@@ -22,7 +22,8 @@ function restoreOptions() {
     'numericNavigation',
     'addTileCounter',
     'indexHintOpacity',
-    'wholeTileIsClickable'
+    'wholeTileIsClickable',
+    'tryToPlaceSuggestionsOnTheSide'
   ], setInputs);
 
   function setInputs(result) {
@@ -45,6 +46,7 @@ function restoreOptions() {
     document.querySelector("#moveSuggestionsToBottom").parentNode.innerHTML += chrome.i18n.getMessage("moveSuggestionsToBottom");
     document.querySelector("#numericNavigation").parentNode.innerHTML += chrome.i18n.getMessage("numericNavigation");
     document.querySelector("#navigateWithKeyboard").parentNode.innerHTML += chrome.i18n.getMessage("navigateWithKeyboard");
+    document.querySelector("#tryToPlaceSuggestionsOnTheSide").parentNode.innerHTML += chrome.i18n.getMessage("tryToPlaceSuggestionsOnTheSide");
 
     /// Set translated tooltips
     document.querySelector("#moveSuggestionsToBottomTooltip").innerHTML = chrome.i18n.getMessage("moveSuggestionsToBottomTooltip");
@@ -97,19 +99,33 @@ function restoreOptions() {
     document.querySelector("#addTileCounter").checked = result.addTileCounter ?? true;
     document.querySelector("#indexHintOpacity").value = result.indexHintOpacity || 0.5;
     document.querySelector("#wholeTileIsClickable").checked = result.wholeTileIsClickable ?? true;
+    document.querySelector("#tryToPlaceSuggestionsOnTheSide").checked = result.tryToPlaceSuggestionsOnTheSide ?? true;
 
     /// Set listeners for the inputs
-    var inputs = document.querySelectorAll('#indexHintOpacity,#wholeTileIsClickable,#innerPadding,#numericNavigation, #focusedBorderWidth, #keyboardFocusBorderColor,#keyboardCycle,#navigateWithKeyboard, #externalPadding, #borderRadius, #hoverTransitionDuration, #hoverBackground, #addTileCounter, #shadowEnabled, #shadowOpacity, #addFavicons, #addFavicons,  #faviconRadius');
+    var inputs = document.querySelectorAll('#moveSuggestionsToBottom,#tryToPlaceSuggestionsOnTheSide, #indexHintOpacity,#wholeTileIsClickable,#innerPadding,#numericNavigation, #focusedBorderWidth, #keyboardFocusBorderColor,#keyboardCycle,#navigateWithKeyboard, #externalPadding, #borderRadius, #hoverTransitionDuration, #hoverBackground, #addTileCounter, #shadowEnabled, #shadowOpacity, #addFavicons, #addFavicons,  #faviconRadius');
     inputs.forEach(function (input) {
       input.addEventListener("input", function (e) {
         saveOptions();
         updatePreviewTile();
+        updateDisabledOptions();
       })
     });
 
     updatePreviewTile();
+    updateDisabledOptions();
 
   }
+}
+
+function updateDisabledOptions() {
+  document.querySelector("#faviconRadius").parentNode.className = document.querySelector("#addFavicons").checked ? 'enabled-option' : 'disabled-option';
+  document.querySelector("#shadowOpacity").parentNode.className = document.querySelector("#shadowEnabled").checked ? 'enabled-option' : 'disabled-option';
+  document.querySelector("#tryToPlaceSuggestionsOnTheSide").parentNode.className = document.querySelector("#moveSuggestionsToBottom").checked ? 'enabled-option' : 'disabled-option';
+  document.querySelector("#keyboardCycle").parentNode.className = document.querySelector("#navigateWithKeyboard").checked ? 'enabled-option' : 'disabled-option';
+  document.querySelector("#keyboardFocusBorderColor").parentNode.className = document.querySelector("#navigateWithKeyboard").checked ? 'enabled-option' : 'disabled-option';
+  document.querySelector("#focusedBorderWidth").parentNode.className = document.querySelector("#navigateWithKeyboard").checked ? 'enabled-option' : 'disabled-option';
+  document.querySelector("#addTileCounter").parentNode.className = document.querySelector("#numericNavigation").checked ? 'enabled-option' : 'disabled-option';
+  document.querySelector("#indexHintOpacity").parentNode.className = document.querySelector("#numericNavigation").checked ? 'enabled-option' : 'disabled-option';
 }
 
 function updatePreviewTile() {
@@ -163,6 +179,7 @@ function saveOptions() {
     addTileCounter: document.querySelector("#addTileCounter").checked,
     indexHintOpacity: document.querySelector("#indexHintOpacity").value,
     wholeTileIsClickable: document.querySelector("#wholeTileIsClickable").checked,
+    tryToPlaceSuggestionsOnTheSide: document.querySelector("#tryToPlaceSuggestionsOnTheSide").checked,
   });
 }
 
@@ -186,7 +203,8 @@ function resetOptions() {
     addTileCounter: true,
     numericNavigation: true,
     indexHintOpacity: 0.5,
-    wholeTileIsClickable: true
+    wholeTileIsClickable: true,
+    tryToPlaceSuggestionsOnTheSide: true
   });
   restoreOptions();
 }
@@ -195,5 +213,5 @@ function resetOptions() {
 document.addEventListener("DOMContentLoaded", restoreOptions);
 document.querySelector("form").addEventListener("reset", resetOptions);
 document.querySelector("#donateButton").addEventListener("click", function (val) {
-  window.open('https://www.liqpay.ua/checkout/i17319531101', '_blank');
+  window.open('https://emvaized.diaka.ua/donate', '_blank');
 });

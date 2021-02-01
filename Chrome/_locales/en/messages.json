@@ -35,14 +35,6 @@
     "message": "Shadows opacity (%)",
     "description": ""
   },
-  "moveSuggestionsToBottom": {
-    "message": "Move suggestions to bottom",
-    "description": ""
-  },
-  "moveSuggestionsToBottomTooltip": {
-    "message": "Images/video/news search results will be moved to bottom of page",
-    "description": ""
-  },
   "addFavicons": {
     "message": "Add favicons",
     "description": ""
@@ -133,6 +125,18 @@
   },
   "allChangesSavedAutomatically": {
     "message": "All changes are saved automatically",
+    "description": ""
+  },
+  "moveSuggestionsToBottom": {
+    "message": "Regular search results on top",
+    "description": ""
+  },
+  "moveSuggestionsToBottomTooltip": {
+    "message": "Image/video/news search results will be shown after regular results",
+    "description": ""
+  },
+  "tryToPlaceSuggestionsOnTheSide": {
+    "message": "Try to move suggestions to the right (experimental)",
     "description": ""
   }
 }
