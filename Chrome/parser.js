@@ -41,6 +41,7 @@ var focusedTile = 0;
 var counterHints = [];
 
 function init() {
+
   var elements = document.querySelectorAll(searchResultsSelector);
 
   chrome.storage.local.get([
@@ -182,6 +183,8 @@ function setLayout(elements) {
     if (!divChild.className.includes(genericQuickAnswerCardClass))
       configureTile(divChild);
   });
+
+
 
   if (navigateWithKeyboard || numericNavigation) {
     document.onkeydown = checkKey;
