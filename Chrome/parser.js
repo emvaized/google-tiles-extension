@@ -176,7 +176,7 @@ function setLayout(elements) {
       var counter = document.createElement('p');
       counter.setAttribute("style", `color: ${countedHintColor};opacity: ${indexHintOpacity};position:absolute; top: -12px; right: 0px;transition: all 300ms ease-out`);
       var i = Array.prototype.indexOf.call(elements, divChild) + 1;
-      counter.innerHTML = i;
+      counter.textContent = i;
       if (i < 10) {
         counterHints.push(counter);
 
