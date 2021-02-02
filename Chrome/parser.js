@@ -245,9 +245,14 @@ function setLayout(elements) {
           e.preventDefault();
 
           searchField.focus();
-          var val = searchField.value; // /store the value of the element
-          searchField.value = ''; /// clear the value of the element
-          searchField.value = val;/// assign old value again, to move selection at the end
+
+          /// Move cursor to the end of selection
+          // var val = searchField.value; 
+          // searchField.value = ''; 
+          // searchField.value = val;
+
+          /// select all text in text field
+          searchField.setSelectionRange(0, searchField.value.length);
 
           /// Animate color of hint
           animateCounterFocus(0);
