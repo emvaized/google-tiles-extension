@@ -1,5 +1,5 @@
  html, body {
-  min-width: 100px;
+  min-width: 120px;
 }
 
 .button {
@@ -14,10 +14,15 @@
 h3 {
     color: grey;
     text-align: center;
-
 }
 
-.enabled-checkbox {
+input {
+  vertical-align: middle;
+}
+
+
+
+.enabled-checkbox, .checkboxLabel {
     padding: 0px 0px 6px 0px;
     text-align: center;
     cursor: pointer;

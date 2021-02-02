@@ -18,6 +18,7 @@ form {
   transition: all 200ms ease-in-out;
 }
 
+
 label {
   cursor: pointer;
 }
@@ -40,6 +41,8 @@ label:hover {
 
 .option input[type="checkbox"]  {
   cursor: pointer;
+  position: relative;
+  vertical-align: middle;
 }
 
 .disabled-option {
