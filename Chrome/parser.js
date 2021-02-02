@@ -30,8 +30,9 @@ var resultStatsSelector = `[id='result-stats']`;
 var navBarSelector = `[id='top_nav']`;
 var domainNameSelector = `cite`;
 var dropdownMenuSelector = `[class='action-menu']`;
-var translatePageSelector = `[class*='fl ']`;
+var translatePageButtonSelector = `[class*='fl ']`;
 var quickAnswerCardId = 'wp-tabs-container';
+
 var genericQuickAnswerCardClass = 'card-section';
 var translateWidgetSelector = '#tw-container';
 var imageResultsSelector = 'g-section-with-header';
@@ -41,6 +42,7 @@ var similarResultsSelector = '#botstuff';
 var videoResultsSelector = `[class*=' xpd ']`;
 var summaryInfoResultSelector = `[class='OlejJc']`;
 var dictionaryWidgetSelector = `[class*='obcontainer']`;
+
 
 var focusedTile = 0;
 var counterHints = [];
@@ -191,7 +193,9 @@ function setLayout(elements) {
 
     /// Apply tile styling
     if (!divChild.className.includes(genericQuickAnswerCardClass))
-      configureTile(divChild);
+      try {
+        configureTile(divChild);
+      } catch (error) { console.log(error); }
   });
 
 
@@ -329,8 +333,12 @@ function configureTile(tile) {
   tile.setAttribute("style", `border:solid ${focusedBorderWidth}px transparent;border-radius: ${borderRadius}px;transition:all ${hoverTransitionDuration}ms ease-out;padding: ${innerPadding}px;margin: 0px 0px ${tile.tagName === 'G-INNER-CARD' ? '0px' : externalPadding}px;box-shadow: ${shadowEnabled ? `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity})` : 'unset'};`);
 
   /// Adding the same padding for 'results count' text on and navbar for better visual symmetry
-  document.querySelector(resultStatsSelector).setAttribute("style", `padding: 0px ${innerPadding}px;`);
-  document.querySelector(navBarSelector).setAttribute("style", `padding: 0px ${innerPadding}px;`);
+  var resultStats = document.querySelector(resultStatsSelector);
+  if (resultStats !== null)
+    resultStats.setAttribute("style", `padding: 0px ${innerPadding}px;`);
+  var navBar = document.querySelector(navBarSelector);
+  if (navBar !== null)
+    navBar.setAttribute("style", `padding: 0px ${innerPadding}px;`);
 
   /// Set 'on hover' styling for each tile
   tile.onmouseover = function () { this.style.backgroundColor = hoverBackground; }
@@ -382,7 +390,7 @@ function configureTile(tile) {
         dropdownMenu.style.cssText = `padding-left: 3px;position: relative; left: ${faviconRadius}px`;
 
       /// Shift 'translate page' button to the right
-      var translateButton = tile.querySelector(translatePageSelector);
+      var translateButton = tile.querySelector(translatePageButtonSelector);
       if (translateButton != null)
         translateButton.style.cssText = `margin-left: 3px;position: relative; left: ${faviconRadius}px`;
     }
