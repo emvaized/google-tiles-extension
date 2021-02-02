@@ -8,12 +8,6 @@
     "48": "icons/icon-48.png",
     "96": "icons/icon-96.png"
   },
-  "applications": {
-    "gecko": {
-      "id": "google_tiles@emvaized.com",
-      "strict_min_version": "52.0"
-    }
-  },
   "browser_specific_settings": {
     "gecko": {
       "id": "google_tiles@emvaized.com"
