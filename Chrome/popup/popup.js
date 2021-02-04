@@ -18,6 +18,7 @@ function restoreOptions() {
 }
 
 
+
 document.addEventListener('DOMContentLoaded', restoreOptions);
 document.addEventListener("click", (e) => {
   if (e.target.classList.contains("settings")) {
@@ -25,8 +26,9 @@ document.addEventListener("click", (e) => {
     window.close();
   }
   else if (e.target.classList.contains("checkbox") || e.target.classList.contains("checkboxLabel")) {
-    // else if (e.target.classList.contains("enabled-checkbox") || e.target.classList.contains('checkboxLabel')) {
+
     saveOptions(e);
+
   }
 });
 

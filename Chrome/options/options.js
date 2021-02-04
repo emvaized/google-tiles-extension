@@ -23,7 +23,8 @@ function restoreOptions() {
     'addTileCounter',
     'indexHintOpacity',
     'wholeTileIsClickable',
-    'tryToPlaceSuggestionsOnTheSide'
+    'tryToPlaceSuggestionsOnTheSide',
+    'applyStyleToWidgets'
   ], setInputs);
 
   function setInputs(result) {
@@ -47,6 +48,7 @@ function restoreOptions() {
     document.querySelector("#numericNavigation").parentNode.innerHTML += chrome.i18n.getMessage("numericNavigation");
     document.querySelector("#navigateWithKeyboard").parentNode.innerHTML += chrome.i18n.getMessage("navigateWithKeyboard");
     document.querySelector("#tryToPlaceSuggestionsOnTheSide").parentNode.innerHTML += chrome.i18n.getMessage("tryToPlaceSuggestionsOnTheSide");
+    document.querySelector("#applyStyleToWidgets").parentNode.innerHTML += chrome.i18n.getMessage("applyStyleToWidgets");
 
     /// Set translated tooltips
     document.querySelector("#moveSuggestionsToBottomTooltip").innerHTML = chrome.i18n.getMessage("moveSuggestionsToBottomTooltip");
@@ -87,9 +89,10 @@ function restoreOptions() {
     document.querySelector("#indexHintOpacity").value = result.indexHintOpacity || 0.5;
     document.querySelector("#wholeTileIsClickable").checked = result.wholeTileIsClickable ?? true;
     document.querySelector("#tryToPlaceSuggestionsOnTheSide").checked = result.tryToPlaceSuggestionsOnTheSide ?? true;
+    document.querySelector("#applyStyleToWidgets").checked = result.applyStyleToWidgets ?? false;
 
     /// Set listeners for the inputs
-    var inputs = document.querySelectorAll('#moveSuggestionsToBottom,#tryToPlaceSuggestionsOnTheSide, #indexHintOpacity,#wholeTileIsClickable,#innerPadding,#numericNavigation, #focusedBorderWidth, #keyboardFocusBorderColor,#keyboardCycle,#navigateWithKeyboard, #externalPadding, #borderRadius, #hoverTransitionDuration, #hoverBackground, #addTileCounter, #shadowEnabled, #shadowOpacity, #addFavicons, #addFavicons,  #faviconRadius');
+    var inputs = document.querySelectorAll('#moveSuggestionsToBottom,#applyStyleToWidgets,#tryToPlaceSuggestionsOnTheSide, #indexHintOpacity,#wholeTileIsClickable,#innerPadding,#numericNavigation, #focusedBorderWidth, #keyboardFocusBorderColor,#keyboardCycle,#navigateWithKeyboard, #externalPadding, #borderRadius, #hoverTransitionDuration, #hoverBackground, #addTileCounter, #shadowEnabled, #shadowOpacity, #addFavicons, #addFavicons,  #faviconRadius');
     inputs.forEach(function (input) {
       input.addEventListener("input", function (e) {
         saveOptions();
@@ -107,8 +110,8 @@ function restoreOptions() {
 function updateDisabledOptions() {
   document.querySelector("#faviconRadius").parentNode.className = document.querySelector("#addFavicons").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#shadowOpacity").parentNode.className = document.querySelector("#shadowEnabled").checked ? 'enabled-option' : 'disabled-option';
-  document.querySelector("#tryToPlaceSuggestionsOnTheSide").parentNode.className = document.querySelector("#moveSuggestionsToBottom").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#keyboardCycle").parentNode.className = document.querySelector("#navigateWithKeyboard").checked ? 'enabled-option' : 'disabled-option';
+  document.querySelector("#applyStyleToWidgets").parentNode.className = document.querySelector("#tryToPlaceSuggestionsOnTheSide").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#keyboardFocusBorderColor").parentNode.className = document.querySelector("#navigateWithKeyboard").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#focusedBorderWidth").parentNode.className = document.querySelector("#navigateWithKeyboard").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#addTileCounter").parentNode.className = document.querySelector("#numericNavigation").checked ? 'enabled-option' : 'disabled-option';
@@ -167,6 +170,7 @@ function saveOptions() {
     indexHintOpacity: document.querySelector("#indexHintOpacity").value,
     wholeTileIsClickable: document.querySelector("#wholeTileIsClickable").checked,
     tryToPlaceSuggestionsOnTheSide: document.querySelector("#tryToPlaceSuggestionsOnTheSide").checked,
+    applyStyleToWidgets: document.querySelector("#applyStyleToWidgets").checked,
   });
 }
 
@@ -191,7 +195,8 @@ function resetOptions() {
     numericNavigation: true,
     indexHintOpacity: 0.5,
     wholeTileIsClickable: true,
-    tryToPlaceSuggestionsOnTheSide: true
+    tryToPlaceSuggestionsOnTheSide: true,
+    applyStyleToWidgets: false
   });
   restoreOptions();
 }

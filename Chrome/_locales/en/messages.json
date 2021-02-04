@@ -132,15 +132,19 @@
     "description": ""
   },
   "moveSuggestionsToBottom": {
-    "message": "Regular search results on top",
+    "message": "Move regular search results on top",
     "description": ""
   },
   "moveSuggestionsToBottomTooltip": {
-    "message": "Image/video/news search results will be shown after regular results",
+    "message": "Various earch suggestions will be shown after regular results",
     "description": ""
   },
   "tryToPlaceSuggestionsOnTheSide": {
     "message": "Move search widgets to the right column",
+    "description": ""
+  },
+  "applyStyleToWidgets": {
+    "message": "Apply style to search widgets as well",
     "description": ""
   }
 }

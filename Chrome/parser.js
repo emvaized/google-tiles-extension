@@ -8,7 +8,7 @@ var hoverBackground;
 var shadowEnabled;
 var shadowOpacity;
 var moveSuggestionsToBottom;
-var tryToPlaceSuggestionsOnTheSide;
+var tryToPlaceWidgetsOnTheSide;
 var addFavicons;
 var faviconRadius;
 var navigateWithKeyboard;
@@ -19,6 +19,7 @@ var numericNavigation;
 var addTileCounter;
 var indexHintOpacity;
 var wholeTileIsClickable;
+var applyStyleToWidgets;
 var countedHintColor = 'grey';
 var counterHintFocusColor = 'red';
 
@@ -38,10 +39,13 @@ var translateWidgetSelector = '#tw-container';
 var imageResultsSelector = 'g-section-with-header';
 var weatherResultsSelector = '#wob_wc';
 var columnWithRegularResultsSelector = '#center_col';
-var similarResultsSelector = '#botstuff';
 var videoResultsSelector = `[class*=' xpd ']`;
 var summaryInfoResultSelector = `[class='OlejJc']`;
 var dictionaryWidgetSelector = `[class*='obcontainer']`;
+var mapWidgetSelector = `[class='AEprdc vk_c']`;
+var advertisementSelectors = '#tvcap, .cu-container';
+var peopleAlsoSearchForSelector = '#botstuff'; /// Currently disabled
+
 
 
 var focusedTile = 0;
@@ -71,7 +75,9 @@ function init() {
     'indexHintOpacity',
     'wholeTileIsClickable',
     'faviconRadius',
-    'tryToPlaceSuggestionsOnTheSide'
+    'tryToPlaceSuggestionsOnTheSide',
+    'applyStyleToWidgets'
+
   ], function (value) {
 
     enabled = value.tilesEnabled ?? true;
@@ -93,7 +99,8 @@ function init() {
     addTileCounter = value.addTileCounter ?? true;
     indexHintOpacity = value.indexHintOpacity || 0.5;
     wholeTileIsClickable = value.wholeTileIsClickable ?? true;
-    tryToPlaceSuggestionsOnTheSide = value.tryToPlaceSuggestionsOnTheSide ?? true;
+    tryToPlaceWidgetsOnTheSide = value.tryToPlaceSuggestionsOnTheSide ?? true;
+    applyStyleToWidgets = value.applyStyleToWidgets ?? false;
 
     if (enabled)
       setLayout(elements);
@@ -103,7 +110,7 @@ function init() {
 function setLayout(elements) {
 
   /// Display search results first
-  if (moveSuggestionsToBottom) {
+  if (moveSuggestionsToBottom || tryToPlaceWidgetsOnTheSide || applyStyleToWidgets) {
 
     var bigSideCard;
 
@@ -117,46 +124,67 @@ function setLayout(elements) {
         bigSideCard = item;
       }
 
-      if (item.id !== quickAnswerCardId && !item.className.includes(genericQuickAnswerCardClass))
+      if (moveSuggestionsToBottom && item.id !== quickAnswerCardId && !item.className.includes(genericQuickAnswerCardClass))
         document.getElementById('rso').prepend(item);
     });
 
+  }
 
-    if (tryToPlaceSuggestionsOnTheSide) {
-      /// If page contains 'quick answer', like currency conversion widget, move it to the right side
+  if (tryToPlaceWidgetsOnTheSide || applyStyleToWidgets) {
+    /// If page contains 'quick answer', like currency conversion widget, move it to the right side
 
-      /// TODO: 
-      /// Rewrite the selector in order to select all children except regular search results (like 'div:not(.g)').
-      /// This way code will not depend on bunch of selectors for each type of 'quick answer' card
-      var quickAnswers = document.querySelectorAll(`[class^='${genericQuickAnswerCardClass}'],${summaryInfoResultSelector},${videoResultsSelector},${dictionaryWidgetSelector},${similarResultsSelector},${translateWidgetSelector}, ${imageResultsSelector},${weatherResultsSelector}`);
+    /// TODO: 
+    /// Rewrite the selector in order to select all children except regular search results (like 'div:not(.g)').
+    /// This way code will not depend on bunch of selectors for each type of 'quick answer' card
+    var quickAnswers = document.querySelectorAll(`[class^='${genericQuickAnswerCardClass}'],${mapWidgetSelector},${advertisementSelectors},${summaryInfoResultSelector},${videoResultsSelector},${dictionaryWidgetSelector},${translateWidgetSelector}, ${imageResultsSelector},${weatherResultsSelector}`);
 
-      var sidebarContainer;
-      if (bigSideCard !== null && bigSideCard !== undefined) {
-        /// if there's big side answer card (usually containing info from Wikipedia), append after it
-        var divContainer = document.createElement('div');
-        divContainer.setAttribute("style", `margin-top: 35px !important;`);
-        // sidebarContainer = bigSideCard.parentNode;
-        bigSideCard.parentNode.appendChild(divContainer);
-        sidebarContainer = divContainer;
-      } else {
-        /// Otherwise, just append it to the right of main results column
-        var divContainer = document.createElement('div');
-        // divContainer.setAttribute("style", `position: absolute; top: 0; right:-530px;max-width: 500px;`);
-        divContainer.setAttribute("style", `position: absolute; top: 0; right:-109%;max-width: 100%;`);
-        document.querySelector(columnWithRegularResultsSelector).appendChild(divContainer);
-        sidebarContainer = divContainer;
+    var sidebarContainer;
+    if (bigSideCard !== null && bigSideCard !== undefined) {
+      /// if there's big side answer card (usually containing info from Wikipedia), append after it
+      var divContainer = document.createElement('div');
+      divContainer.setAttribute("style", `margin-top: 35px !important;`);
+
+      sidebarContainer = divContainer;
+      bigSideCard.parentNode.appendChild(sidebarContainer);
+    } else {
+      /// Otherwise, just append it to the right of main results column
+      var divContainer = document.createElement('div');
+      divContainer.setAttribute("id", "google-tiles-sidebar");
+      divContainer.setAttribute("style", `position: absolute; top: 0; right:-109%;min-width: 90%; max-width: 100%;`);
+
+      sidebarContainer = divContainer;
+      document.querySelector(columnWithRegularResultsSelector).appendChild(sidebarContainer);
+    }
+
+    quickAnswers.forEach(function (suggestionTile) {
+
+      if (suggestionTile.innerHTML == '') {
+        suggestionTile.remove();
       }
 
-      if (quickAnswers.length > 2)
-        quickAnswers.forEach(function (suggestionTile) {
-          // if (suggestionTile.tagName == imageResultsSelector)
-          suggestionTile.setAttribute("style", `margin-bottom: 20px;`);
+      if (suggestionTile.innerHTML !== '') {
+        if (suggestionTile.tagName !== imageResultsSelector.toUpperCase()) {
+          suggestionTile.setAttribute("style", `margin-bottom: ${externalPadding}px;`);
+        }
 
-          sidebarContainer.appendChild(suggestionTile);
-          // configureTile(suggestionTile);
-        });
+        var index = Array.prototype.indexOf.call(quickAnswers, suggestionTile);
+        /// Don't proccess last 2 elements, which are 'search related' items
+        if (index !== quickAnswers.length - 1 && index !== quickAnswers.length - 2) {
+          if (applyStyleToWidgets)
+            configureTile(suggestionTile);
+          if (tryToPlaceWidgetsOnTheSide)
+            sidebarContainer.appendChild(suggestionTile);
+        }
 
-    }
+        // var index = Array.prototype.indexOf.call(quickAnswers, suggestionTile);
+        // if (index !== quickAnswers.length - 1) {
+        //   var separatorLine = document.createElement('hr');
+        //   separatorLine.setAttribute('style', 'color: grey; opacity: 0.15; margin-bottom: 5px;');
+        //   suggestionTile.prepend(separatorLine);
+        // }
+
+      }
+    });
 
   }
 
@@ -246,11 +274,6 @@ function setLayout(elements) {
 
           searchField.focus();
 
-          /// Move cursor to the end of selection
-          // var val = searchField.value; 
-          // searchField.value = ''; 
-          // searchField.value = val;
-
           /// select all text in text field
           searchField.setSelectionRange(0, searchField.value.length);
 
@@ -315,7 +338,8 @@ function setLayout(elements) {
 function configureTile(tile) {
   /// Create 'a' wrapper
   var wrapper = document.createElement('a');
-  wrapper.setAttribute("style", "outline: none !important;text-decoration: none !important;color: transparent !important;");
+  // wrapper.setAttribute("style", "outline: none !important;text-decoration: none !important;color: transparent !important;");
+  wrapper.setAttribute("style", "outline: none !important;text-decoration: none !important;");
 
   /// Set url for 'a' wrapper
   var url;

@@ -132,15 +132,19 @@
         "description": ""
     },
     "moveSuggestionsToBottom": {
-        "message": "Обычные результаты сверху",
+        "message": "Переместить обычные результаты наверх",
         "description": ""
     },
     "moveSuggestionsToBottomTooltip": {
-        "message": "Результаты поиска картинок/видео/новостей будут показаны после обычных результатов",
+        "message": "Поисковые подсказки будут показаны после обычных результатов",
         "description": ""
     },
     "tryToPlaceSuggestionsOnTheSide": {
         "message": "Переместить поисковые виджеты в колонку справа",
+        "description": ""
+    },
+    "applyStyleToWidgets": {
+        "message": "Применять стиль к поисковым виджетам тоже",
         "description": ""
     }
 }

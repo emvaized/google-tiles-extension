@@ -21,6 +21,14 @@ input {
 }
 
 
+#updatePageLabel {
+  color: grey;
+  opacity: 0.5;
+ font-size: 75%; 
+ text-align: center;
+ transition: all 300ms ease-in-out;
+}
+
 
 .enabled-checkbox, .checkboxLabel {
     padding: 0px 0px 6px 0px;
@@ -38,8 +46,6 @@ input {
 #tilesEnabled {
   cursor: pointer;
 }
-
-
 
 
 .clear {
