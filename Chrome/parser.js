@@ -47,7 +47,6 @@ var advertisementSelectors = '#tvcap, .cu-container';
 var peopleAlsoSearchForSelector = '#botstuff'; /// Currently disabled
 
 
-
 var focusedTile = 0;
 var counterHints = [];
 
@@ -112,6 +111,7 @@ function setLayout(elements) {
   /// Display search results first
   if (moveSuggestionsToBottom || tryToPlaceWidgetsOnTheSide || applyStyleToWidgets) {
 
+    /// Card with info from wikipedia on the right side
     var bigSideCard;
 
     /// Proccess elements
@@ -176,8 +176,8 @@ function setLayout(elements) {
             sidebarContainer.appendChild(suggestionTile);
         }
 
-        // var index = Array.prototype.indexOf.call(quickAnswers, suggestionTile);
-        // if (index !== quickAnswers.length - 1) {
+        /// Code to add separator lines when styling is disabled
+        // if (applyStyleToWidgets && index !== quickAnswers.length - 1) {
         //   var separatorLine = document.createElement('hr');
         //   separatorLine.setAttribute('style', 'color: grey; opacity: 0.15; margin-bottom: 5px;');
         //   suggestionTile.prepend(separatorLine);
