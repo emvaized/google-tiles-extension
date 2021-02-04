@@ -9,8 +9,8 @@ Customize the looks and behaviour of your Google search output
 * Move actual search results on top of page, so you'll never have to scroll all way down to find them
 * Utilize horizontal screen space and scroll less by moving search widgets to the right sidebar 
 
-Link for Chrome:
+Download for Chrome:
 https://chrome.google.com/webstore/detail/google-tiles/cjbgjibpaopnjfbhipjfckeodbaednbg
 
-Link for Firefox:
+Download for Firefox:
 https://addons.mozilla.org/ru/firefox/addon/google-tiles/
