@@ -162,5 +162,9 @@
   "scaleUpImageResultsOnHover": {
     "message": "Scale up image results on hover",
     "description": ""
+  },
+  "scrollHorizontalViewOnHover": {
+    "message": "Scroll horizontal views with hover",
+    "description": ""
   }
 }

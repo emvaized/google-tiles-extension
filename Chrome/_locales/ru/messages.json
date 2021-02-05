@@ -162,5 +162,9 @@
     "scaleUpImageResultsOnHover": {
         "message": "Увеличивать результаты поиска картинок при наведении",
         "description": ""
+    },
+    "scrollHorizontalViewOnHover": {
+        "message": "Прокручивать горизонтальные списки наведением",
+        "description": ""
     }
 }

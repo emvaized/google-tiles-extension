@@ -23,6 +23,7 @@ var applyStyleToWidgets;
 var simplifyDomain;
 var widerTiles;
 var scaleUpImageResultsOnHover;
+var scrollHorizontalViewOnHover;
 var countedHintColor = 'grey';
 var counterHintFocusColor = 'red';
 
@@ -38,6 +39,8 @@ var translatePageButtonSelector = `[class*='fl ']`;
 var quickAnswerCardId = 'wp-tabs-container';
 
 var genericQuickAnswerCardClass = 'card-section';
+var newsCardClass = 'JJZKK';
+
 var translateWidgetSelector = '#tw-container';
 var imageResultsSelector = 'g-section-with-header';
 var weatherResultsSelector = '#wob_wc';
@@ -87,7 +90,8 @@ function init() {
     'applyStyleToWidgets',
     'simplifyDomain',
     'widerTiles',
-    'scaleUpImageResultsOnHover'
+    'scaleUpImageResultsOnHover',
+    'scrollHorizontalViewOnHover'
   ], function (value) {
 
     enabled = value.tilesEnabled ?? true;
@@ -110,10 +114,11 @@ function init() {
     indexHintOpacity = value.indexHintOpacity || 0.5;
     wholeTileIsClickable = value.wholeTileIsClickable ?? true;
     tryToPlaceWidgetsOnTheSide = value.tryToPlaceSuggestionsOnTheSide ?? true;
-    applyStyleToWidgets = value.applyStyleToWidgets ?? false;
-    simplifyDomain = value.simplifyDomain ?? false;
-    widerTiles = value.widerTiles ?? false;
+    applyStyleToWidgets = value.applyStyleToWidgets ?? true;
+    simplifyDomain = value.simplifyDomain ?? true;
+    widerTiles = value.widerTiles ?? true;
     scaleUpImageResultsOnHover = value.scaleUpImageResultsOnHover ?? true;
+    scrollHorizontalViewOnHover = value.scrollHorizontalViewOnHover ?? true;
 
     if (enabled)
       setLayout(elements);
@@ -208,6 +213,8 @@ function setLayout(elements) {
 
       }
 
+
+
     });
 
   }
@@ -252,19 +259,24 @@ function setLayout(elements) {
 
 
 
-  /// Add scale-up on hover effect for image results
+  // /// Add scale-up on hover effect for image results
   if (scaleUpImageResultsOnHover) {
-    var imageResults = document.querySelectorAll(imageResultTileSelector);
+    var imageResults = document.querySelectorAll(`${imageResultTileSelector},[class*=${newsCardClass}]`);
+    // var imageResults = document.querySelectorAll(`${imageResultTileSelector}`);
+
     if (imageResults !== null && imageResults !== undefined) {
       imageResults.forEach(function (image) {
-        image.onmouseover = function () {
-          this.setAttribute('style', `scale: 1.5;  z-index: 999; transition: all 150ms ease-in-out; box-shadow: 0px 5px 15px rgba(0, 0, 0, ${shadowOpacity}) `);
-          this.parentNode.parentNode.parentNode.setAttribute('style', 'overflow:visible !important');
+        image.onmouseover = function (event) {
+          if (!image.className.includes(newsCardClass))
+            this.setAttribute('style', `-webkit-transform:scale(1.5); z-index: 3; transition: all 150ms ease-in-out; box-shadow: 0px 5px 15px rgba(0, 0, 0, ${shadowOpacity}) `);
+
+          if (scrollHorizontalViewOnHover)
+            this.scrollIntoView({ block: 'nearest', inline: "center", behavior: "smooth" });
+          // this.parentNode.setAttribute('style', 'overflow: visible !important;');
+
         }
         image.onmouseout = function () {
-          this.setAttribute('style', 'scale: 1.0; z-index: 0; transition: all 150ms ease-in-out;');
-          this.parentNode.parentNode.parentNode.setAttribute('style', 'overflow:hidden !important');
-
+          this.setAttribute('style', '-webkit-transform:scale(1.0); z-index: 0; transition: all 150ms ease-in-out;');
         }
       });
     }
@@ -382,12 +394,12 @@ function setLayout(elements) {
 function configureTile(tile) {
   /// Create 'a' wrapper
   var wrapper = document.createElement('a');
-  // wrapper.setAttribute("style", "outline: none !important;text-decoration: none !important;color: transparent !important;");
   wrapper.setAttribute("style", "outline: none !important;text-decoration: none !important;");
 
+  /// Disable link underlines for upper tile with table links
   var table = tile.querySelector('table');
   if (table !== null && table !== undefined) {
-    table.setAttribute('style', 'text-decoration: none !important; color:transparent !important');
+    table.setAttribute('style', 'text-decoration: none !important; color:transparent !important;   -webkit-appearance: none;');
   }
 
   /// Set url for 'a' wrapper

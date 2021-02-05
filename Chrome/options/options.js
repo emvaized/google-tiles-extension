@@ -28,7 +28,8 @@ function restoreOptions() {
     'applyStyleToWidgets',
     'simplifyDomain',
     'widerTiles',
-    'scaleUpImageResultsOnHover'
+    'scaleUpImageResultsOnHover',
+    'scrollHorizontalViewOnHover'
   ], setInputs);
 
   function setInputs(result) {
@@ -56,6 +57,7 @@ function restoreOptions() {
     document.querySelector("#simplifyDomain").parentNode.innerHTML += chrome.i18n.getMessage("simplifyDomain");
     document.querySelector("#widerTiles").parentNode.innerHTML += chrome.i18n.getMessage("widerTiles");
     document.querySelector("#scaleUpImageResultsOnHover").parentNode.innerHTML += chrome.i18n.getMessage("scaleUpImageResultsOnHover");
+    document.querySelector("#scrollHorizontalViewOnHover").parentNode.innerHTML += chrome.i18n.getMessage("scrollHorizontalViewOnHover");
 
     /// Set translated tooltips
     document.querySelector("#moveSuggestionsToBottomTooltip").innerHTML = chrome.i18n.getMessage("moveSuggestionsToBottomTooltip");
@@ -97,13 +99,14 @@ function restoreOptions() {
     document.querySelector("#indexHintOpacity").value = result.indexHintOpacity || 0.5;
     document.querySelector("#wholeTileIsClickable").checked = result.wholeTileIsClickable ?? true;
     document.querySelector("#tryToPlaceSuggestionsOnTheSide").checked = result.tryToPlaceSuggestionsOnTheSide ?? true;
-    document.querySelector("#applyStyleToWidgets").checked = result.applyStyleToWidgets ?? false;
-    document.querySelector("#simplifyDomain").checked = result.simplifyDomain ?? false;
-    document.querySelector("#widerTiles").checked = result.widerTiles ?? false;
+    document.querySelector("#applyStyleToWidgets").checked = result.applyStyleToWidgets ?? true;
+    document.querySelector("#simplifyDomain").checked = result.simplifyDomain ?? true;
+    document.querySelector("#widerTiles").checked = result.widerTiles ?? true;
     document.querySelector("#scaleUpImageResultsOnHover").checked = result.scaleUpImageResultsOnHover ?? true;
+    document.querySelector("#scrollHorizontalViewOnHover").checked = result.scrollHorizontalViewOnHover ?? true;
 
     /// Set listeners for the inputs
-    var inputs = document.querySelectorAll('#scaleUpImageResultsOnHover,#widerTiles,#simplifyDomain,#moveSuggestionsToBottom,#applyStyleToWidgets,#tryToPlaceSuggestionsOnTheSide, #indexHintOpacity,#wholeTileIsClickable,#innerPadding,#numericNavigation, #focusedBorderWidth, #keyboardFocusBorderColor,#keyboardCycle,#navigateWithKeyboard, #externalPadding, #borderRadius, #hoverTransitionDuration, #hoverBackground, #addTileCounter, #shadowEnabled, #shadowOpacity, #addFavicons, #addFavicons,  #faviconRadius');
+    var inputs = document.querySelectorAll('#scrollHorizontalViewOnHover,#scaleUpImageResultsOnHover,#widerTiles,#simplifyDomain,#moveSuggestionsToBottom,#applyStyleToWidgets,#tryToPlaceSuggestionsOnTheSide, #indexHintOpacity,#wholeTileIsClickable,#innerPadding,#numericNavigation, #focusedBorderWidth, #keyboardFocusBorderColor,#keyboardCycle,#navigateWithKeyboard, #externalPadding, #borderRadius, #hoverTransitionDuration, #hoverBackground, #addTileCounter, #shadowEnabled, #shadowOpacity, #addFavicons, #addFavicons,  #faviconRadius');
     inputs.forEach(function (input) {
       input.addEventListener("input", function (e) {
         saveOptions();
@@ -187,6 +190,7 @@ function saveOptions() {
     simplifyDomain: document.querySelector("#simplifyDomain").checked,
     widerTiles: document.querySelector("#widerTiles").checked,
     scaleUpImageResultsOnHover: document.querySelector("#scaleUpImageResultsOnHover").checked,
+    scrollHorizontalViewOnHover: document.querySelector("#scrollHorizontalViewOnHover").checked,
   });
 }
 
@@ -212,10 +216,11 @@ function resetOptions() {
     indexHintOpacity: 0.5,
     wholeTileIsClickable: true,
     tryToPlaceSuggestionsOnTheSide: true,
-    applyStyleToWidgets: false,
-    simplifyDomain: false,
-    widerTiles: false,
-    scaleUpImageResultsOnHover: true
+    applyStyleToWidgets: true,
+    simplifyDomain: true,
+    widerTiles: true,
+    scaleUpImageResultsOnHover: true,
+    scrollHorizontalViewOnHover: true
   });
   restoreOptions();
 }
