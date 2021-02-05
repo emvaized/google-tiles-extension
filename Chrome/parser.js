@@ -44,7 +44,6 @@ var newsCardClass = 'JJZKK';
 var translateWidgetSelector = '#tw-container';
 var imageResultsSelector = 'g-section-with-header';
 var weatherResultsSelector = '#wob_wc';
-// var columnWithRegularResultsSelector = '#center_col';
 var columnWithRegularResultsSelector = '#rso';
 var videoResultsSelector = `[class*=' xpd ']`;
 var summaryInfoResultSelector = `[class='OlejJc']`;
