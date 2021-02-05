@@ -26,7 +26,9 @@ function restoreOptions() {
     'wholeTileIsClickable',
     'tryToPlaceSuggestionsOnTheSide',
     'applyStyleToWidgets',
-    'simplifyDomain'
+    'simplifyDomain',
+    'widerTiles',
+    'scaleUpImageResultsOnHover'
   ], setInputs);
 
   function setInputs(result) {
@@ -52,6 +54,8 @@ function restoreOptions() {
     document.querySelector("#tryToPlaceSuggestionsOnTheSide").parentNode.innerHTML += chrome.i18n.getMessage("tryToPlaceSuggestionsOnTheSide");
     document.querySelector("#applyStyleToWidgets").parentNode.innerHTML += chrome.i18n.getMessage("applyStyleToWidgets");
     document.querySelector("#simplifyDomain").parentNode.innerHTML += chrome.i18n.getMessage("simplifyDomain");
+    document.querySelector("#widerTiles").parentNode.innerHTML += chrome.i18n.getMessage("widerTiles");
+    document.querySelector("#scaleUpImageResultsOnHover").parentNode.innerHTML += chrome.i18n.getMessage("scaleUpImageResultsOnHover");
 
     /// Set translated tooltips
     document.querySelector("#moveSuggestionsToBottomTooltip").innerHTML = chrome.i18n.getMessage("moveSuggestionsToBottomTooltip");
@@ -95,9 +99,11 @@ function restoreOptions() {
     document.querySelector("#tryToPlaceSuggestionsOnTheSide").checked = result.tryToPlaceSuggestionsOnTheSide ?? true;
     document.querySelector("#applyStyleToWidgets").checked = result.applyStyleToWidgets ?? false;
     document.querySelector("#simplifyDomain").checked = result.simplifyDomain ?? false;
+    document.querySelector("#widerTiles").checked = result.widerTiles ?? false;
+    document.querySelector("#scaleUpImageResultsOnHover").checked = result.scaleUpImageResultsOnHover ?? true;
 
     /// Set listeners for the inputs
-    var inputs = document.querySelectorAll('#simplifyDomain,#moveSuggestionsToBottom,#applyStyleToWidgets,#tryToPlaceSuggestionsOnTheSide, #indexHintOpacity,#wholeTileIsClickable,#innerPadding,#numericNavigation, #focusedBorderWidth, #keyboardFocusBorderColor,#keyboardCycle,#navigateWithKeyboard, #externalPadding, #borderRadius, #hoverTransitionDuration, #hoverBackground, #addTileCounter, #shadowEnabled, #shadowOpacity, #addFavicons, #addFavicons,  #faviconRadius');
+    var inputs = document.querySelectorAll('#scaleUpImageResultsOnHover,#widerTiles,#simplifyDomain,#moveSuggestionsToBottom,#applyStyleToWidgets,#tryToPlaceSuggestionsOnTheSide, #indexHintOpacity,#wholeTileIsClickable,#innerPadding,#numericNavigation, #focusedBorderWidth, #keyboardFocusBorderColor,#keyboardCycle,#navigateWithKeyboard, #externalPadding, #borderRadius, #hoverTransitionDuration, #hoverBackground, #addTileCounter, #shadowEnabled, #shadowOpacity, #addFavicons, #addFavicons,  #faviconRadius');
     inputs.forEach(function (input) {
       input.addEventListener("input", function (e) {
         saveOptions();
@@ -179,6 +185,8 @@ function saveOptions() {
     tryToPlaceSuggestionsOnTheSide: document.querySelector("#tryToPlaceSuggestionsOnTheSide").checked,
     applyStyleToWidgets: document.querySelector("#applyStyleToWidgets").checked,
     simplifyDomain: document.querySelector("#simplifyDomain").checked,
+    widerTiles: document.querySelector("#widerTiles").checked,
+    scaleUpImageResultsOnHover: document.querySelector("#scaleUpImageResultsOnHover").checked,
   });
 }
 
@@ -205,7 +213,9 @@ function resetOptions() {
     wholeTileIsClickable: true,
     tryToPlaceSuggestionsOnTheSide: true,
     applyStyleToWidgets: false,
-    simplifyDomain: false
+    simplifyDomain: false,
+    widerTiles: false,
+    scaleUpImageResultsOnHover: true
   });
   restoreOptions();
 }

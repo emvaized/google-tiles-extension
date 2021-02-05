@@ -21,6 +21,8 @@ var indexHintOpacity;
 var wholeTileIsClickable;
 var applyStyleToWidgets;
 var simplifyDomain;
+var widerTiles;
+var scaleUpImageResultsOnHover;
 var countedHintColor = 'grey';
 var counterHintFocusColor = 'red';
 
@@ -39,15 +41,20 @@ var genericQuickAnswerCardClass = 'card-section';
 var translateWidgetSelector = '#tw-container';
 var imageResultsSelector = 'g-section-with-header';
 var weatherResultsSelector = '#wob_wc';
-var columnWithRegularResultsSelector = '#center_col';
+// var columnWithRegularResultsSelector = '#center_col';
+var columnWithRegularResultsSelector = '#rso';
 var videoResultsSelector = `[class*=' xpd ']`;
 var summaryInfoResultSelector = `[class='OlejJc']`;
 var dictionaryWidgetSelector = `[class*='obcontainer']`;
 var mapWidgetSelector = `[class='AEprdc vk_c']`;
 var advertisementSelectors = '#tvcap, .cu-container';
-var peopleAlsoSearchForSelector = '#botstuff'; /// Currently disabled
+var peopleAlsoSearchForSelector = '#botstuff';
 var knowledgeBaseAnswerSelector = `[class$='g-blk']`;
+// var knowledgeBaseAnswerSelector = `[class^='kp-blk']`;
+var imageResultTileSelector = `[class$='ivg-i']`;
 
+
+/// image result class $= ivg-i
 
 var focusedTile = 0;
 var counterHints = [];
@@ -78,7 +85,9 @@ function init() {
     'faviconRadius',
     'tryToPlaceSuggestionsOnTheSide',
     'applyStyleToWidgets',
-    'simplifyDomain'
+    'simplifyDomain',
+    'widerTiles',
+    'scaleUpImageResultsOnHover'
   ], function (value) {
 
     enabled = value.tilesEnabled ?? true;
@@ -103,6 +112,8 @@ function init() {
     tryToPlaceWidgetsOnTheSide = value.tryToPlaceSuggestionsOnTheSide ?? true;
     applyStyleToWidgets = value.applyStyleToWidgets ?? false;
     simplifyDomain = value.simplifyDomain ?? false;
+    widerTiles = value.widerTiles ?? false;
+    scaleUpImageResultsOnHover = value.scaleUpImageResultsOnHover ?? true;
 
     if (enabled)
       setLayout(elements);
@@ -128,7 +139,7 @@ function setLayout(elements) {
       }
 
       if (moveSuggestionsToBottom && item.id !== quickAnswerCardId && !item.className.includes(genericQuickAnswerCardClass))
-        document.getElementById('rso').prepend(item);
+        document.querySelector(columnWithRegularResultsSelector).prepend(item);
     });
 
   }
@@ -139,13 +150,19 @@ function setLayout(elements) {
     /// TODO: 
     /// Rewrite the selector in order to select all children except regular search results (like 'div:not(.g)').
     /// This way code will not depend on bunch of selectors for each type of 'quick answer' card
-    var quickAnswers = document.querySelectorAll(`${knowledgeBaseAnswerSelector},[class^='${genericQuickAnswerCardClass}'],${mapWidgetSelector},${advertisementSelectors},${summaryInfoResultSelector},${videoResultsSelector},${dictionaryWidgetSelector},${translateWidgetSelector}, ${imageResultsSelector},${weatherResultsSelector}`);
+    var quickAnswers = document.querySelectorAll(`${peopleAlsoSearchForSelector},${knowledgeBaseAnswerSelector},[class^='${genericQuickAnswerCardClass}'],${mapWidgetSelector},${advertisementSelectors},${summaryInfoResultSelector},${videoResultsSelector},${dictionaryWidgetSelector},${translateWidgetSelector}, ${imageResultsSelector},${weatherResultsSelector}`);
+
+    // var quickAnswers = document.querySelector(columnWithRegularResultsSelector).children;
+    // quickAnswers = Array.prototype.slice.call(quickAnswers);
 
     var sidebarContainer;
+
+
     if (bigSideCard !== null && bigSideCard !== undefined) {
       /// if there's big side answer card (usually containing info from Wikipedia), append after it
       var divContainer = document.createElement('div');
       divContainer.setAttribute("style", `margin-top: 35px !important;`);
+      divContainer.setAttribute("id", "google-tiles-sidebar");
 
       sidebarContainer = divContainer;
       bigSideCard.parentNode.appendChild(sidebarContainer);
@@ -156,27 +173,30 @@ function setLayout(elements) {
       divContainer.setAttribute("style", `position: absolute; top: 0; right:-109%;min-width: 90%; max-width: 100%;`);
 
       sidebarContainer = divContainer;
-      document.querySelector(columnWithRegularResultsSelector).appendChild(sidebarContainer);
+      document.querySelector(columnWithRegularResultsSelector).parentNode.appendChild(sidebarContainer);
     }
 
+
+
     quickAnswers.forEach(function (suggestionTile) {
+      // if (suggestionTile.className == 'g') return;
 
-      if (suggestionTile.innerHTML == '') {
-        suggestionTile.remove();
-      }
-
-      if (suggestionTile.innerHTML !== '') {
+      if (suggestionTile.innerHTML !== '' && suggestionTile.textContent !== '') {
         if (suggestionTile.tagName !== imageResultsSelector.toUpperCase()) {
           suggestionTile.setAttribute("style", `margin-bottom: ${externalPadding}px;`);
         }
 
-        var index = Array.prototype.indexOf.call(quickAnswers, suggestionTile);
         /// Don't proccess last 2 elements, which are 'search related' items
+        var index = Array.prototype.indexOf.call(quickAnswers, suggestionTile);
         if (index !== quickAnswers.length - 1 && index !== quickAnswers.length - 2) {
-          if (applyStyleToWidgets)
+          if (applyStyleToWidgets) {
             configureTile(suggestionTile);
-          if (tryToPlaceWidgetsOnTheSide)
-            sidebarContainer.appendChild(suggestionTile);
+          }
+          if (tryToPlaceWidgetsOnTheSide) {
+            var regularScrollColumn = document.querySelector(columnWithRegularResultsSelector);
+            if ((sidebarContainer.clientHeight + (bigSideCard !== null && bigSideCard !== undefined ? bigSideCard.clientHeight : 0.0)) < (regularScrollColumn.clientHeight - 60))
+              sidebarContainer.appendChild(suggestionTile);
+          }
         }
 
         /// Code to add separator lines when styling is disabled
@@ -187,6 +207,7 @@ function setLayout(elements) {
         // }
 
       }
+
     });
 
   }
@@ -212,8 +233,8 @@ function setLayout(elements) {
         counterHints.push(counter);
 
         if (divChild.id == quickAnswerCardId) {
-          counter.style.right = '12px';
-          counter.style.top = '-3px';
+          counter.style.right = '-12px';
+          counter.style.top = '-6px';
           divChild.appendChild(counter);
         } else {
           divChild.querySelector('a').appendChild(counter);
@@ -228,6 +249,26 @@ function setLayout(elements) {
         configureTile(divChild);
       } catch (error) { console.log(error); }
   });
+
+
+
+  /// Add scale-up on hover effect for image results
+  if (scaleUpImageResultsOnHover) {
+    var imageResults = document.querySelectorAll(imageResultTileSelector);
+    if (imageResults !== null && imageResults !== undefined) {
+      imageResults.forEach(function (image) {
+        image.onmouseover = function () {
+          this.setAttribute('style', `scale: 1.5;  z-index: 999; transition: all 150ms ease-in-out; box-shadow: 0px 5px 15px rgba(0, 0, 0, ${shadowOpacity}) `);
+          this.parentNode.parentNode.parentNode.setAttribute('style', 'overflow:visible !important');
+        }
+        image.onmouseout = function () {
+          this.setAttribute('style', 'scale: 1.0; z-index: 0; transition: all 150ms ease-in-out;');
+          this.parentNode.parentNode.parentNode.setAttribute('style', 'overflow:hidden !important');
+
+        }
+      });
+    }
+  }
 
 
 
@@ -344,7 +385,7 @@ function configureTile(tile) {
   // wrapper.setAttribute("style", "outline: none !important;text-decoration: none !important;color: transparent !important;");
   wrapper.setAttribute("style", "outline: none !important;text-decoration: none !important;");
 
-  var table = document.querySelector('table');
+  var table = tile.querySelector('table');
   if (table !== null && table !== undefined) {
     table.setAttribute('style', 'text-decoration: none !important; color:transparent !important');
   }
@@ -367,8 +408,10 @@ function configureTile(tile) {
   wrapper.href = url;
 
   /// Add default style for tile
-  tile.setAttribute("style", `border:solid ${focusedBorderWidth}px transparent;border-radius: ${borderRadius}px;transition:all ${hoverTransitionDuration}ms ease-out;padding: ${innerPadding}px;margin: 0px 0px ${tile.tagName === 'G-INNER-CARD' ? '0px' : externalPadding}px;box-shadow: ${shadowEnabled ? `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity})` : 'unset'};`);
+  tile.setAttribute("style", `background-color: white;border:solid ${focusedBorderWidth}px transparent;border-radius: ${borderRadius}px;transition:all ${hoverTransitionDuration}ms ease-out;padding: ${innerPadding}px;margin: 0px 0px ${tile.tagName === 'G-INNER-CARD' ? '0px' : externalPadding}px;box-shadow: ${shadowEnabled ? `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity})` : 'unset'};`);
 
+  if (widerTiles)
+    tile.style.width = '100%';
 
   /// Adding the same padding for 'results count' text on and navbar for better visual symmetry
   var resultStats = document.querySelector(resultStatsSelector);
@@ -380,7 +423,7 @@ function configureTile(tile) {
 
   /// Set 'on hover' styling for each tile
   tile.onmouseover = function () { this.style.backgroundColor = hoverBackground; }
-  tile.onmouseout = function () { this.style.backgroundColor = "transparent"; }
+  tile.onmouseout = function () { this.style.backgroundColor = "white"; }
 
   if (navigateWithKeyboard || numericNavigation) {
     /// Highlight item focused with keyboard

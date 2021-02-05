@@ -16,7 +16,7 @@
     "description": ""
   },
   "hoverTransitionDuration": {
-    "message": "Transition duration (ms)",
+    "message": "Hover transition duration (ms)",
     "description": ""
   },
   "borderRadius": {
@@ -144,15 +144,23 @@
     "description": ""
   },
   "applyStyleToWidgets": {
-    "message": "Apply style to search widgets as well",
+    "message": "Apply styling to search widgets",
     "description": ""
   },
   "simplifyDomain": {
-    "message": "Simplify domain",
+    "message": "Simplify website domain",
     "description": ""
   },
   "header": {
     "message": "Header",
+    "description": ""
+  },
+  "widerTiles": {
+    "message": "Wider search results",
+    "description": ""
+  },
+  "scaleUpImageResultsOnHover": {
+    "message": "Scale up image results on hover",
     "description": ""
   }
 }

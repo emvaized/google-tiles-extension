@@ -16,7 +16,7 @@
         "description": ""
     },
     "hoverTransitionDuration": {
-        "message": "Продолжительность анимации (ms)",
+        "message": "Продолжительность анимации наведения (ms)",
         "description": ""
     },
     "borderRadius": {
@@ -144,15 +144,23 @@
         "description": ""
     },
     "applyStyleToWidgets": {
-        "message": "Применять стиль к поисковым виджетам тоже",
+        "message": "Применять настройки стиля к поисковым виджетам",
         "description": ""
     },
     "simplifyDomain": {
-        "message": "Упростить домен",
+        "message": "Упростить домен сайта",
         "description": ""
     },
     "header": {
         "message": "Заголовок",
+        "description": ""
+    },
+    "widerTiles": {
+        "message": "Более широкие результаты поиска",
+        "description": ""
+    },
+    "scaleUpImageResultsOnHover": {
+        "message": "Увеличивать результаты поиска картинок при наведении",
         "description": ""
     }
 }
