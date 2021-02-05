@@ -180,7 +180,6 @@ function setLayout(elements) {
 
 
     quickAnswers.forEach(function (suggestionTile) {
-      // if (suggestionTile.className == 'g') return;
 
       if (suggestionTile.clientHeight !== 0.0) {
         if (suggestionTile.tagName !== imageResultsSelector.toUpperCase()) {
