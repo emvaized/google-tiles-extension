@@ -53,11 +53,7 @@ var mapWidgetSelector = `[class='AEprdc vk_c']`;
 var advertisementSelectors = '#tvcap, .cu-container';
 var peopleAlsoSearchForSelector = '#botstuff';
 var knowledgeBaseAnswerSelector = `[class$='g-blk']`;
-// var knowledgeBaseAnswerSelector = `[class^='kp-blk']`;
 var imageResultTileSelector = `[class$='ivg-i']`;
-
-
-/// image result class $= ivg-i
 
 var focusedTile = 0;
 var counterHints = [];
