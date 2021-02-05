@@ -36,7 +36,7 @@
         "description": ""
     },
     "addFavicons": {
-        "message": "Добавить иконки сайтов",
+        "message": "Добавить иконку сайта",
         "description": ""
     },
     "navigateWithKeyboard": {
@@ -145,6 +145,14 @@
     },
     "applyStyleToWidgets": {
         "message": "Применять стиль к поисковым виджетам тоже",
+        "description": ""
+    },
+    "simplifyDomain": {
+        "message": "Упростить домен",
+        "description": ""
+    },
+    "header": {
+        "message": "Заголовок",
         "description": ""
     }
 }

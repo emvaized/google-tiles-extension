@@ -36,7 +36,7 @@
     "description": ""
   },
   "addFavicons": {
-    "message": "Add favicons",
+    "message": "Add website favicon",
     "description": ""
   },
   "navigateWithKeyboard": {
@@ -145,6 +145,14 @@
   },
   "applyStyleToWidgets": {
     "message": "Apply style to search widgets as well",
+    "description": ""
+  },
+  "simplifyDomain": {
+    "message": "Simplify domain",
+    "description": ""
+  },
+  "header": {
+    "message": "Header",
     "description": ""
   }
 }

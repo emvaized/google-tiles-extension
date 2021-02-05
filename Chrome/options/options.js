@@ -4,6 +4,7 @@
 // which can be iterated everywhere it's needed.
 
 function restoreOptions() {
+
   chrome.storage.local.get([
     'innerPadding',
     'externalPadding',
@@ -24,7 +25,8 @@ function restoreOptions() {
     'indexHintOpacity',
     'wholeTileIsClickable',
     'tryToPlaceSuggestionsOnTheSide',
-    'applyStyleToWidgets'
+    'applyStyleToWidgets',
+    'simplifyDomain'
   ], setInputs);
 
   function setInputs(result) {
@@ -49,6 +51,7 @@ function restoreOptions() {
     document.querySelector("#navigateWithKeyboard").parentNode.innerHTML += chrome.i18n.getMessage("navigateWithKeyboard");
     document.querySelector("#tryToPlaceSuggestionsOnTheSide").parentNode.innerHTML += chrome.i18n.getMessage("tryToPlaceSuggestionsOnTheSide");
     document.querySelector("#applyStyleToWidgets").parentNode.innerHTML += chrome.i18n.getMessage("applyStyleToWidgets");
+    document.querySelector("#simplifyDomain").parentNode.innerHTML += chrome.i18n.getMessage("simplifyDomain");
 
     /// Set translated tooltips
     document.querySelector("#moveSuggestionsToBottomTooltip").innerHTML = chrome.i18n.getMessage("moveSuggestionsToBottomTooltip");
@@ -58,7 +61,8 @@ function restoreOptions() {
     /// Set translated headers
     document.querySelector("#previewHeader").innerHTML = chrome.i18n.getMessage("preview");
     document.querySelector("#appearanceHeader").innerHTML = chrome.i18n.getMessage("appearance");
-    document.querySelector("#faviconsHeader").innerHTML = chrome.i18n.getMessage("favicons");
+    // document.querySelector("#faviconsHeader").innerHTML = chrome.i18n.getMessage("favicons");
+    document.querySelector("#faviconsHeader").innerHTML = chrome.i18n.getMessage("header");
     document.querySelector("#hoverHeader").innerHTML = chrome.i18n.getMessage("hover");
     document.querySelector("#searchResultsHeader").innerHTML = chrome.i18n.getMessage("searchResults");
     document.querySelector("#keyboardNavigationHeader").innerHTML = chrome.i18n.getMessage("keyboardNavigation");
@@ -90,9 +94,10 @@ function restoreOptions() {
     document.querySelector("#wholeTileIsClickable").checked = result.wholeTileIsClickable ?? true;
     document.querySelector("#tryToPlaceSuggestionsOnTheSide").checked = result.tryToPlaceSuggestionsOnTheSide ?? true;
     document.querySelector("#applyStyleToWidgets").checked = result.applyStyleToWidgets ?? false;
+    document.querySelector("#simplifyDomain").checked = result.simplifyDomain ?? false;
 
     /// Set listeners for the inputs
-    var inputs = document.querySelectorAll('#moveSuggestionsToBottom,#applyStyleToWidgets,#tryToPlaceSuggestionsOnTheSide, #indexHintOpacity,#wholeTileIsClickable,#innerPadding,#numericNavigation, #focusedBorderWidth, #keyboardFocusBorderColor,#keyboardCycle,#navigateWithKeyboard, #externalPadding, #borderRadius, #hoverTransitionDuration, #hoverBackground, #addTileCounter, #shadowEnabled, #shadowOpacity, #addFavicons, #addFavicons,  #faviconRadius');
+    var inputs = document.querySelectorAll('#simplifyDomain,#moveSuggestionsToBottom,#applyStyleToWidgets,#tryToPlaceSuggestionsOnTheSide, #indexHintOpacity,#wholeTileIsClickable,#innerPadding,#numericNavigation, #focusedBorderWidth, #keyboardFocusBorderColor,#keyboardCycle,#navigateWithKeyboard, #externalPadding, #borderRadius, #hoverTransitionDuration, #hoverBackground, #addTileCounter, #shadowEnabled, #shadowOpacity, #addFavicons, #addFavicons,  #faviconRadius');
     inputs.forEach(function (input) {
       input.addEventListener("input", function (e) {
         saveOptions();
@@ -131,6 +136,7 @@ function updatePreviewTile() {
   var addTileCounter = document.querySelector("#addTileCounter").checked;
   var indexHintOpacity = document.querySelector("#indexHintOpacity").value;
   var wholeTileIsClickable = document.querySelector("#wholeTileIsClickable").checked;
+  var simplifyDomain = document.querySelector("#simplifyDomain").checked;
 
   /// Set preview tile style
   var tile = document.querySelector('#previewTile');
@@ -140,6 +146,7 @@ function updatePreviewTile() {
   document.querySelector('#previewFavicon').setAttribute("style", addFavicons == false ? 'display:none' : 'display:inline');
   document.querySelector('#previewCounter').style.visibility = addTileCounter == false ? 'collapse' : 'visible';
   document.querySelector('#previewCounter').style.opacity = indexHintOpacity;
+  document.querySelector('#previewDomain').textContent = simplifyDomain ? 'google' : 'www.google.com.ua';
 
   /// Set mouse listeners
   tile.onmouseover = function () { tile.style.backgroundColor = hoverBackground || '#f0f2f4'; }
@@ -171,6 +178,7 @@ function saveOptions() {
     wholeTileIsClickable: document.querySelector("#wholeTileIsClickable").checked,
     tryToPlaceSuggestionsOnTheSide: document.querySelector("#tryToPlaceSuggestionsOnTheSide").checked,
     applyStyleToWidgets: document.querySelector("#applyStyleToWidgets").checked,
+    simplifyDomain: document.querySelector("#simplifyDomain").checked,
   });
 }
 
@@ -196,7 +204,8 @@ function resetOptions() {
     indexHintOpacity: 0.5,
     wholeTileIsClickable: true,
     tryToPlaceSuggestionsOnTheSide: true,
-    applyStyleToWidgets: false
+    applyStyleToWidgets: false,
+    simplifyDomain: false
   });
   restoreOptions();
 }

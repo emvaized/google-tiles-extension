@@ -20,6 +20,7 @@ var addTileCounter;
 var indexHintOpacity;
 var wholeTileIsClickable;
 var applyStyleToWidgets;
+var simplifyDomain;
 var countedHintColor = 'grey';
 var counterHintFocusColor = 'red';
 
@@ -45,6 +46,7 @@ var dictionaryWidgetSelector = `[class*='obcontainer']`;
 var mapWidgetSelector = `[class='AEprdc vk_c']`;
 var advertisementSelectors = '#tvcap, .cu-container';
 var peopleAlsoSearchForSelector = '#botstuff'; /// Currently disabled
+var knowledgeBaseAnswerSelector = `[class$='g-blk']`;
 
 
 var focusedTile = 0;
@@ -75,8 +77,8 @@ function init() {
     'wholeTileIsClickable',
     'faviconRadius',
     'tryToPlaceSuggestionsOnTheSide',
-    'applyStyleToWidgets'
-
+    'applyStyleToWidgets',
+    'simplifyDomain'
   ], function (value) {
 
     enabled = value.tilesEnabled ?? true;
@@ -100,6 +102,7 @@ function init() {
     wholeTileIsClickable = value.wholeTileIsClickable ?? true;
     tryToPlaceWidgetsOnTheSide = value.tryToPlaceSuggestionsOnTheSide ?? true;
     applyStyleToWidgets = value.applyStyleToWidgets ?? false;
+    simplifyDomain = value.simplifyDomain ?? false;
 
     if (enabled)
       setLayout(elements);
@@ -136,7 +139,7 @@ function setLayout(elements) {
     /// TODO: 
     /// Rewrite the selector in order to select all children except regular search results (like 'div:not(.g)').
     /// This way code will not depend on bunch of selectors for each type of 'quick answer' card
-    var quickAnswers = document.querySelectorAll(`[class^='${genericQuickAnswerCardClass}'],${mapWidgetSelector},${advertisementSelectors},${summaryInfoResultSelector},${videoResultsSelector},${dictionaryWidgetSelector},${translateWidgetSelector}, ${imageResultsSelector},${weatherResultsSelector}`);
+    var quickAnswers = document.querySelectorAll(`${knowledgeBaseAnswerSelector},[class^='${genericQuickAnswerCardClass}'],${mapWidgetSelector},${advertisementSelectors},${summaryInfoResultSelector},${videoResultsSelector},${dictionaryWidgetSelector},${translateWidgetSelector}, ${imageResultsSelector},${weatherResultsSelector}`);
 
     var sidebarContainer;
     if (bigSideCard !== null && bigSideCard !== undefined) {
@@ -341,6 +344,11 @@ function configureTile(tile) {
   // wrapper.setAttribute("style", "outline: none !important;text-decoration: none !important;color: transparent !important;");
   wrapper.setAttribute("style", "outline: none !important;text-decoration: none !important;");
 
+  var table = document.querySelector('table');
+  if (table !== null && table !== undefined) {
+    table.setAttribute('style', 'text-decoration: none !important; color:transparent !important');
+  }
+
   /// Set url for 'a' wrapper
   var url;
   if (tile.id == quickAnswerCardId) {
@@ -360,6 +368,7 @@ function configureTile(tile) {
 
   /// Add default style for tile
   tile.setAttribute("style", `border:solid ${focusedBorderWidth}px transparent;border-radius: ${borderRadius}px;transition:all ${hoverTransitionDuration}ms ease-out;padding: ${innerPadding}px;margin: 0px 0px ${tile.tagName === 'G-INNER-CARD' ? '0px' : externalPadding}px;box-shadow: ${shadowEnabled ? `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity})` : 'unset'};`);
+
 
   /// Adding the same padding for 'results count' text on and navbar for better visual symmetry
   var resultStats = document.querySelector(resultStatsSelector);
@@ -390,7 +399,6 @@ function configureTile(tile) {
     /// Append onClick listeners to visually emulate button press on card by changing shadow 
     tile.onmousedown = function () {
       this.style.boxShadow = `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity / 2})`;
-
     }
 
     tile.onmouseup = function () {
@@ -404,26 +412,53 @@ function configureTile(tile) {
 
 
   /// Add favicons to website titles
-  if (addFavicons) {
-    var websiteTitle = tile.querySelector(domainNameSelector);
-    var favicon = document.createElement('img');
-    favicon.setAttribute("src", 'https://www.google.com/s2/favicons?domain=' + url);
-    favicon.style.cssText = `height:${faviconRadius}px; width:${faviconRadius}px;  padding-right: 5px;`;
+  if (addFavicons || simplifyDomain) {
+    var domain = tile.querySelector(domainNameSelector);
 
-    if (websiteTitle != null) {
-      websiteTitle.parentNode.prepend(favicon);
+    if (domain != null) {
 
-      /// Shift dropdown button to the right
-      var dropdownMenu = tile.querySelector(dropdownMenuSelector);
-      if (dropdownMenu != null)
-        dropdownMenu.style.cssText = `padding-left: 3px;position: relative; left: ${faviconRadius}px`;
+      /// Replace domain with simplier version
+      if (simplifyDomain) {
+        try {
+          var titleText = domain.textContent.replace(/.+\/\/|www.|\..+/g, '');
+          domain.setAttribute('title', domain.textContent);
+          domain.innerHTML = titleText + domain.querySelector('span').innerHTML;
+        } catch (error) { console.log(error); }
+      }
 
-      /// Shift 'translate page' button to the right
-      var translateButton = tile.querySelector(translatePageButtonSelector);
-      if (translateButton != null)
-        translateButton.style.cssText = `margin-left: 3px;position: relative; left: ${faviconRadius}px`;
+      if (addFavicons) {
+        /// Create favicon
+        var favicon = document.createElement('img');
+        favicon.setAttribute("src", 'https://www.google.com/s2/favicons?domain=' + url);
+        favicon.style.cssText = `height:${faviconRadius}px; width:${faviconRadius}px;  padding-right: 5px;`;
+        domain.parentNode.prepend(favicon);
+
+        /// Fix dropdown button position
+        var dropdownMenu = tile.querySelector(dropdownMenuSelector);
+        if (dropdownMenu != null) {
+          // dropdownMenu.style.cssText = `padding-left: 3px;position: relative; left: ${faviconRadius}px`;
+          domain.appendChild(dropdownMenu);
+        }
+
+        /// Fix 'translate page' button position
+        var translatePageButton = tile.querySelector(translatePageButtonSelector);
+        if (translatePageButton != null) {
+          translatePageButton.style.cssText = `margin-left: 6px;`;
+          if (dropdownMenu != null) {
+            dropdownMenu.appendChild(translatePageButton);
+          }
+          else {
+            domain.appendChild(translatePageButton);
+          }
+          // translateButton.style.cssText = `margin-left: 3px;position: relative; left: ${faviconRadius}px`;
+        }
+      }
+
+
     }
   }
+
+
 }
 
 HTMLElement.prototype.wrap = function (wrapper) {
