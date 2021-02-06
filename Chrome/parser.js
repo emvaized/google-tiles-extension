@@ -207,8 +207,6 @@ function setLayout(elements) {
 
       }
 
-
-
     });
 
   }
@@ -250,7 +248,6 @@ function setLayout(elements) {
         configureTile(divChild);
       } catch (error) { console.log(error); }
   });
-
 
 
   // /// Add scale-up on hover effect for image results
