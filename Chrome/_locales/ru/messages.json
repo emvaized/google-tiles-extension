@@ -174,5 +174,9 @@
     "tileBackgroundColor": {
         "message": "Цвет фона",
         "description": ""
+    },
+    "delayToScrollOnHover": {
+        "message": "Задержка перед прокруткой наведением (мс)",
+        "description": ""
     }
 }

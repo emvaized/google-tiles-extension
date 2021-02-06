@@ -32,6 +32,7 @@ function restoreOptions() {
     'scrollHorizontalViewOnHover',
     'addTileBorder',
     'tileBackgroundColor',
+    'delayToScrollOnHover',
   ], setInputs);
 
   function setInputs(result) {
@@ -62,6 +63,7 @@ function restoreOptions() {
     document.querySelector("#scrollHorizontalViewOnHover").parentNode.innerHTML += chrome.i18n.getMessage("scrollHorizontalViewOnHover");
     document.querySelector("#addTileBorder").parentNode.innerHTML += chrome.i18n.getMessage("addTileBorder");
     document.querySelector("#tileBackgroundColor").parentNode.innerHTML += chrome.i18n.getMessage("tileBackgroundColor");
+    document.querySelector("#delayToScrollOnHover").parentNode.innerHTML += chrome.i18n.getMessage("delayToScrollOnHover");
 
     /// Set translated tooltips
     document.querySelector("#moveSuggestionsToBottomTooltip").innerHTML = chrome.i18n.getMessage("moveSuggestionsToBottomTooltip");
@@ -110,9 +112,10 @@ function restoreOptions() {
     document.querySelector("#scrollHorizontalViewOnHover").checked = result.scrollHorizontalViewOnHover ?? true;
     document.querySelector("#addTileBorder").checked = result.addTileBorder ?? false;
     document.querySelector("#tileBackgroundColor").value = result.tileBackgroundColor ?? '#FFFFFF';
+    document.querySelector("#delayToScrollOnHover").value = result.delayToScrollOnHover || 150;
 
     /// Set listeners for the inputs
-    var inputs = document.querySelectorAll('#tileBackgroundColor,#addTileBorder,#scrollHorizontalViewOnHover,#scaleUpImageResultsOnHover,#widerTiles,#simplifyDomain,#moveSuggestionsToBottom,#applyStyleToWidgets,#tryToPlaceSuggestionsOnTheSide, #indexHintOpacity,#wholeTileIsClickable,#innerPadding,#numericNavigation, #focusedBorderWidth, #keyboardFocusBorderColor,#keyboardCycle,#navigateWithKeyboard, #externalPadding, #borderRadius, #hoverTransitionDuration, #hoverBackground, #addTileCounter, #shadowEnabled, #shadowOpacity, #addFavicons, #addFavicons,  #faviconRadius');
+    var inputs = document.querySelectorAll('#delayToScrollOnHover,#tileBackgroundColor,#addTileBorder,#scrollHorizontalViewOnHover,#scaleUpImageResultsOnHover,#widerTiles,#simplifyDomain,#moveSuggestionsToBottom,#applyStyleToWidgets,#tryToPlaceSuggestionsOnTheSide, #indexHintOpacity,#wholeTileIsClickable,#innerPadding,#numericNavigation, #focusedBorderWidth, #keyboardFocusBorderColor,#keyboardCycle,#navigateWithKeyboard, #externalPadding, #borderRadius, #hoverTransitionDuration, #hoverBackground, #addTileCounter, #shadowEnabled, #shadowOpacity, #addFavicons, #addFavicons,  #faviconRadius');
     inputs.forEach(function (input) {
       input.addEventListener("input", function (e) {
         saveOptions();
@@ -136,6 +139,7 @@ function updateDisabledOptions() {
   document.querySelector("#focusedBorderWidth").parentNode.className = document.querySelector("#navigateWithKeyboard").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#addTileCounter").parentNode.className = document.querySelector("#numericNavigation").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#indexHintOpacity").parentNode.className = document.querySelector("#numericNavigation").checked ? 'enabled-option' : 'disabled-option';
+  document.querySelector("#delayToScrollOnHover").parentNode.className = document.querySelector("#scrollHorizontalViewOnHover").checked ? 'enabled-option' : 'disabled-option';
 }
 
 function updatePreviewTile() {
@@ -202,6 +206,7 @@ function saveOptions() {
     scrollHorizontalViewOnHover: document.querySelector("#scrollHorizontalViewOnHover").checked,
     addTileBorder: document.querySelector("#addTileBorder").checked,
     tileBackgroundColor: document.querySelector("#tileBackgroundColor").value,
+    delayToScrollOnHover: document.querySelector("#delayToScrollOnHover").value,
   });
 }
 
@@ -234,6 +239,7 @@ function resetOptions() {
     scrollHorizontalViewOnHover: true,
     tileBackgroundColor: '#FFFFFF',
     addTileBorder: false,
+    delayToScrollOnHover: 150
   });
   restoreOptions();
 }

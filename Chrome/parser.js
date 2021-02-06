@@ -26,6 +26,7 @@ var scaleUpImageResultsOnHover;
 var scrollHorizontalViewOnHover;
 var addTileBorder;
 var tileBackgroundColor;
+var delayToScrollOnHover;
 
 var borderColor = '#DADCE0';
 var countedHintColor = 'grey';
@@ -57,6 +58,7 @@ var advertisementSelectors = '#tvcap, .cu-container';
 var peopleAlsoSearchForSelector = '#botstuff';
 var knowledgeBaseAnswerSelector = `[class$='g-blk']`;
 var imageResultTileSelector = `[class$='ivg-i']`;
+var imageCarouselClass = 'GNxIwf';
 
 var focusedTile = 0;
 var counterHints = [];
@@ -92,7 +94,8 @@ function init() {
     'scaleUpImageResultsOnHover',
     'scrollHorizontalViewOnHover',
     'addTileBorder',
-    'tileBackgroundColor'
+    'tileBackgroundColor',
+    'delayToScrollOnHover'
   ], function (value) {
 
     enabled = value.tilesEnabled ?? true;
@@ -122,6 +125,7 @@ function init() {
     scrollHorizontalViewOnHover = value.scrollHorizontalViewOnHover ?? true;
     addTileBorder = value.addTileBorder ?? false;
     tileBackgroundColor = value.tileBackgroundColor ?? '#FFFFFF';
+    delayToScrollOnHover = value.delayToScrollOnHover || 150;
 
     if (enabled)
       setLayout(elements);
@@ -259,16 +263,33 @@ function setLayout(elements) {
 
     if (imageResults !== null && imageResults !== undefined) {
       imageResults.forEach(function (image) {
+        var height = image.clientHeight;
+
         image.onmouseover = function (event) {
           if (!image.className.includes(newsCardClass))
-            this.setAttribute('style', `-webkit-transform:scale(1.5); z-index: 999; transition: all 150ms ease-in-out; box-shadow: 0px 5px 15px rgba(0, 0, 0, ${shadowOpacity}) `);
+            this.setAttribute('style', `${image.parentNode.classList.contains(imageCarouselClass) ? `margin: 0px ${height * 0.25}px;` : ''} -webkit-transform:scale(1.5); z-index: 999; transition: all 150ms ease-in-out; box-shadow: 0px 5px 15px rgba(0, 0, 0, ${shadowOpacity}) `);
 
-          if (scrollHorizontalViewOnHover)
-            this.scrollIntoView({ block: 'nearest', inline: "center", behavior: "smooth" });
-          // this.parentNode.parentNode.parentNode.setAttribute('style', 'overflow: visible !important;');
+          if (scrollHorizontalViewOnHover) {
+            setTimeout(function () {
+              image.scrollIntoView({ block: 'nearest', inline: "center", behavior: "smooth" });
+            }, delayToScrollOnHover);
+          }
         }
         image.onmouseout = function () {
-          this.setAttribute('style', '-webkit-transform:scale(1.0); z-index: 0; transition: all 150ms ease-in-out;');
+          this.setAttribute('style', `-webkit-transform:scale(1.0); z-index: 0; transition: all 150ms ease-in-out;`);
+        }
+
+        if (image.parentNode.classList.contains(imageCarouselClass)) {
+          var imageCarouselContainer = image.parentNode;
+
+          imageCarouselContainer.onmouseover = function (event) {
+            imageCarouselContainer.setAttribute('style', ` margin-bottom: ${height * 0.25}px;margin-top: ${height * 0.25}px;transition: all 150ms ease-in-out;`);
+          }
+          imageCarouselContainer.onmouseout = function () {
+            imageCarouselContainer.setAttribute('style', `margin: 0px; transition: all 150ms ease-in-out;`);
+
+          }
+
         }
       });
     }

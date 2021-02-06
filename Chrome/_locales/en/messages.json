@@ -174,5 +174,9 @@
   "tileBackgroundColor": {
     "message": "Background color",
     "description": ""
+  },
+  "delayToScrollOnHover": {
+    "message": "Delay before hover scrolling (ms)",
+    "description": "Delay before starting to scroll on hover, when it's enabled"
   }
 }
