@@ -146,10 +146,11 @@ function updatePreviewTile() {
   var indexHintOpacity = document.querySelector("#indexHintOpacity").value;
   var wholeTileIsClickable = document.querySelector("#wholeTileIsClickable").checked;
   var simplifyDomain = document.querySelector("#simplifyDomain").checked;
+  var widerTiles = document.querySelector("#widerTiles").checked;
 
   /// Set preview tile style
   var tile = document.querySelector('#previewTile');
-  tile.setAttribute("style", `cursor:${wholeTileIsClickable ? 'pointer' : 'auto'};border:solid ${focusedBorderWidth || '1'}px transparent;border-radius: ${borderRadius || '6'}px;transition:all ${hoverTransitionDuration || '300'}ms ease-out;padding: ${innerPadding || '12'}px;margin: 0px 0px ${externalPadding || 24}px;box-shadow: ${(shadowEnabled ?? true) ? `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity || '0.15'})` : 'unset'};`);
+  tile.setAttribute("style", `align-items: center;width: ${widerTiles ? 100 : 85}%;cursor:${wholeTileIsClickable ? 'pointer' : 'auto'};border:solid ${focusedBorderWidth || '1'}px transparent;border-radius: ${borderRadius || '6'}px;transition:all ${hoverTransitionDuration || '300'}ms ease-out;padding: ${innerPadding || '12'}px;margin: 0px 0px ${externalPadding || 24}px;box-shadow: ${(shadowEnabled ?? true) ? `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity || '0.15'})` : 'unset'};`);
 
   /// Change favicon and counter hint visibility
   document.querySelector('#previewFavicon').setAttribute("style", addFavicons == false ? 'display:none' : 'display:inline');

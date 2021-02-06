@@ -185,11 +185,12 @@ function setLayout(elements) {
           suggestionTile.setAttribute("style", `margin-bottom: ${externalPadding}px;`);
         }
 
-        /// Don't proccess last 2 elements, which are 'search related' items
+        /// Don't proccess last 2 elements (except for when some of them is 'Maybe you searched for...' tile)
         var index = Array.prototype.indexOf.call(quickAnswers, suggestionTile);
-        if (index !== quickAnswers.length - 1 && index !== quickAnswers.length - 2) {
+        if ((index !== quickAnswers.length - 1 && index !== quickAnswers.length - 2) || suggestionTile.classList.contains('g-blk')) {
           if (applyStyleToWidgets) {
-            configureTile(suggestionTile);
+            if (suggestionTile.parentNode.id != 'brs')
+              configureTile(suggestionTile);
           }
           if (tryToPlaceWidgetsOnTheSide) {
             var regularScrollColumn = document.querySelector(columnWithRegularResultsSelector);
@@ -259,12 +260,11 @@ function setLayout(elements) {
       imageResults.forEach(function (image) {
         image.onmouseover = function (event) {
           if (!image.className.includes(newsCardClass))
-            this.setAttribute('style', `-webkit-transform:scale(1.5); z-index: 3; transition: all 150ms ease-in-out; box-shadow: 0px 5px 15px rgba(0, 0, 0, ${shadowOpacity}) `);
+            this.setAttribute('style', `-webkit-transform:scale(1.5); z-index: 999; transition: all 150ms ease-in-out; box-shadow: 0px 5px 15px rgba(0, 0, 0, ${shadowOpacity}) `);
 
           if (scrollHorizontalViewOnHover)
             this.scrollIntoView({ block: 'nearest', inline: "center", behavior: "smooth" });
-          // this.parentNode.setAttribute('style', 'overflow: visible !important;');
-
+          // this.parentNode.parentNode.parentNode.setAttribute('style', 'overflow: visible !important;');
         }
         image.onmouseout = function () {
           this.setAttribute('style', '-webkit-transform:scale(1.0); z-index: 0; transition: all 150ms ease-in-out;');
