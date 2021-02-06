@@ -24,6 +24,10 @@ var simplifyDomain;
 var widerTiles;
 var scaleUpImageResultsOnHover;
 var scrollHorizontalViewOnHover;
+var addTileBorder;
+var tileBackgroundColor;
+
+var borderColor = '#DADCE0';
 var countedHintColor = 'grey';
 var counterHintFocusColor = 'red';
 
@@ -86,7 +90,9 @@ function init() {
     'simplifyDomain',
     'widerTiles',
     'scaleUpImageResultsOnHover',
-    'scrollHorizontalViewOnHover'
+    'scrollHorizontalViewOnHover',
+    'addTileBorder',
+    'tileBackgroundColor'
   ], function (value) {
 
     enabled = value.tilesEnabled ?? true;
@@ -114,6 +120,8 @@ function init() {
     widerTiles = value.widerTiles ?? true;
     scaleUpImageResultsOnHover = value.scaleUpImageResultsOnHover ?? true;
     scrollHorizontalViewOnHover = value.scrollHorizontalViewOnHover ?? true;
+    addTileBorder = value.addTileBorder ?? false;
+    tileBackgroundColor = value.tileBackgroundColor ?? '#FFFFFF';
 
     if (enabled)
       setLayout(elements);
@@ -200,11 +208,6 @@ function setLayout(elements) {
         }
 
         /// Code to add separator lines when styling is disabled
-        // if (applyStyleToWidgets && index !== quickAnswers.length - 1) {
-        //   var separatorLine = document.createElement('hr');
-        //   separatorLine.setAttribute('style', 'color: grey; opacity: 0.15; margin-bottom: 5px;');
-        //   suggestionTile.prepend(separatorLine);
-        // }
 
       }
 
@@ -411,7 +414,7 @@ function configureTile(tile) {
   wrapper.href = url;
 
   /// Add default style for tile
-  tile.setAttribute("style", `background-color: white;border:solid ${focusedBorderWidth}px transparent;border-radius: ${borderRadius}px;transition:all ${hoverTransitionDuration}ms ease-out;padding: ${innerPadding}px;margin: 0px 0px ${tile.tagName === 'G-INNER-CARD' ? '0px' : externalPadding}px;box-shadow: ${shadowEnabled ? `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity})` : 'unset'};`);
+  tile.setAttribute("style", `background-color: ${tileBackgroundColor};border:solid ${focusedBorderWidth}px ${addTileBorder ? borderColor : 'transparent'};border-radius: ${borderRadius}px;transition:all ${hoverTransitionDuration}ms ease-out;padding: ${innerPadding}px;margin: 0px 0px ${tile.tagName === 'G-INNER-CARD' ? '0px' : externalPadding}px;box-shadow: ${shadowEnabled ? `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity})` : 'unset'};`);
 
   if (widerTiles)
     tile.style.width = '100%';
@@ -426,7 +429,7 @@ function configureTile(tile) {
 
   /// Set 'on hover' styling for each tile
   tile.onmouseover = function () { this.style.backgroundColor = hoverBackground; }
-  tile.onmouseout = function () { this.style.backgroundColor = "white"; }
+  tile.onmouseout = function () { this.style.backgroundColor = tileBackgroundColor; }
 
   if (navigateWithKeyboard || numericNavigation) {
     /// Highlight item focused with keyboard
@@ -436,7 +439,7 @@ function configureTile(tile) {
 
     /// Remove the highlight from item on focus loss
     wrapper.addEventListener("blur", (e) => {
-      wrapper.firstChild.style.border = `solid ${focusedBorderWidth}px transparent`;
+      wrapper.firstChild.style.border = `solid ${focusedBorderWidth}px ${addTileBorder ? borderColor : 'transparent'}`;
     });
   }
 

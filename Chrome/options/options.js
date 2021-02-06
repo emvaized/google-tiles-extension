@@ -29,7 +29,9 @@ function restoreOptions() {
     'simplifyDomain',
     'widerTiles',
     'scaleUpImageResultsOnHover',
-    'scrollHorizontalViewOnHover'
+    'scrollHorizontalViewOnHover',
+    'addTileBorder',
+    'tileBackgroundColor',
   ], setInputs);
 
   function setInputs(result) {
@@ -58,6 +60,8 @@ function restoreOptions() {
     document.querySelector("#widerTiles").parentNode.innerHTML += chrome.i18n.getMessage("widerTiles");
     document.querySelector("#scaleUpImageResultsOnHover").parentNode.innerHTML += chrome.i18n.getMessage("scaleUpImageResultsOnHover");
     document.querySelector("#scrollHorizontalViewOnHover").parentNode.innerHTML += chrome.i18n.getMessage("scrollHorizontalViewOnHover");
+    document.querySelector("#addTileBorder").parentNode.innerHTML += chrome.i18n.getMessage("addTileBorder");
+    document.querySelector("#tileBackgroundColor").parentNode.innerHTML += chrome.i18n.getMessage("tileBackgroundColor");
 
     /// Set translated tooltips
     document.querySelector("#moveSuggestionsToBottomTooltip").innerHTML = chrome.i18n.getMessage("moveSuggestionsToBottomTooltip");
@@ -104,9 +108,11 @@ function restoreOptions() {
     document.querySelector("#widerTiles").checked = result.widerTiles ?? true;
     document.querySelector("#scaleUpImageResultsOnHover").checked = result.scaleUpImageResultsOnHover ?? true;
     document.querySelector("#scrollHorizontalViewOnHover").checked = result.scrollHorizontalViewOnHover ?? true;
+    document.querySelector("#addTileBorder").checked = result.addTileBorder ?? false;
+    document.querySelector("#tileBackgroundColor").value = result.tileBackgroundColor ?? '#FFFFFF';
 
     /// Set listeners for the inputs
-    var inputs = document.querySelectorAll('#scrollHorizontalViewOnHover,#scaleUpImageResultsOnHover,#widerTiles,#simplifyDomain,#moveSuggestionsToBottom,#applyStyleToWidgets,#tryToPlaceSuggestionsOnTheSide, #indexHintOpacity,#wholeTileIsClickable,#innerPadding,#numericNavigation, #focusedBorderWidth, #keyboardFocusBorderColor,#keyboardCycle,#navigateWithKeyboard, #externalPadding, #borderRadius, #hoverTransitionDuration, #hoverBackground, #addTileCounter, #shadowEnabled, #shadowOpacity, #addFavicons, #addFavicons,  #faviconRadius');
+    var inputs = document.querySelectorAll('#tileBackgroundColor,#addTileBorder,#scrollHorizontalViewOnHover,#scaleUpImageResultsOnHover,#widerTiles,#simplifyDomain,#moveSuggestionsToBottom,#applyStyleToWidgets,#tryToPlaceSuggestionsOnTheSide, #indexHintOpacity,#wholeTileIsClickable,#innerPadding,#numericNavigation, #focusedBorderWidth, #keyboardFocusBorderColor,#keyboardCycle,#navigateWithKeyboard, #externalPadding, #borderRadius, #hoverTransitionDuration, #hoverBackground, #addTileCounter, #shadowEnabled, #shadowOpacity, #addFavicons, #addFavicons,  #faviconRadius');
     inputs.forEach(function (input) {
       input.addEventListener("input", function (e) {
         saveOptions();
@@ -147,10 +153,12 @@ function updatePreviewTile() {
   var wholeTileIsClickable = document.querySelector("#wholeTileIsClickable").checked;
   var simplifyDomain = document.querySelector("#simplifyDomain").checked;
   var widerTiles = document.querySelector("#widerTiles").checked;
+  var addTileBorder = document.querySelector("#addTileBorder").checked;
+  var tileBackgroundColor = document.querySelector("#tileBackgroundColor").value;
 
   /// Set preview tile style
   var tile = document.querySelector('#previewTile');
-  tile.setAttribute("style", `align-items: center;width: ${widerTiles ? 100 : 85}%;cursor:${wholeTileIsClickable ? 'pointer' : 'auto'};border:solid ${focusedBorderWidth || '1'}px transparent;border-radius: ${borderRadius || '6'}px;transition:all ${hoverTransitionDuration || '300'}ms ease-out;padding: ${innerPadding || '12'}px;margin: 0px 0px ${externalPadding || 24}px;box-shadow: ${(shadowEnabled ?? true) ? `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity || '0.15'})` : 'unset'};`);
+  tile.setAttribute("style", `background-color:${tileBackgroundColor};align-items: center;width: ${widerTiles ? 100 : 85}%;cursor:${wholeTileIsClickable ? 'pointer' : 'auto'};border:solid ${focusedBorderWidth || '1'}px ${addTileBorder ? '#DADCE0' : 'transparent'};border-radius: ${borderRadius || '6'}px;transition:all ${hoverTransitionDuration || '300'}ms ease-out;padding: ${innerPadding || '12'}px;margin: 0px 0px ${externalPadding || 24}px;box-shadow: ${(shadowEnabled ?? true) ? `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity || '0.15'})` : 'unset'};`);
 
   /// Change favicon and counter hint visibility
   document.querySelector('#previewFavicon').setAttribute("style", addFavicons == false ? 'display:none' : 'display:inline');
@@ -160,7 +168,7 @@ function updatePreviewTile() {
 
   /// Set mouse listeners
   tile.onmouseover = function () { tile.style.backgroundColor = hoverBackground || '#f0f2f4'; }
-  tile.onmouseout = function () { tile.style.backgroundColor = "transparent"; }
+  tile.onmouseout = function () { tile.style.backgroundColor = tileBackgroundColor; }
   tile.onmousedown = function () { if (wholeTileIsClickable == false) return; tile.style.boxShadow = (shadowEnabled ?? true) ? `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity / 2})` : 'unset'; }
   tile.onmouseup = function () { if (wholeTileIsClickable == false) return; tile.style.boxShadow = (shadowEnabled ?? true) ? `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity})` : 'unset'; }
 }
@@ -192,6 +200,8 @@ function saveOptions() {
     widerTiles: document.querySelector("#widerTiles").checked,
     scaleUpImageResultsOnHover: document.querySelector("#scaleUpImageResultsOnHover").checked,
     scrollHorizontalViewOnHover: document.querySelector("#scrollHorizontalViewOnHover").checked,
+    addTileBorder: document.querySelector("#addTileBorder").checked,
+    tileBackgroundColor: document.querySelector("#tileBackgroundColor").value,
   });
 }
 
@@ -221,7 +231,9 @@ function resetOptions() {
     simplifyDomain: true,
     widerTiles: true,
     scaleUpImageResultsOnHover: true,
-    scrollHorizontalViewOnHover: true
+    scrollHorizontalViewOnHover: true,
+    tileBackgroundColor: '#FFFFFF',
+    addTileBorder: false,
   });
   restoreOptions();
 }

@@ -166,5 +166,13 @@
   "scrollHorizontalViewOnHover": {
     "message": "Scroll horizontal views with hover",
     "description": ""
+  },
+  "addTileBorder": {
+    "message": "Add border",
+    "description": ""
+  },
+  "tileBackgroundColor": {
+    "message": "Background color",
+    "description": ""
   }
 }

@@ -166,5 +166,13 @@
     "scrollHorizontalViewOnHover": {
         "message": "Прокручивать горизонтальные списки наведением",
         "description": ""
+    },
+    "addTileBorder": {
+        "message": "Добавить рамку",
+        "description": ""
+    },
+    "tileBackgroundColor": {
+        "message": "Цвет фона",
+        "description": ""
     }
 }
