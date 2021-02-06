@@ -207,8 +207,6 @@ function setLayout(elements) {
           }
         }
 
-        /// Code to add separator lines when styling is disabled
-
       }
 
     });
