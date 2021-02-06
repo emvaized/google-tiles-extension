@@ -490,7 +490,7 @@ function configureTile(tile) {
         try {
           var titleText = domain.textContent.replace(/.+\/\/|www.|\..+/g, '');
           domain.setAttribute('title', domain.textContent);
-          domain.innerHTML = titleText + domain.querySelector('span').innerHTML;
+          domain.textContent = titleText + domain.querySelector('span').textContent;
         } catch (error) { console.log(error); }
       }
 
