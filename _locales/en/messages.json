@@ -8,7 +8,7 @@
     "description": ""
   },
   "externalPadding": {
-    "message": "Padding between results",
+    "message": "Padding between results (px)",
     "description": ""
   },
   "enabled": {
@@ -24,7 +24,7 @@
     "description": ""
   },
   "hoverBackground": {
-    "message": "Background color on hover",
+    "message": "Tile background color on hover",
     "description": ""
   },
   "shadowEnabled": {
@@ -44,11 +44,11 @@
     "description": ""
   },
   "navigateWithKeyboardTooltip": {
-    "message": "Use ↑ and ↓ keys to navigate results, ← and → to focus first/last, and 'Enter' to open",
+    "message": "Use ↑ and ↓ keys to navigate results, ← and → to swtich pages, and 'Enter' to open",
     "description": ""
   },
   "keyboardFocusBorderColor": {
-    "message": "Focused border color",
+    "message": "Border color for focused tile",
     "description": ""
   },
   "keyboardCycle": {
@@ -56,7 +56,7 @@
     "description": ""
   },
   "focusedBorderWidth": {
-    "message": "Focused border width (px)",
+    "message": "Borders width (px)",
     "description": ""
   },
   "numericNavigation": {
@@ -64,11 +64,11 @@
     "description": ""
   },
   "numericNavigationTooltip": {
-    "message": "Pressing key 1 will focus first search result, 2 will focus second result, and so on. Pressing 0 will focus search field",
+    "message": "Pressing key 1 will focus first element, 2 will focus second, and so on. Pressing 0 will focus search field",
     "description": ""
   },
   "addTileCounter": {
-    "message": "Show index hints in top right corner of tile",
+    "message": "Show number hints",
     "description": ""
   },
   "indexHintOpacity": {
@@ -156,7 +156,7 @@
     "description": ""
   },
   "widerTiles": {
-    "message": "Wider search results",
+    "message": "Align tiles by width",
     "description": ""
   },
   "scaleUpImageResultsOnHover": {
@@ -178,5 +178,61 @@
   "delayToScrollOnHover": {
     "message": "Delay before hover scrolling (ms)",
     "description": "Delay before starting to scroll on hover, when it's enabled"
+  },
+  "showFullDomainOnHover": {
+    "message": "Show full domain on hover",
+    "description": ""
+  },
+  "numbersNavigateTabs": {
+    "message": "Number keys navigate tabs (navigate search resuls when turned off)",
+    "description": ""
+  },
+  "numbersNavigateResults": {
+    "message": "Number keys navigate search results",
+    "description": ""
+  },
+  "imageScaleUpOnHoverAmount": {
+    "message": "Scale up amount",
+    "description": ""
+  },
+  "sidebarWidthMultiplier": {
+    "message": "Sidebar width (in fraction to main results column)",
+    "description": ""
+  },
+  "sidebarPadding": {
+    "message": "Sidebar padding",
+    "description": ""
+  },
+  "disableTitleUnderlineOnHover": {
+    "message": "Disable title underline on hover",
+    "description": ""
+  },
+  "highlightTitleOnHover": {
+    "message": "Change title color on hover",
+    "description": ""
+  },
+  "titleHoverColor": {
+    "message": "Title color",
+    "description": ""
+  },
+  "addTileBackground": {
+    "message": "Add tile background",
+    "description": ""
+  },
+  "borderColor": {
+    "message": "Border color",
+    "description": ""
+  },
+  "firstNumberPressScrollsToElement": {
+    "message": "First press scrolls to element",
+    "description": ""
+  },
+  "firstNumberPressScrollsToElementTooltip": {
+    "message": "When disabled, first press immediately selects element",
+    "description": ""
+  },
+  "sideArrowsFocusSidebarFirst": {
+    "message": "← and → keys switch focus to sidebar",
+    "description": ""
   }
 }

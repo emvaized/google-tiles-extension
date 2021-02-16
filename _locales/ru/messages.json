@@ -8,7 +8,7 @@
         "description": ""
     },
     "externalPadding": {
-        "message": "Отступ между результатами поиска",
+        "message": "Отступ между результатами поиска (px)",
         "description": ""
     },
     "enabled": {
@@ -24,7 +24,7 @@
         "description": ""
     },
     "hoverBackground": {
-        "message": "Цвет фона при наведении мыши",
+        "message": "Цвет фона плитки при наведении мыши",
         "description": ""
     },
     "shadowEnabled": {
@@ -44,11 +44,11 @@
         "description": ""
     },
     "navigateWithKeyboardTooltip": {
-        "message": "Использовать ↑ и ↓ для переключения между результатами, ← и → для фокусировки первого/последнего, и 'Enter' чтобы открыть",
+        "message": "Использовать ↑ и ↓ для переключения между результатами, ← и → для переключения страницы, и 'Enter' чтобы открыть",
         "description": ""
     },
     "keyboardFocusBorderColor": {
-        "message": "Цвет рамки выделения",
+        "message": "Цвет рамки выделенной плитки",
         "description": ""
     },
     "keyboardCycle": {
@@ -56,7 +56,7 @@
         "description": ""
     },
     "focusedBorderWidth": {
-        "message": "Ширина рамки выделения (px)",
+        "message": "Ширина рамок (px)",
         "description": ""
     },
     "numericNavigation": {
@@ -64,11 +64,11 @@
         "description": ""
     },
     "numericNavigationTooltip": {
-        "message": "Клавиша 1 сфокусирует первый результат поиска, 2 сфокусирует второй, и так далее. Клавиша 0 переместит фокус на поисковую строку",
+        "message": "Клавиша 1 сфокусирует первый элемент, 2 сфокусирует второй, и так далее. Клавиша 0 переместит фокус на поисковую строку",
         "description": ""
     },
     "addTileCounter": {
-        "message": "Показывать номерные подсказки в правом верхнем углу",
+        "message": "Показывать номерные подсказки",
         "description": ""
     },
     "indexHintOpacity": {
@@ -156,7 +156,7 @@
         "description": ""
     },
     "widerTiles": {
-        "message": "Более широкие результаты поиска",
+        "message": "Выровнять плитки по ширине",
         "description": ""
     },
     "scaleUpImageResultsOnHover": {
@@ -177,6 +177,62 @@
     },
     "delayToScrollOnHover": {
         "message": "Задержка перед прокруткой наведением (мс)",
+        "description": ""
+    },
+    "showFullDomainOnHover": {
+        "message": "Показывать полный адрес при наведении",
+        "description": ""
+    },
+    "numbersNavigateTabs": {
+        "message": "Клавиши цифр переключают вкладки (если выключено - результаты поиска)",
+        "description": ""
+    },
+    "numbersNavigateResults": {
+        "message": "Клавиши цифр переключают результаты поиска",
+        "description": ""
+    },
+    "imageScaleUpOnHoverAmount": {
+        "message": "Размер увеличения",
+        "description": ""
+    },
+    "sidebarWidthMultiplier": {
+        "message": "Ширина боковой колонки (по отношению к колонке основных результатов)",
+        "description": ""
+    },
+    "sidebarPadding": {
+        "message": "Отступ боковой колонки",
+        "description": ""
+    },
+    "disableTitleUnderlineOnHover": {
+        "message": "Отключить подчеркивание заголовка при наведении",
+        "description": ""
+    },
+    "highlightTitleOnHover": {
+        "message": "Изменить цвет заголовка при наведении",
+        "description": ""
+    },
+    "titleHoverColor": {
+        "message": "Цвет заголовка",
+        "description": ""
+    },
+    "addTileBackground": {
+        "message": "Добавить фон плитки",
+        "description": ""
+    },
+    "borderColor": {
+        "message": "Цвет рамки",
+        "description": ""
+    },
+    "firstNumberPressScrollsToElement": {
+        "message": "Первое нажатие прокручивает к элементу",
+        "description": ""
+    },
+    "firstNumberPressScrollsToElementTooltip": {
+        "message": "Когда отключено, первое нажатие сразу выбирает элемент",
+        "description": ""
+    },
+    "sideArrowsFocusSidebarFirst": {
+        "message": "← и → перемещает фокус на боковые виджеты",
         "description": ""
     }
 }

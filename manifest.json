@@ -2,11 +2,11 @@
   "manifest_version": 2,
   "default_locale": "en",
   "name": "Google Tiles",
-  "version": "1.0.3",
+  "version": "2.0",
   "description": "__MSG_extensionDescription__",
   "icons": {
-    "48": "icons/new-icon-48.png",
-    "96": "icons/new-icon-96.png"
+    "48": "icons/new-new-icon-48.png",
+    "96": "icons/new-new-icon-96.png"
   },
   "browser_specific_settings": {
     "gecko": {
@@ -16,15 +16,16 @@
   "content_scripts": [
     {
       "matches": [
-        "*://www.google.com/*"
+        "*://www.google.com/search*"
       ],
       "js": [
         "parser.js"
-      ]
+      ],
+      "run_at": "document_end"
     }
   ],
   "browser_action": {
-    "default_icon": "icons/new-icon-96.png",
+    "default_icon": "icons/new-new-icon-96.png",
     "default_title": "Google Tiles",
     "default_popup": "popup/popup.html"
   },

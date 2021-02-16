@@ -17,8 +17,7 @@
                         <div style='position: relative;'>
                               <div>
                                     <img id='previewFavicon'
-                                          src="https://www.google.com/s2/favicons?domain=https://www.google.com.ua"
-                                          style="height: 12px; width: 12px; ">
+                                          src="https://www.google.com/s2/favicons?domain=https://www.google.com.ua">
                                     <cite id='previewDomain'
                                           style='color:black; font-style:normal'>www.google.com.ua</cite>
 
@@ -34,46 +33,42 @@
                                     sit amet
                               </h3>
 
-                              <span style="color:black">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                              <span id='previewDescription' style="color:black">Lorem ipsum dolor sit amet, consectetur
+                                    adipiscing elit.
                                     Sed
                                     malesuada
                                     neque vel ipsum malesuada posuere. Nullam sem ipsum, blandit sit amet vehicula
                                     non,
                                     suscipit non elit. </span>
                         </div>
-
-
-
-
                   </div>
             </div>
+
+            <br />
+            <hr />
 
             <h3 id='appearanceHeader'></h3>
 
             <div class='option'> <label><input type="checkbox" id="wholeTileIsClickable">
                   </label></div>
-
             <div class='option'> <label><input type="number" min="0" max="50" id="borderRadius"> </label>
             </div>
-
             <div class='option'><label> <input type="number" min="0" max="50" id="innerPadding"></label>
             </div>
-
-
-
-
+            <div class='option'> <label><input type="checkbox" id="addTileBackground"> </label> </div>
             <div class='option'> <label><input type="color" id="tileBackgroundColor">
                   </label>
             </div>
-
             <div class='option'> <label><input type="checkbox" id="addTileBorder"> </label> </div>
-
-
+            <div class='option'> <label><input type="color" id="borderColor"> </label> </div>
+            <div class='option'> <label> <input type="number" min='1' max='10' id="focusedBorderWidth"> </label>
+            </div>
             <div class='option'> <label><input type="checkbox" id="shadowEnabled"> </label> </div>
-
             <div class='option'> <label><input type="number" step='0.05' min='0.0' max='1.0' id="shadowOpacity">
                   </label> </div>
 
+            <br />
+            <hr />
 
             <h3 id='faviconsHeader'></h3>
             <div class='option'> <label><input type="checkbox" id="addFavicons"> </label>
@@ -81,8 +76,21 @@
             <div class='option'> <label><input type="number" id="faviconRadius"> </label> </div>
             <div class='option'> <label><input type="checkbox" id="simplifyDomain"> </label>
             </div>
+            <div class='option'> <label><input type="checkbox" id="showFullDomainOnHover">
+                  </label></div>
+            <div class='option'> <label><input type="checkbox" id="disableTitleUnderlineOnHover">
+                  </label></div>
+            <div class='option'> <label><input type="checkbox" id="highlightTitleOnHover">
+                  </label></div>
+            <div class='option'> <label><input type="color" id="titleHoverColor">
+                  </label></div>
+
+
+            <br />
+            <hr />
 
             <h3 id='hoverHeader'></h3>
+
             <div class='option'> <label> <input type="color" id="hoverBackground"> </label>
             </div>
             <div class='option'> <label><input type="number" min='0' id="hoverTransitionDuration"> </label>
@@ -95,10 +103,10 @@
                   </label></div>
 
 
-
+            <br />
+            <hr />
 
             <h3 id='searchResultsHeader'></h3>
-
 
             <div class='option tooltip'> <label> <input type="checkbox" id="moveSuggestionsToBottom"></label>
                   <span id="moveSuggestionsToBottomTooltip" class="tooltiptext">Images/video/news search results will be
@@ -109,17 +117,19 @@
                   <span class="tooltiptext" style='padding: 3px'><img height='140px' width='194px'
                               src='https://i.imgur.com/wEDUAu3.png' /></span>
             </div>
-
+            <div class='option'> <label><input type="number" min='0.25' max='1.0' step='0.05'
+                              id="sidebarWidthMultiplier"> </label>
+            </div>
             <div class='option'> <label><input type="checkbox" id="applyStyleToWidgets"> </label>
             </div>
-
             <div class='option'> <label><input type="checkbox" id="widerTiles"> </label>
             </div>
-
-
             <div class='option'><label> <input type="number" id="externalPadding" min="0" max="50"></label>
 
             </div>
+
+            <br />
+            <hr />
 
 
             <h3 id='keyboardNavigationHeader'></h3>
@@ -130,15 +140,11 @@
                         → to focus first/last,
                         and 'Enter' to open </span>
             </div>
-
             <div class='option'> <label> <input type="checkbox" id="keyboardCycle"> </label> </div>
-
+            <div class='option'> <label> <input type="checkbox" id="sideArrowsFocusSidebarFirst"> </label> </div>
             <div class='option'> <label><input type="color" id="keyboardFocusBorderColor">
                   </label>
             </div>
-            <div class='option'> <label> <input type="number" min='1' max='10' id="focusedBorderWidth"> </label>
-            </div>
-
             <div class='option tooltip'> <label><input type="checkbox" id="numericNavigation">
                   </label>
                   <span id="numericNavigationTooltip" class="tooltiptext">Pressing '1' will focus first search result,
@@ -148,12 +154,18 @@
                         on. Pressing '0' will focus search field</span>
             </div>
 
+            <div class='option'> <label><input type="checkbox" id="numbersNavigateTabs"> </label>
+            </div>
+            <div class='option tooltip'> <label><input type="checkbox" id="firstNumberPressScrollsToElement"> </label>
+                  <span id="firstNumberPressScrollsToElementTooltip" class="tooltiptext"> </span>
+            </div>
             <div class='option'> <label><input type="checkbox" id="addTileCounter"> </label>
             </div>
-
             <div class='option'> <label> <input type="number" step='0.1' min='0.0' max='1.0' id="indexHintOpacity">
                   </label>
             </div>
+            <br />
+            <hr />
 
 
             <!-- Custom CSS section -->
