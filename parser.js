@@ -1039,7 +1039,7 @@ function configureTile(tile, maxWidth) {
     console.log(`fetching ${url} preview...`);
     var parentId = tile.parentNode.parentNode.id;
     if (url !== undefined && parentId !== 'rhs' && parentId !== 'g-tiles-sidebar' && !url.includes('https://www.google.com/'))
-      fetch(`https://www.googleapis.com/pagespeedonline/v5/runPagespeed?screenshot=true&url=${url}&key=AIzaSyDlDx1tt0dXdgEUrmKh_qlMjZIOHjcoIFk`)
+      fetch(`https://www.googleapis.com/pagespeedonline/v5/runPagespeed?screenshot=true&url=${url}&key={PAGESPEED-API-KEY}`)
         .then(response => response.json())
         .then(function (json) {
           var val = json['lighthouseResult'];
