@@ -951,8 +951,11 @@ function configureTile(tile, maxWidth) {
       if (focusedTileDifferentBorder)
         wrapper.firstChild.style.border = `solid ${focusedBorderWidth}px ${keyboardFocusBorderColor}`;
 
-      if (scaleUpFocusedResult)
+      if (scaleUpFocusedResult) {
         wrapper.firstChild.style.webkitTransform = `scale(${scaleUpFocusedResultAmount})`;
+        wrapper.firstChild.style.zIndex = '2';
+      }
+
 
     }
 
@@ -961,8 +964,11 @@ function configureTile(tile, maxWidth) {
       if (focusedTileDifferentBorder)
         wrapper.firstChild.style.border = `solid ${focusedBorderWidth}px ${addTileBorder ? borderColor : 'transparent'}`;
 
-      if (scaleUpFocusedResult)
+      if (scaleUpFocusedResult) {
         wrapper.firstChild.style.webkitTransform = `scale(1.0)`;
+        wrapper.firstChild.style.zIndex = '1';
+
+      }
     }
   }
 
