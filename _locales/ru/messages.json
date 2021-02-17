@@ -196,7 +196,7 @@
         "description": ""
     },
     "sidebarWidthMultiplier": {
-        "message": "Ширина боковой колонки (по отношению к колонке основных результатов)",
+        "message": "Ширина боковой колонки",
         "description": ""
     },
     "sidebarPadding": {
@@ -233,6 +233,26 @@
     },
     "sideArrowsFocusSidebarFirst": {
         "message": "← и → перемещает фокус на боковые виджеты",
+        "description": ""
+    },
+    "colorizeBorderAfterFavicon": {
+        "message": "Окрасить рамку в цвет иконки сайта",
+        "description": ""
+    },
+    "focusedTileDifferentBorder": {
+        "message": "Другая рамка для выделенной плитки",
+        "description": ""
+    },
+    "colorizeBorderAfterFaviconTooltip": {
+        "message": "Эта настройка конфликтует с 'Другая рамка для выделенной плитки'",
+        "description": ""
+    },
+    "scaleUpFocusedResult": {
+        "message": "Увеличивать сфокусированную плитку",
+        "description": ""
+    },
+    "scaleUpFocusedResultAmount": {
+        "message": "Размер увеличения",
         "description": ""
     }
 }

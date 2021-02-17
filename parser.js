@@ -37,14 +37,15 @@ var borderColor;
 var sidebarWidthMultiplier;
 var firstNumberPressScrollsToElement;
 var sideArrowsFocusSidebarFirst;
+var colorizeBorderAfterFavicon;
+var focusedTileDifferentBorder;
+var scaleUpFocusedResult;
+var scaleUpFocusedResultAmount;
 
+var sidebarPadding = 25;
 var centerizeSelectedResult = true;
-var scaleUpFocusedResult = false;
-var scaleUpFocusedResultAmount = 1.025;
 var imageScaleUpOnHoverAmount = 1.5;
-
 var loadPreviews = false;
-var sidebarPadding = 15;
 var counterHintsOnBottom = true;
 var countedHintColor = 'grey';
 var counterHintFocusColor = '#EA4335';
@@ -118,6 +119,10 @@ function init() {
       'sidebarWidthMultiplier',
       'firstNumberPressScrollsToElement',
       'sideArrowsFocusSidebarFirst',
+      'colorizeBorderAfterFavicon',
+      'focusedTileDifferentBorder',
+      'scaleUpFocusedResult',
+      'scaleUpFocusedResultAmount',
     ], function (value) {
       enabled = value.tilesEnabled ?? true;
 
@@ -160,6 +165,10 @@ function init() {
         sidebarWidthMultiplier = value.sidebarWidthMultiplier || 0.75;
         firstNumberPressScrollsToElement = value.firstNumberPressScrollsToElement ?? true;
         sideArrowsFocusSidebarFirst = value.sideArrowsFocusSidebarFirst ?? true;
+        colorizeBorderAfterFavicon = value.colorizeBorderAfterFavicon ?? false;
+        focusedTileDifferentBorder = value.focusedTileDifferentBorder ?? true;
+        scaleUpFocusedResult = value.scaleUpFocusedResult ?? false;
+        scaleUpFocusedResultAmount = value.scaleUpFocusedResultAmount || 1.05;
 
         var mainResults = document.getElementById(columnWithRegularResultsId);
         if (mainResults !== null) {
@@ -890,7 +899,6 @@ function configureTile(tile, maxWidth) {
 
   /// Set 'on hover' styling for each tile
   tile.onmouseover = function () {
-    console.log(highlightTitleOnHover);
 
     // if (addBackground)
     this.style.backgroundColor = hoverBackground;
@@ -940,7 +948,8 @@ function configureTile(tile, maxWidth) {
     /// Highlight item focused with keyboard
     // wrapper.addEventListener('focus', (event) => {
     wrapper.onfocus = function (event) {
-      wrapper.firstChild.style.border = `solid ${focusedBorderWidth}px ${keyboardFocusBorderColor}`;
+      if (focusedTileDifferentBorder)
+        wrapper.firstChild.style.border = `solid ${focusedBorderWidth}px ${keyboardFocusBorderColor}`;
 
       if (scaleUpFocusedResult)
         wrapper.firstChild.style.webkitTransform = `scale(${scaleUpFocusedResultAmount})`;
@@ -949,13 +958,15 @@ function configureTile(tile, maxWidth) {
 
     /// Remove the highlight from item on focus loss
     wrapper.onblur = function () {
-      wrapper.firstChild.style.border = `solid ${focusedBorderWidth}px ${addTileBorder ? borderColor : 'transparent'}`;
+      if (focusedTileDifferentBorder)
+        wrapper.firstChild.style.border = `solid ${focusedBorderWidth}px ${addTileBorder ? borderColor : 'transparent'}`;
 
       if (scaleUpFocusedResult)
         wrapper.firstChild.style.webkitTransform = `scale(1.0)`;
     }
   }
 
+  var faviconColor;
 
   /// Add favicons to website titles
   if (addFavicons || simplifyDomain) {
@@ -977,6 +988,7 @@ function configureTile(tile, maxWidth) {
           } else {
             titleText = domain.textContent.replace(/.+\/\/|www.|\..+/g, '');
           }
+          titleText = titleText.replaceAll('https://', '');
 
           /// Add tooltip with full domain on hover
           if (showFullDomainOnHover)
@@ -987,9 +999,18 @@ function configureTile(tile, maxWidth) {
       }
 
       /// Create favicon
-      if (addFavicons && url !== null && url !== undefined && url !== '') {
+      // if (addFavicons && url !== null && url !== undefined && url !== '') {
+      if (addFavicons && url !== null && url !== undefined && url !== '' && tile.className == 'g') {
         var favicon = document.createElement('img');
-        favicon.setAttribute("src", 'https://www.google.com/s2/favicons?domain=' + url);
+
+        // favicon.setAttribute("src", 'https://www.google.com/s2/favicons?domain=' + url);
+
+        var domainForFavicon = url.split('/')[2];
+        if (domainForFavicon == null || domainForFavicon == undefined)
+          domainForFavicon = url;
+        console.log(domainForFavicon);
+        favicon.setAttribute("src", 'https://www.google.com/s2/favicons?domain=' + domainForFavicon);
+
         favicon.style.cssText = `height:${faviconRadius}px; width:${faviconRadius}px;  padding-right: 5px;`;
         domain.parentNode.prepend(favicon);
 
@@ -1010,6 +1031,15 @@ function configureTile(tile, maxWidth) {
             domain.appendChild(translatePageButton);
           }
         }
+
+        if (colorizeBorderAfterFavicon)
+          favicon.addEventListener("load", function () {
+            faviconColor = getFaviconColor(favicon);
+            if (faviconColor !== null && faviconColor !== undefined) {
+              if (faviconColor !== '#ffffff')
+                tile.style.borderColor = faviconColor;
+            }
+          });
       }
     }
   }
@@ -1039,7 +1069,7 @@ function configureTile(tile, maxWidth) {
     console.log(`fetching ${url} preview...`);
     var parentId = tile.parentNode.parentNode.id;
     if (url !== undefined && parentId !== 'rhs' && parentId !== 'g-tiles-sidebar' && !url.includes('https://www.google.com/'))
-      fetch(`https://www.googleapis.com/pagespeedonline/v5/runPagespeed?screenshot=true&url=${url}&key={PAGESPEED-API-KEY}`)
+      fetch(`https://www.googleapis.com/pagespeedonline/v5/runPagespeed?screenshot=true&url=${url}&key=AIzaSyDlDx1tt0dXdgEUrmKh_qlMjZIOHjcoIFk`)
         .then(response => response.json())
         .then(function (json) {
           var val = json['lighthouseResult'];
@@ -1057,18 +1087,152 @@ function configureTile(tile, maxWidth) {
         })
         .catch(err => console.log(err));
   }
-
-
 }
 
 
 HTMLElement.prototype.wrap = function (wrapper) {
-  // try {
   this.parentNode.insertBefore(wrapper, this);
   wrapper.appendChild(this);
-  // } catch (error) {
-  //   console.log('Google Tiles error: ' + error);
-  // }
+}
+
+
+function getAverageRGB(img) {
+  canvas = document.createElement('canvas'),
+    context = canvas.getContext && canvas.getContext('2d');
+  // const context = document.createElement("canvas").getContext("2d");
+  // //draw the image to one pixel and let the computer find the dominant color
+  context.drawImage(img, 0, 0, 1, 1);
+  //get pixel color
+  const i = context.getImageData(0, 0, 1, 1).data;
+  var r = i[0];
+  var g = i[1];
+  var b = i[2];
+  var a = i[3];
+
+  console.log(i);
+
+  /// If color is to close to white, try to paint bigger picture and take another pixel
+  // if (r > 230 && g > 230 && b > 230) {
+  if (a == 0 || (r > 200 && g > 200 && b > 200)) {
+    // context.drawImage(img, 1, 1, 7.5, 7.5);
+    context.drawImage(img, 1, 1, 6, 6);
+    const i2 = context.getImageData(1, 1, 1, 1).data;
+    r = i2[0];
+    g = i2[1];
+    b = i2[2];
+    a = i2[3];
+
+    /// ...trying to take another pixel again
+    if (a == 0 || (r > 200 && g > 200 && b > 200)) {
+      // const i3 = context.getImageData(2, 2, 1, 1).data;
+      const i3 = context.getImageData(3, 3, 1, 1).data;
+      r = i3[0];
+      g = i3[1];
+      b = i3[2];
+      a = i3[3];
+
+      /// Probably site with no favicon, return white which will be ignored
+      // if (r == 102 && g == 111 && b == 173 && a == 133) {
+      //   return '#ffffff';
+      // }
+
+      /// ...trying to take area in the center of image
+      if (a == 0 || (r > 200 && g > 200 && b > 200)) {
+        const i4 = context.getImageData(3, 3, 1, 1).data;
+        r = i4[0];
+        g = i4[1];
+        b = i4[2];
+        a = i4[3];
+      }
+    }
+  }
+
+
+
+  /// If resulting color is black, return it
+  if (r == 0 && g == 0 && b == 0 && a > 200) {
+    return `rgba(${r}, ${g}, ${b}, ${a / 4})`;
+  } else {
+    /// Otherwise, increase it's hue if it's less then 0.5
+    var hsv = RGBtoHSV([r, g, b]);
+    // if ((hsv[1] < 0.4) && (r !== 0 && g !== 0 && b !== 0))
+    //   // hsv[1] = 0.7;
+    //   hsv[1] = hsv[1] * 4;
+    var rgb = HSVtoRGB(hsv);
+    console.log(rgb);
+
+    if (rgb[0] == 174 && rgb[1] == 184 && rgb[2] == 213) {
+      return '#ffffff';
+    }
+
+    if (rgb[0] > 230 && rgb[1] > 230 && rgb[2] > 230)
+      /// If too close to white, return white (which will be ignored)
+      return '#ffffff';
+    else
+      return "#" + ((1 << 24) + (rgb[0] << 16) + (rgb[1] << 8) + rgb[2]).toString(16).slice(1);
+
+    // return `rgba(${r}, ${g}, ${b}, ${a / 4})`;
+
+
+  }
+}
+
+
+
+function getFaviconColor(img) {
+  var colorList = {};
+
+  var imageWidth = img.width;
+  var imageHeight = img.height;
+  var canvas = document.createElement('canvas');
+  canvas.height = imageHeight;
+  canvas.width = imageWidth;
+  var context = canvas.getContext('2d');
+  context.drawImage(img, 0, 0, imageWidth, imageHeight);
+  var imageData = context.getImageData(0, 0, imageWidth, imageHeight);
+  var data = imageData.data;
+  // quickly iterate over all pixels
+  // for (i = 0, n = data.length; i < n; i += 4) {
+  for (var i = 0; i < data.length; i += 4) {
+    var r = data[i];
+    var g = data[i + 1];
+    var b = data[i + 2];
+
+
+    if (r > 200 && g > 200 && b > 200) continue;
+    if (r == 0 && g == 0 && b == 0) continue;
+
+    var hex = rgb2hex("rgb(" + r + "," + g + "," + b + ")");
+
+    if (colorList[hex] == null || colorList[hex] == undefined) {
+      colorList[hex] = 1;
+    } else {
+      colorList[hex] += 1;
+    }
+  }
+  // console.log(colorList);
+
+  var sorted_keys = Object.keys(colorList).sort(function (a, b) { return colorList[a] - (colorList[b]); }).reverse();
+
+  if (sorted_keys.length == 0) return '#000000';
+  colorToReturn = colorList[sorted_keys[0]] - colorList[sorted_keys[1]] > 2 ? sorted_keys[0] : sorted_keys[1];
+  /// Color returned for results with no favicon. Return white, which will be ignored
+  if (colorToReturn == '#4040bf') return '#ffffff';
+
+  // console.log(img.src);
+  // console.log(colorToReturn);
+
+
+  return colorToReturn;
+}
+
+//rgb to hex function
+function rgb2hex(rgb) {
+  rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+  function hex(x) {
+    return ("0" + parseInt(x).toString(16)).slice(-2);
+  }
+  return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
 }
 
 

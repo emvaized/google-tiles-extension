@@ -16,7 +16,11 @@
   "content_scripts": [
     {
       "matches": [
-        "*://www.google.com/search*"
+        "*://www.google.com/search*",
+        "*://www.google.ru/search*",
+        "*://www.google.de/search*",
+        "*://www.google.co.uk/search*",
+        "*://www.google.com.ua/search*"
       ],
       "js": [
         "parser.js"

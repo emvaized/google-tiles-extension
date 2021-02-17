@@ -196,7 +196,7 @@
     "description": ""
   },
   "sidebarWidthMultiplier": {
-    "message": "Sidebar width (in fraction to main results column)",
+    "message": "Sidebar width",
     "description": ""
   },
   "sidebarPadding": {
@@ -233,6 +233,26 @@
   },
   "sideArrowsFocusSidebarFirst": {
     "message": "← and → keys switch focus to sidebar",
+    "description": ""
+  },
+  "colorizeBorderAfterFavicon": {
+    "message": "Colorize border after website favicon",
+    "description": ""
+  },
+  "focusedTileDifferentBorder": {
+    "message": "Different border for focused tile",
+    "description": ""
+  },
+  "colorizeBorderAfterFaviconTooltip": {
+    "message": "This setting conflicts with 'Different border for focused tile'",
+    "description": ""
+  },
+  "scaleUpFocusedResult": {
+    "message": "Scale up focused result",
+    "description": ""
+  },
+  "scaleUpFocusedResultAmount": {
+    "message": "Scale up amount",
     "description": ""
   }
 }

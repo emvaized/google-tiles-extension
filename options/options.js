@@ -37,6 +37,10 @@ var options = new Map([
   ['sidebarWidthMultiplier', 0.75],
   ['firstNumberPressScrollsToElement', true],
   ['sideArrowsFocusSidebarFirst', true],
+  ['colorizeBorderAfterFavicon', false],
+  ['focusedTileDifferentBorder', true],
+  ['scaleUpFocusedResult', false],
+  ['scaleUpFocusedResultAmount', 1.05],
 ]);
 
 var keys = [...options.keys()];
@@ -83,6 +87,7 @@ function restoreOptions() {
     document.querySelector("#numericNavigationTooltip").innerHTML = chrome.i18n.getMessage("numericNavigationTooltip");
     document.querySelector("#navigateWithKeyboardTooltip").innerHTML = chrome.i18n.getMessage("navigateWithKeyboardTooltip");
     document.querySelector("#firstNumberPressScrollsToElementTooltip").innerHTML = chrome.i18n.getMessage("firstNumberPressScrollsToElementTooltip");
+    document.querySelector("#colorizeBorderAfterFaviconTooltip").innerHTML = chrome.i18n.getMessage("colorizeBorderAfterFaviconTooltip");
 
     /// Set translated headers
     document.querySelector("#previewHeader").innerHTML = chrome.i18n.getMessage("preview");
@@ -122,6 +127,9 @@ function updateDisabledOptions() {
   document.querySelector("#sidebarWidthMultiplier").parentNode.className = document.querySelector("#tryToPlaceSuggestionsOnTheSide").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#firstNumberPressScrollsToElement").parentNode.className = document.querySelector("#numericNavigation").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#sideArrowsFocusSidebarFirst").parentNode.className = document.querySelector("#navigateWithKeyboard").checked ? 'enabled-option' : 'disabled-option';
+  document.querySelector("#colorizeBorderAfterFavicon").parentNode.className = document.querySelector("#addFavicons").checked ? 'enabled-option' : 'disabled-option';
+  document.querySelector("#keyboardFocusBorderColor").parentNode.className = document.querySelector("#focusedTileDifferentBorder").checked ? 'enabled-option' : 'disabled-option';
+  document.querySelector("#scaleUpFocusedResultAmount").parentNode.className = document.querySelector("#scaleUpFocusedResult").checked ? 'enabled-option' : 'disabled-option';
 }
 
 function updatePreviewTile() {
@@ -147,10 +155,11 @@ function updatePreviewTile() {
   var numbersNavigateTabs = document.querySelector("#numbersNavigateTabs").checked;
   var numericNavigation = document.querySelector("#numericNavigation").checked;
   var showFullDomainOnHover = document.querySelector("#showFullDomainOnHover").checked;
+  var colorizeBorderAfterFavicon = document.querySelector("#colorizeBorderAfterFavicon").checked;
 
   /// Set preview tile style
   var tile = document.querySelector('#previewTile');
-  tile.setAttribute("style", `background-color:${tileBackgroundColor};align-items: center;width: ${widerTiles ? 100 : 85}%;cursor:${wholeTileIsClickable ? 'pointer' : 'auto'};border:solid ${focusedBorderWidth || '1'}px ${addTileBorder ? '#DADCE0' : 'transparent'};border-radius: ${borderRadius || '6'}px;transition:all ${hoverTransitionDuration || '300'}ms ease-out;padding: ${innerPadding || '12'}px;box-shadow: ${(shadowEnabled ?? true) ? `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity || '0.15'})` : 'unset'};`);
+  tile.setAttribute("style", `background-color:${tileBackgroundColor};align-items: center;width: ${widerTiles ? 100 : 85}%;cursor:${wholeTileIsClickable ? 'pointer' : 'auto'};border:solid ${focusedBorderWidth || '1'}px ${addTileBorder ? colorizeBorderAfterFavicon ? '#4A96F5' : '#DADCE0' : 'transparent'};border-radius: ${borderRadius || '6'}px;transition:all ${hoverTransitionDuration || '300'}ms ease-out;padding: ${innerPadding || '12'}px;box-shadow: ${(shadowEnabled ?? true) ? `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity || '0.15'})` : 'unset'};`);
 
   /// Change favicon and counter hint visibility
   document.querySelector('#previewFavicon').style.cssText = `display: ${addFavicons == false ? 'none' : 'inline'};height:${faviconRadius}px; width:${faviconRadius}px;  `;
