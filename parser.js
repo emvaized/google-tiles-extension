@@ -1006,7 +1006,7 @@ function configureTile(tile, maxWidth) {
 
       /// Create favicon
       // if (addFavicons && url !== null && url !== undefined && url !== '') {
-      if (addFavicons && url !== null && url !== undefined && url !== '' && tile.className == 'g') {
+      if (addFavicons && url !== null && url !== undefined && url !== '' && tile.className == regularResultClassName) {
         var favicon = document.createElement('img');
 
         // favicon.setAttribute("src", 'https://www.google.com/s2/favicons?domain=' + url);
@@ -1100,89 +1100,6 @@ HTMLElement.prototype.wrap = function (wrapper) {
   this.parentNode.insertBefore(wrapper, this);
   wrapper.appendChild(this);
 }
-
-
-function getAverageRGB(img) {
-  canvas = document.createElement('canvas'),
-    context = canvas.getContext && canvas.getContext('2d');
-  // const context = document.createElement("canvas").getContext("2d");
-  // //draw the image to one pixel and let the computer find the dominant color
-  context.drawImage(img, 0, 0, 1, 1);
-  //get pixel color
-  const i = context.getImageData(0, 0, 1, 1).data;
-  var r = i[0];
-  var g = i[1];
-  var b = i[2];
-  var a = i[3];
-
-  console.log(i);
-
-  /// If color is to close to white, try to paint bigger picture and take another pixel
-  // if (r > 230 && g > 230 && b > 230) {
-  if (a == 0 || (r > 200 && g > 200 && b > 200)) {
-    // context.drawImage(img, 1, 1, 7.5, 7.5);
-    context.drawImage(img, 1, 1, 6, 6);
-    const i2 = context.getImageData(1, 1, 1, 1).data;
-    r = i2[0];
-    g = i2[1];
-    b = i2[2];
-    a = i2[3];
-
-    /// ...trying to take another pixel again
-    if (a == 0 || (r > 200 && g > 200 && b > 200)) {
-      // const i3 = context.getImageData(2, 2, 1, 1).data;
-      const i3 = context.getImageData(3, 3, 1, 1).data;
-      r = i3[0];
-      g = i3[1];
-      b = i3[2];
-      a = i3[3];
-
-      /// Probably site with no favicon, return white which will be ignored
-      // if (r == 102 && g == 111 && b == 173 && a == 133) {
-      //   return '#ffffff';
-      // }
-
-      /// ...trying to take area in the center of image
-      if (a == 0 || (r > 200 && g > 200 && b > 200)) {
-        const i4 = context.getImageData(3, 3, 1, 1).data;
-        r = i4[0];
-        g = i4[1];
-        b = i4[2];
-        a = i4[3];
-      }
-    }
-  }
-
-
-
-  /// If resulting color is black, return it
-  if (r == 0 && g == 0 && b == 0 && a > 200) {
-    return `rgba(${r}, ${g}, ${b}, ${a / 4})`;
-  } else {
-    /// Otherwise, increase it's hue if it's less then 0.5
-    var hsv = RGBtoHSV([r, g, b]);
-    // if ((hsv[1] < 0.4) && (r !== 0 && g !== 0 && b !== 0))
-    //   // hsv[1] = 0.7;
-    //   hsv[1] = hsv[1] * 4;
-    var rgb = HSVtoRGB(hsv);
-    console.log(rgb);
-
-    if (rgb[0] == 174 && rgb[1] == 184 && rgb[2] == 213) {
-      return '#ffffff';
-    }
-
-    if (rgb[0] > 230 && rgb[1] > 230 && rgb[2] > 230)
-      /// If too close to white, return white (which will be ignored)
-      return '#ffffff';
-    else
-      return "#" + ((1 << 24) + (rgb[0] << 16) + (rgb[1] << 8) + rgb[2]).toString(16).slice(1);
-
-    // return `rgba(${r}, ${g}, ${b}, ${a / 4})`;
-
-
-  }
-}
-
 
 
 function getFaviconColor(img) {
