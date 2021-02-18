@@ -1,6 +1,6 @@
 # Google Tiles
 
-Customize the looks and behaviour of Google search page
+Customize the looks and behavior of Google search page for better productivity
 
 * Make whole search result clickable and interactive (just like in DuckDuckGo)
 * Make search results look and behave like cards, with configurable border radius, shadows, colors and so on
