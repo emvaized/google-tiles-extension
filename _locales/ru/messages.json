@@ -128,7 +128,7 @@
         "description": ""
     },
     "allChangesSavedAutomatically": {
-        "message": "Настройки сохраняются автоматически. <br /> Обновите страницу, чтобы увидеть изменения",
+        "message": "Настройки сохраняются автоматически <br /> Обновите страницу, чтобы увидеть изменения",
         "description": ""
     },
     "moveSuggestionsToBottom": {
@@ -216,7 +216,7 @@
         "description": ""
     },
     "addTileBackground": {
-        "message": "Добавить фон плитки",
+        "message": "Добавить фон для плитки",
         "description": ""
     },
     "borderColor": {

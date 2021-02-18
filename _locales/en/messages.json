@@ -1,6 +1,6 @@
 {
   "extensionDescription": {
-    "message": "Customize the looks and behavior of your Google search output",
+    "message": "Customize the looks and behavior of Google search page",
     "description": ""
   },
   "innerPadding": {
@@ -128,7 +128,7 @@
     "description": ""
   },
   "allChangesSavedAutomatically": {
-    "message": "Settings are saved automatically. <br /> Update page to see changes",
+    "message": "Settings are saved automatically <br /> Update page to see changes",
     "description": ""
   },
   "moveSuggestionsToBottom": {
