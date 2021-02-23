@@ -418,6 +418,9 @@ function setLayout(elements) {
               }
 
             }
+          } else {
+            /// Remove the weird bottom margin for empty divs on page
+            suggestionTile.style.margin = '0px';
           }
         });
 
@@ -899,7 +902,6 @@ function configureTile(tile, maxWidth) {
     tile.style.width = '100%';
   }
 
-
   var originalTitleColor;
 
   /// Set 'on hover' styling for each tile
@@ -1062,6 +1064,7 @@ function configureTile(tile, maxWidth) {
     firstTileChild.style.backgroundColor = 'transparent';
     firstTileChild.style.overflowX = 'hidden';
     firstTileChild.style.overflowY = 'hidden';
+    firstTileChild.style.maxWidth = `${maxWidth == null ? '100%' : maxWidth + 'px'}`;
 
     if (firstTileChild.firstChild.style !== undefined)
       firstTileChild.firstChild.style.maxWidth = `${maxWidth == null ? '100%' : maxWidth + 'px'}`;
