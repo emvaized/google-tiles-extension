@@ -14,3 +14,6 @@ New features:
 - Added feature 'Scale up focused result'
 - Added support for more local domains
 - Added ability to disable tile background color and focused tile border color
+
+#2.2.1
+- Bug fixes
