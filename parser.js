@@ -172,9 +172,14 @@ function init() {
 
         var mainResults = document.getElementById(columnWithRegularResultsId);
         if (mainResults !== null) {
-          /// Regular results handling
-          mainResults = Array.prototype.slice.call(mainResults.children);
 
+          /// Regular results handling
+          if (mainResults.children.length == 1)
+            mainResults = Array.prototype.slice.call(mainResults.firstChild.children);
+          else
+            mainResults = Array.prototype.slice.call(mainResults.children);
+
+          console.log(mainResults.length);
           /// Handling when cards are wrapped in div (for example, in Edge)
           if (mainResults.length < 8)
             mainResults.forEach(function (result) {
