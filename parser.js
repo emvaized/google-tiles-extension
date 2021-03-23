@@ -41,9 +41,9 @@ var colorizeBorderAfterFavicon;
 var focusedTileDifferentBorder;
 var scaleUpFocusedResult;
 var scaleUpFocusedResultAmount;
+var centerizeSelectedResult;
 
 var sidebarPadding = 25;
-var centerizeSelectedResult = true;
 var imageScaleUpOnHoverAmount = 1.5;
 var loadPreviews = false;
 var counterHintsOnBottom = true;
@@ -123,6 +123,7 @@ function init() {
       'focusedTileDifferentBorder',
       'scaleUpFocusedResult',
       'scaleUpFocusedResultAmount',
+      'centerizeSelectedResult',
     ], function (value) {
       enabled = value.tilesEnabled ?? true;
 
@@ -150,8 +151,8 @@ function init() {
         applyStyleToWidgets = value.applyStyleToWidgets ?? true;
         simplifyDomain = value.simplifyDomain ?? true;
         widerTiles = value.widerTiles ?? true;
-        scaleUpImageResultsOnHover = value.scaleUpImageResultsOnHover ?? true;
-        scrollHorizontalViewOnHover = value.scrollHorizontalViewOnHover ?? true;
+        scaleUpImageResultsOnHover = value.scaleUpImageResultsOnHover ?? false;
+        scrollHorizontalViewOnHover = value.scrollHorizontalViewOnHover ?? false;
         addTileBorder = value.addTileBorder ?? true;
         tileBackgroundColor = value.tileBackgroundColor ?? '#FFFFFF';
         delayToScrollOnHover = value.delayToScrollOnHover || 150;
@@ -169,6 +170,7 @@ function init() {
         focusedTileDifferentBorder = value.focusedTileDifferentBorder ?? true;
         scaleUpFocusedResult = value.scaleUpFocusedResult ?? false;
         scaleUpFocusedResultAmount = value.scaleUpFocusedResultAmount || 1.05;
+        centerizeSelectedResult = value.centerizeSelectedResult ?? true;
 
         var mainResults = document.getElementById(columnWithRegularResultsId);
         if (mainResults !== null) {
@@ -236,8 +238,8 @@ function setLayout(elements) {
     try {
       var regularResultsColumnWidth = regularResultsColumn.clientWidth;
 
-      /// Adjusting sidebar
       if (sidebarContainer == null) {
+        /// Setting up the sidebar
         sidebarContainer = document.createElement('div');
         sidebarContainer.setAttribute('id', 'g-tiles-sidebar');
         sidebarContainer.setAttribute("style", `position: absolute; top: 0; left:${regularResultsColumnWidth * 1.07 + sidebarPadding}px;width: ${regularResultsColumnWidth * sidebarWidthMultiplier}px !important;padding-left:${sidebarPadding}px;padding-top:0px;`);
@@ -260,7 +262,8 @@ function setLayout(elements) {
         // }
 
       } else
-        sidebarContainer.setAttribute("style", `width: ${regularResultsColumnWidth * sidebarWidthMultiplier}px !important;padding-left:${sidebarPadding}px;padding-top:6px;`);
+        sidebarContainer.setAttribute("style", `width: ${regularResultsColumnWidth * sidebarWidthMultiplier}px !important;padding-top:6px;`);
+      // sidebarContainer.setAttribute("style", `width: ${regularResultsColumnWidth * sidebarWidthMultiplier}px !important;padding-left:${sidebarPadding}px;margin-left: ${regularResultsColumnWidth + document.getElementById('center_col').style.marginLeft.replaceAll('px', '')}px;padding-top:6px;`);
 
 
       /// Adding some padding for 'results count' text on and navbar for better visual symmetry
@@ -554,7 +557,7 @@ function setLayout(elements) {
 
     function checkKey(e) {
       /// Dont listen for number or arrow keys when searchfield is focused
-      if (document.activeElement === searchField) return;
+      if (document.activeElement === searchField || document.activeElement.tagName === 'INPUT') return;
 
       e = e || window.event;
 
@@ -882,7 +885,7 @@ function configureTile(tile, maxWidth) {
   /// Don't wrap if calculated link is the same as url + '#'
   var linkIsValid = url !== null && url !== undefined && url !== window.location.href + '#';
 
-  if (linkIsValid) {
+  if (linkIsValid && tile.className.toLowerCase()[0] == 'g') {
     wrapper.href = url;
 
     /// Disable link underline for H3 headers
@@ -905,23 +908,26 @@ function configureTile(tile, maxWidth) {
   var originalTitleColor;
 
   /// Set 'on hover' styling for each tile
-  tile.onmouseover = function () {
+  if (tile.className.toLowerCase()[0] == 'g') {
+    tile.onmouseover = function () {
 
-    // if (addBackground)
-    this.style.backgroundColor = hoverBackground;
-    if (highlightTitleOnHover && titles[0] !== undefined && linkIsValid) {
-      originalTitleColor = titles[0].style.color;
-      titles[0].style.color = titleHoverColor;
+      // if (addBackground)
+      this.style.backgroundColor = hoverBackground;
+      if (highlightTitleOnHover && titles[0] !== undefined && linkIsValid) {
+        originalTitleColor = titles[0].style.color;
+        titles[0].style.color = titleHoverColor;
+      }
+    }
+
+    tile.onmouseout = function () {
+      this.style.backgroundColor = addTileBackground ? tileBackgroundColor : 'transparent';
+
+      // regular link color: #1A0DAB;
+      if (highlightTitleOnHover && titles[0] !== undefined && linkIsValid)
+        titles[0].style.color = originalTitleColor ?? 'unset';
     }
   }
 
-  tile.onmouseout = function () {
-    this.style.backgroundColor = addTileBackground ? tileBackgroundColor : 'transparent';
-
-    // regular link color: #1A0DAB;
-    if (highlightTitleOnHover && titles[0] !== undefined && linkIsValid)
-      titles[0].style.color = originalTitleColor ?? 'unset';
-  }
 
   /// Append onClick listeners to visually emulate button press on card by changing shadow 
   if (shadowEnabled && wholeTileIsClickable) {
@@ -1059,12 +1065,13 @@ function configureTile(tile, maxWidth) {
 
   /// Remove some default tile stylings for children, such as borders and background colors
   var firstTileChild = tile.firstChild;
+
   if (firstTileChild !== undefined && firstTileChild.style !== undefined) {
     firstTileChild.style.borderColor = 'transparent';
     firstTileChild.style.backgroundColor = 'transparent';
     firstTileChild.style.overflowX = 'hidden';
     firstTileChild.style.overflowY = 'hidden';
-    firstTileChild.style.maxWidth = `${maxWidth == null ? '100%' : maxWidth + 'px'}`;
+    // firstTileChild.style.maxWidth = `${maxWidth == null ? '100%' : maxWidth + 'px'}`;
 
     if (firstTileChild.firstChild.style !== undefined)
       firstTileChild.firstChild.style.maxWidth = `${maxWidth == null ? '100%' : maxWidth + 'px'}`;
@@ -1073,9 +1080,15 @@ function configureTile(tile, maxWidth) {
       firstTileChild.firstChild.style.borderColor = 'transparent';
       firstTileChild.firstChild.style.backgroundColor = 'transparent';
       /// Special fix for 'news' tab (and maybe for some widgets in main query results)
-      firstTileChild.firstChild.style.maxWidth = `${maxWidth == null ? '100%' : maxWidth + 'px'}`;
+      // firstTileChild.firstChild.style.maxWidth = `${maxWidth == null ? '100%' : maxWidth + 'px'}`;
     }
   }
+
+  tile.querySelectorAll('div').forEach(function (child) {
+    try {
+      child.style.maxWidth = `${maxWidth == null ? '100%' : maxWidth + 'px'}`;
+    } catch (e) { }
+  });
 
 
   /// Appending page snapshot

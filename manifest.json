@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "default_locale": "en",
   "name": "Google Tiles",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "__MSG_extensionDescription__",
   "icons": {
     "48": "icons/new-new-icon-48.png",

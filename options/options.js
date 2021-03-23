@@ -22,8 +22,8 @@ var options = new Map([
   ['applyStyleToWidgets', true],
   ['simplifyDomain', true],
   ['widerTiles', true],
-  ['scaleUpImageResultsOnHover', true],
-  ['scrollHorizontalViewOnHover', true],
+  ['scaleUpImageResultsOnHover', false],
+  ['scrollHorizontalViewOnHover', false],
   ['tileBackgroundColor', '#FFFFFF'],
   ['addTileBorder', true],
   ['delayToScrollOnHover', 150],
@@ -41,6 +41,7 @@ var options = new Map([
   ['focusedTileDifferentBorder', true],
   ['scaleUpFocusedResult', false],
   ['scaleUpFocusedResultAmount', 1.05],
+  ['centerizeSelectedResult', true],
 ]);
 
 var keys = [...options.keys()];

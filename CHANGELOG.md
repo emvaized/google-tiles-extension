@@ -15,5 +15,13 @@ New features:
 - Added support for more local domains
 - Added ability to disable tile background color and focused tile border color
 
-#2.2.1
+#2.1.1
 - Bug fixes
+
+#2.1.2
+- Disabled adding on-click links for search widgets to avoid usability issues
+- Changed default settings for some params
+- Fixed width for search widgets 
+- Added option to disable centerizing tile focused by arrow keys
+
+

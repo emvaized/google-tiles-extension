@@ -254,5 +254,9 @@
     "scaleUpFocusedResultAmount": {
         "message": "Размер увеличения",
         "description": ""
+    },
+    "centerizeSelectedResult": {
+        "message": "Отцентровать выбранный результат",
+        "description": ""
     }
 }

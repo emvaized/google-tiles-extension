@@ -254,5 +254,9 @@
   "scaleUpFocusedResultAmount": {
     "message": "Scale up amount",
     "description": ""
+  },
+  "centerizeSelectedResult": {
+    "message": "Centerize selected result",
+    "description": ""
   }
 }
