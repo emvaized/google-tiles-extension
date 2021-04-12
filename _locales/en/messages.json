@@ -128,7 +128,7 @@
     "description": ""
   },
   "allChangesSavedAutomatically": {
-    "message": "Settings are saved automatically <br /> Update page to see changes",
+    "message": "Settings are saved automatically <br /> Update open pages to see changes",
     "description": ""
   },
   "moveSuggestionsToBottom": {
@@ -152,7 +152,7 @@
     "description": ""
   },
   "header": {
-    "message": "Header",
+    "message": "Tile header",
     "description": ""
   },
   "widerTiles": {

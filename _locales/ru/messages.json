@@ -128,7 +128,7 @@
         "description": ""
     },
     "allChangesSavedAutomatically": {
-        "message": "Настройки сохраняются автоматически <br /> Обновите страницу, чтобы увидеть изменения",
+        "message": "Настройки сохраняются автоматически <br /> Обновите страницы, чтобы увидеть изменения",
         "description": ""
     },
     "moveSuggestionsToBottom": {
@@ -152,7 +152,7 @@
         "description": ""
     },
     "header": {
-        "message": "Заголовок",
+        "message": "Заголовок плитки",
         "description": ""
     },
     "widerTiles": {

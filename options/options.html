@@ -45,139 +45,136 @@
             </div>
 
             <br />
-            <hr />
+            <!-- <hr /> -->
 
-            <h3 id='appearanceHeader'></h3>
+            <h3 class='collapsible-header' id='appearanceHeader'></h3>
+            <div class='collapsible-content'>
+                  <div class='option'> <label><input type="checkbox" id="wholeTileIsClickable">
+                        </label></div>
+                  <div class='option'> <label><input type="number" min="0" max="50" id="borderRadius"> </label>
+                  </div>
+                  <div class='option'><label> <input type="number" min="0" max="50" id="innerPadding"></label>
+                  </div>
+                  <div class='option'> <label><input type="checkbox" id="addTileBackground"> </label> </div>
+                  <div class='option'> <label><input type="color" id="tileBackgroundColor">
+                        </label>
+                  </div>
+                  <div class='option'> <label><input type="checkbox" id="addTileBorder"> </label> </div>
+                  <div class='option'> <label><input type="color" id="borderColor"> </label> </div>
+                  <div class='option'> <label> <input type="number" min='1' max='10' id="focusedBorderWidth"> </label>
+                  </div>
+                  <div class='option'> <label><input type="checkbox" id="shadowEnabled"> </label> </div>
+                  <div class='option'> <label><input type="number" step='0.05' min='0.0' max='1.0' id="shadowOpacity">
+                        </label> </div>
+                  <div class='option tooltip'> <label><input type="checkbox" id="colorizeBorderAfterFavicon"> </label>
+                        <span id="colorizeBorderAfterFaviconTooltip" class="tooltiptext"> </span>
+                  </div>
+            </div>
 
-            <div class='option'> <label><input type="checkbox" id="wholeTileIsClickable">
-                  </label></div>
-            <div class='option'> <label><input type="number" min="0" max="50" id="borderRadius"> </label>
+            <h3 class='collapsible-header' id='faviconsHeader'></h3>
+            <div class='collapsible-content'>
+                  <div class='option'> <label><input type="checkbox" id="addFavicons"> </label>
+                  </div>
+                  <div class='option'> <label><input type="number" id="faviconRadius"> </label> </div>
+                  <div class='option'> <label><input type="checkbox" id="simplifyDomain"> </label>
+                  </div>
+                  <div class='option'> <label><input type="checkbox" id="showFullDomainOnHover">
+                        </label></div>
+                  <div class='option'> <label><input type="checkbox" id="disableTitleUnderlineOnHover">
+                        </label></div>
+                  <div class='option'> <label><input type="checkbox" id="highlightTitleOnHover">
+                        </label></div>
+                  <div class='option'> <label><input type="color" id="titleHoverColor">
+                        </label></div>
+
             </div>
-            <div class='option'><label> <input type="number" min="0" max="50" id="innerPadding"></label>
+
+            <h3 class='collapsible-header' id='hoverHeader'></h3>
+            <div class='collapsible-content'>
+                  <div class='option'> <label> <input type="color" id="hoverBackground"> </label>
+                  </div>
+                  <div class='option'> <label><input type="number" min='0' id="hoverTransitionDuration"> </label>
+                  </div>
+                  <div class='option'> <label><input type="checkbox" id="scaleUpImageResultsOnHover">
+                        </label></div>
+                  <div class='option'> <label><input type="checkbox" id="scrollHorizontalViewOnHover">
+                        </label></div>
+                  <div class='option'> <label><input type="number" min="0" step="50" id="delayToScrollOnHover">
+                        </label></div>
             </div>
-            <div class='option'> <label><input type="checkbox" id="addTileBackground"> </label> </div>
-            <div class='option'> <label><input type="color" id="tileBackgroundColor">
-                  </label>
+
+            <h3 class='collapsible-header' id='searchResultsHeader'></h3>
+            <div class='collapsible-content'>
+                  <div class='option'> <label><input type="checkbox" id="widerTiles"> </label>
+                  </div>
+                  <div class='option'><label> <input type="number" id="externalPadding" min="0" max="50"></label>
+                  </div>
+                  <div class='option tooltip'> <label> <input type="checkbox" id="moveSuggestionsToBottom"></label>
+                        <span id="moveSuggestionsToBottomTooltip" class="tooltiptext">Images/video/news search results
+                              will be
+                              moved to
+                              bottom of page</span>
+                  </div>
+                  <div class='option tooltip'> <label><input type="checkbox" id="tryToPlaceSuggestionsOnTheSide">
+                        </label>
+                        <span class="tooltiptext" style='padding: 3px'><img height='140px' width='194px'
+                                    src='https://i.imgur.com/wEDUAu3.png' /></span>
+                  </div>
+                  <div class='option'> <label><input type="number" min='0.25' max='1.0' step='0.05'
+                                    id="sidebarWidthMultiplier"> </label>
+                  </div>
+                  <div class='option'> <label><input type="checkbox" id="applyStyleToWidgets"> </label>
+                  </div>
             </div>
-            <div class='option'> <label><input type="checkbox" id="addTileBorder"> </label> </div>
-            <div class='option'> <label><input type="color" id="borderColor"> </label> </div>
-            <div class='option'> <label> <input type="number" min='1' max='10' id="focusedBorderWidth"> </label>
-            </div>
-            <div class='option'> <label><input type="checkbox" id="shadowEnabled"> </label> </div>
-            <div class='option'> <label><input type="number" step='0.05' min='0.0' max='1.0' id="shadowOpacity">
-                  </label> </div>
-            <div class='option tooltip'> <label><input type="checkbox" id="colorizeBorderAfterFavicon"> </label>
-                  <span id="colorizeBorderAfterFaviconTooltip" class="tooltiptext"> </span>
+
+            <h3 class='collapsible-header' id='keyboardNavigationHeader'></h3>
+            <div class='collapsible-content'>
+                  <div class='option tooltip'> <label><input type="checkbox" id="navigateWithKeyboard">
+                        </label>
+                        <span id="navigateWithKeyboardTooltip" class="tooltiptext">Use ↑ and ↓ keys to navigate results,
+                              ← and
+                              → to focus first/last,
+                              and 'Enter' to open </span>
+                  </div>
+                  <div class='option'> <label> <input type="checkbox" id="centerizeSelectedResult"> </label> </div>
+                  <div class='option'> <label> <input type="checkbox" id="keyboardCycle"> </label> </div>
+                  <div class='option'> <label> <input type="checkbox" id="sideArrowsFocusSidebarFirst"> </label> </div>
+                  <div class='option '><label><input type="checkbox" id="focusedTileDifferentBorder"></label>
+                  </div>
+                  <div class='option'> <label> <input type="color" id="keyboardFocusBorderColor">
+                        </label>
+                  </div>
+                  <div class='option'> <label><input type="checkbox" id="scaleUpFocusedResult"> </label> </div>
+                  <div class='option'> <label><input type="number" step="0.025" id="scaleUpFocusedResultAmount">
+                        </label>
+                  </div>
+
+                  <br />
+                  <div class='option tooltip'> <label><input type="checkbox" id="numericNavigation">
+                        </label>
+                        <span id="numericNavigationTooltip" class="tooltiptext">Pressing '1' will focus first search
+                              result,
+                              '2' will focus second
+                              result,
+                              and so
+                              on. Pressing '0' will focus search field</span>
+                  </div>
+
+                  <div class='option'> <label><input type="checkbox" id="numbersNavigateTabs"> </label>
+                  </div>
+                  <div class='option tooltip'> <label><input type="checkbox" id="firstNumberPressScrollsToElement">
+                        </label>
+                        <span id="firstNumberPressScrollsToElementTooltip" class="tooltiptext"> </span>
+                  </div>
+                  <div class='option'> <label><input type="checkbox" id="addTileCounter"> </label>
+                  </div>
+                  <div class='option'> <label> <input type="number" step='0.1' min='0.0' max='1.0'
+                                    id="indexHintOpacity">
+                        </label>
+                  </div>
             </div>
 
             <br />
-            <br />
-            <hr />
-
-            <h3 id='faviconsHeader'></h3>
-            <div class='option'> <label><input type="checkbox" id="addFavicons"> </label>
-            </div>
-            <div class='option'> <label><input type="number" id="faviconRadius"> </label> </div>
-            <div class='option'> <label><input type="checkbox" id="simplifyDomain"> </label>
-            </div>
-            <div class='option'> <label><input type="checkbox" id="showFullDomainOnHover">
-                  </label></div>
-            <div class='option'> <label><input type="checkbox" id="disableTitleUnderlineOnHover">
-                  </label></div>
-            <div class='option'> <label><input type="checkbox" id="highlightTitleOnHover">
-                  </label></div>
-            <div class='option'> <label><input type="color" id="titleHoverColor">
-                  </label></div>
-
-
-            <br />
-            <hr />
-
-            <h3 id='hoverHeader'></h3>
-
-            <div class='option'> <label> <input type="color" id="hoverBackground"> </label>
-            </div>
-            <div class='option'> <label><input type="number" min='0' id="hoverTransitionDuration"> </label>
-            </div>
-            <div class='option'> <label><input type="checkbox" id="scaleUpImageResultsOnHover">
-                  </label></div>
-            <div class='option'> <label><input type="checkbox" id="scrollHorizontalViewOnHover">
-                  </label></div>
-            <div class='option'> <label><input type="number" min="0" step="50" id="delayToScrollOnHover">
-                  </label></div>
-
-
-            <br />
-            <hr />
-
-            <h3 id='searchResultsHeader'></h3>
-
-            <div class='option tooltip'> <label> <input type="checkbox" id="moveSuggestionsToBottom"></label>
-                  <span id="moveSuggestionsToBottomTooltip" class="tooltiptext">Images/video/news search results will be
-                        moved to
-                        bottom of page</span>
-            </div>
-            <div class='option tooltip'> <label><input type="checkbox" id="tryToPlaceSuggestionsOnTheSide"> </label>
-                  <span class="tooltiptext" style='padding: 3px'><img height='140px' width='194px'
-                              src='https://i.imgur.com/wEDUAu3.png' /></span>
-            </div>
-            <div class='option'> <label><input type="number" min='0.25' max='1.0' step='0.05'
-                              id="sidebarWidthMultiplier"> </label>
-            </div>
-            <div class='option'> <label><input type="checkbox" id="applyStyleToWidgets"> </label>
-            </div>
-            <div class='option'> <label><input type="checkbox" id="widerTiles"> </label>
-            </div>
-            <div class='option'><label> <input type="number" id="externalPadding" min="0" max="50"></label>
-
-            </div>
-
-            <br />
-            <hr />
-
-
-            <h3 id='keyboardNavigationHeader'></h3>
-
-            <div class='option tooltip'> <label><input type="checkbox" id="navigateWithKeyboard">
-                  </label>
-                  <span id="navigateWithKeyboardTooltip" class="tooltiptext">Use ↑ and ↓ keys to navigate results, ← and
-                        → to focus first/last,
-                        and 'Enter' to open </span>
-            </div>
-            <div class='option'> <label> <input type="checkbox" id="centerizeSelectedResult"> </label> </div>
-            <div class='option'> <label> <input type="checkbox" id="keyboardCycle"> </label> </div>
-            <div class='option'> <label> <input type="checkbox" id="sideArrowsFocusSidebarFirst"> </label> </div>
-            <div class='option '><label><input type="checkbox" id="focusedTileDifferentBorder"></label>
-            </div>
-            <div class='option'> <label> <input type="color" id="keyboardFocusBorderColor">
-                  </label>
-            </div>
-            <div class='option'> <label><input type="checkbox" id="scaleUpFocusedResult"> </label> </div>
-            <div class='option'> <label><input type="number" step="0.025" id="scaleUpFocusedResultAmount"> </label>
-            </div>
-
-            <br />
-            <div class='option tooltip'> <label><input type="checkbox" id="numericNavigation">
-                  </label>
-                  <span id="numericNavigationTooltip" class="tooltiptext">Pressing '1' will focus first search result,
-                        '2' will focus second
-                        result,
-                        and so
-                        on. Pressing '0' will focus search field</span>
-            </div>
-
-            <div class='option'> <label><input type="checkbox" id="numbersNavigateTabs"> </label>
-            </div>
-            <div class='option tooltip'> <label><input type="checkbox" id="firstNumberPressScrollsToElement"> </label>
-                  <span id="firstNumberPressScrollsToElementTooltip" class="tooltiptext"> </span>
-            </div>
-            <div class='option'> <label><input type="checkbox" id="addTileCounter"> </label>
-            </div>
-            <div class='option'> <label> <input type="number" step='0.1' min='0.0' max='1.0' id="indexHintOpacity">
-                  </label>
-            </div>
-            <br />
-            <hr />
 
 
             <!-- Custom CSS section -->

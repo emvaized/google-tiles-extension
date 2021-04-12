@@ -10,12 +10,12 @@ var options = new Map([
   ['moveSuggestionsToBottom', true],
   ['addFavicons', true],
   ['faviconRadius', 12],
-  ['navigateWithKeyboard', true],
+  ['navigateWithKeyboard', false],
   ['keyboardCycle', true],
   ['keyboardFocusBorderColor', '#210DAB'],
   ['focusedBorderWidth', 1],
   ['addTileCounter', true],
-  ['numericNavigation', true],
+  ['numericNavigation', false],
   ['indexHintOpacity', 0.5],
   ['wholeTileIsClickable', true],
   ['tryToPlaceSuggestionsOnTheSide', true],
@@ -30,7 +30,7 @@ var options = new Map([
   ['numbersNavigateTabs', true],
   ['disableTitleUnderlineOnHover', true],
   ['showFullDomainOnHover', true],
-  ['highlightTitleOnHover', false],
+  ['highlightTitleOnHover', true],
   ['titleHoverColor', '#EA4335'],
   ['addTileBackground', true],
   ['borderColor', '#DADCE0'],
@@ -107,6 +107,7 @@ function restoreOptions() {
 
     updatePreviewTile();
     updateDisabledOptions();
+    setCollapsibleHeaders();
   }
 }
 
@@ -191,6 +192,29 @@ function updatePreviewTile() {
   }
   tile.onmousedown = function () { if (wholeTileIsClickable == false) return; tile.style.boxShadow = (shadowEnabled ?? true) ? `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity / 2})` : 'unset'; }
   tile.onmouseup = function () { if (wholeTileIsClickable == false) return; tile.style.boxShadow = (shadowEnabled ?? true) ? `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity})` : 'unset'; }
+}
+
+function setCollapsibleHeaders() {
+  var coll = document.getElementsByClassName("collapsible-header");
+  var i;
+
+  for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function () {
+      this.classList.toggle("active");
+      var content = this.nextElementSibling;
+      if (content.style.maxHeight) {
+        content.style.maxHeight = null;
+        content.style.overflow = 'hidden';
+        // content.style.border = 'none';
+      } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+        setTimeout(function () {
+          content.style.overflow = 'visible';
+        }, 200);
+        // content.style.border = '1px solid #444';
+      }
+    });
+  }
 }
 
 function saveAllOptions() {

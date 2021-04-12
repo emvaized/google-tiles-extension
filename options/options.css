@@ -85,17 +85,17 @@ h4 {
   
     /* Position the tooltip text */
     position: absolute;
-    z-index: 1;
+    z-index: 1000 !important;
     bottom: 125%;
     left: 50%;
-    margin-left: -60px;
+    /* margin-left: -60px; */
+    margin-left: -80px;
   
     /* Fade in tooltip */
     opacity: 0;
     transition: opacity 0.3s;
   }
 
-  
   /* Tooltip arrow */
   .tooltip .tooltiptext::after  {
     content: "";
@@ -120,10 +120,6 @@ h4 {
     cursor: pointer;
   }
 
-  /* #previewTitle:hover{
-    text-decoration:underline;
-  } */
-
   #footer-buttons {
     display: flex;
     /* padding-top: 30px; */
@@ -135,4 +131,40 @@ button {
     text-align: center;
     margin-right: 6px;
     margin-bottom: 12px;
+}
+
+/* Collapsible settings headers */
+/* Style the button that is used to open and close the collapsible content */
+.collapsible-header {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px 6px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible-header:hover {
+  background-color: #ccc;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.collapsible-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+.collapsible-header:after {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 10px;
+    float: right;
+}
+  
+.active:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
 }

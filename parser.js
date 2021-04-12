@@ -139,11 +139,11 @@ function init() {
         moveSuggestionsToBottom = value.moveSuggestionsToBottom ?? true;
         addFavicons = value.addFavicons ?? true;
         faviconRadius = value.faviconRadius || 12;
-        navigateWithKeyboard = value.navigateWithKeyboard ?? true;
+        navigateWithKeyboard = value.navigateWithKeyboard ?? false;
         keyboardFocusBorderColor = value.keyboardFocusBorderColor ?? '#210DAB';
         keyboardCycle = value.keyboardCycle ?? true;
         focusedBorderWidth = value.focusedBorderWidth || 1;
-        numericNavigation = value.numericNavigation ?? true;
+        numericNavigation = value.numericNavigation ?? false;
         addTileCounter = value.addTileCounter ?? true;
         indexHintOpacity = value.indexHintOpacity || 0.5;
         wholeTileIsClickable = value.wholeTileIsClickable ?? true;
@@ -159,7 +159,7 @@ function init() {
         numbersNavigateTabs = value.numbersNavigateTabs ?? true;
         disableTitleUnderlineOnHover = value.disableTitleUnderlineOnHover ?? true;
         showFullDomainOnHover = value.showFullDomainOnHover ?? true;
-        highlightTitleOnHover = value.highlightTitleOnHover ?? false;
+        highlightTitleOnHover = value.highlightTitleOnHover ?? true;
         titleHoverColor = value.titleHoverColor || '#EA4335';
         addTileBackground = value.addTileBackground ?? true;
         borderColor = value.borderColor || '#DADCE0';
@@ -293,8 +293,14 @@ function setLayout(elements) {
 
       /// Add search suggestions div to proccessed elements
       var botstuff = document.getElementById(peopleAlsoSearchForId);
-      if (botstuff !== null) {
+      if (botstuff !== null && botstuff !== undefined) {
         tiles.push(botstuff);
+      }
+
+      /// Add adverts to proccessed elements
+      var addsBlock = document.getElementById('tads');
+      if (addsBlock !== null && addsBlock !== undefined) {
+        tiles.unshift(addsBlock);
       }
 
       var numericNavigationIndex = 0;
@@ -308,7 +314,7 @@ function setLayout(elements) {
               if (suggestionTile.className !== regularResultClassName) {
 
                 /// If sidebar height won't exceed regular results height, move tile there
-                if (sidebarContainer !== null && sidebarContainer.clientHeight + suggestionTile.clientHeight < regularResultsColumn.clientHeight && suggestionTile.className !== shopPageCardClass && suggestionTile.tagName !== newsPageCardSelector.toUpperCase()) {
+                if (sidebarContainer !== null && sidebarContainer.clientHeight + suggestionTile.clientHeight <= regularResultsColumn.clientHeight && suggestionTile.className !== shopPageCardClass && suggestionTile.tagName !== newsPageCardSelector.toUpperCase()) {
 
                   /// Attach widget to sidebar
                   if (tryToPlaceWidgetsOnTheSide)
@@ -317,8 +323,6 @@ function setLayout(elements) {
                     regularResultsColumn.append(suggestionTile);
                   if (applyStyleToWidgets) {
                     configureTile(suggestionTile, regularResultsColumnWidth * sidebarWidthMultiplier);
-
-                    // suggestionTile.style.overflowX = 'auto';
                   }
                 } else {
                   /// Otherwise, attach it on bottom of regular results scrollbar
@@ -840,6 +844,42 @@ function setLayout(elements) {
 }
 
 
+function getResultFullTilte(url, resultTitle) {
+
+  try {
+    // fetch(url)
+    //   .then(function (res) {
+    //     var body = res.text();
+    //     var title = body.split('<title>')[1].split('</title>')[0];
+    //     if (title !== null && title !== undefined && title !== '') {
+    //       resultTitle.setAttribute('title', title);
+    //     }
+    //   });
+
+    fetch(url, { mode: 'no-cors' })
+      .then(function (response) {
+        return response.text();
+      })
+      .then(function (body) {
+        if (body !== undefined && body.includes('<title>')) {
+          var title = body.split('<title>')[1].split('</title>')[0]
+          // var output = { id: 1234, rawHTML: title };
+          // callback(null, output);
+          resultTitle.setAttribute('title', title);
+          console.log('Set title ' + title);
+        }
+
+      });
+    // .catch(callback);
+
+
+  } catch (e) {
+    console.log('error while setting full title for ' + url);
+    console.log(e);
+  }
+}
+
+
 function configureTile(tile, maxWidth) {
   if (tile.tagName == 'H2') return;
 
@@ -897,7 +937,6 @@ function configureTile(tile, maxWidth) {
     }
   }
 
-
   /// Add default style for tile
   tile.setAttribute("style", `position:relative;${addTileBackground ? `background-color: ${tileBackgroundColor}` : ''};border:solid ${focusedBorderWidth}px ${addTileBorder ? borderColor : 'transparent'};border-radius: ${borderRadius}px;transition:all ${hoverTransitionDuration}ms ease-out;padding: ${innerPadding}px;margin: 0px 0px ${externalPadding}px;box-shadow: ${shadowEnabled ? `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity})` : 'unset'};`);
 
@@ -905,9 +944,20 @@ function configureTile(tile, maxWidth) {
     tile.style.width = '100%';
   }
 
-  var originalTitleColor;
+
+  /// Get result's full title
+  try {
+    if (titles !== undefined && titles[0] !== undefined && titles[0].textContent.endsWith('...') && url !== null && url !== undefined && url !== '')
+      getResultFullTilte(url, titles[0]);
+  } catch (e) {
+    console.log('Error during adding on-hover full title:');
+    console.log(e);
+  }
+
+
 
   /// Set 'on hover' styling for each tile
+  var originalTitleColor;
   if (tile.className.toLowerCase()[0] == 'g') {
     tile.onmouseover = function () {
 
@@ -951,9 +1001,26 @@ function configureTile(tile, maxWidth) {
   }
 
 
-  /// Wrap element with 'a' created element
-  if (wholeTileIsClickable && linkIsValid)
-    tile.wrap(wrapper);
+
+
+  /// Ignore clicks on dropdown buttons
+  var accordion = tile.querySelector('g-accordion-expander');
+  if (accordion !== null && accordion !== undefined) {
+    // var tileDescriptions = tile.querySelectorAll('span');
+    // if (tileDescriptions !== null && tileDescriptions !== undefined) {
+    //   for (i in tileDescriptions) {
+    //     var elem = tileDescriptions[i];
+    //     if (elem.clientHeight !== 0.0 && elem.clientWidth !== 0.0) {
+    //       elem.wrap(wrapper);
+    //       break;
+    //     }
+    //   }
+    // }
+  } else {
+    /// Wrap tile with 'a' created element
+    if (wholeTileIsClickable && linkIsValid)
+      tile.wrap(wrapper);
+  }
 
 
   /// Add keyboard focus listeners
@@ -1018,16 +1085,11 @@ function configureTile(tile, maxWidth) {
       }
 
       /// Create favicon
-      // if (addFavicons && url !== null && url !== undefined && url !== '') {
       if (addFavicons && url !== null && url !== undefined && url !== '' && tile.className == regularResultClassName) {
         var favicon = document.createElement('img');
-
-        // favicon.setAttribute("src", 'https://www.google.com/s2/favicons?domain=' + url);
-
         var domainForFavicon = url.split('/')[2];
         if (domainForFavicon == null || domainForFavicon == undefined)
           domainForFavicon = url;
-        console.log(domainForFavicon);
         favicon.setAttribute("src", 'https://www.google.com/s2/favicons?domain=' + domainForFavicon);
 
         favicon.style.cssText = `height:${faviconRadius}px; width:${faviconRadius}px;  padding-right: 5px;`;
@@ -1065,7 +1127,6 @@ function configureTile(tile, maxWidth) {
 
   /// Remove some default tile stylings for children, such as borders and background colors
   var firstTileChild = tile.firstChild;
-
   if (firstTileChild !== undefined && firstTileChild.style !== undefined) {
     firstTileChild.style.borderColor = 'transparent';
     firstTileChild.style.backgroundColor = 'transparent';
