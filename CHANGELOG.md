@@ -1,3 +1,6 @@
+#2.1.4
+- Fix for broken layout on some pages
+
 #2.1.3
 - Disabled 'whole-title-clickable' behavior for tiles with accordion widgets
 - Implemented some ad banners handling

@@ -173,55 +173,63 @@ function init() {
         centerizeSelectedResult = value.centerizeSelectedResult ?? true;
 
         var mainResults = document.getElementById(columnWithRegularResultsId);
-        if (mainResults !== null) {
 
-          /// Regular results handling
-          if (mainResults.children.length == 1)
-            mainResults = Array.prototype.slice.call(mainResults.firstChild.children);
-          else
-            mainResults = Array.prototype.slice.call(mainResults.children);
+        try {
 
-          console.log(mainResults.length);
-          /// Handling when cards are wrapped in div (for example, in Edge)
-          if (mainResults.length < 8)
-            mainResults.forEach(function (result) {
-              var ch = result.children;
-              ch = Array.prototype.slice.call(ch);
+          if (mainResults !== null) {
 
-              if (ch !== null && ch !== undefined && ch !== []) {
-                var regularResultsColumnElement = document.getElementById(columnWithRegularResultsId);
-                ch.forEach(function (c) {
-                  if (c.className == 'g') {
-                    mainResults.push(c);
-                    regularResultsColumnElement.appendChild(c);
-                  }
-                })
-              }
-            })
+            /// Regular results handling
+            if (mainResults.children.length == 1)
+              mainResults = Array.prototype.slice.call(mainResults.firstChild.children);
+            else
+              mainResults = Array.prototype.slice.call(mainResults.children);
 
-          /// Special handling for news results page
-          if (mainResults.length == 2) {
-            var newsMainResults = mainResults[0].querySelectorAll(newsPageCardSelector);
-            newsMainResults = Array.prototype.slice.call(newsMainResults);
+            console.log(mainResults.length);
+            /// Handling when cards are wrapped in div (for example, in Edge)
+            if (mainResults.length <= 8)
+              mainResults.forEach(function (result) {
+                var ch = result.children;
+                ch = Array.prototype.slice.call(ch);
 
-            mainResults[1].firstChild.style.cssText = 'overflow-x: auto !important';
-            newsMainResults.push(mainResults[1]);
-            mainResults = newsMainResults;
+                if (ch !== null && ch !== undefined && ch !== []) {
+                  var regularResultsColumnElement = document.getElementById(columnWithRegularResultsId);
+                  ch.forEach(function (c) {
+                    if (c.className == 'g') {
+                      mainResults.push(c);
+                      regularResultsColumnElement.appendChild(c);
+                    }
+                  })
+                }
+              })
+
+            /// Special handling for news results page
+            if (mainResults.length == 2) {
+              var newsMainResults = mainResults[0].querySelectorAll(newsPageCardSelector);
+              newsMainResults = Array.prototype.slice.call(newsMainResults);
+
+              mainResults[1].firstChild.style.cssText = 'overflow-x: auto !important';
+              newsMainResults.push(mainResults[1]);
+              mainResults = newsMainResults;
+            }
+            else if (mainResults.length <= 5) {
+              /// Special handling for shop page (quite a shaky way to determine - desirably to rewrite)
+              var newsMainResults = document.getElementById(columnWithRegularResultsId).querySelectorAll(`.${shopPageCardClass}`);
+              newsMainResults = Array.prototype.slice.call(newsMainResults);
+              mainResults = newsMainResults;
+            }
+
+            setLayout(mainResults);
+          } else {
+            /// Image page results handling (all proccessing done inside method)
+
+            // var container = document.getElementById('islrg');
+            // var images = container.firstChild.children;
+            setLayout();
           }
-          else if (mainResults.length <= 5) {
-            /// Special handling for shop page (quite a shaky way to determine - desirably to rewrite)
-            var newsMainResults = document.getElementById(columnWithRegularResultsId).querySelectorAll(`.${shopPageCardClass}`);
-            newsMainResults = Array.prototype.slice.call(newsMainResults);
-            mainResults = newsMainResults;
-          }
 
-          setLayout(mainResults);
-        } else {
-          /// Image page results handling (all proccessing done inside method)
-
-          // var container = document.getElementById('islrg');
-          // var images = container.firstChild.children;
-          setLayout();
+        } catch (error) {
+          console.log('Google Tiles error:');
+          console.log(error);
         }
       }
     });
