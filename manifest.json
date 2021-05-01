@@ -24,6 +24,7 @@
       ],
       "js": [
         "src/configs.js",
+        "src/functions.js",
         "src/parser.js"
       ],
       "run_at": "document_end"

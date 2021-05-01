@@ -208,45 +208,14 @@ function saveAllOptions() {
 
 
 function resetOptions() {
+  // var dataToSave = {};
 
-  var dataToSave = {};
-
-  userConfigs.forEach(function (value, key) {
-    dataToSave[key] = value;
-  });
+  // userConfigs.forEach(function (value, key) {
+  //   dataToSave[key] = value;
+  // });
 
   // chrome.storage.local.set(dataToSave);
-  chrome.storage.local.set(dataToSave);
-
-  // chrome.storage.local.set({
-  //   innerPadding: 12,
-  //   externalPadding: 24,
-  //   hoverTransitionDuration: 75,
-  //   borderRadius: 12,
-  //   hoverBackground: '#f0f2f4',
-  //   shadowEnabled: true,
-  //   shadowOpacity: 0.15,
-  //   moveSuggestionsToBottom: true,
-  //   addFavicons: true,
-  //   faviconRadius: 12,
-  //   navigateWithKeyboard: true,
-  //   keyboardCycle: true,
-  //   keyboardFocusBorderColor: '#210DAB',
-  //   focusedBorderWidth: 1,
-  //   addTileCounter: true,
-  //   numericNavigation: true,
-  //   indexHintOpacity: 0.5,
-  //   wholeTileIsClickable: true,
-  //   tryToPlaceSuggestionsOnTheSide: true,
-  //   applyStyleToWidgets: true,
-  //   simplifyDomain: true,
-  //   widerTiles: true,
-  //   scaleUpImageResultsOnHover: true,
-  //   scrollHorizontalViewOnHover: true,
-  //   tileBackgroundColor: '#FFFFFF',
-  //   addTileBorder: true,
-  //   delayToScrollOnHover: 150
-  // });
+  chrome.storage.local.set(configs);
   restoreOptions();
 }
 
