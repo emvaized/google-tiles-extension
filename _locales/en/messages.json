@@ -258,5 +258,13 @@
   "centerizeSelectedResult": {
     "message": "Centerize selected result",
     "description": ""
+  },
+  "addFocusedTileDot": {
+    "message": "Add dot to focused tile",
+    "description": ""
+  },
+  "focusedTileDotOpacity": {
+    "message": "Dot opacity",
+    "description": ""
   }
 }

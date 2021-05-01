@@ -42,4 +42,6 @@ var configs = {
     "scaleUpFocusedResult": false,
     "scaleUpFocusedResultAmount": 1.05,
     "centerizeSelectedResult": true,
+    "addFocusedTileDot": false,
+    "focusedTileDotOpacity": 0.5,
 };

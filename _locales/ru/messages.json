@@ -258,5 +258,13 @@
     "centerizeSelectedResult": {
         "message": "Отцентровать выбранный результат",
         "description": ""
+    },
+    "addFocusedTileDot": {
+        "message": "Добавить точку к сфокусированной плитке",
+        "description": ""
+    },
+    "focusedTileDotOpacity": {
+        "message": "Прозрачность точки",
+        "description": ""
     }
 }

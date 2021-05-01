@@ -20,18 +20,17 @@ function restoreOptions() {
 
       /// Iterable approach
       keys.forEach(function (key) {
-        let value = userConfigs[key];
         var input = document.getElementById(key);
 
         /// Set input value
         if (input !== null && input !== undefined) {
           if (input.type == 'checkbox') {
-            // if ((result[key] !== null && result[key] == true) || (result[key] == null && value == true))
-            if (result[key] == true)
+            if ((result[key] !== null && result[key] == true) || (result[key] == null && configs[key] == true))
+              // if (result[key] == true)
               input.setAttribute('checked', 0)
           }
           else
-            input.setAttribute('value', result[key] ?? value);
+            input.setAttribute('value', result[key] ?? configs[key]);
 
           /// Set translated label for input
           if (!input.parentNode.innerHTML.includes(chrome.i18n.getMessage(key)))
@@ -83,11 +82,6 @@ function restoreOptions() {
       updateDisabledOptions();
       setCollapsibleHeaders();
     }
-
-
-
-
-
   } catch (error) { console.log(error); }
 }
 
@@ -113,6 +107,7 @@ function updateDisabledOptions() {
   document.querySelector("#colorizeBorderAfterFavicon").parentNode.className = document.querySelector("#addFavicons").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#keyboardFocusBorderColor").parentNode.className = document.querySelector("#focusedTileDifferentBorder").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#scaleUpFocusedResultAmount").parentNode.className = document.querySelector("#scaleUpFocusedResult").checked ? 'enabled-option' : 'disabled-option';
+  document.querySelector("#focusedTileDotOpacity").parentNode.className = document.querySelector("#addFocusedTileDot").checked ? 'enabled-option' : 'disabled-option';
 }
 
 function updatePreviewTile() {

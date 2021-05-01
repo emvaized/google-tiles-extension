@@ -1,6 +1,7 @@
 #2.1.4
 - Fix for broken layout on some pages
-- Refactored extension configs
+- Refactored extension configs and project structure
+- New 'Add dot to focused tile' option
 
 #2.1.3
 - Disabled 'whole-title-clickable' behavior for tiles with accordion widgets

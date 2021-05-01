@@ -33,9 +33,6 @@ var counterHintsOnBottom = true;
 var countedHintColor = 'grey';
 var counterHintFocusColor = '#EA4335';
 
-var addFocusedTileDot = true;
-
-
 function init() {
   let configKeys = Object.keys(configs);
 
@@ -888,10 +885,10 @@ function configureTile(tile, maxWidth) {
       }
 
       /// Add dot on the left
-      if (addFocusedTileDot) {
+      if (configs.addFocusedTileDot) {
         dot = document.createElement('div');
         dot.setAttribute('class', 'g-tile-focused-tile-dot');
-        dot.setAttribute('style', `background: ${configs.keyboardFocusBorderColor}; height: 10px; width: 10px; border-radius: 50%; position: relative; top: -${tile.clientHeight / 2 + configs.externalPadding}px; left: -40px;`);
+        dot.setAttribute('style', `background: ${configs.keyboardFocusBorderColor}; opacity: ${configs.focusedTileDotOpacity}; height: 10px; width: 10px; border-radius: 50%; float: left; position: relative; top: -${tile.clientHeight / 2 + configs.externalPadding}px; left: -40px;`);
         wrapper.appendChild(dot);
       }
 
@@ -907,7 +904,7 @@ function configureTile(tile, maxWidth) {
         wrapper.firstChild.style.zIndex = '1';
       }
 
-      if (addFocusedTileDot) {
+      if (configs.addFocusedTileDot) {
         if (dot !== null && dot !== undefined)
           wrapper.removeChild(dot);
       }
