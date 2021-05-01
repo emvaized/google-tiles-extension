@@ -1,226 +1,90 @@
 {
-    "extensionDescription": {
-        "message": "Настройте вид и поведение страницы Google-поиска",
-        "description": ""
-    },
-    "innerPadding": {
-        "message": "Внутренний отступ",
-        "description": ""
-    },
-    "externalPadding": {
-        "message": "Отступ между результатами поиска (px)",
-        "description": ""
-    },
-    "enabled": {
-        "message": "Включено",
-        "description": ""
-    },
-    "hoverTransitionDuration": {
-        "message": "Продолжительность анимации наведения (ms)",
-        "description": ""
-    },
-    "borderRadius": {
-        "message": "Закругление углов (px)",
-        "description": ""
-    },
-    "hoverBackground": {
-        "message": "Цвет фона плитки при наведении мыши",
-        "description": ""
-    },
-    "shadowEnabled": {
-        "message": "Тени включены",
-        "description": ""
-    },
-    "shadowOpacity": {
-        "message": "Прозрачность тени (%)",
-        "description": ""
-    },
     "addFavicons": {
         "message": "Добавить иконку сайта",
         "description": ""
     },
-    "navigateWithKeyboard": {
-        "message": "Использовать клавиши стрелок для навигации",
-        "description": ""
-    },
-    "navigateWithKeyboardTooltip": {
-        "message": "Использовать ↑ и ↓ для переключения между результатами, ← и → для переключения страницы, и 'Enter' чтобы открыть",
-        "description": ""
-    },
-    "keyboardFocusBorderColor": {
-        "message": "Цвет рамки выделенной плитки",
-        "description": ""
-    },
-    "keyboardCycle": {
-        "message": "Циклическая навигация (прыгнуть к первому результату после последнего)",
-        "description": ""
-    },
-    "focusedBorderWidth": {
-        "message": "Ширина рамки (px)",
-        "description": ""
-    },
-    "numericNavigation": {
-        "message": "Навигация клавишами цифр",
-        "description": ""
-    },
-    "numericNavigationTooltip": {
-        "message": "Клавиша 1 сфокусирует первый элемент, 2 сфокусирует второй, и так далее. Клавиша 0 переместит фокус на поисковую строку",
-        "description": ""
-    },
-    "addTileCounter": {
-        "message": "Показывать номерные подсказки",
-        "description": ""
-    },
-    "indexHintOpacity": {
-        "message": "Прозрачность номерных подсказок",
-        "description": ""
-    },
-    "wholeTileIsClickable": {
-        "message": "Можно кликать по всей плитке",
-        "description": ""
-    },
-    "faviconRadius": {
-        "message": "Размер иконки сайта",
-        "description": ""
-    },
-    "configure": {
-        "message": "Настроить",
-        "description": ""
-    },
-    "resetDefaults": {
-        "message": "Сбросить настройки",
-        "description": ""
-    },
-    "buyMeCoffee": {
-        "message": "Купить автору кофе",
-        "description": ""
-    },
-    "visitGithub": {
-        "message": "Посетить страницу на GitHub",
-        "description": ""
-    },
-    "appearance": {
-        "message": "Внешний вид",
-        "description": ""
-    },
-    "tiles": {
-        "message": "Плитки",
-        "description": ""
-    },
-    "favicons": {
-        "message": "Иконки",
-        "description": ""
-    },
-    "hover": {
-        "message": "Наведение мыши",
-        "description": ""
-    },
-    "searchResults": {
-        "message": "Поисковая выдача",
-        "description": ""
-    },
-    "keyboardNavigation": {
-        "message": "Клавиатурная навигация",
-        "description": ""
-    },
-    "preview": {
-        "message": "Превью плитки",
-        "description": ""
-    },
-    "allChangesSavedAutomatically": {
-        "message": "Настройки сохраняются автоматически <br /> Обновите страницы, чтобы увидеть изменения",
-        "description": ""
-    },
-    "moveSuggestionsToBottom": {
-        "message": "Переместить обычные результаты наверх",
-        "description": ""
-    },
-    "moveSuggestionsToBottomTooltip": {
-        "message": "Поисковые подсказки будут показаны после обычных результатов",
-        "description": ""
-    },
-    "tryToPlaceSuggestionsOnTheSide": {
-        "message": "Переместить поисковые виджеты в колонку справа",
-        "description": ""
-    },
-    "applyStyleToWidgets": {
-        "message": "Применять настройки стиля к поисковым виджетам",
-        "description": ""
-    },
-    "simplifyDomain": {
-        "message": "Упростить домен сайта",
-        "description": ""
-    },
-    "header": {
-        "message": "Заголовок плитки",
-        "description": ""
-    },
-    "widerTiles": {
-        "message": "Выровнять плитки по ширине",
-        "description": ""
-    },
-    "scaleUpImageResultsOnHover": {
-        "message": "Увеличивать результаты поиска картинок при наведении",
-        "description": ""
-    },
-    "scrollHorizontalViewOnHover": {
-        "message": "Прокручивать горизонтальные списки наведением",
-        "description": ""
-    },
-    "addTileBorder": {
-        "message": "Добавить рамку",
-        "description": ""
-    },
-    "tileBackgroundColor": {
-        "message": "Цвет фона",
-        "description": ""
-    },
-    "delayToScrollOnHover": {
-        "message": "Задержка перед прокруткой наведением (мс)",
-        "description": ""
-    },
-    "showFullDomainOnHover": {
-        "message": "Показывать полный адрес при наведении",
-        "description": ""
-    },
-    "numbersNavigateTabs": {
-        "message": "Клавиши цифр переключают вкладки (если выключено - результаты поиска)",
-        "description": ""
-    },
-    "numbersNavigateResults": {
-        "message": "Клавиши цифр переключают результаты поиска",
-        "description": ""
-    },
-    "imageScaleUpOnHoverAmount": {
-        "message": "Размер увеличения",
-        "description": ""
-    },
-    "sidebarWidthMultiplier": {
-        "message": "Ширина боковой колонки",
-        "description": ""
-    },
-    "sidebarPadding": {
-        "message": "Отступ боковой колонки",
-        "description": ""
-    },
-    "disableTitleUnderlineOnHover": {
-        "message": "Отключить подчеркивание заголовка при наведении",
-        "description": ""
-    },
-    "highlightTitleOnHover": {
-        "message": "Изменить цвет заголовка при наведении",
-        "description": ""
-    },
-    "titleHoverColor": {
-        "message": "Цвет заголовка",
+    "addFocusedTileDot": {
+        "message": "Добавить точку к сфокусированной плитке",
         "description": ""
     },
     "addTileBackground": {
         "message": "Добавить фон для плитки",
         "description": ""
     },
+    "addTileBorder": {
+        "message": "Добавить рамку",
+        "description": ""
+    },
+    "addTileCounter": {
+        "message": "Показывать номерные подсказки",
+        "description": ""
+    },
+    "allChangesSavedAutomatically": {
+        "message": "Настройки сохраняются автоматически <br /> Обновите страницы, чтобы увидеть изменения",
+        "description": ""
+    },
+    "appearance": {
+        "message": "Внешний вид",
+        "description": ""
+    },
+    "applyStyleToWidgets": {
+        "message": "Применять настройки стиля к поисковым виджетам",
+        "description": ""
+    },
     "borderColor": {
         "message": "Цвет рамки",
+        "description": ""
+    },
+    "borderRadius": {
+        "message": "Закругление углов (px)",
+        "description": ""
+    },
+    "buyMeCoffee": {
+        "message": "Купить автору кофе",
+        "description": ""
+    },
+    "centerizeSelectedResult": {
+        "message": "Отцентровать выбранный результат",
+        "description": ""
+    },
+    "colorizeBorderAfterFavicon": {
+        "message": "Окрасить рамку в цвет иконки сайта",
+        "description": ""
+    },
+    "colorizeBorderAfterFaviconTooltip": {
+        "message": "Эта настройка конфликтует с 'Другая рамка для выделенной плитки'",
+        "description": ""
+    },
+    "configure": {
+        "message": "Настроить",
+        "description": ""
+    },
+    "delayToScrollOnHover": {
+        "message": "Задержка перед прокруткой наведением (мс)",
+        "description": ""
+    },
+    "disableTitleUnderlineOnHover": {
+        "message": "Отключить подчеркивание заголовка при наведении",
+        "description": ""
+    },
+    "enabled": {
+        "message": "Включено",
+        "description": ""
+    },
+    "extensionDescription": {
+        "message": "Настройте вид и поведение страницы Google-поиска",
+        "description": ""
+    },
+    "externalPadding": {
+        "message": "Отступ между результатами поиска (px)",
+        "description": ""
+    },
+    "faviconRadius": {
+        "message": "Размер иконки сайта",
+        "description": ""
+    },
+    "favicons": {
+        "message": "Иконки",
         "description": ""
     },
     "firstNumberPressScrollsToElement": {
@@ -231,20 +95,100 @@
         "message": "Когда отключено, первое нажатие сразу выбирает элемент",
         "description": ""
     },
-    "sideArrowsFocusSidebarFirst": {
-        "message": "← и → перемещает фокус на боковые виджеты",
-        "description": ""
-    },
-    "colorizeBorderAfterFavicon": {
-        "message": "Окрасить рамку в цвет иконки сайта",
+    "focusedBorderWidth": {
+        "message": "Ширина рамки (px)",
         "description": ""
     },
     "focusedTileDifferentBorder": {
         "message": "Другая рамка для выделенной плитки",
         "description": ""
     },
-    "colorizeBorderAfterFaviconTooltip": {
-        "message": "Эта настройка конфликтует с 'Другая рамка для выделенной плитки'",
+    "focusedTileDotOpacity": {
+        "message": "Прозрачность точки",
+        "description": ""
+    },
+    "header": {
+        "message": "Заголовок плитки",
+        "description": ""
+    },
+    "highlightTitleOnHover": {
+        "message": "Изменить цвет заголовка при наведении",
+        "description": ""
+    },
+    "hover": {
+        "message": "Наведение мыши",
+        "description": ""
+    },
+    "hoverBackground": {
+        "message": "Цвет фона плитки при наведении мыши",
+        "description": ""
+    },
+    "hoverTransitionDuration": {
+        "message": "Продолжительность анимации наведения (ms)",
+        "description": ""
+    },
+    "imageScaleUpOnHoverAmount": {
+        "message": "Размер увеличения",
+        "description": ""
+    },
+    "indexHintOpacity": {
+        "message": "Прозрачность номерных подсказок",
+        "description": ""
+    },
+    "innerPadding": {
+        "message": "Внутренний отступ",
+        "description": ""
+    },
+    "keyboardCycle": {
+        "message": "Циклическая навигация (прыгнуть к первому результату после последнего)",
+        "description": ""
+    },
+    "keyboardFocusBorderColor": {
+        "message": "Цвет рамки выделенной плитки",
+        "description": ""
+    },
+    "keyboardNavigation": {
+        "message": "Клавиатурная навигация",
+        "description": ""
+    },
+    "moveSuggestionsToBottom": {
+        "message": "Переместить обычные результаты наверх",
+        "description": ""
+    },
+    "moveSuggestionsToBottomTooltip": {
+        "message": "Поисковые подсказки будут показаны после обычных результатов",
+        "description": ""
+    },
+    "navigateWithKeyboard": {
+        "message": "Использовать клавиши стрелок для навигации",
+        "description": ""
+    },
+    "navigateWithKeyboardTooltip": {
+        "message": "Использовать ↑ и ↓ для переключения между результатами, ← и → для переключения страницы, и 'Enter' чтобы открыть",
+        "description": ""
+    },
+    "numbersNavigateResults": {
+        "message": "Клавиши цифр переключают результаты поиска",
+        "description": ""
+    },
+    "numbersNavigateTabs": {
+        "message": "Клавиши цифр переключают вкладки (если выключено - результаты поиска)",
+        "description": ""
+    },
+    "numericNavigation": {
+        "message": "Навигация клавишами цифр",
+        "description": ""
+    },
+    "numericNavigationTooltip": {
+        "message": "Клавиша 1 сфокусирует первый элемент, 2 сфокусирует второй, и так далее. Клавиша 0 переместит фокус на поисковую строку",
+        "description": ""
+    },
+    "preview": {
+        "message": "Превью плитки",
+        "description": ""
+    },
+    "resetDefaults": {
+        "message": "Сбросить настройки",
         "description": ""
     },
     "scaleUpFocusedResult": {
@@ -255,16 +199,72 @@
         "message": "Размер увеличения",
         "description": ""
     },
-    "centerizeSelectedResult": {
-        "message": "Отцентровать выбранный результат",
+    "scaleUpImageResultsOnHover": {
+        "message": "Увеличивать результаты поиска картинок при наведении",
         "description": ""
     },
-    "addFocusedTileDot": {
-        "message": "Добавить точку к сфокусированной плитке",
+    "scrollHorizontalViewOnHover": {
+        "message": "Прокручивать горизонтальные списки наведением",
         "description": ""
     },
-    "focusedTileDotOpacity": {
-        "message": "Прозрачность точки",
+    "searchResults": {
+        "message": "Поисковая выдача",
+        "description": ""
+    },
+    "shadowEnabled": {
+        "message": "Тени включены",
+        "description": ""
+    },
+    "shadowOpacity": {
+        "message": "Прозрачность тени (%)",
+        "description": ""
+    },
+    "showFullDomainOnHover": {
+        "message": "Показывать полный адрес при наведении",
+        "description": ""
+    },
+    "sideArrowsFocusSidebarFirst": {
+        "message": "← и → перемещает фокус на боковые виджеты",
+        "description": ""
+    },
+    "sidebarPadding": {
+        "message": "Отступ боковой колонки",
+        "description": ""
+    },
+    "sidebarWidthMultiplier": {
+        "message": "Ширина боковой колонки",
+        "description": ""
+    },
+    "simplifyDomain": {
+        "message": "Упростить домен сайта",
+        "description": ""
+    },
+    "tileBackgroundColor": {
+        "message": "Цвет фона",
+        "description": ""
+    },
+    "tiles": {
+        "message": "Плитки",
+        "description": ""
+    },
+    "titleHoverColor": {
+        "message": "Цвет заголовка",
+        "description": ""
+    },
+    "tryToPlaceSuggestionsOnTheSide": {
+        "message": "Переместить поисковые виджеты в колонку справа",
+        "description": ""
+    },
+    "visitGithub": {
+        "message": "Посетить страницу на GitHub",
+        "description": ""
+    },
+    "wholeTileIsClickable": {
+        "message": "Можно кликать по всей плитке",
+        "description": ""
+    },
+    "widerTiles": {
+        "message": "Выровнять плитки по ширине",
         "description": ""
     }
 }

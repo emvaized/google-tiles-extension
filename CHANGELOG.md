@@ -1,7 +1,8 @@
 #2.1.4
 - Fix for broken layout on some pages
-- Refactored extension configs and project structure
 - New 'Add dot to focused tile' option
+- Refactored extension configs and project structure
+- Updated extension icon
 - Small bug fixes and improvements
 
 #2.1.3

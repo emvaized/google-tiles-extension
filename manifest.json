@@ -5,8 +5,8 @@
   "version": "2.1.4",
   "description": "__MSG_extensionDescription__",
   "icons": {
-    "48": "icons/new-new-icon-48.png",
-    "96": "icons/new-new-icon-96.png"
+    "48": "icons/google-tiles-new-icon-48.png",
+    "96": "icons/google-tiles-new-icon-96.png"
   },
   "browser_specific_settings": {
     "gecko": {
@@ -31,7 +31,7 @@
     }
   ],
   "browser_action": {
-    "default_icon": "icons/new-new-icon-96.png",
+    "default_icon": "icons/google-tiles-new-icon-96.png",
     "default_title": "Google Tiles",
     "default_popup": "popup/popup.html"
   },

@@ -1,226 +1,90 @@
 {
-  "extensionDescription": {
-    "message": "Customize the looks and behavior of Google search page",
-    "description": ""
-  },
-  "innerPadding": {
-    "message": "Inner padding",
-    "description": ""
-  },
-  "externalPadding": {
-    "message": "Padding between results (px)",
-    "description": ""
-  },
-  "enabled": {
-    "message": "Enabled",
-    "description": ""
-  },
-  "hoverTransitionDuration": {
-    "message": "Hover transition duration (ms)",
-    "description": ""
-  },
-  "borderRadius": {
-    "message": "Corner radius (px)",
-    "description": ""
-  },
-  "hoverBackground": {
-    "message": "Tile background color on hover",
-    "description": ""
-  },
-  "shadowEnabled": {
-    "message": "Shadows enabled",
-    "description": ""
-  },
-  "shadowOpacity": {
-    "message": "Shadows opacity (%)",
-    "description": ""
-  },
   "addFavicons": {
     "message": "Add website favicon",
     "description": ""
   },
-  "navigateWithKeyboard": {
-    "message": "Use arrow keys for navigation",
-    "description": ""
-  },
-  "navigateWithKeyboardTooltip": {
-    "message": "Use ↑ and ↓ keys to navigate results, ← and → to swtich pages, and 'Enter' to open",
-    "description": ""
-  },
-  "keyboardFocusBorderColor": {
-    "message": "Border color for focused tile",
-    "description": ""
-  },
-  "keyboardCycle": {
-    "message": "Cycle navigation (jump to first result after last)",
-    "description": ""
-  },
-  "focusedBorderWidth": {
-    "message": "Borders width (px)",
-    "description": ""
-  },
-  "numericNavigation": {
-    "message": "Numeric keys navigation",
-    "description": ""
-  },
-  "numericNavigationTooltip": {
-    "message": "Pressing key 1 will focus first element, 2 will focus second, and so on. Pressing 0 will focus search field",
-    "description": ""
-  },
-  "addTileCounter": {
-    "message": "Show number hints",
-    "description": ""
-  },
-  "indexHintOpacity": {
-    "message": "Index hint opacity",
-    "description": ""
-  },
-  "wholeTileIsClickable": {
-    "message": "Whole tile is clickable",
-    "description": ""
-  },
-  "faviconRadius": {
-    "message": "Favicon size",
-    "description": ""
-  },
-  "configure": {
-    "message": "Configure",
-    "description": ""
-  },
-  "resetDefaults": {
-    "message": "Restore defaults",
-    "description": ""
-  },
-  "buyMeCoffee": {
-    "message": "Buy author a coffee",
-    "description": ""
-  },
-  "visitGithub": {
-    "message": "Visit GitHub page",
-    "description": ""
-  },
-  "tiles": {
-    "message": "Tiles",
-    "description": ""
-  },
-  "appearance": {
-    "message": "Appearance",
-    "description": ""
-  },
-  "favicons": {
-    "message": "Favicons",
-    "description": ""
-  },
-  "hover": {
-    "message": "Hover",
-    "description": ""
-  },
-  "searchResults": {
-    "message": "Search results",
-    "description": ""
-  },
-  "keyboardNavigation": {
-    "message": "Keyboard navigation",
-    "description": ""
-  },
-  "preview": {
-    "message": "Tile preview",
-    "description": ""
-  },
-  "allChangesSavedAutomatically": {
-    "message": "Settings are saved automatically <br /> Update open pages to see changes",
-    "description": ""
-  },
-  "moveSuggestionsToBottom": {
-    "message": "Move regular search results on top",
-    "description": ""
-  },
-  "moveSuggestionsToBottomTooltip": {
-    "message": "Various earch suggestions will be shown after regular results",
-    "description": ""
-  },
-  "tryToPlaceSuggestionsOnTheSide": {
-    "message": "Move search widgets to the right column",
-    "description": ""
-  },
-  "applyStyleToWidgets": {
-    "message": "Apply styling to search widgets",
-    "description": ""
-  },
-  "simplifyDomain": {
-    "message": "Simplify website domain",
-    "description": ""
-  },
-  "header": {
-    "message": "Tile header",
-    "description": ""
-  },
-  "widerTiles": {
-    "message": "Align tiles by width",
-    "description": ""
-  },
-  "scaleUpImageResultsOnHover": {
-    "message": "Scale up image results on hover",
-    "description": ""
-  },
-  "scrollHorizontalViewOnHover": {
-    "message": "Scroll horizontal views with hover",
-    "description": ""
-  },
-  "addTileBorder": {
-    "message": "Add border",
-    "description": ""
-  },
-  "tileBackgroundColor": {
-    "message": "Background color",
-    "description": ""
-  },
-  "delayToScrollOnHover": {
-    "message": "Delay before hover scrolling (ms)",
-    "description": "Delay before starting to scroll on hover, when it's enabled"
-  },
-  "showFullDomainOnHover": {
-    "message": "Show full domain on hover",
-    "description": ""
-  },
-  "numbersNavigateTabs": {
-    "message": "Number keys navigate tabs (navigate search resuls when turned off)",
-    "description": ""
-  },
-  "numbersNavigateResults": {
-    "message": "Number keys navigate search results",
-    "description": ""
-  },
-  "imageScaleUpOnHoverAmount": {
-    "message": "Scale up amount",
-    "description": ""
-  },
-  "sidebarWidthMultiplier": {
-    "message": "Sidebar width",
-    "description": ""
-  },
-  "sidebarPadding": {
-    "message": "Sidebar padding",
-    "description": ""
-  },
-  "disableTitleUnderlineOnHover": {
-    "message": "Disable title underline on hover",
-    "description": ""
-  },
-  "highlightTitleOnHover": {
-    "message": "Change title color on hover",
-    "description": ""
-  },
-  "titleHoverColor": {
-    "message": "Title color",
+  "addFocusedTileDot": {
+    "message": "Add dot to focused tile",
     "description": ""
   },
   "addTileBackground": {
     "message": "Add tile background",
     "description": ""
   },
+  "addTileBorder": {
+    "message": "Add border",
+    "description": ""
+  },
+  "addTileCounter": {
+    "message": "Show number hints",
+    "description": ""
+  },
+  "allChangesSavedAutomatically": {
+    "message": "Settings are saved automatically <br /> Update open pages to see changes",
+    "description": ""
+  },
+  "appearance": {
+    "message": "Appearance",
+    "description": ""
+  },
+  "applyStyleToWidgets": {
+    "message": "Apply styling to search widgets",
+    "description": ""
+  },
   "borderColor": {
     "message": "Border color",
+    "description": ""
+  },
+  "borderRadius": {
+    "message": "Corner radius (px)",
+    "description": ""
+  },
+  "buyMeCoffee": {
+    "message": "Buy author a coffee",
+    "description": ""
+  },
+  "centerizeSelectedResult": {
+    "message": "Centerize selected result",
+    "description": ""
+  },
+  "colorizeBorderAfterFavicon": {
+    "message": "Colorize border after website favicon",
+    "description": ""
+  },
+  "colorizeBorderAfterFaviconTooltip": {
+    "message": "This setting conflicts with 'Different border for focused tile'",
+    "description": ""
+  },
+  "configure": {
+    "message": "Configure",
+    "description": ""
+  },
+  "delayToScrollOnHover": {
+    "message": "Delay before hover scrolling (ms)",
+    "description": "Delay before starting to scroll on hover, when it's enabled"
+  },
+  "disableTitleUnderlineOnHover": {
+    "message": "Disable title underline on hover",
+    "description": ""
+  },
+  "enabled": {
+    "message": "Enabled",
+    "description": ""
+  },
+  "extensionDescription": {
+    "message": "Customize the looks and behavior of Google search page",
+    "description": ""
+  },
+  "externalPadding": {
+    "message": "Padding between results (px)",
+    "description": ""
+  },
+  "faviconRadius": {
+    "message": "Favicon size",
+    "description": ""
+  },
+  "favicons": {
+    "message": "Favicons",
     "description": ""
   },
   "firstNumberPressScrollsToElement": {
@@ -231,20 +95,100 @@
     "message": "When disabled, first press immediately selects element",
     "description": ""
   },
-  "sideArrowsFocusSidebarFirst": {
-    "message": "← and → keys switch focus to sidebar",
-    "description": ""
-  },
-  "colorizeBorderAfterFavicon": {
-    "message": "Colorize border after website favicon",
+  "focusedBorderWidth": {
+    "message": "Borders width (px)",
     "description": ""
   },
   "focusedTileDifferentBorder": {
     "message": "Different border for focused tile",
     "description": ""
   },
-  "colorizeBorderAfterFaviconTooltip": {
-    "message": "This setting conflicts with 'Different border for focused tile'",
+  "focusedTileDotOpacity": {
+    "message": "Dot opacity",
+    "description": ""
+  },
+  "header": {
+    "message": "Tile header",
+    "description": ""
+  },
+  "highlightTitleOnHover": {
+    "message": "Change title color on hover",
+    "description": ""
+  },
+  "hover": {
+    "message": "Hover",
+    "description": ""
+  },
+  "hoverBackground": {
+    "message": "Tile background color on hover",
+    "description": ""
+  },
+  "hoverTransitionDuration": {
+    "message": "Hover transition duration (ms)",
+    "description": ""
+  },
+  "imageScaleUpOnHoverAmount": {
+    "message": "Scale up amount",
+    "description": ""
+  },
+  "indexHintOpacity": {
+    "message": "Index hint opacity",
+    "description": ""
+  },
+  "innerPadding": {
+    "message": "Inner padding",
+    "description": ""
+  },
+  "keyboardCycle": {
+    "message": "Cycle navigation (jump to first result after last)",
+    "description": ""
+  },
+  "keyboardFocusBorderColor": {
+    "message": "Border color for focused tile",
+    "description": ""
+  },
+  "keyboardNavigation": {
+    "message": "Keyboard navigation",
+    "description": ""
+  },
+  "moveSuggestionsToBottom": {
+    "message": "Move regular search results on top",
+    "description": ""
+  },
+  "moveSuggestionsToBottomTooltip": {
+    "message": "Various earch suggestions will be shown after regular results",
+    "description": ""
+  },
+  "navigateWithKeyboard": {
+    "message": "Use arrow keys for navigation",
+    "description": ""
+  },
+  "navigateWithKeyboardTooltip": {
+    "message": "Use ↑ and ↓ keys to navigate results, ← and → to swtich pages, and 'Enter' to open",
+    "description": ""
+  },
+  "numbersNavigateResults": {
+    "message": "Number keys navigate search results",
+    "description": ""
+  },
+  "numbersNavigateTabs": {
+    "message": "Number keys navigate tabs (navigate search resuls when turned off)",
+    "description": ""
+  },
+  "numericNavigation": {
+    "message": "Numeric keys navigation",
+    "description": ""
+  },
+  "numericNavigationTooltip": {
+    "message": "Pressing key 1 will focus first element, 2 will focus second, and so on. Pressing 0 will focus search field",
+    "description": ""
+  },
+  "preview": {
+    "message": "Tile preview",
+    "description": ""
+  },
+  "resetDefaults": {
+    "message": "Restore defaults",
     "description": ""
   },
   "scaleUpFocusedResult": {
@@ -255,16 +199,72 @@
     "message": "Scale up amount",
     "description": ""
   },
-  "centerizeSelectedResult": {
-    "message": "Centerize selected result",
+  "scaleUpImageResultsOnHover": {
+    "message": "Scale up image results on hover",
     "description": ""
   },
-  "addFocusedTileDot": {
-    "message": "Add dot to focused tile",
+  "scrollHorizontalViewOnHover": {
+    "message": "Scroll horizontal views with hover",
     "description": ""
   },
-  "focusedTileDotOpacity": {
-    "message": "Dot opacity",
+  "searchResults": {
+    "message": "Search results",
+    "description": ""
+  },
+  "shadowEnabled": {
+    "message": "Shadows enabled",
+    "description": ""
+  },
+  "shadowOpacity": {
+    "message": "Shadows opacity (%)",
+    "description": ""
+  },
+  "showFullDomainOnHover": {
+    "message": "Show full domain on hover",
+    "description": ""
+  },
+  "sideArrowsFocusSidebarFirst": {
+    "message": "← and → keys switch focus to sidebar",
+    "description": ""
+  },
+  "sidebarPadding": {
+    "message": "Sidebar padding",
+    "description": ""
+  },
+  "sidebarWidthMultiplier": {
+    "message": "Sidebar width",
+    "description": ""
+  },
+  "simplifyDomain": {
+    "message": "Simplify website domain",
+    "description": ""
+  },
+  "tileBackgroundColor": {
+    "message": "Background color",
+    "description": ""
+  },
+  "tiles": {
+    "message": "Tiles",
+    "description": ""
+  },
+  "titleHoverColor": {
+    "message": "Title color",
+    "description": ""
+  },
+  "tryToPlaceSuggestionsOnTheSide": {
+    "message": "Move search widgets to the right column",
+    "description": ""
+  },
+  "visitGithub": {
+    "message": "Visit GitHub page",
+    "description": ""
+  },
+  "wholeTileIsClickable": {
+    "message": "Whole tile is clickable",
+    "description": ""
+  },
+  "widerTiles": {
+    "message": "Align tiles by width",
     "description": ""
   }
 }
