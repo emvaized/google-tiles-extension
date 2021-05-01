@@ -1,50 +1,4 @@
-/// All settings with their default values
-var options = new Map([
-  ['innerPadding', 12],
-  ['externalPadding', 24],
-  ['hoverTransitionDuration', 75],
-  ['borderRadius', 12],
-  ['hoverBackground', '#f0f2f4'],
-  ['shadowEnabled', true],
-  ['shadowOpacity', 0.15],
-  ['moveSuggestionsToBottom', true],
-  ['addFavicons', true],
-  ['faviconRadius', 12],
-  ['navigateWithKeyboard', false],
-  ['keyboardCycle', true],
-  ['keyboardFocusBorderColor', '#210DAB'],
-  ['focusedBorderWidth', 1],
-  ['addTileCounter', true],
-  ['numericNavigation', false],
-  ['indexHintOpacity', 0.5],
-  ['wholeTileIsClickable', true],
-  ['tryToPlaceSuggestionsOnTheSide', true],
-  ['applyStyleToWidgets', true],
-  ['simplifyDomain', true],
-  ['widerTiles', true],
-  ['scaleUpImageResultsOnHover', false],
-  ['scrollHorizontalViewOnHover', false],
-  ['tileBackgroundColor', '#FFFFFF'],
-  ['addTileBorder', true],
-  ['delayToScrollOnHover', 150],
-  ['numbersNavigateTabs', true],
-  ['disableTitleUnderlineOnHover', true],
-  ['showFullDomainOnHover', true],
-  ['highlightTitleOnHover', true],
-  ['titleHoverColor', '#EA4335'],
-  ['addTileBackground', true],
-  ['borderColor', '#DADCE0'],
-  ['sidebarWidthMultiplier', 0.75],
-  ['firstNumberPressScrollsToElement', true],
-  ['sideArrowsFocusSidebarFirst', true],
-  ['colorizeBorderAfterFavicon', false],
-  ['focusedTileDifferentBorder', true],
-  ['scaleUpFocusedResult', false],
-  ['scaleUpFocusedResultAmount', 1.05],
-  ['centerizeSelectedResult', true],
-]);
-
-var keys = [...options.keys()];
+let keys = Object.keys(configs);
 
 function restoreOptions() {
   var ids = [];
@@ -56,7 +10,8 @@ function restoreOptions() {
 
   function setInputs(result) {
     /// Iterable approach
-    options.forEach(function (value, key) {
+    keys.forEach(function (key) {
+      let value = configs[key];
       var input = document.getElementById(key);
 
       /// Set input value
@@ -77,6 +32,11 @@ function restoreOptions() {
     var inputs = document.querySelectorAll(ids.join(','));
     inputs.forEach(function (input) {
       input.addEventListener("input", function (e) {
+
+        let id = input.getAttribute('id');
+        let inputValue = input.getAttribute('type') == 'checkbox' ? input.checked : input.value;
+
+        configs[id] = inputValue;
         saveAllOptions();
         updatePreviewTile();
         updateDisabledOptions();
@@ -218,14 +178,15 @@ function setCollapsibleHeaders() {
 }
 
 function saveAllOptions() {
-  var dataToSave = {};
+  // var dataToSave = {};
 
-  keys.forEach(function (key) {
-    var input = document.querySelector(`#${key}`);
-    dataToSave[key] = input.type == 'checkbox' ? input.checked : input.value;
-  });
+  // keys.forEach(function (key) {
+  //   var input = document.querySelector(`#${key}`);
+  //   dataToSave[key] = input.type == 'checkbox' ? input.checked : input.value;
+  // });
 
-  chrome.storage.local.set(dataToSave);
+  // chrome.storage.local.set(dataToSave);
+  chrome.storage.local.set(configs);
 }
 
 
@@ -233,10 +194,11 @@ function resetOptions() {
 
   var dataToSave = {};
 
-  options.forEach(function (value, key) {
+  configs.forEach(function (value, key) {
     dataToSave[key] = value;
   });
 
+  // chrome.storage.local.set(dataToSave);
   chrome.storage.local.set(dataToSave);
 
   // chrome.storage.local.set({

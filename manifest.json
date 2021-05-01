@@ -23,7 +23,8 @@
         "*://www.google.com.ua/search*"
       ],
       "js": [
-        "parser.js"
+        "src/configs.js",
+        "src/parser.js"
       ],
       "run_at": "document_end"
     }
@@ -36,7 +37,8 @@
   "options_ui": {
     "page": "options/options.html",
     "browser_style": true,
-    "chrome_style": true
+    "chrome_style": true,
+    "open_in_tab": false
   },
   "permissions": [
     "storage"

@@ -1,5 +1,6 @@
 #2.1.4
 - Fix for broken layout on some pages
+- Refactored extension configs
 
 #2.1.3
 - Disabled 'whole-title-clickable' behavior for tiles with accordion widgets

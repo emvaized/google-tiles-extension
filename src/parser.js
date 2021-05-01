@@ -1,55 +1,3 @@
-/// Settings
-var enabled;
-var innerPadding;
-var externalPadding;
-var hoverTransitionDuration;
-var borderRadius;
-var hoverBackground;
-var shadowEnabled;
-var shadowOpacity;
-var moveSuggestionsToBottom;
-var tryToPlaceWidgetsOnTheSide;
-var addFavicons;
-var faviconRadius;
-var navigateWithKeyboard;
-var keyboardCycle;
-var keyboardFocusBorderColor;
-var focusedBorderWidth;
-var numericNavigation;
-var addTileCounter;
-var indexHintOpacity;
-var wholeTileIsClickable;
-var applyStyleToWidgets;
-var simplifyDomain;
-var widerTiles;
-var scaleUpImageResultsOnHover;
-var scrollHorizontalViewOnHover;
-var addTileBorder;
-var tileBackgroundColor;
-var delayToScrollOnHover;
-var numbersNavigateTabs;
-var disableTitleUnderlineOnHover;
-var showFullDomainOnHover;
-var highlightTitleOnHover;
-var titleHoverColor;
-var addTileBackground;
-var borderColor;
-var sidebarWidthMultiplier;
-var firstNumberPressScrollsToElement;
-var sideArrowsFocusSidebarFirst;
-var colorizeBorderAfterFavicon;
-var focusedTileDifferentBorder;
-var scaleUpFocusedResult;
-var scaleUpFocusedResultAmount;
-var centerizeSelectedResult;
-
-var sidebarPadding = 25;
-var imageScaleUpOnHoverAmount = 1.5;
-var loadPreviews = false;
-var counterHintsOnBottom = true;
-var countedHintColor = 'grey';
-var counterHintFocusColor = '#EA4335';
-
 /// CSS selectors
 var regularResultClassName = 'g';
 var searchFieldSelector = `[name = 'q']`;
@@ -77,100 +25,35 @@ var regularCategoryButtonSelector = '.hdtb-mitem';
 var imagesPageCategoryButtonsParentSelector = '.T47uwc';
 var imagesPageCategoryButtonSelector = `[class*='NZmxZe']`;
 
+/// Some variables
+var sidebarPadding = 25;
+var imageScaleUpOnHoverAmount = 1.5;
+var loadPreviews = false;
+var counterHintsOnBottom = true;
+var countedHintColor = 'grey';
+var counterHintFocusColor = '#EA4335';
+
+
 function init() {
+  let configKeys = Object.keys(configs);
 
   chrome.storage.local.get(
-    [
-      'innerPadding',
-      'externalPadding',
-      'tilesEnabled',
-      'hoverTransitionDuration',
-      'borderRadius',
-      'hoverBackground',
-      'shadowEnabled',
-      'shadowOpacity',
-      'moveSuggestionsToBottom',
-      'addFavicons',
-      'navigateWithKeyboard',
-      'keyboardFocusBorderColor',
-      'keyboardCycle',
-      'focusedBorderWidth',
-      'numericNavigation',
-      'addTileCounter',
-      'indexHintOpacity',
-      'wholeTileIsClickable',
-      'faviconRadius',
-      'tryToPlaceSuggestionsOnTheSide',
-      'applyStyleToWidgets',
-      'simplifyDomain',
-      'widerTiles',
-      'scaleUpImageResultsOnHover',
-      'scrollHorizontalViewOnHover',
-      'addTileBorder',
-      'tileBackgroundColor',
-      'delayToScrollOnHover',
-      'numbersNavigateTabs',
-      'disableTitleUnderlineOnHover',
-      'showFullDomainOnHover',
-      'highlightTitleOnHover',
-      'titleHoverColor',
-      'addTileBackground',
-      'borderColor',
-      'sidebarWidthMultiplier',
-      'firstNumberPressScrollsToElement',
-      'sideArrowsFocusSidebarFirst',
-      'colorizeBorderAfterFavicon',
-      'focusedTileDifferentBorder',
-      'scaleUpFocusedResult',
-      'scaleUpFocusedResultAmount',
-      'centerizeSelectedResult',
-    ], function (value) {
-      enabled = value.tilesEnabled ?? true;
+    configKeys, function (value) {
+      configs.tilesEnabled = value.tilesEnabled ?? true;
 
-      if (enabled) {
+      if (configs.tilesEnabled) {
 
-        innerPadding = value.innerPadding || 12;
-        externalPadding = value.externalPadding || 24;
-        hoverTransitionDuration = value.hoverTransitionDuration || 75;
-        borderRadius = value.borderRadius ?? 12;
-        hoverBackground = value.hoverBackground || '#f0f2f4';
-        shadowEnabled = value.shadowEnabled ?? true;
-        shadowOpacity = value.shadowOpacity || 0.15;
-        moveSuggestionsToBottom = value.moveSuggestionsToBottom ?? true;
-        addFavicons = value.addFavicons ?? true;
-        faviconRadius = value.faviconRadius || 12;
-        navigateWithKeyboard = value.navigateWithKeyboard ?? false;
-        keyboardFocusBorderColor = value.keyboardFocusBorderColor ?? '#210DAB';
-        keyboardCycle = value.keyboardCycle ?? true;
-        focusedBorderWidth = value.focusedBorderWidth || 1;
-        numericNavigation = value.numericNavigation ?? false;
-        addTileCounter = value.addTileCounter ?? true;
-        indexHintOpacity = value.indexHintOpacity || 0.5;
-        wholeTileIsClickable = value.wholeTileIsClickable ?? true;
-        tryToPlaceWidgetsOnTheSide = value.tryToPlaceSuggestionsOnTheSide ?? true;
-        applyStyleToWidgets = value.applyStyleToWidgets ?? true;
-        simplifyDomain = value.simplifyDomain ?? true;
-        widerTiles = value.widerTiles ?? true;
-        scaleUpImageResultsOnHover = value.scaleUpImageResultsOnHover ?? false;
-        scrollHorizontalViewOnHover = value.scrollHorizontalViewOnHover ?? false;
-        addTileBorder = value.addTileBorder ?? true;
-        tileBackgroundColor = value.tileBackgroundColor ?? '#FFFFFF';
-        delayToScrollOnHover = value.delayToScrollOnHover || 150;
-        numbersNavigateTabs = value.numbersNavigateTabs ?? true;
-        disableTitleUnderlineOnHover = value.disableTitleUnderlineOnHover ?? true;
-        showFullDomainOnHover = value.showFullDomainOnHover ?? true;
-        highlightTitleOnHover = value.highlightTitleOnHover ?? true;
-        titleHoverColor = value.titleHoverColor || '#EA4335';
-        addTileBackground = value.addTileBackground ?? true;
-        borderColor = value.borderColor || '#DADCE0';
-        sidebarWidthMultiplier = value.sidebarWidthMultiplier || 0.75;
-        firstNumberPressScrollsToElement = value.firstNumberPressScrollsToElement ?? true;
-        sideArrowsFocusSidebarFirst = value.sideArrowsFocusSidebarFirst ?? true;
-        colorizeBorderAfterFavicon = value.colorizeBorderAfterFavicon ?? false;
-        focusedTileDifferentBorder = value.focusedTileDifferentBorder ?? true;
-        scaleUpFocusedResult = value.scaleUpFocusedResult ?? false;
-        scaleUpFocusedResultAmount = value.scaleUpFocusedResultAmount || 1.05;
-        centerizeSelectedResult = value.centerizeSelectedResult ?? true;
+        for (var i = 0; i < configKeys.length; i++) {
+          let key = configKeys[i];
+
+          if (value[key] !== null && value[key] !== undefined)
+            configs[key] = value[key];
+        }
+
+        // configKeys.forEach(function (key) {
+        //   if (value[key])
+        //     configs[key] = value[key];
+        // });
 
         var mainResults = document.getElementById(columnWithRegularResultsId);
 
@@ -184,7 +67,8 @@ function init() {
             else
               mainResults = Array.prototype.slice.call(mainResults.children);
 
-            console.log(mainResults.length);
+            // console.log(mainResults.length);
+
             /// Handling when cards are wrapped in div (for example, in Edge)
             if (mainResults.length <= 8)
               mainResults.forEach(function (result) {
@@ -243,217 +127,210 @@ function setLayout(elements) {
   var sidebarContainer = document.getElementById('rhs');
   if (regularResultsColumn !== null)
 
-    try {
-      var regularResultsColumnWidth = regularResultsColumn.clientWidth;
+    // try {
+    var regularResultsColumnWidth = regularResultsColumn.clientWidth;
 
-      if (sidebarContainer == null) {
-        /// Setting up the sidebar
-        sidebarContainer = document.createElement('div');
-        sidebarContainer.setAttribute('id', 'g-tiles-sidebar');
-        sidebarContainer.setAttribute("style", `position: absolute; top: 0; left:${regularResultsColumnWidth * 1.07 + sidebarPadding}px;width: ${regularResultsColumnWidth * sidebarWidthMultiplier}px !important;padding-left:${sidebarPadding}px;padding-top:0px;`);
-        if (regularResultsColumn !== null)
-          regularResultsColumn.parentNode.appendChild(sidebarContainer);
+  if (sidebarContainer == null) {
+    /// Setting up the sidebar
+    sidebarContainer = document.createElement('div');
+    sidebarContainer.setAttribute('id', 'g-tiles-sidebar');
+    sidebarContainer.setAttribute("style", `position: absolute; top: 0; left:${regularResultsColumnWidth * 1.07 + sidebarPadding}px;width: ${regularResultsColumnWidth * configs.sidebarWidthMultiplier}px !important;padding-left:${sidebarPadding}px;padding-top:0px;`);
+    if (regularResultsColumn !== null)
+      regularResultsColumn.parentNode.appendChild(sidebarContainer);
 
-        /// Table approach
-        // sidebarContainer.setAttribute("style", `width: ${regularResultsColumnWidth * sidebarWidthMultiplier}px !important;margin-left:${sidebarPadding * 5}px;`);
-        // var table = document.createElement('table');
-        // var tr = document.createElement('tr');
-        // var td1 = document.createElement('td');
-        // var td2 = document.createElement('td');
+    /// Table approach
+    // sidebarContainer.setAttribute("style", `width: ${regularResultsColumnWidth * configs.sidebarWidthMultiplier}px !important;margin-left:${sidebarPadding * 5}px;`);
+    // var table = document.createElement('table');
+    // var tr = document.createElement('tr');
+    // var td1 = document.createElement('td');
+    // var td2 = document.createElement('td');
 
-        // if (regularResultsColumn !== null) {
-        //   regularResultsColumn.wrap(td1);
-        //   td1.wrap(tr);
-        //   tr.appendChild(sidebarContainer);
-        //   sidebarContainer.wrap(td2);
-        //   tr.wrap(table);
-        // }
+    // if (regularResultsColumn !== null) {
+    //   regularResultsColumn.wrap(td1);
+    //   td1.wrap(tr);
+    //   tr.appendChild(sidebarContainer);
+    //   sidebarContainer.wrap(td2);
+    //   tr.wrap(table);
+    // }
 
-      } else
-        sidebarContainer.setAttribute("style", `width: ${regularResultsColumnWidth * sidebarWidthMultiplier}px !important;padding-top:6px;`);
-      // sidebarContainer.setAttribute("style", `width: ${regularResultsColumnWidth * sidebarWidthMultiplier}px !important;padding-left:${sidebarPadding}px;margin-left: ${regularResultsColumnWidth + document.getElementById('center_col').style.marginLeft.replaceAll('px', '')}px;padding-top:6px;`);
+  } else
+    sidebarContainer.setAttribute("style", `width: ${regularResultsColumnWidth * configs.sidebarWidthMultiplier}px !important;padding-top:6px;`);
 
+  /// Adding some padding for 'results count' text on and navbar for better visual symmetry
+  var resultStats = document.querySelector(resultStatsSelector);
+  if (resultStats !== null)
+    resultStats.setAttribute("style", `padding: 0px ${configs.innerPadding}px;`);
+  var navBar = document.querySelector(navBarSelector);
+  if (navBar !== null)
+    navBar.setAttribute("style", `padding: 0px ${configs.innerPadding}px;`);
 
-      /// Adding some padding for 'results count' text on and navbar for better visual symmetry
-      var resultStats = document.querySelector(resultStatsSelector);
-      if (resultStats !== null)
-        resultStats.setAttribute("style", `padding: 0px ${innerPadding}px;`);
-      var navBar = document.querySelector(navBarSelector);
-      if (navBar !== null)
-        navBar.setAttribute("style", `padding: 0px ${innerPadding}px;`);
+  /// Apply styles for elements already in sidebar
+  var sidebarWidgets;
+  if (sidebarContainer !== null) {
+    sidebarWidgets = sidebarContainer.children;
+    sidebarWidgets = Array.prototype.slice.call(sidebarWidgets);
 
-      /// Apply styles for elements already in sidebar
-      var sidebarWidgets;
-      if (sidebarContainer !== null) {
-        sidebarWidgets = sidebarContainer.children;
-        sidebarWidgets = Array.prototype.slice.call(sidebarWidgets);
+    sidebarWidgets.reverse().forEach(function (item) {
+      if (item.clientHeight !== 0.0 && item.clientWidth !== 0.0 && (item.tagName == 'DIV' || item.tagName == 'G-SECTION-WITH-HEADER')) {
+        configureTile(item);
 
-        sidebarWidgets.reverse().forEach(function (item) {
-          if (item.clientHeight !== 0.0 && item.clientWidth !== 0.0 && (item.tagName == 'DIV' || item.tagName == 'G-SECTION-WITH-HEADER')) {
-            configureTile(item);
-
-            /// For whatever reason these items are always less wide by 5% - fix this:
-            item.style.width = '105%';
-          }
-        });
+        /// For whatever reason these items are always less wide by 5% - fix this:
+        item.style.width = '105%';
       }
+    });
+  }
 
+  /// Add search suggestions div to proccessed elements
+  var botstuff = document.getElementById(peopleAlsoSearchForId);
+  if (botstuff !== null && botstuff !== undefined) {
+    tiles.push(botstuff);
+  }
 
-      /// Add search suggestions div to proccessed elements
-      var botstuff = document.getElementById(peopleAlsoSearchForId);
-      if (botstuff !== null && botstuff !== undefined) {
-        tiles.push(botstuff);
-      }
+  /// Add adverts to proccessed elements
+  var addsBlock = document.getElementById('tads');
+  if (addsBlock !== null && addsBlock !== undefined) {
+    tiles.unshift(addsBlock);
+  }
 
-      /// Add adverts to proccessed elements
-      var addsBlock = document.getElementById('tads');
-      if (addsBlock !== null && addsBlock !== undefined) {
-        tiles.unshift(addsBlock);
-      }
+  var numericNavigationIndex = 0;
 
-      var numericNavigationIndex = 0;
+  /// Apply styles for all the other elements
+  if (regularResultsColumn !== null)
+    tiles.forEach(function (suggestionTile) {
+      if (suggestionTile.clientHeight !== 0.0 && suggestionTile.clientWidth !== 0.0 && suggestionTile.firstChild !== undefined) {
+        // try {
 
-      /// Apply styles for all the other elements
-      if (regularResultsColumn !== null)
-        tiles.forEach(function (suggestionTile) {
-          if (suggestionTile.clientHeight !== 0.0 && suggestionTile.clientWidth !== 0.0 && suggestionTile.firstChild !== undefined) {
-            try {
+        if (suggestionTile.className !== regularResultClassName) {
 
-              if (suggestionTile.className !== regularResultClassName) {
+          /// If sidebar height won't exceed regular results height, move tile there
+          if (sidebarContainer !== null && sidebarContainer.clientHeight + suggestionTile.clientHeight <= regularResultsColumn.clientHeight && suggestionTile.className !== shopPageCardClass && suggestionTile.tagName !== newsPageCardSelector.toUpperCase()) {
 
-                /// If sidebar height won't exceed regular results height, move tile there
-                if (sidebarContainer !== null && sidebarContainer.clientHeight + suggestionTile.clientHeight <= regularResultsColumn.clientHeight && suggestionTile.className !== shopPageCardClass && suggestionTile.tagName !== newsPageCardSelector.toUpperCase()) {
-
-                  /// Attach widget to sidebar
-                  if (tryToPlaceWidgetsOnTheSide)
-                    sidebarContainer.appendChild(suggestionTile);
-                  else if (moveSuggestionsToBottom)
-                    regularResultsColumn.append(suggestionTile);
-                  if (applyStyleToWidgets) {
-                    configureTile(suggestionTile, regularResultsColumnWidth * sidebarWidthMultiplier);
-                  }
-                } else {
-                  /// Otherwise, attach it on bottom of regular results scrollbar
-                  if (moveSuggestionsToBottom)
-                    regularResultsColumn.append(suggestionTile);
-
-                  if (applyStyleToWidgets) {
-                    configureTile(suggestionTile, regularResultsColumnWidth);
-                  }
-                }
-              } else {
-                configureTile(suggestionTile);
-
-                /// Add index hint
-                if (addTileCounter && numericNavigation && numbersNavigateTabs == false) {
-                  var counter = document.createElement('p');
-                  counter.setAttribute("style", `color: ${countedHintColor};opacity: ${indexHintOpacity};position:absolute; right: ${innerPadding}px;transition: all 300ms ease-out`);
-
-                  if (counterHintsOnBottom) {
-                    counter.style.bottom = '0px';
-                  } else {
-                    counter.style.top = '0px';
-                  }
-                  counter.setAttribute('id', 'g-tile-counter-hint');
-                  numericNavigationIndex += 1;
-                  counter.textContent = numericNavigationIndex;
-                  if (numericNavigationIndex < 10) {
-                    counterHintsList.push(counter);
-                    suggestionTile.appendChild(counter);
-                  }
-                }
-              }
-            } catch (error) { console.log('Google Tiles error: ' + error); }
-
-
-            /// Add scale-up effect for image results
-            if (scaleUpImageResultsOnHover) {
-              var imageResults = suggestionTile.querySelectorAll(imageResultTileSelector);
-
-              var heightPadding = (imageScaleUpOnHoverAmount - 1.0) / 2;
-
-              if (imageResults !== null && imageResults !== undefined) {
-                imageResults.forEach(function (image) {
-                  try {
-                    var height = image.clientHeight;
-
-                    image.onmouseover = function (event) {
-                      this.setAttribute('style', `${image.parentNode.classList.contains(imageCarouselClass) ? `margin: 0px ${height * heightPadding}px;` : ''} -webkit-transform:scale(${imageScaleUpOnHoverAmount}); z-index: 999; transition: all 150ms ease-in-out; box-shadow: 0px 5px 15px rgba(0, 0, 0, ${shadowOpacity}) `);
-                    }
-                    image.onmouseout = function () {
-                      this.setAttribute('style', `-webkit-transform:scale(1.0); z-index: 0; transition: all 150ms ease-in-out;`);
-                    }
-
-                    /// If image is inside horizontal carouosel, add padding
-                    if (image.parentNode.classList.contains(imageCarouselClass)) {
-                      var imageCarouselContainer = image.parentNode;
-
-                      imageCarouselContainer.onmouseover = function (event) {
-                        imageCarouselContainer.setAttribute('style', ` margin-bottom: ${height * heightPadding}px;margin-top: ${height * heightPadding}px;transition: all 150ms ease-in-out;`);
-                      }
-                      imageCarouselContainer.onmouseout = function () {
-                        imageCarouselContainer.setAttribute('style', `margin: 0px; transition: all 150ms ease-in-out;`);
-                      }
-                    }
-                  } catch (error) {
-                    console.log(error);
-                  }
-                });
-              } else {
-                console.log('Google Tiles: no zoomable images found');
-              }
-            }
-
-            /// Add scroll-on-hover listeners
-            if (scrollHorizontalViewOnHover) {
-
-              // var list = suggestionTile.querySelector(`[role='list']`);
-              // if (list !== null) {
-              // var scrollableCards = Array.prototype.slice.call(list.children);
-
-
-              // var scrollableCards = suggestionTile.querySelectorAll(scrollableCardSelector);
-              var scrollableCards = suggestionTile.querySelectorAll(`[role='listitem'], g-inner-card`);
-
-              if (scrollableCards !== null && scrollableCards !== undefined) {
-                /// Try to proccess 'More news' cards on news page
-                if (scrollableCards.length == 0)
-                  scrollableCards = suggestionTile.querySelectorAll(newsPageCardSelector);
-
-                if (scrollableCards !== null && scrollableCards !== undefined && scrollableCards.length > 0)
-                  scrollableCards.forEach(function (card) {
-
-                    card.onmouseover = function (event) {
-                      // card.scrollIntoView({ block: 'nearest', inline: "center", behavior: "smooth" });
-                      setTimeout(function () {
-                        card.scrollIntoView({ block: 'nearest', inline: "center", behavior: "smooth" });
-                      }, delayToScrollOnHover);
-                    }
-                  });
-              }
-
+            /// Attach widget to sidebar
+            if (configs.tryToPlaceWidgetsOnTheSide)
+              sidebarContainer.appendChild(suggestionTile);
+            else if (configs.moveSuggestionsToBottom)
+              regularResultsColumn.append(suggestionTile);
+            if (configs.applyStyleToWidgets) {
+              configureTile(suggestionTile, regularResultsColumnWidth * configs.sidebarWidthMultiplier);
             }
           } else {
-            /// Remove the weird bottom margin for empty divs on page
-            suggestionTile.style.margin = '0px';
+            /// Otherwise, attach it on bottom of regular results scrollbar
+            if (configs.moveSuggestionsToBottom)
+              regularResultsColumn.append(suggestionTile);
+
+            if (configs.applyStyleToWidgets) {
+              configureTile(suggestionTile, regularResultsColumnWidth);
+            }
           }
-        });
+        } else {
+          configureTile(suggestionTile);
+
+          /// Add index hint
+          if (configs.addTileCounter && configs.numericNavigation && configs.numbersNavigateTabs == false) {
+            var counter = document.createElement('p');
+            counter.setAttribute("style", `color: ${countedHintColor};opacity: ${configs.indexHintOpacity};position:absolute; right: ${configs.innerPadding}px;transition: all 300ms ease-out`);
+
+            if (counterHintsOnBottom) {
+              counter.style.bottom = '0px';
+            } else {
+              counter.style.top = '0px';
+            }
+            counter.setAttribute('id', 'g-tile-counter-hint');
+            numericNavigationIndex += 1;
+            counter.textContent = numericNavigationIndex;
+            if (numericNavigationIndex < 10) {
+              counterHintsList.push(counter);
+              suggestionTile.appendChild(counter);
+            }
+          }
+        }
+        // } catch (error) { console.log('Google Tiles error: ' + error); }
 
 
-    } catch (error) {
-      console.log('Google Tiles error: ' + error)
+        /// Add scale-up effect for image results
+        if (configs.scaleUpImageResultsOnHover) {
+          var imageResults = suggestionTile.querySelectorAll(imageResultTileSelector);
+
+          var heightPadding = (imageScaleUpOnHoverAmount - 1.0) / 2;
+
+          if (imageResults !== null && imageResults !== undefined) {
+            imageResults.forEach(function (image) {
+              try {
+                var height = image.clientHeight;
+
+                image.onmouseover = function (event) {
+                  this.setAttribute('style', `${image.parentNode.classList.contains(imageCarouselClass) ? `margin: 0px ${height * heightPadding}px;` : ''} -webkit-transform:scale(${imageScaleUpOnHoverAmount}); z-index: 999; transition: all 150ms ease-in-out; box-shadow: 0px 5px 15px rgba(0, 0, 0, ${configs.shadowOpacity}) `);
+                }
+                image.onmouseout = function () {
+                  this.setAttribute('style', `-webkit-transform:scale(1.0); z-index: 0; transition: all 150ms ease-in-out;`);
+                }
+
+                /// If image is inside horizontal carouosel, add padding
+                if (image.parentNode.classList.contains(imageCarouselClass)) {
+                  var imageCarouselContainer = image.parentNode;
+
+                  imageCarouselContainer.onmouseover = function (event) {
+                    imageCarouselContainer.setAttribute('style', ` margin-bottom: ${height * heightPadding}px;margin-top: ${height * heightPadding}px;transition: all 150ms ease-in-out;`);
+                  }
+                  imageCarouselContainer.onmouseout = function () {
+                    imageCarouselContainer.setAttribute('style', `margin: 0px; transition: all 150ms ease-in-out;`);
+                  }
+                }
+              } catch (error) {
+                console.log(error);
+              }
+            });
+          } else {
+            console.log('Google Tiles: no zoomable images found');
+          }
+        }
+
+        /// Add scroll-on-hover listeners
+        if (configs.scrollHorizontalViewOnHover) {
+
+          // var list = suggestionTile.querySelector(`[role='list']`);
+          // if (list !== null) {
+          // var scrollableCards = Array.prototype.slice.call(list.children);
 
 
-    }
+          // var scrollableCards = suggestionTile.querySelectorAll(scrollableCardSelector);
+          var scrollableCards = suggestionTile.querySelectorAll(`[role='listitem'], g-inner-card`);
+
+          if (scrollableCards !== null && scrollableCards !== undefined) {
+            /// Try to proccess 'More news' cards on news page
+            if (scrollableCards.length == 0)
+              scrollableCards = suggestionTile.querySelectorAll(newsPageCardSelector);
+
+            if (scrollableCards !== null && scrollableCards !== undefined && scrollableCards.length > 0)
+              scrollableCards.forEach(function (card) {
+
+                card.onmouseover = function (event) {
+                  // card.scrollIntoView({ block: 'nearest', inline: "center", behavior: "smooth" });
+                  setTimeout(function () {
+                    card.scrollIntoView({ block: 'nearest', inline: "center", behavior: "smooth" });
+                  }, configs.delayToScrollOnHover);
+                }
+              });
+          }
+
+        }
+      } else {
+        /// Remove the weird bottom margin for empty divs on page
+        suggestionTile.style.margin = '0px';
+      }
+    });
+  // } catch (error) {
+  //   console.log('Google Tiles error: ' + error)
+  // }
   else {
     ///Add scale-up effect for image results page
-    if (scaleUpImageResultsOnHover) {
+    if (configs.scaleUpImageResultsOnHover) {
       var imageResults = document.querySelectorAll(imagesPageImageSelector);
 
       if (imageResults !== null && imageResults !== undefined) {
         imageResults.forEach(function (image) {
           image.onmouseover = function (event) {
-            this.parentNode.setAttribute('style', `-webkit-transform:scale(${imageScaleUpOnHoverAmount}); z-index: 999; transition: all 150ms ease-in-out; box-shadow: 0px 5px 15px rgba(0, 0, 0, ${shadowOpacity}) `);
+            this.parentNode.setAttribute('style', `-webkit-transform:scale(${imageScaleUpOnHoverAmount}); z-index: 999; transition: all 150ms ease-in-out; box-shadow: 0px 5px 15px rgba(0, 0, 0, ${configs.shadowOpacity}) `);
             this.parentNode.parentNode.style.overflow = 'visible';
           }
           image.onmouseout = function () {
@@ -476,10 +353,10 @@ function setLayout(elements) {
   }
 
   /// Add '0' index hint for search field
-  if (addTileCounter && numericNavigation) {
+  if (configs.addTileCounter && configs.numericNavigation) {
     try {
       var zeroCounter = document.createElement('span');
-      zeroCounter.setAttribute("style", `position: absolute; z-index:0; right: -15px; top: 50%; color: ${countedHintColor};opacity: ${indexHintOpacity}; transition: all 300ms ease-in-out`);
+      zeroCounter.setAttribute("style", `position: absolute; z-index:0; right: -15px; top: 50%; color: ${countedHintColor};opacity: ${configs.indexHintOpacity}; transition: all 300ms ease-in-out`);
       zeroCounter.innerHTML = '0';
       counterHintsList.push(zeroCounter);
 
@@ -490,7 +367,7 @@ function setLayout(elements) {
 
 
   /// Set keyboard listeners
-  if (navigateWithKeyboard || numericNavigation) {
+  if (configs.navigateWithKeyboard || configs.numericNavigation) {
     document.onkeydown = checkKey;
     var searchField = document.querySelector(searchFieldSelector);
     var averageRegularResultsPerWidget = 3.5;
@@ -506,7 +383,7 @@ function setLayout(elements) {
     if (sidebarContainer !== null)
       var sidebarSearchResults = sidebarContainer.querySelectorAll('#g-tile');
 
-    if (navigateWithKeyboard && regularSearchResults !== undefined && regularSearchResults[0] !== undefined) regularSearchResults[0].focus();
+    if (configs.navigateWithKeyboard && regularSearchResults !== undefined && regularSearchResults[0] !== undefined) regularSearchResults[0].focus();
 
     /// Value used for arrow keys navigation
     var sidebarContainsWidgets = false;
@@ -523,8 +400,8 @@ function setLayout(elements) {
       }
     }
 
-    /// Attach index hints to tab categories when numeric tab navigation is enabled
-    if (numericNavigation && numbersNavigateTabs) {
+    /// Attach index hints to tab categories when numeric tab navigation is configs.enabled
+    if (configs.numericNavigation && configs.numbersNavigateTabs) {
       var tabButtons;
       // var topBar = document.querySelector(regularCategoryButtonsParentSelector);
       var topBar = document.getElementById(regularCategoryButtonsParentId);
@@ -549,10 +426,10 @@ function setLayout(elements) {
           if (item.classList.length > 1 && currentTabIndex == null) {
             currentTabIndex = i;
           } else {
-            if (addTileCounter)
+            if (configs.addTileCounter)
               try {
                 var counter = document.createElement('p');
-                counter.setAttribute("style", `color: ${countedHintColor};opacity: ${indexHintOpacity};position:absolute;top:0px;left: 0px;transition: all 300ms ease-out`);
+                counter.setAttribute("style", `color: ${countedHintColor};opacity: ${configs.indexHintOpacity};position:absolute;top:0px;left: 0px;transition: all 300ms ease-out`);
                 counter.setAttribute('id', 'g-tile-counter-hint');
                 counter.textContent = parseInt(i) + 1;
                 counterHintsList.push(counter);
@@ -574,7 +451,7 @@ function setLayout(elements) {
       e = e || window.event;
 
       /// Arrow keys navigation
-      if (navigateWithKeyboard && regularResultsColumn !== null) {
+      if (configs.navigateWithKeyboard && regularResultsColumn !== null) {
 
 
         if (e.keyCode == '38') {
@@ -589,7 +466,7 @@ function setLayout(elements) {
           /// left arrow
           e.preventDefault();
 
-          if (sidebarSearchResults !== null && sidebarSearchResults.length !== 0 && sideArrowsFocusSidebarFirst) {
+          if (sidebarSearchResults !== null && sidebarSearchResults.length !== 0 && configs.sideArrowsFocusSidebarFirst) {
             if (sideBarIsFocused == false)
               goToPreviousPage();
             else
@@ -603,7 +480,7 @@ function setLayout(elements) {
           /// right arrow
           e.preventDefault();
 
-          if (sidebarSearchResults !== null && sidebarSearchResults.length !== 0 && sideArrowsFocusSidebarFirst) {
+          if (sidebarSearchResults !== null && sidebarSearchResults.length !== 0 && configs.sideArrowsFocusSidebarFirst) {
             if (sideBarIsFocused)
               goToNextPage();
             else
@@ -616,7 +493,7 @@ function setLayout(elements) {
       }
 
       /// Numeric keyboard focus
-      if (numericNavigation) {
+      if (configs.numericNavigation) {
 
         const parsed = parseInt(e.key, 10);
         if (isNaN(parsed)) { return; }
@@ -636,7 +513,7 @@ function setLayout(elements) {
           /// Focus search result at number
           e.preventDefault();
 
-          if (numbersNavigateTabs) {
+          if (configs.numbersNavigateTabs) {
             /// Don't handle buttons beyond the 'more' - they are too tricky
             if (parsed - 1 > 5) return;
 
@@ -644,11 +521,11 @@ function setLayout(elements) {
 
             var isVisible;
 
-            if (firstNumberPressScrollsToElement) {
+            if (configs.firstNumberPressScrollsToElement) {
               isVisible = isElementPartiallyInViewport(button);
             }
 
-            if (isVisible || firstNumberPressScrollsToElement == false) {
+            if (isVisible || configs.firstNumberPressScrollsToElement == false) {
               animateCounterFocus(parsed <= currentTabIndex ? parsed : parsed - 1);
               setTimeout(function () {
                 /// Click through some button elements 
@@ -665,7 +542,7 @@ function setLayout(elements) {
           } else {
             focusedRegularResult = parsed - 1;
             var resultToFocus = regularSearchResults[parsed - 1];
-            if (firstNumberPressScrollsToElement == false || document.activeElement === resultToFocus) {
+            if (configs.firstNumberPressScrollsToElement == false || document.activeElement === resultToFocus) {
               animateCounterFocus(parsed - 1);
               resultToFocus.focus();
               resultToFocus.click();
@@ -710,7 +587,7 @@ function setLayout(elements) {
       counterHintsList[index].style.opacity = 1.0;
       setTimeout(function () {
         counterHintsList[index].style.color = countedHintColor;
-        counterHintsList[index].style.opacity = indexHintOpacity;
+        counterHintsList[index].style.opacity = configs.indexHintOpacity;
       }, 300);
     }
 
@@ -729,8 +606,8 @@ function setLayout(elements) {
         focusedRegularResult = focusedSidebarWidget;
       }
 
-      regularSearchResults[focusedRegularResult].focus({ preventScroll: centerizeSelectedResult });
-      if (centerizeSelectedResult)
+      regularSearchResults[focusedRegularResult].focus({ preventScroll: configs.centerizeSelectedResult });
+      if (configs.centerizeSelectedResult)
         regularSearchResults[focusedRegularResult].scrollIntoView({ block: 'center', inline: "nearest", behavior: "smooth" });
     }
 
@@ -749,8 +626,8 @@ function setLayout(elements) {
           sidebarSearchResults.length - 1 : focusedRegularResult;
       }
 
-      sidebarSearchResults[focusedSidebarWidget].focus({ preventScroll: centerizeSelectedResult });
-      if (centerizeSelectedResult)
+      sidebarSearchResults[focusedSidebarWidget].focus({ preventScroll: configs.centerizeSelectedResult });
+      if (configs.centerizeSelectedResult)
         sidebarSearchResults[focusedSidebarWidget].scrollIntoView({ block: 'center', inline: "nearest", behavior: "smooth" });
     }
 
@@ -759,26 +636,26 @@ function setLayout(elements) {
       if (sideBarIsFocused) {
         if (focusedSidebarWidget > 0) {
           focusedSidebarWidget -= 1;
-          sidebarSearchResults[focusedSidebarWidget].focus({ preventScroll: centerizeSelectedResult });
+          sidebarSearchResults[focusedSidebarWidget].focus({ preventScroll: configs.centerizeSelectedResult });
 
-          if (centerizeSelectedResult)
+          if (configs.centerizeSelectedResult)
             sidebarSearchResults[focusedSidebarWidget].scrollIntoView({ block: 'center', inline: "nearest", behavior: "smooth" });
 
         } else {
-          if (keyboardCycle) {
+          if (configs.keyboardCycle) {
             focusLastSearchResult();
           }
         }
       } else {
         if (focusedRegularResult > 0) {
           focusedRegularResult -= 1;
-          regularSearchResults[focusedRegularResult].focus({ preventScroll: centerizeSelectedResult });
+          regularSearchResults[focusedRegularResult].focus({ preventScroll: configs.centerizeSelectedResult });
 
-          if (centerizeSelectedResult)
+          if (configs.centerizeSelectedResult)
             regularSearchResults[focusedRegularResult].scrollIntoView({ block: 'center', inline: "nearest", behavior: "smooth" });
 
         } else {
-          if (keyboardCycle) {
+          if (configs.keyboardCycle) {
             focusLastSearchResult();
           }
         }
@@ -789,27 +666,27 @@ function setLayout(elements) {
       if (sideBarIsFocused) {
         if (focusedSidebarWidget < sidebarSearchResults.length - 1) {
           focusedSidebarWidget += 1;
-          sidebarSearchResults[focusedSidebarWidget].focus({ preventScroll: centerizeSelectedResult });
+          sidebarSearchResults[focusedSidebarWidget].focus({ preventScroll: configs.centerizeSelectedResult });
 
-          if (centerizeSelectedResult)
+          if (configs.centerizeSelectedResult)
             sidebarSearchResults[focusedSidebarWidget].scrollIntoView({ block: 'center', inline: "nearest", behavior: "smooth" });
 
         } else {
-          if (keyboardCycle) {
+          if (configs.keyboardCycle) {
             focusedSidebarWidget = 0;
-            sidebarSearchResults[focusedSidebarWidget].focus({ preventScroll: centerizeSelectedResult });
+            sidebarSearchResults[focusedSidebarWidget].focus({ preventScroll: configs.centerizeSelectedResult });
           }
         }
       } else {
         if (focusedRegularResult < regularSearchResults.length - 1) {
           focusedRegularResult += 1;
-          regularSearchResults[focusedRegularResult].focus({ preventScroll: centerizeSelectedResult });
+          regularSearchResults[focusedRegularResult].focus({ preventScroll: configs.centerizeSelectedResult });
 
-          if (centerizeSelectedResult)
+          if (configs.centerizeSelectedResult)
             regularSearchResults[focusedRegularResult].scrollIntoView({ block: 'center', inline: "nearest", behavior: "smooth" });
 
         } else {
-          if (keyboardCycle) {
+          if (configs.keyboardCycle) {
             focusFirstSearchResult();
           }
         }
@@ -819,13 +696,13 @@ function setLayout(elements) {
     function focusFirstSearchResult() {
       if (sideBarIsFocused) {
         focusedSidebarWidget = 0;
-        sidebarSearchResults[focusedSidebarWidget].focus({ preventScroll: centerizeSelectedResult });
-        if (centerizeSelectedResult)
+        sidebarSearchResults[focusedSidebarWidget].focus({ preventScroll: configs.centerizeSelectedResult });
+        if (configs.centerizeSelectedResult)
           sidebarSearchResults[focusedSidebarWidget].scrollIntoView({ block: 'center', inline: "nearest", behavior: "smooth" });
       } else {
         focusedRegularResult = 0;
-        regularSearchResults[focusedRegularResult].focus({ preventScroll: centerizeSelectedResult });
-        if (centerizeSelectedResult)
+        regularSearchResults[focusedRegularResult].focus({ preventScroll: configs.centerizeSelectedResult });
+        if (configs.centerizeSelectedResult)
           regularSearchResults[focusedRegularResult].scrollIntoView({ block: 'center', inline: "nearest", behavior: "smooth" });
       }
     }
@@ -833,15 +710,15 @@ function setLayout(elements) {
     function focusLastSearchResult() {
       if (sideBarIsFocused) {
         focusedSidebarWidget = sidebarSearchResults.length - 1;
-        sidebarSearchResults[focusedSidebarWidget].focus({ preventScroll: centerizeSelectedResult });
+        sidebarSearchResults[focusedSidebarWidget].focus({ preventScroll: configs.centerizeSelectedResult });
 
-        if (centerizeSelectedResult)
+        if (configs.centerizeSelectedResult)
           sidebarSearchResults[focusedSidebarWidget].scrollIntoView({ block: 'center', inline: "nearest", behavior: "smooth" });
       } else {
         focusedRegularResult = regularSearchResults.length - 1;
-        regularSearchResults[focusedRegularResult].focus({ preventScroll: centerizeSelectedResult });
+        regularSearchResults[focusedRegularResult].focus({ preventScroll: configs.centerizeSelectedResult });
 
-        if (centerizeSelectedResult)
+        if (configs.centerizeSelectedResult)
           regularSearchResults[focusedRegularResult].scrollIntoView({ block: 'center', inline: "nearest", behavior: "smooth" });
       }
     }
@@ -850,43 +727,6 @@ function setLayout(elements) {
 
   console.log('Google Tiles finished proccessing page');
 }
-
-
-function getResultFullTilte(url, resultTitle) {
-
-  try {
-    // fetch(url)
-    //   .then(function (res) {
-    //     var body = res.text();
-    //     var title = body.split('<title>')[1].split('</title>')[0];
-    //     if (title !== null && title !== undefined && title !== '') {
-    //       resultTitle.setAttribute('title', title);
-    //     }
-    //   });
-
-    fetch(url, { mode: 'no-cors' })
-      .then(function (response) {
-        return response.text();
-      })
-      .then(function (body) {
-        if (body !== undefined && body.includes('<title>')) {
-          var title = body.split('<title>')[1].split('</title>')[0]
-          // var output = { id: 1234, rawHTML: title };
-          // callback(null, output);
-          resultTitle.setAttribute('title', title);
-          console.log('Set title ' + title);
-        }
-
-      });
-    // .catch(callback);
-
-
-  } catch (e) {
-    console.log('error while setting full title for ' + url);
-    console.log(e);
-  }
-}
-
 
 function configureTile(tile, maxWidth) {
   if (tile.tagName == 'H2') return;
@@ -937,7 +777,7 @@ function configureTile(tile, maxWidth) {
     wrapper.href = url;
 
     /// Disable link underline for H3 headers
-    if (disableTitleUnderlineOnHover) {
+    if (configs.disableTitleUnderlineOnHover) {
       var titles = tile.querySelectorAll('h3');
       titles.forEach(function (title) {
         title.style.textDecoration = 'none';
@@ -946,21 +786,21 @@ function configureTile(tile, maxWidth) {
   }
 
   /// Add default style for tile
-  tile.setAttribute("style", `position:relative;${addTileBackground ? `background-color: ${tileBackgroundColor}` : ''};border:solid ${focusedBorderWidth}px ${addTileBorder ? borderColor : 'transparent'};border-radius: ${borderRadius}px;transition:all ${hoverTransitionDuration}ms ease-out;padding: ${innerPadding}px;margin: 0px 0px ${externalPadding}px;box-shadow: ${shadowEnabled ? `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity})` : 'unset'};`);
+  tile.setAttribute("style", `position:relative;${configs.addTileBackground ? `background-color: ${configs.tileBackgroundColor}` : ''};border:solid ${configs.focusedBorderWidth}px ${configs.addTileBorder ? configs.borderColor : 'transparent'};border-radius: ${configs.borderRadius}px;transition:all ${configs.hoverTransitionDuration}ms ease-out;padding: ${configs.innerPadding}px;margin: 0px 0px ${configs.externalPadding}px;box-shadow: ${configs.shadowEnabled ? `0px 5px 15px rgba(0, 0, 0, ${configs.shadowOpacity})` : 'unset'};`);
 
-  if (widerTiles) {
+  if (configs.widerTiles) {
     tile.style.width = '100%';
   }
 
 
   /// Get result's full title
-  try {
-    if (titles !== undefined && titles[0] !== undefined && titles[0].textContent.endsWith('...') && url !== null && url !== undefined && url !== '')
-      getResultFullTilte(url, titles[0]);
-  } catch (e) {
-    console.log('Error during adding on-hover full title:');
-    console.log(e);
-  }
+  // try {
+  //   if (titles !== undefined && titles[0] !== undefined && titles[0].textContent.endsWith('...') && url !== null && url !== undefined && url !== '')
+  //     getResultFullTilte(url, titles[0]);
+  // } catch (e) {
+  //   console.log('Error during adding on-hover full title:');
+  //   console.log(e);
+  // }
 
 
 
@@ -970,34 +810,34 @@ function configureTile(tile, maxWidth) {
     tile.onmouseover = function () {
 
       // if (addBackground)
-      this.style.backgroundColor = hoverBackground;
-      if (highlightTitleOnHover && titles[0] !== undefined && linkIsValid) {
+      this.style.backgroundColor = configs.hoverBackground;
+      if (configs.highlightTitleOnHover && titles[0] !== undefined && linkIsValid) {
         originalTitleColor = titles[0].style.color;
-        titles[0].style.color = titleHoverColor;
+        titles[0].style.color = configs.titleHoverColor;
       }
     }
 
     tile.onmouseout = function () {
-      this.style.backgroundColor = addTileBackground ? tileBackgroundColor : 'transparent';
+      this.style.backgroundColor = configs.addTileBackground ? configs.tileBackgroundColor : 'transparent';
 
       // regular link color: #1A0DAB;
-      if (highlightTitleOnHover && titles[0] !== undefined && linkIsValid)
+      if (configs.highlightTitleOnHover && titles[0] !== undefined && linkIsValid)
         titles[0].style.color = originalTitleColor ?? 'unset';
     }
   }
 
 
   /// Append onClick listeners to visually emulate button press on card by changing shadow 
-  if (shadowEnabled && wholeTileIsClickable) {
+  if (configs.shadowEnabled && configs.wholeTileIsClickable) {
     tile.onmousedown = function () {
-      this.style.boxShadow = `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity / 2})`;
+      this.style.boxShadow = `0px 5px 15px rgba(0, 0, 0, ${configs.shadowOpacity / 2})`;
 
-      if (scaleUpFocusedResult)
+      if (configs.scaleUpFocusedResult)
         wrapper.firstChild.style.webkitTransform = `scale(1.0)`;
     }
 
     tile.onmouseup = function () {
-      this.style.boxShadow = `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity})`;
+      this.style.boxShadow = `0px 5px 15px rgba(0, 0, 0, ${configs.shadowOpacity})`;
     }
   }
 
@@ -1007,8 +847,6 @@ function configureTile(tile, maxWidth) {
   if (interactiveWidget !== null && maxWidth !== null) {
     interactiveWidget.setAttribute("style", `max-width: ${maxWidth}px !important;background-color: transparent;margin: 0px; padding: 0px;border: none !important; outline: none !important`);
   }
-
-
 
 
   /// Ignore clicks on dropdown buttons
@@ -1026,21 +864,21 @@ function configureTile(tile, maxWidth) {
     // }
   } else {
     /// Wrap tile with 'a' created element
-    if (wholeTileIsClickable && linkIsValid)
+    if (configs.wholeTileIsClickable && linkIsValid)
       tile.wrap(wrapper);
   }
 
 
   /// Add keyboard focus listeners
-  if (navigateWithKeyboard || numericNavigation) {
+  if (configs.navigateWithKeyboard || configs.numericNavigation) {
     /// Highlight item focused with keyboard
     // wrapper.addEventListener('focus', (event) => {
     wrapper.onfocus = function (event) {
-      if (focusedTileDifferentBorder)
-        wrapper.firstChild.style.border = `solid ${focusedBorderWidth}px ${keyboardFocusBorderColor}`;
+      if (configs.focusedTileDifferentBorder)
+        wrapper.firstChild.style.border = `solid ${configs.focusedBorderWidth}px ${configs.keyboardFocusBorderColor}`;
 
-      if (scaleUpFocusedResult) {
-        wrapper.firstChild.style.webkitTransform = `scale(${scaleUpFocusedResultAmount})`;
+      if (configs.scaleUpFocusedResult) {
+        wrapper.firstChild.style.webkitTransform = `scale(${configs.scaleUpFocusedResultAmount})`;
         wrapper.firstChild.style.zIndex = '2';
       }
 
@@ -1049,10 +887,10 @@ function configureTile(tile, maxWidth) {
 
     /// Remove the highlight from item on focus loss
     wrapper.onblur = function () {
-      if (focusedTileDifferentBorder)
-        wrapper.firstChild.style.border = `solid ${focusedBorderWidth}px ${addTileBorder ? borderColor : 'transparent'}`;
+      if (configs.focusedTileDifferentBorder)
+        wrapper.firstChild.style.border = `solid ${configs.focusedBorderWidth}px ${configs.addTileBorder ? configs.borderColor : 'transparent'}`;
 
-      if (scaleUpFocusedResult) {
+      if (configs.scaleUpFocusedResult) {
         wrapper.firstChild.style.webkitTransform = `scale(1.0)`;
         wrapper.firstChild.style.zIndex = '1';
 
@@ -1063,13 +901,13 @@ function configureTile(tile, maxWidth) {
   var faviconColor;
 
   /// Add favicons to website titles
-  if (addFavicons || simplifyDomain) {
+  if (configs.addFavicons || configs.simplifyDomain) {
     var domain = tile.querySelector(domainNameSelector);
 
     if (domain != null && domain !== undefined) {
 
       /// Replace domain with simplier version
-      if (simplifyDomain) {
+      if (configs.simplifyDomain) {
         try {
           var titleText;
           var domainContent = domain.textContent.split('.');
@@ -1085,7 +923,7 @@ function configureTile(tile, maxWidth) {
           titleText = titleText.replaceAll('https://', '');
 
           /// Add tooltip with full domain on hover
-          if (showFullDomainOnHover)
+          if (configs.showFullDomainOnHover)
             domain.setAttribute('title', domain.textContent);
           var domainPathSpan = domain.querySelector('span');
           domain.textContent = titleText + (domainPathSpan == null ? '' : domainPathSpan.textContent);
@@ -1093,14 +931,14 @@ function configureTile(tile, maxWidth) {
       }
 
       /// Create favicon
-      if (addFavicons && url !== null && url !== undefined && url !== '' && tile.className == regularResultClassName) {
+      if (configs.addFavicons && url !== null && url !== undefined && url !== '' && tile.className == regularResultClassName) {
         var favicon = document.createElement('img');
         var domainForFavicon = url.split('/')[2];
         if (domainForFavicon == null || domainForFavicon == undefined)
           domainForFavicon = url;
         favicon.setAttribute("src", 'https://www.google.com/s2/favicons?domain=' + domainForFavicon);
 
-        favicon.style.cssText = `height:${faviconRadius}px; width:${faviconRadius}px;  padding-right: 5px;`;
+        favicon.style.cssText = `height:${configs.faviconRadius}px; width:${configs.faviconRadius}px;  padding-right: 5px;`;
         domain.parentNode.prepend(favicon);
 
         /// Fix dropdown button position
@@ -1121,7 +959,7 @@ function configureTile(tile, maxWidth) {
           }
         }
 
-        if (colorizeBorderAfterFavicon)
+        if (configs.colorizeBorderAfterFavicon)
           favicon.addEventListener("load", function () {
             faviconColor = getFaviconColor(favicon);
             if (faviconColor !== null && faviconColor !== undefined) {
@@ -1185,7 +1023,6 @@ function configureTile(tile, maxWidth) {
   }
 }
 
-
 HTMLElement.prototype.wrap = function (wrapper) {
   this.parentNode.insertBefore(wrapper, this);
   wrapper.appendChild(this);
@@ -1247,6 +1084,36 @@ function rgb2hex(rgb) {
   }
   return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
 }
+
+
+/// Doesn't work - request gets blocked by CORS policies
+function getResultFullTilte(url, resultTitle) {
+  console.log('trying to get result full title...');
+  try {
+
+    fetch(url, { mode: 'cors' })
+      .then(function (response) {
+        return response.text();
+      })
+      .then(function (body) {
+        if (body !== undefined && body.includes('<title>')) {
+          var title = body.split('<title>')[1].split('</title>')[0]
+          // var output = { id: 1234, rawHTML: title };
+          // callback(null, output);
+          resultTitle.setAttribute('title', title);
+          console.log('Set title ' + title);
+        }
+
+      });
+    // .catch(callback);
+
+
+  } catch (e) {
+    console.log('error while setting full title for ' + url);
+    console.log(e);
+  }
+}
+
 
 
 init();
