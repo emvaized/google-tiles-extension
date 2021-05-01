@@ -25,13 +25,15 @@ var regularCategoryButtonSelector = '.hdtb-mitem';
 var imagesPageCategoryButtonsParentSelector = '.T47uwc';
 var imagesPageCategoryButtonSelector = `[class*='NZmxZe']`;
 
-/// Some variables
+/// Currently non-configurable variables
 var sidebarPadding = 25;
 var imageScaleUpOnHoverAmount = 1.5;
 var loadPreviews = false;
 var counterHintsOnBottom = true;
 var countedHintColor = 'grey';
 var counterHintFocusColor = '#EA4335';
+
+var addFocusedTileDot = true;
 
 
 function init() {
@@ -871,17 +873,27 @@ function configureTile(tile, maxWidth) {
 
   /// Add keyboard focus listeners
   if (configs.navigateWithKeyboard || configs.numericNavigation) {
+    let dot;
     /// Highlight item focused with keyboard
     // wrapper.addEventListener('focus', (event) => {
     wrapper.onfocus = function (event) {
+      /// Change border
       if (configs.focusedTileDifferentBorder)
         wrapper.firstChild.style.border = `solid ${configs.focusedBorderWidth}px ${configs.keyboardFocusBorderColor}`;
 
+      /// Scale up
       if (configs.scaleUpFocusedResult) {
         wrapper.firstChild.style.webkitTransform = `scale(${configs.scaleUpFocusedResultAmount})`;
         wrapper.firstChild.style.zIndex = '2';
       }
 
+      /// Add dot on the left
+      if (addFocusedTileDot) {
+        dot = document.createElement('div');
+        dot.setAttribute('class', 'g-tile-focused-tile-dot');
+        dot.setAttribute('style', `background: ${configs.keyboardFocusBorderColor}; height: 10px; width: 10px; border-radius: 50%; position: relative; top: -${tile.clientHeight / 2 + configs.externalPadding}px; left: -40px;`);
+        wrapper.appendChild(dot);
+      }
 
     }
 
@@ -893,7 +905,11 @@ function configureTile(tile, maxWidth) {
       if (configs.scaleUpFocusedResult) {
         wrapper.firstChild.style.webkitTransform = `scale(1.0)`;
         wrapper.firstChild.style.zIndex = '1';
+      }
 
+      if (addFocusedTileDot) {
+        if (dot !== null && dot !== undefined)
+          wrapper.removeChild(dot);
       }
     }
   }
@@ -1042,7 +1058,6 @@ function getFaviconColor(img) {
   var imageData = context.getImageData(0, 0, imageWidth, imageHeight);
   var data = imageData.data;
   // quickly iterate over all pixels
-  // for (i = 0, n = data.length; i < n; i += 4) {
   for (var i = 0; i < data.length; i += 4) {
     var r = data[i];
     var g = data[i + 1];

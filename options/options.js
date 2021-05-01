@@ -1,74 +1,94 @@
-let keys = Object.keys(configs);
+let userConfigs;
+var ids = [];
+let keys;
 
 function restoreOptions() {
-  var ids = [];
-  keys.forEach(function (key) {
-    ids.push('#' + key);
-  });
+  try {
+    keys = Object.keys(configs);
 
-  chrome.storage.local.get(keys, setInputs);
-
-  function setInputs(result) {
-    /// Iterable approach
     keys.forEach(function (key) {
-      let value = configs[key];
-      var input = document.getElementById(key);
+      ids.push('#' + key);
+    });
 
-      /// Set input value
-      if (input !== null && input !== undefined) {
-        if (input.type == 'checkbox') {
-          if ((result[key] !== null && result[key] == true) || (result[key] == null && value == true))
-            input.setAttribute('checked', 0)
+    chrome.storage.local.get(keys, setInputs);
+
+    function setInputs(result) {
+      userConfigs = result;
+
+      console.log('restored configs:');
+      console.log(result);
+
+      /// Iterable approach
+      keys.forEach(function (key) {
+        let value = userConfigs[key];
+        var input = document.getElementById(key);
+
+        /// Set input value
+        if (input !== null && input !== undefined) {
+          if (input.type == 'checkbox') {
+            // if ((result[key] !== null && result[key] == true) || (result[key] == null && value == true))
+            if (result[key] == true)
+              input.setAttribute('checked', 0)
+          }
+          else
+            input.setAttribute('value', result[key] ?? value);
+
+          /// Set translated label for input
+          if (!input.parentNode.innerHTML.includes(chrome.i18n.getMessage(key)))
+            input.parentNode.innerHTML += chrome.i18n.getMessage(key);
         }
-        else
-          input.setAttribute('value', result[key] ?? value);
+      });
 
-        /// Set translated label for input
-        if (!input.parentNode.innerHTML.includes(chrome.i18n.getMessage(key)))
-          input.parentNode.innerHTML += chrome.i18n.getMessage(key);
-      }
-    });
+      var inputs = document.querySelectorAll(ids.join(','));
+      inputs.forEach(function (input) {
+        input.addEventListener("input", function (e) {
 
-    var inputs = document.querySelectorAll(ids.join(','));
-    inputs.forEach(function (input) {
-      input.addEventListener("input", function (e) {
+          let id = input.getAttribute('id');
+          let inputValue = input.getAttribute('type') == 'checkbox' ? input.checked : input.value;
 
-        let id = input.getAttribute('id');
-        let inputValue = input.getAttribute('type') == 'checkbox' ? input.checked : input.value;
+          userConfigs[id] = inputValue;
+          saveAllOptions();
 
-        configs[id] = inputValue;
-        saveAllOptions();
-        updatePreviewTile();
-        updateDisabledOptions();
-      })
-    });
+          console.log('config: ' + id.toString());
+          console.log('value: ' + inputValue.toString());
+          updatePreviewTile();
+          updateDisabledOptions();
+          // chrome.storage.local.set({ id: inputValue });
+        })
+      });
 
-    /// Set translated tooltips
-    document.querySelector("#moveSuggestionsToBottomTooltip").innerHTML = chrome.i18n.getMessage("moveSuggestionsToBottomTooltip");
-    document.querySelector("#numericNavigationTooltip").innerHTML = chrome.i18n.getMessage("numericNavigationTooltip");
-    document.querySelector("#navigateWithKeyboardTooltip").innerHTML = chrome.i18n.getMessage("navigateWithKeyboardTooltip");
-    document.querySelector("#firstNumberPressScrollsToElementTooltip").innerHTML = chrome.i18n.getMessage("firstNumberPressScrollsToElementTooltip");
-    document.querySelector("#colorizeBorderAfterFaviconTooltip").innerHTML = chrome.i18n.getMessage("colorizeBorderAfterFaviconTooltip");
+      /// Set translated tooltips
+      document.querySelector("#moveSuggestionsToBottomTooltip").innerHTML = chrome.i18n.getMessage("moveSuggestionsToBottomTooltip");
+      document.querySelector("#numericNavigationTooltip").innerHTML = chrome.i18n.getMessage("numericNavigationTooltip");
+      document.querySelector("#navigateWithKeyboardTooltip").innerHTML = chrome.i18n.getMessage("navigateWithKeyboardTooltip");
+      document.querySelector("#firstNumberPressScrollsToElementTooltip").innerHTML = chrome.i18n.getMessage("firstNumberPressScrollsToElementTooltip");
+      document.querySelector("#colorizeBorderAfterFaviconTooltip").innerHTML = chrome.i18n.getMessage("colorizeBorderAfterFaviconTooltip");
 
-    /// Set translated headers
-    document.querySelector("#previewHeader").innerHTML = chrome.i18n.getMessage("preview");
-    document.querySelector("#appearanceHeader").innerHTML = chrome.i18n.getMessage("appearance");
-    document.querySelector("#faviconsHeader").innerHTML = chrome.i18n.getMessage("header");
-    document.querySelector("#hoverHeader").innerHTML = chrome.i18n.getMessage("hover");
-    document.querySelector("#searchResultsHeader").innerHTML = chrome.i18n.getMessage("searchResults");
-    document.querySelector("#keyboardNavigationHeader").innerHTML = chrome.i18n.getMessage("keyboardNavigation");
-    // document.querySelector("#allChangesSavedAutomaticallyHeader").innerHTML = '💾 ' + chrome.i18n.getMessage("allChangesSavedAutomatically");
-    document.querySelector("#allChangesSavedAutomaticallyHeader").innerHTML = chrome.i18n.getMessage("allChangesSavedAutomatically");
+      /// Set translated headers
+      document.querySelector("#previewHeader").innerHTML = chrome.i18n.getMessage("preview");
+      document.querySelector("#appearanceHeader").innerHTML = chrome.i18n.getMessage("appearance");
+      document.querySelector("#faviconsHeader").innerHTML = chrome.i18n.getMessage("header");
+      document.querySelector("#hoverHeader").innerHTML = chrome.i18n.getMessage("hover");
+      document.querySelector("#searchResultsHeader").innerHTML = chrome.i18n.getMessage("searchResults");
+      document.querySelector("#keyboardNavigationHeader").innerHTML = chrome.i18n.getMessage("keyboardNavigation");
+      // document.querySelector("#allChangesSavedAutomaticallyHeader").innerHTML = '💾 ' + chrome.i18n.getMessage("allChangesSavedAutomatically");
+      document.querySelector("#allChangesSavedAutomaticallyHeader").innerHTML = chrome.i18n.getMessage("allChangesSavedAutomatically");
 
-    /// Translate footer buttons
-    document.querySelector("#resetButton").innerHTML = chrome.i18n.getMessage("resetDefaults");
-    document.querySelector("#githubButton").innerHTML = chrome.i18n.getMessage("visitGithub") + document.querySelector("#githubButton").innerHTML;
-    document.querySelector("#donateButton").innerHTML = chrome.i18n.getMessage("buyMeCoffee") + document.querySelector("#donateButton").innerHTML;
+      /// Translate footer buttons
+      document.querySelector("#resetButton").innerHTML = chrome.i18n.getMessage("resetDefaults");
+      document.querySelector("#githubButton").innerHTML = chrome.i18n.getMessage("visitGithub") + document.querySelector("#githubButton").innerHTML;
+      document.querySelector("#donateButton").innerHTML = chrome.i18n.getMessage("buyMeCoffee") + document.querySelector("#donateButton").innerHTML;
 
-    updatePreviewTile();
-    updateDisabledOptions();
-    setCollapsibleHeaders();
-  }
+      updatePreviewTile();
+      updateDisabledOptions();
+      setCollapsibleHeaders();
+    }
+
+
+
+
+
+  } catch (error) { console.log(error); }
 }
 
 function updateDisabledOptions() {
@@ -77,7 +97,8 @@ function updateDisabledOptions() {
   document.querySelector("#keyboardCycle").parentNode.className = document.querySelector("#navigateWithKeyboard").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#applyStyleToWidgets").parentNode.className = document.querySelector("#tryToPlaceSuggestionsOnTheSide").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#keyboardFocusBorderColor").parentNode.className = document.querySelector("#navigateWithKeyboard").checked ? 'enabled-option' : 'disabled-option';
-  document.querySelector("#focusedBorderWidth").parentNode.className = document.querySelector("#navigateWithKeyboard").checked ? 'enabled-option' : 'disabled-option';
+  // document.querySelector("#focusedBorderWidth").parentNode.className = document.querySelector("#navigateWithKeyboard").checked ? 'enabled-option' : 'disabled-option';
+  document.querySelector("#focusedBorderWidth").parentNode.className = document.querySelector("#addTileBorder").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#addTileCounter").parentNode.className = document.querySelector("#numericNavigation").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#numbersNavigateTabs").parentNode.className = document.querySelector("#numericNavigation").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#indexHintOpacity").parentNode.className = document.querySelector("#addTileCounter").checked && document.querySelector("#numericNavigation").checked ? 'enabled-option' : 'disabled-option';
@@ -186,7 +207,8 @@ function saveAllOptions() {
   // });
 
   // chrome.storage.local.set(dataToSave);
-  chrome.storage.local.set(configs);
+
+  chrome.storage.local.set(userConfigs);
 }
 
 
@@ -194,7 +216,7 @@ function resetOptions() {
 
   var dataToSave = {};
 
-  configs.forEach(function (value, key) {
+  userConfigs.forEach(function (value, key) {
     dataToSave[key] = value;
   });
 
