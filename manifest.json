@@ -2,16 +2,11 @@
   "manifest_version": 2,
   "default_locale": "en",
   "name": "Google Tiles",
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "__MSG_extensionDescription__",
   "icons": {
     "48": "icons/google-tiles-new-icon-48.png",
     "96": "icons/google-tiles-new-icon-96.png"
-  },
-  "browser_specific_settings": {
-    "gecko": {
-      "id": "google_tiles@emvaized.com"
-    }
   },
   "content_scripts": [
     {
@@ -43,5 +38,10 @@
   },
   "permissions": [
     "storage"
-  ]
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "google_tiles@emvaized.com"
+    }
+  }
 }

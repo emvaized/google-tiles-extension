@@ -40,7 +40,7 @@
     "description": ""
   },
   "buyMeCoffee": {
-    "message": "Buy author a coffee",
+    "message": "Support development",
     "description": ""
   },
   "centerizeSelectedResult": {
@@ -259,12 +259,20 @@
     "message": "Visit GitHub page",
     "description": ""
   },
+  "whatsNew": {
+    "message": "What's new",
+    "description": ""
+  },
   "wholeTileIsClickable": {
     "message": "Whole tile is clickable",
     "description": ""
   },
   "widerTiles": {
     "message": "Align tiles by width",
+    "description": ""
+  },
+  "writeAReview": {
+    "message": "Write a review",
     "description": ""
   }
 }

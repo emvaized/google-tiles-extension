@@ -18,7 +18,6 @@ form {
   transition: all 200ms ease-in-out;
 }
 
-
 label {
   cursor: pointer;
 }
@@ -121,7 +120,7 @@ h4 {
   }
 
   #footer-buttons {
-    display: flex;
+    /* display: flex; */
     /* padding-top: 30px; */
 }
 
@@ -129,8 +128,11 @@ button {
     margin-left: 6px;
     width: 100%;
     text-align: center;
-    margin-right: 6px;
+    margin: 4px 0px !important;
+    /* margin-right: 6px;
     margin-bottom: 12px;
+    margin-top: 5px;
+    margin-bottom: 5px; */
 }
 
 /* Collapsible settings headers */
@@ -167,4 +169,8 @@ button {
   
 .active:after {
     content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+#google-tiles-version {
+  text-align: center;
 }

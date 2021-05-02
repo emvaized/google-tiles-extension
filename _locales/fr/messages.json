@@ -1,0 +1,278 @@
+{
+    "addFavicons": {
+        "message": "Ajouter un favicon de site Web",
+        "description": ""
+    },
+    "addFocusedTileDot": {
+        "message": "Ajouter un point à la vignette ciblée",
+        "description": ""
+    },
+    "addTileBackground": {
+        "message": "Ajouter un arrière-plan de mosaïque",
+        "description": ""
+    },
+    "addTileBorder": {
+        "message": "Ajouter une bordure",
+        "description": ""
+    },
+    "addTileCounter": {
+        "message": "Afficher les indices de numéro",
+        "description": ""
+    },
+    "allChangesSavedAutomatically": {
+        "message": "Les paramètres sont enregistrés automatiquement <br /> Mettez à jour les pages ouvertes pour voir les modifications",
+        "description": ""
+    },
+    "appearance": {
+        "message": "Apparence",
+        "description": ""
+    },
+    "applyStyleToWidgets": {
+        "message": "Appliquer le style aux widgets de recherche",
+        "description": ""
+    },
+    "borderColor": {
+        "message": "Couleur de la bordure",
+        "description": ""
+    },
+    "borderRadius": {
+        "message": "Rayon du coin (px)",
+        "description": ""
+    },
+    "buyMeCoffee": {
+        "message": "Soutenir le développement",
+        "description": ""
+    },
+    "centerizeSelectedResult": {
+        "message": "Centrer le résultat sélectionné",
+        "description": ""
+    },
+    "colorizeBorderAfterFavicon": {
+        "message": "Coloriser la bordure après le favicon du site Web",
+        "description": ""
+    },
+    "colorizeBorderAfterFaviconTooltip": {
+        "message": "Ce paramètre est en conflit avec 'Bordure différente pour la vignette ciblée'",
+        "description": ""
+    },
+    "configure": {
+        "message": "Configurer",
+        "description": ""
+    },
+    "delayToScrollOnHover": {
+        "message": "Délai avant le défilement du survol (ms)",
+        "description": "Délai avant de commencer le défilement au survol, lorsqu'il est activé"
+    },
+    "disableTitleUnderlineOnHover": {
+        "message": "Désactiver le soulignement du titre au survol",
+        "description": ""
+    },
+    "enabled": {
+        "message": "Activé",
+        "description": ""
+    },
+    "extensionDescription": {
+        "message": "Personnalisez l'apparence et le comportement de la page de recherche Google",
+        "description": ""
+    },
+    "externalPadding": {
+        "message": "Remplissage entre les résultats (px)",
+        "description": ""
+    },
+    "faviconRadius": {
+        "message": "Taille Favicon",
+        "description": ""
+    },
+    "favicons": {
+        "message": "Favicons",
+        "description": ""
+    },
+    "firstNumberPressScrollsToElement": {
+        "message": "La première pression fait défiler jusqu'à l'élément",
+        "description": ""
+    },
+    "firstNumberPressScrollsToElementTooltip": {
+        "message": "Lorsqu'il est désactivé, le premier appui sélectionne immédiatement l'élément",
+        "description": ""
+    },
+    "focusedBorderWidth": {
+        "message": "Largeur des bordures (px)",
+        "description": ""
+    },
+    "focusedTileDifferentBorder": {
+        "message": "Bordure différente pour la tuile focalisée",
+        "description": ""
+    },
+    "focusedTileDotOpacity": {
+        "message": "Opacité des points",
+        "description": ""
+    },
+    "header": {
+        "message": "En-tête de vignette",
+        "description": ""
+    },
+    "highlightTitleOnHover": {
+        "message": "Changer la couleur du titre au survol",
+        "description": ""
+    },
+    "hover": {
+        "message": "Survolez",
+        "description": ""
+    },
+    "hoverBackground": {
+        "message": "Couleur d'arrière-plan de la mosaïque au survol",
+        "description": ""
+    },
+    "hoverTransitionDuration": {
+        "message": "Durée de la transition de survol (ms)",
+        "description": ""
+    },
+    "imageScaleUpOnHoverAmount": {
+        "message": "Augmenter le montant",
+        "description": ""
+    },
+    "indexHintOpacity": {
+        "message": "Opacité des indices d'index",
+        "description": ""
+    },
+    "innerPadding": {
+        "message": "Rembourrage intérieur",
+        "description": ""
+    },
+    "keyboardCycle": {
+        "message": "Cycle de navigation (passer au premier résultat après le dernier)",
+        "description": ""
+    },
+    "keyboardFocusBorderColor": {
+        "message": "Couleur de la bordure de la vignette ciblée",
+        "description": ""
+    },
+    "keyboardNavigation": {
+        "message": "Navigation au clavier",
+        "description": ""
+    },
+    "moveSuggestionsToBottom": {
+        "message": "Déplacer les résultats de recherche réguliers en haut",
+        "description": ""
+    },
+    "moveSuggestionsToBottomTooltip": {
+        "message": "Diverses suggestions de recherche seront affichées après les résultats réguliers",
+        "description": ""
+    },
+    "navigateWithKeyboard": {
+        "message": "Utiliser les touches fléchées pour la navigation",
+        "description": ""
+    },
+    "navigateWithKeyboardTooltip": {
+        "message": "Utilisez les touches ↑ et ↓ pour parcourir les résultats, ← et → pour changer de page et 'Enter' pour ouvrir",
+        "description": ""
+    },
+    "numbersNavigateResults": {
+        "message": "Les touches numériques parcourent les résultats de la recherche",
+        "description": ""
+    },
+    "numbersNavigateTabs": {
+        "message": "Les touches numériques permettent de naviguer dans les onglets (naviguer dans les résultats de la recherche lorsqu'ils sont désactivés)",
+        "description": ""
+    },
+    "numericNavigation": {
+        "message": "Navigation par touches numériques",
+        "description": ""
+    },
+    "numericNavigationTooltip": {
+        "message": "Une pression sur la touche 1 mettra l'accent sur le premier élément, 2 sur le deuxième, et ainsi de suite. Une pression sur 0 fera la mise au point sur le champ de recherche",
+        "description": ""
+    },
+    "preview": {
+        "message": "Aperçu de la vignette",
+        "description": ""
+    },
+    "resetDefaults": {
+        "message": "Restaurer les paramètres par défaut",
+        "description": ""
+    },
+    "scaleUpFocusedResult": {
+        "message": "Échellerésultat ciblé ",
+        "description": ""
+    },
+    "scaleUpFocusedResultAmount": {
+        "message": "Augmenter le montant",
+        "description": ""
+    },
+    "scaleUpImageResultsOnHover": {
+        "message": "Augmenter les résultats d'image en survol",
+        "description": ""
+    },
+    "scrollHorizontalViewOnHover": {
+        "message": "Faire défiler les vues horizontales avec survol",
+        "description": ""
+    },
+    "searchResults": {
+        "message": "Résultats de la recherche",
+        "description": ""
+    },
+    "shadowEnabled": {
+        "message": "Ombres activées",
+        "description": ""
+    },
+    "shadowOpacity": {
+        "message": "Opacité des ombres (%)",
+        "description": ""
+    },
+    "showFullDomainOnHover": {
+        "message": "Afficher le domaine complet en survol",
+        "description": ""
+    },
+    "sideArrowsFocusSidebarFirst": {
+        "message": "Les touches ← et → font basculer le focus sur la barre latérale",
+        "description": ""
+    },
+    "sidebarPadding": {
+        "message": "Rembourrage de la barre latérale",
+        "description": ""
+    },
+    "sidebarWidthMultiplier": {
+        "message": "Largeur de la barre latérale",
+        "description": ""
+    },
+    "simplifyDomain": {
+        "message": "Simplifier le domaine du site Web",
+        "description": ""
+    },
+    "tileBackgroundColor": {
+        "message": "Couleur d'arrière-plan",
+        "description": ""
+    },
+    "tiles": {
+        "message": "Tuiles",
+        "description": ""
+    },
+    "titleHoverColor": {
+        "message": "Couleur du titre",
+        "description": ""
+    },
+    "tryToPlaceSuggestionsOnTheSide": {
+        "message": "Déplacer les widgets de recherche vers la colonne de droite",
+        "description": ""
+    },
+    "visitGithub": {
+        "message": "Visiter la page GitHub",
+        "description": ""
+    },
+    "whatsNew": {
+        "message": "Quoi de neuf",
+        "description": ""
+    },
+    "wholeTileIsClickable": {
+        "message": "Toute la vignette est cliquable",
+        "description": ""
+    },
+    "widerTiles": {
+        "message": "Aligner les carreaux par largeur",
+        "description": ""
+    },
+    "writeAReview": {
+        "message": "Écrire une critique",
+        "description": ""
+    }
+}

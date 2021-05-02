@@ -20,7 +20,7 @@
         "description": ""
     },
     "allChangesSavedAutomatically": {
-        "message": "Настройки сохраняются автоматически <br /> Обновите страницы, чтобы увидеть изменения",
+        "message": "Настройки сохраняются автоматически <br /> Обновите страницу, чтобы увидеть изменения",
         "description": ""
     },
     "appearance": {
@@ -40,7 +40,7 @@
         "description": ""
     },
     "buyMeCoffee": {
-        "message": "Купить автору кофе",
+        "message": "Поддержать разработку",
         "description": ""
     },
     "centerizeSelectedResult": {
@@ -259,12 +259,20 @@
         "message": "Посетить страницу на GitHub",
         "description": ""
     },
+    "whatsNew": {
+        "message": "Что нового",
+        "description": ""
+    },
     "wholeTileIsClickable": {
         "message": "Можно кликать по всей плитке",
         "description": ""
     },
     "widerTiles": {
         "message": "Выровнять плитки по ширине",
+        "description": ""
+    },
+    "writeAReview": {
+        "message": "Написать отзыв",
         "description": ""
     }
 }

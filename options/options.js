@@ -74,13 +74,15 @@ function restoreOptions() {
       document.querySelector("#allChangesSavedAutomaticallyHeader").innerHTML = chrome.i18n.getMessage("allChangesSavedAutomatically");
 
       /// Translate footer buttons
-      document.querySelector("#resetButton").innerHTML = chrome.i18n.getMessage("resetDefaults");
+      // document.querySelector("#resetButton").innerHTML = chrome.i18n.getMessage("resetDefaults");
+      document.querySelector("#writeAReviewButton").innerHTML = chrome.i18n.getMessage("writeAReview");
       document.querySelector("#githubButton").innerHTML = chrome.i18n.getMessage("visitGithub") + document.querySelector("#githubButton").innerHTML;
       document.querySelector("#donateButton").innerHTML = chrome.i18n.getMessage("buyMeCoffee") + document.querySelector("#donateButton").innerHTML;
 
       updatePreviewTile();
       updateDisabledOptions();
       setCollapsibleHeaders();
+      setVersionLabel();
     }
   } catch (error) { console.log(error); }
 }
@@ -219,6 +221,12 @@ function resetOptions() {
   restoreOptions();
 }
 
+function setVersionLabel() {
+  let label = document.getElementById('google-tiles-version');
+  var manifestData = chrome.runtime.getManifest();
+  label.innerHTML = 'Google Tiles ' + manifestData.version + ` (<a target='_blank' href='https://github.com/emvaized/google-tiles-extension/blob/master/CHANGELOG.md'>${chrome.i18n.getMessage("whatsNew") ?? "What's new"}</a>)`;
+}
+
 
 document.addEventListener("DOMContentLoaded", restoreOptions);
 document.querySelector("form").addEventListener("reset", resetOptions);
@@ -227,4 +235,8 @@ document.querySelector("#donateButton").addEventListener("click", function (val)
 });
 document.querySelector("#githubButton").addEventListener("click", function (val) {
   window.open('https://github.com/emvaized/google-tiles-extension', '_blank');
+});
+document.querySelector("#writeAReviewButton").addEventListener("click", function (val) {
+  let isFirefox = navigator.userAgent.indexOf("Firefox") > -1;
+  window.open(isFirefox ? 'https://addons.mozilla.org/ru/firefox/addon/google-tiles/' : 'https://chrome.google.com/webstore/detail/google-tiles/cjbgjibpaopnjfbhipjfckeodbaednbg/reviews', '_blank');
 });

@@ -947,7 +947,11 @@ function configureTile(tile, maxWidth) {
         var domainForFavicon = url.split('/')[2];
         if (domainForFavicon == null || domainForFavicon == undefined)
           domainForFavicon = url;
-        favicon.setAttribute("src", 'https://www.google.com/s2/favicons?domain=' + domainForFavicon);
+
+        if (domainForFavicon.includes('github.com'))
+          favicon.setAttribute("src", 'https://image.flaticon.com/icons/png/512/25/25231.png');
+        else
+          favicon.setAttribute("src", 'https://www.google.com/s2/favicons?domain=' + domainForFavicon);
 
         favicon.style.cssText = `height:${configs.faviconRadius}px; width:${configs.faviconRadius}px;  padding-right: 5px;`;
         domain.parentNode.prepend(favicon);

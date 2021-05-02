@@ -1,3 +1,9 @@
+#2.1.5
+- Fix for missing favicon for GitHub
+- Added Spanish and French translation (Google Translate)
+- Added version number on bottom of extension settings
+- Added LICENSE
+
 #2.1.4
 - Fix for broken layout on some pages
 - New 'Add dot to focused tile' option

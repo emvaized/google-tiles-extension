@@ -14,7 +14,16 @@ function getFaviconColor(img) {
     canvas.width = imageWidth;
     var context = canvas.getContext('2d');
     context.drawImage(img, 0, 0, imageWidth, imageHeight);
-    var imageData = context.getImageData(0, 0, imageWidth, imageHeight);
+    var imageData;
+
+    try {
+        imageData = context.getImageData(0, 0, imageWidth, imageHeight);
+    } catch (e) {
+        console.log(e);
+    }
+
+    if (imageData == null) return '#000000';
+
     var data = imageData.data;
     // quickly iterate over all pixels
     for (var i = 0; i < data.length; i += 4) {
