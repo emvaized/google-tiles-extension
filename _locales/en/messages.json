@@ -67,6 +67,14 @@
     "message": "Disable title underline on hover",
     "description": ""
   },
+  "disableExpandAnimations": {
+    "message": "Disable expand animations",
+    "description": ""
+  },
+  "disableExpandAnimationsHint": {
+    "message": "Sometimes search results have annoying expanding sections - this option will disable them",
+    "description": ""
+  },
   "enabled": {
     "message": "Enabled",
     "description": ""

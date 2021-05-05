@@ -197,9 +197,9 @@ function setLayout(elements) {
   if (regularResultsColumn !== null)
     tiles.forEach(function (suggestionTile) {
       if (suggestionTile.clientHeight !== 0.0 && suggestionTile.clientWidth !== 0.0 && suggestionTile.firstChild !== undefined) {
-        // try {
 
-        if (suggestionTile.className !== regularResultClassName) {
+        // if (suggestionTile.className !== regularResultClassName) {
+        if (suggestionTile.className !== regularResultClassName && suggestionTile.firstChild.className !== regularResultClassName) {
 
           /// If sidebar height won't exceed regular results height, move tile there
           if (sidebarContainer !== null && sidebarContainer.clientHeight + suggestionTile.clientHeight <= regularResultsColumn.clientHeight && suggestionTile.className !== shopPageCardClass && suggestionTile.tagName !== newsPageCardSelector.toUpperCase()) {
@@ -222,7 +222,15 @@ function setLayout(elements) {
             }
           }
         } else {
-          configureTile(suggestionTile);
+          // configureTile(suggestionTile);
+
+          if (suggestionTile.className == regularResultClassName) {
+            configureTile(suggestionTile);
+          } else {
+            /// Special handling when tile is wrapped in div
+            suggestionTile.setAttribute('style', 'margin-bottom: 0px !important;');
+            configureTile(suggestionTile.firstChild);
+          }
 
           /// Add index hint
           if (configs.addTileCounter && configs.numericNavigation && configs.numbersNavigateTabs == false) {
@@ -739,7 +747,7 @@ function configureTile(tile, maxWidth) {
 
   /// Set url for 'a' wrapper 
   var url;
-  if (tile.className == regularResultClassName) {
+  if (tile.className == regularResultClassName || tile.firstChild.className == regularResultClassName) {
     /// For regular result use first found link inside element
     url = tile.querySelector('a').href;
   } else {
@@ -769,8 +777,9 @@ function configureTile(tile, maxWidth) {
     } catch (error) { console.log('Google Tiles error: ' + error); }
   }
 
+
   /// Don't wrap if calculated link is the same as url + '#'
-  var linkIsValid = url !== null && url !== undefined && url !== window.location.href + '#';
+  let linkIsValid = url !== null && url !== undefined && url !== window.location.href + '#';
 
   if (linkIsValid && tile.className.toLowerCase()[0] == 'g') {
     wrapper.href = url;
@@ -925,7 +934,7 @@ function configureTile(tile, maxWidth) {
           if (domainContent.length == 2) {
             titleText = domainContent[0];
           } else if (domainContent.length == 3) {
-            titleText = domainContent[1] == 'com' ? domainContent[0] : domainContent[1];
+            titleText = domainContent[1] == 'com' || domainContent[1] == 'net' ? domainContent[0] : domainContent[1];
 
           } else {
             titleText = domain.textContent.replace(/.+\/\/|www.|\..+/g, '');
@@ -942,17 +951,36 @@ function configureTile(tile, maxWidth) {
       }
 
       /// Create favicon
-      if (configs.addFavicons && url !== null && url !== undefined && url !== '' && tile.className == regularResultClassName) {
-        var favicon = document.createElement('img');
+      if (configs.addFavicons && url !== null && url !== undefined && url !== '' && (tile.className == regularResultClassName || tile.firstChild.className == regularResultClassName)) {
+        // var favicon = document.createElement('img');
+        var favicon = new Image();
         var domainForFavicon = url.split('/')[2];
         if (domainForFavicon == null || domainForFavicon == undefined)
           domainForFavicon = url;
 
-        if (domainForFavicon.includes('github.com'))
-          favicon.setAttribute("src", 'https://image.flaticon.com/icons/png/512/25/25231.png');
-        else
-          favicon.setAttribute("src", 'https://www.google.com/s2/favicons?domain=' + domainForFavicon);
+        // if (domainForFavicon.includes('github.com'))
+        //   favicon.setAttribute("src", 'https://image.flaticon.com/icons/png/512/25/25231.png');
+        // else  
+        // favicon.setAttribute("src", 'https://www.google.com/s2/favicons?domain=' + domainForFavicon);
 
+        let websiteFaviconUrl = 'https://' + domainForFavicon + '/' + 'favicon.ico';
+        let googleFaviconUrl = 'https://www.google.com/s2/favicons?domain=' + domainForFavicon;
+        let faviconKitFaviconUrl = `https://api.faviconkit.com/${domainForFavicon}/16`;
+
+        favicon.addEventListener('error', function () {
+          // console.log('error loading favicon for ' + domainForFavicon);
+
+          /// Loading favicon from Google service instead
+          favicon.setAttribute("src", googleFaviconUrl);
+          // favicon.setAttribute("src", faviconKitFaviconUrl);
+        });
+
+        /// Trying to load favicon from website
+        favicon.setAttribute("src", domainForFavicon == 'medium.com' ? 'https://cdn4.iconfinder.com/data/icons/social-media-2210/24/Medium-512.png' : websiteFaviconUrl);
+
+        /// Set size and style
+        favicon.setAttribute('height', `${configs.faviconRadius}px`);
+        favicon.setAttribute('width', `${configs.faviconRadius}px`);
         favicon.style.cssText = `height:${configs.faviconRadius}px; width:${configs.faviconRadius}px;  padding-right: 5px;`;
         domain.parentNode.prepend(favicon);
 
@@ -1006,11 +1034,30 @@ function configureTile(tile, maxWidth) {
     }
   }
 
+  // console.log('tile ' + tile);
   tile.querySelectorAll('div').forEach(function (child) {
     try {
       child.style.maxWidth = `${maxWidth == null ? '100%' : maxWidth + 'px'}`;
-    } catch (e) { }
+
+      // console.log(child.style);
+      console.log(child.getAttribute('style').toString());
+    } catch (e) { console.log(e); }
   });
+
+
+  // if (configs.disableExpandAnimations) {
+
+  //   let itemsWithExpandingSections = tile.querySelectorAll(`div[style*="transition"]`);
+  //   if (itemsWithExpandingSections !== null && itemsWithExpandingSections !== undefined) {
+  //     console.log('found items with expanding secitons!');
+  //     itemsWithExpandingSections.forEach(function (item) {
+  //       item.setAttribute('style', 'transition: none !important');
+  //     })
+  //   }
+
+  //   console.log("found expanding item!");
+  //   child.style.transition = 'none';
+  // }
 
 
   /// Appending page snapshot
@@ -1036,6 +1083,7 @@ function configureTile(tile, maxWidth) {
         })
         .catch(err => console.log(err));
   }
+
 }
 
 

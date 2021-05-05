@@ -1,3 +1,7 @@
+#2.1.6
+- Improved favicon searching
+- Fixed layout issues for some search queries
+
 #2.1.5
 - Fix for missing favicon for GitHub
 - Added Spanish and French translation (Google Translate)
