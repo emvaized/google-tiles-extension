@@ -800,7 +800,6 @@ function configureTile(tile, maxWidth) {
     tile.style.width = '100%';
   }
 
-
   /// Get result's full title
   // try {
   //   if (titles !== undefined && titles[0] !== undefined && titles[0].textContent.endsWith('...') && url !== null && url !== undefined && url !== '')
@@ -832,7 +831,6 @@ function configureTile(tile, maxWidth) {
         titles[0].style.color = originalTitleColor ?? 'unset';
     }
   }
-
 
   /// Append onClick listeners to visually emulate button press on card by changing shadow 
   if (configs.shadowEnabled && configs.wholeTileIsClickable) {
@@ -1039,8 +1037,7 @@ function configureTile(tile, maxWidth) {
     try {
       child.style.maxWidth = `${maxWidth == null ? '100%' : maxWidth + 'px'}`;
 
-      // console.log(child.style);
-      console.log(child.getAttribute('style').toString());
+      // console.log(child.getAttribute('style').toString());
     } catch (e) { console.log(e); }
   });
 
