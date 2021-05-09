@@ -69,7 +69,7 @@ function init() {
             // console.log(mainResults.length);
 
             /// Handling when cards are wrapped in div (for example, in Edge)
-            if (mainResults.length <= 8)
+//             if (mainResults.length <= 8)
               mainResults.forEach(function (result) {
                 var ch = result.children;
                 ch = Array.prototype.slice.call(ch);
@@ -1036,25 +1036,28 @@ function configureTile(tile, maxWidth) {
   tile.querySelectorAll('div').forEach(function (child) {
     try {
       child.style.maxWidth = `${maxWidth == null ? '100%' : maxWidth + 'px'}`;
+      child.style.transition = `none`;
 
-      // console.log(child.getAttribute('style').toString());
+      console.log(child.getAttribute('style').toString());
     } catch (e) { console.log(e); }
   });
 
 
-  // if (configs.disableExpandAnimations) {
-
-  //   let itemsWithExpandingSections = tile.querySelectorAll(`div[style*="transition"]`);
-  //   if (itemsWithExpandingSections !== null && itemsWithExpandingSections !== undefined) {
-  //     console.log('found items with expanding secitons!');
-  //     itemsWithExpandingSections.forEach(function (item) {
-  //       item.setAttribute('style', 'transition: none !important');
-  //     })
-  //   }
-
-  //   console.log("found expanding item!");
-  //   child.style.transition = 'none';
-  // }
+//   if (configs.disableExpandAnimations) {
+// 
+//     let itemsWithExpandingSections = tile.querySelectorAll(`div[style*="transition"]`);
+//     if (itemsWithExpandingSections !== null && itemsWithExpandingSections !== undefined) {
+//       console.log('found items with expanding secitons!');
+//       console.log(itemsWithExpandingSections);
+//       
+//       itemsWithExpandingSections.forEach(function (item) {
+//         item.setAttribute('style', 'transition: none !important');
+//       })
+//     }
+// 
+//     console.log("found expanding item!");
+//     child.style.transition = 'none';
+//   }
 
 
   /// Appending page snapshot

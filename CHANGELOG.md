@@ -1,3 +1,6 @@
+#2.1.7
+- Fixed layout issues for some search queries
+
 #2.1.6
 - Improved favicon searching
 - Fixed layout issues for some search queries
