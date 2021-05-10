@@ -1036,9 +1036,9 @@ function configureTile(tile, maxWidth) {
   tile.querySelectorAll('div').forEach(function (child) {
     try {
       child.style.maxWidth = `${maxWidth == null ? '100%' : maxWidth + 'px'}`;
-      child.style.transition = `none`;
+//       child.style.transition = `none`;
 
-      console.log(child.getAttribute('style').toString());
+//       console.log(child.getAttribute('style').toString());
     } catch (e) { console.log(e); }
   });
 
