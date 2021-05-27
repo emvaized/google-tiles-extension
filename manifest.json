@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
   "default_locale": "en",
-  "name": "Google Tiles",
-  "version": "2.1.7",
+  "name": "G-Tiles",
+  "version": "2.1.8",
   "description": "__MSG_extensionDescription__",
   "icons": {
     "48": "icons/google-tiles-new-icon-48.png",
@@ -20,9 +20,15 @@
       "js": [
         "src/configs.js",
         "src/functions.js",
-        "src/parser.js"
+        "src/keyboard-handler.js",
+        "src/layout.js",
+        "src/tile.js",
+        "src/index.js"
       ],
-      "run_at": "document_end"
+      "css": [
+        "src/index.css"
+      ],
+      "run_at": "document_start"
     }
   ],
   "browser_action": {

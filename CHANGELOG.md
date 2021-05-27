@@ -1,3 +1,8 @@
+#2.1.8
+- Great performance improvements
+- Project restructured
+- Changed extension name to 'G-Tiles'
+
 #2.1.7
 - Fixed layout issues for some search queries
 

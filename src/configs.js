@@ -17,7 +17,7 @@ var configs = {
     "firstNumberPressScrollsToElement": true,
     "focusedBorderWidth": 1,
     "focusedTileDifferentBorder": true,
-    "focusedTileDotOpacity": 0.5,
+    "focusedTileDotOpacity": 0.4,
     "highlightTitleOnHover": true,
     "hoverBackground": "#f0f2f4",
     "hoverTransitionDuration": 75,
