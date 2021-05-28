@@ -1,5 +1,6 @@
 #2.1.8
 - Great performance improvements
+- Favicons now should load faster
 - Project restructured
 - Changed extension name to 'G-Tiles'
 

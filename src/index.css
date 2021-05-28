@@ -11,7 +11,7 @@
     width: var(--gtiles-tile-width) !important;
 }
 
-#rhs > div {
+#rhs > div:not(.cu-container) {
     background-color: var(--gtiles-tile-background);
     border: var(--gtiles-tile-border);
     border-radius: var(--gtiles-tile-border-radius);
