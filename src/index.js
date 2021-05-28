@@ -84,19 +84,32 @@ function init() {
         /// Handling when cards are wrapped in div 
         //             if (mainResults.length <= 8)
         mainResults.forEach(function (result) {
-          var ch = result.children;
 
-          ch = Array.prototype.slice.call(ch);
+          if (result.className == 'g') {
+            if (configs.addFavicons || configs.simplifyDomain) {
+              configureTileHeader(result, result.querySelector('a').href)
+            }
+          } else {
+            let ch = result.children;
 
-          if (ch !== null && ch !== undefined && ch !== []) {
-            var regularResultsColumnElement = document.getElementById(columnWithRegularResultsId);
-            ch.forEach(function (c) {
-              if (c.className == 'g') {
-                mainResults.push(c);
-                regularResultsColumnElement.appendChild(c);
-              }
-            })
+            ch = Array.prototype.slice.call(ch);
+
+            if (ch !== null && ch !== undefined && ch !== []) {
+              var regularResultsColumnElement = document.getElementById(columnWithRegularResultsId);
+              ch.forEach(function (c) {
+                if (c.className == 'g') {
+                  mainResults.push(c);
+                  regularResultsColumnElement.appendChild(c);
+
+                  if (configs.addFavicons || configs.simplifyDomain) {
+                    configureTileHeader(c, c.querySelector('a').href)
+                  }
+                }
+              })
+            }
           }
+
+
         })
 
         /// Special handling for news results page
@@ -116,11 +129,15 @@ function init() {
         }
 
         setLayout(mainResults);
+
+
+
       } else {
         /// Image page results handling (all proccessing done inside method)
 
         // var container = document.getElementById('islrg');
         // var images = container.firstChild.children;
+
         setLayout();
       }
 

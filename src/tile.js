@@ -58,11 +58,11 @@ function configureTile(tile, maxWidth) {
     }
 
     /// Add favicons to website titles
-    if (configs.addFavicons || configs.simplifyDomain) {
+    // if (configs.addFavicons || configs.simplifyDomain) {
 
-        /// Create favicon
-        configureTileHeader(tile, url)
-    }
+    //     /// Create favicon
+    //     configureTileHeader(tile, url)
+    // }
 
     /// Add default style for tile
     tile.setAttribute("style", `position:relative;${configs.addTileBackground ? `background-color: ${configs.tileBackgroundColor}` : ''};border:solid ${configs.focusedBorderWidth}px ${configs.addTileBorder ? configs.borderColor : 'transparent'};border-radius: ${configs.borderRadius}px;transition:all ${configs.hoverTransitionDuration}ms ease-out;padding: ${configs.innerPadding}px;margin: 0px 0px ${configs.externalPadding}px;box-shadow: ${configs.shadowEnabled ? `0px 5px 15px rgba(0, 0, 0, ${configs.shadowOpacity})` : 'unset'};`);
@@ -207,12 +207,8 @@ function configureTile(tile, maxWidth) {
 
     }
 
-    // tile.querySelectorAll('div').forEach(function (child) {
-    //     try {
-    //         child.style.maxWidth = `${maxWidth == null ? '100%' : maxWidth + 'px'}`;
-    //     } catch (e) { console.log(e); }
-    // }); 
-
+    /// Set max width to all div children so that they don't exceed tile border
+    setBoundingWidthToAllChildren(tile, maxWidth);
 
     //   if (configs.disableExpandAnimations) {
     // 
@@ -257,6 +253,15 @@ function configureTile(tile, maxWidth) {
 
 }
 
+function setBoundingWidthToAllChildren(tile, maxWidth) {
+
+    tile.querySelectorAll('div').forEach(function (child) {
+        try {
+            child.style.maxWidth = `${maxWidth == null ? '100%' : (maxWidth - configs.innerPadding) + 'px'}`;
+        } catch (e) { console.log(e); }
+    });
+}
+
 
 function configureTileHeader(tile, url) {
     var faviconColor;
@@ -298,17 +303,15 @@ function configureTileHeader(tile, url) {
             if (domainForFavicon == null || domainForFavicon == undefined)
                 domainForFavicon = url;
 
-            // if (domainForFavicon.includes('github.com'))
-            //   favicon.setAttribute("src", 'https://image.flaticon.com/icons/png/512/25/25231.png');
-            // else  
-            // favicon.setAttribute("src", 'https://www.google.com/s2/favicons?domain=' + domainForFavicon);
-
             const websiteFaviconUrl = 'https://' + domainForFavicon + '/' + 'favicon.ico';
+            const faviconKitFaviconUrl = 'https://api.faviconkit.com/' + domainForFavicon + '/' + '16';
             const googleFaviconUrl = 'https://www.google.com/s2/favicons?domain=' + domainForFavicon;
+            const ddGoFaviconUrl = 'https://icons.duckduckgo.com/ip2/' + domainForFavicon + '.ico';
+
             // let faviconKitFaviconUrl = `https://api.faviconkit.com/${domainForFavicon}/16`;
 
             favicon.addEventListener('error', function () {
-                // console.log('error loading favicon for ' + domainForFavicon);
+                console.log('error loading favicon for ' + domainForFavicon);
 
                 /// Loading favicon from Google service instead
                 favicon.setAttribute("src", googleFaviconUrl);
@@ -316,12 +319,25 @@ function configureTileHeader(tile, url) {
             });
 
             /// Trying to load favicon from website
-            favicon.setAttribute("src", domainForFavicon == 'medium.com' ? 'https://cdn4.iconfinder.com/data/icons/social-media-2210/24/Medium-512.png' : websiteFaviconUrl);
+            // favicon.setAttribute("src", domainForFavicon == 'medium.com' ? 'https://cdn4.iconfinder.com/data/icons/social-media-2210/24/Medium-512.png' : websiteFaviconUrl);
+
+
+            // favicon.addEventListener('load', function (e) {
+            //     // console.log('error loading favicon for ' + domainForFavicon);
+            //     console.log(domainForFavicon);
+            //     console.log(e);
+
+            // });
+
 
             /// Set size and style
             favicon.setAttribute('height', `${configs.faviconRadius}px`);
             favicon.setAttribute('width', `${configs.faviconRadius}px`);
-            favicon.style.cssText = `height:${configs.faviconRadius}px; width:${configs.faviconRadius}px;  padding-right: 5px;`;
+            favicon.setAttribute('crossorigin', 'anonymous');
+
+            favicon.setAttribute("src", ddGoFaviconUrl);
+
+            favicon.style.cssText = `height:${configs.faviconRadius}px; width:${configs.faviconRadius}px; padding-right: 5px;`;
             domain.parentNode.prepend(favicon);
 
             /// Fix dropdown button position
@@ -346,6 +362,7 @@ function configureTileHeader(tile, url) {
                 favicon.addEventListener("load", function () {
                     faviconColor = getFaviconColor(favicon);
                     if (faviconColor !== null && faviconColor !== undefined) {
+
                         if (faviconColor !== '#ffffff')
                             tile.style.borderColor = faviconColor;
                     }

@@ -5,7 +5,8 @@
     border-radius: var(--gtiles-tile-border-radius);
     transition: var(--gtiles-transition);
     padding: var(--gtiles-tile-padding);
-    margin: var(--gtiles-tile-margin);
+    /* margin: 0px !important; */
+    margin: var(--gtiles-tile-margin) !important;
     box-shadow: var(--gtiles-tile-shadow);
     width: var(--gtiles-tile-width) !important;
 }
