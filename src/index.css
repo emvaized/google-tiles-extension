@@ -26,3 +26,18 @@
 [id='top_nav']{
     padding: var(--gtiles-navbar-padding);
 }
+
+
+.g-tile-focused-tile-dot {
+    height: 10px; width: 10px; border-radius: 50%; float: left; position: relative; left: -40px;
+}
+
+
+
+[class$='vk_c'] {
+    background-color: transparent;margin: 0px; padding: 0px;border: none !important; outline: none !important;
+}
+
+#g-tile {
+    color: black;outline: none !important;text-decoration: none !important;text-decoration-color: transparent !important; border: 0 !important;
+}

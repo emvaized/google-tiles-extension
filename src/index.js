@@ -99,6 +99,7 @@ function init() {
             if (ch !== null && ch !== undefined && ch !== []) {
               var regularResultsColumnElement = document.getElementById(columnWithRegularResultsId);
               ch.forEach(function (c) {
+
                 if (c.className == 'g') {
                   mainResults.push(c);
                   // regularResultsColumnElement.appendChild(c);

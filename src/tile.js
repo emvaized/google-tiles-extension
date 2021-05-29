@@ -5,10 +5,9 @@ function configureTile(tile, maxWidth) {
 
     /// Create 'a' wrapper
     var wrapper = document.createElement('a');
-    // wrapper.setAttribute("style", "outline: none !important;text-decoration: none !important;text-decoration-color: transparent !important; border: 0 !important;");
-    wrapper.setAttribute("style", `cursor: ${configs.changeCursorOverTile ? 'pointer' : 'unset'};color: black;outline: none !important;text-decoration: none !important;text-decoration-color: transparent !important; border: 0 !important;`);
+    // wrapper.style.cursor = configs.changeCursorOverTile ? 'pointer' : 'unset';
 
-    wrapper.setAttribute("id", "g-tile");
+    wrapper.id = 'g-tile';
 
     /// Set url for 'a' wrapper 
     var url;
@@ -67,7 +66,20 @@ function configureTile(tile, maxWidth) {
     // }
 
     /// Add default style for tile
-    tile.setAttribute("style", `position:relative;${configs.addTileBackground ? `background-color: ${configs.tileBackgroundColor}` : ''};border:solid ${configs.focusedBorderWidth}px ${configs.addTileBorder ? configs.borderColor : 'transparent'};border-radius: ${configs.borderRadius}px;transition:all ${configs.hoverTransitionDuration}ms ease-out;padding: ${configs.innerPadding}px;margin: 0px 0px ${configs.externalPadding}px;box-shadow: ${configs.shadowEnabled ? `0px 5px 15px rgba(0, 0, 0, ${configs.shadowOpacity})` : 'unset'};`);
+
+    // tile.setAttribute("style", `position:relative;${configs.addTileBackground ? `background-color: ${configs.tileBackgroundColor}` : ''};border:solid ${configs.focusedBorderWidth}px ${configs.addTileBorder ? configs.borderColor : 'transparent'};border-radius: ${configs.borderRadius}px;transition:all ${configs.hoverTransitionDuration}ms ease-out;padding: ${configs.innerPadding}px;margin: 0px 0px ${configs.externalPadding}px;box-shadow: ${configs.shadowEnabled ? `0px 5px 15px rgba(0, 0, 0, ${configs.shadowOpacity})` : 'unset'};`);
+
+    if (tile.style.margin !== `margin: 0px 0px ${configs.externalPadding}px`) {
+        tile.style.position = 'relative';
+        if (configs.addTileBackground)
+            tile.style.backgroundColor = configs.tileBackgroundColor;
+        tile.style.border = `solid ${configs.focusedBorderWidth}px ${configs.addTileBorder ? configs.borderColor : 'transparent'}`;
+        tile.style.borderRadius = `${configs.borderRadius}px`;
+        tile.style.transition = `all ${configs.hoverTransitionDuration}ms ease-out`;
+        tile.style.padding = `${configs.innerPadding}px`;
+        tile.style.margin = `0px 0px ${configs.externalPadding}px`;
+        tile.style.boxShadow = `${configs.shadowEnabled ? `0px 5px 15px rgba(0, 0, 0, ${configs.shadowOpacity})` : 'unset'}`;
+    }
 
     if (configs.widerTiles) {
         tile.style.width = '100%';
@@ -86,44 +98,47 @@ function configureTile(tile, maxWidth) {
     /// Set 'on hover' styling for each tile
     var originalTitleColor;
     if (tile.className.toLowerCase()[0] == 'g') {
-        tile.onmouseover = function () {
 
+        tile.addEventListener('mouseover', function () {
             // if (addBackground)
             this.style.backgroundColor = configs.hoverBackground;
             if (configs.highlightTitleOnHover && titles[0] !== undefined && linkIsValid) {
                 originalTitleColor = titles[0].style.color;
                 titles[0].style.color = configs.titleHoverColor;
             }
-        }
+        })
 
-        tile.onmouseout = function () {
+
+        tile.addEventListener('mouseout', function () {
             this.style.backgroundColor = configs.addTileBackground ? configs.tileBackgroundColor : 'transparent';
 
             // regular link color: #1A0DAB;
             if (configs.highlightTitleOnHover && titles[0] !== undefined && linkIsValid)
                 titles[0].style.color = originalTitleColor ?? 'unset';
-        }
+        })
+
     }
 
     /// Append onClick listeners to visually emulate button press on card by changing shadow 
     if (configs.shadowEnabled && configs.wholeTileIsClickable) {
-        tile.onmousedown = function () {
+        tile.addEventListener('mousedown', function () {
             this.style.boxShadow = `0px 5px 15px rgba(0, 0, 0, ${configs.shadowOpacity / 2})`;
 
             if (configs.scaleUpFocusedResult)
                 wrapper.firstChild.style.webkitTransform = `scale(1.0)`;
-        }
+        })
 
-        tile.onmouseup = function () {
+        tile.addEventListener('mouseup', function () {
             this.style.boxShadow = `0px 5px 15px rgba(0, 0, 0, ${configs.shadowOpacity})`;
-        }
+        })
     }
 
     /// Interactive widget handling 
     /// Without these lines interactive widgets (like weather forecast) horizontally overflow the tile
     var interactiveWidget = tile.querySelector(interactiveWidgetSelector);
     if (interactiveWidget !== null && maxWidth !== null) {
-        interactiveWidget.setAttribute("style", `max-width: ${maxWidth}px !important;background-color: transparent;margin: 0px; padding: 0px;border: none !important; outline: none !important`);
+        // interactiveWidget.setAttribute("style", `max-width: ${maxWidth}px !important;`);
+        interactiveWidget.style.maxWidth = `${maxWidth}px`;
     }
 
     /// Ignore clicks on dropdown buttons
@@ -165,8 +180,11 @@ function configureTile(tile, maxWidth) {
             /// Add dot on the left
             if (configs.addFocusedTileDot) {
                 dot = document.createElement('div');
-                dot.setAttribute('class', 'g-tile-focused-tile-dot');
-                dot.setAttribute('style', `background: ${configs.keyboardFocusBorderColor}; opacity: ${configs.focusedTileDotOpacity}; height: 10px; width: 10px; border-radius: 50%; float: left; position: relative; top: -${tile.clientHeight / 2 + configs.externalPadding}px; left: -40px;`);
+                dot.className = 'g-tile-focused-tile-dot';
+                dot.style.background = configs.keyboardFocusBorderColor;
+                dot.style.opacity = configs.focusedTileDotOpacity;
+                dot.style.top = `-${tile.clientHeight / 2 + configs.externalPadding}px`;
+                // dot.setAttribute('style', `background: ${configs.keyboardFocusBorderColor}; opacity: ${configs.focusedTileDotOpacity}; top: -${tile.clientHeight / 2 + configs.externalPadding}px; `);
                 wrapper.appendChild(dot);
             }
         }
@@ -204,30 +222,15 @@ function configureTile(tile, maxWidth) {
             if (firstTileChild.firstChild.tagName !== undefined) {
                 firstTileChild.firstChild.style.borderColor = 'transparent';
                 firstTileChild.firstChild.style.backgroundColor = 'transparent';
+
+                // firstTileChild.firstChild.setAttribute('style', 'transition: none !important');
             }
         }
 
     }
 
     /// Set max width to all div children so that they don't exceed tile border
-    setBoundingWidthToAllChildren(tile, maxWidth);
-
-    //   if (configs.disableExpandAnimations) {
-    // 
-    //     let itemsWithExpandingSections = tile.querySelectorAll(`div[style*="transition"]`);
-    //     if (itemsWithExpandingSections !== null && itemsWithExpandingSections !== undefined) {
-    //       console.log('found items with expanding secitons!');
-    //       console.log(itemsWithExpandingSections);
-    //       
-    //       itemsWithExpandingSections.forEach(function (item) {
-    //         item.setAttribute('style', 'transition: none !important');
-    //       })
-    //     }
-    // 
-    //     console.log("found expanding item!");
-    //     child.style.transition = 'none';
-    //   }
-
+    setSpecificStylesToChildren(tile, maxWidth);
 
     /// Appending page snapshot
     if (loadPreviews) {
@@ -252,16 +255,16 @@ function configureTile(tile, maxWidth) {
                 })
                 .catch(err => console.log(err));
     }
-
 }
 
-function setBoundingWidthToAllChildren(tile, maxWidth) {
+function setSpecificStylesToChildren(tile, maxWidth) {
 
     tile.querySelectorAll('div').forEach(function (child) {
         if (child.parentNode.nextElementSibling && child.parentNode.nextElementSibling.tagName == 'TABLE') {
             /// Special handling for 'g' class elements wrapped inside another (revert styling)
             child.setAttribute('style', 'all: revert; margin: 0px !important;')
         } else
+            /// set max width to all children
             try {
                 child.style.maxWidth = `${maxWidth == null ? '100%' : (maxWidth - configs.innerPadding) + 'px'}`;
             } catch (e) { console.log(e); }
@@ -337,13 +340,15 @@ function configureTileHeader(tile, url) {
 
 
             /// Set size and style
-            favicon.setAttribute('height', `${configs.faviconRadius}px`);
-            favicon.setAttribute('width', `${configs.faviconRadius}px`);
-            favicon.setAttribute('crossorigin', 'anonymous');
+            favicon.height = `${configs.faviconRadius}px`;
+            favicon.width = `${configs.faviconRadius}px`;
+            favicon.crossorigin = 'anonymous';
+            favicon.src = ddGoFaviconUrl;
+            favicon.style.paddingRight = '5px';
+            favicon.style.height = `${configs.faviconRadius}px`;
+            favicon.style.width = `${configs.faviconRadius}px`;
 
-            favicon.setAttribute("src", ddGoFaviconUrl);
-
-            favicon.style.cssText = `height:${configs.faviconRadius}px; width:${configs.faviconRadius}px; padding-right: 5px;`;
+            // favicon.style.cssText = `height:${configs.faviconRadius}px; width:${configs.faviconRadius}px; padding-right: 5px;`;
             domain.parentNode.prepend(favicon);
 
             /// Fix dropdown button position

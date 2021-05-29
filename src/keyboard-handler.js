@@ -68,11 +68,11 @@ function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHint
                         try {
                             let counter = document.createElement('p');
                             counter.setAttribute("style", `color: ${countedHintColor};opacity: ${configs.indexHintOpacity};position:absolute;top:0px;left: 0px;transition: all 300ms ease-out`);
-                            counter.setAttribute('id', 'g-tile-counter-hint');
+                            counter.id = 'g-tile-counter-hint';
                             counter.textContent = parseInt(i) + 1;
                             counterHintsList.push(counter);
 
-                            item.setAttribute('style', 'position: relative');
+                            item.style.position = 'relative';
                             item.appendChild(counter);
                         } catch (error) {
                             console.log(error);

@@ -13,13 +13,25 @@ function setLayout(elements) {
     if (sidebarContainer == null) {
         /// Setting up the sidebar
         sidebarContainer = document.createElement('div');
-        sidebarContainer.setAttribute('id', 'g-tiles-sidebar');
-        sidebarContainer.setAttribute("style", `position: absolute; top: 0; left:${regularResultsColumnWidth * 1.07 + sidebarPadding}px;width: ${regularResultsColumnWidth * configs.sidebarWidthMultiplier}px !important;padding-left:${sidebarPadding}px;padding-top:0px;`);
+
+        sidebarContainer.id = 'g-tiles-sidebar';
+        sidebarContainer.style.position = 'absolute';
+        sidebarContainer.style.top = '0';
+        sidebarContainer.style.left = `${regularResultsColumnWidth * 1.07 + sidebarPadding}px`;
+        sidebarContainer.style.width = `${regularResultsColumnWidth * configs.sidebarWidthMultiplier}px`;
+        sidebarContainer.style.paddingTop = '0px';
+        sidebarContainer.style.paddingTLeft = `${sidebarPadding}px;`;
+
+        // sidebarContainer.setAttribute('id', 'g-tiles-sidebar');
+        // sidebarContainer.setAttribute("style", `position: absolute; top: 0; left:${regularResultsColumnWidth * 1.07 + sidebarPadding}px;width: ${regularResultsColumnWidth * configs.sidebarWidthMultiplier}px !important;padding-left:${sidebarPadding}px;padding-top:0px;`);
+
         if (regularResultsColumn !== null)
             regularResultsColumn.parentNode.appendChild(sidebarContainer);
 
     } else {
-        sidebarContainer.setAttribute("style", `width: ${regularResultsColumnWidth * configs.sidebarWidthMultiplier}px !important;padding-top:6px;`);
+        // sidebarContainer.setAttribute("style", `width: ${regularResultsColumnWidth * configs.sidebarWidthMultiplier}px !important;padding-top:6px;`);
+        sidebarContainer.style.width = `${regularResultsColumnWidth * configs.sidebarWidthMultiplier}px`;
+        sidebarContainer.style.paddingTop = `6px`;
 
         /// Apply styles for elements already in sidebar
         if (sidebarContainer !== null) {
@@ -46,6 +58,7 @@ function setLayout(elements) {
     // if (regularResultsColumn !== null)
     if (tiles !== null)
         tiles.forEach(function (suggestionTile) {
+
             if (suggestionTile.clientHeight !== 0.0 && suggestionTile.clientWidth !== 0.0 && suggestionTile.firstChild !== undefined) {
 
                 // if (suggestionTile.className !== regularResultClassName) {
@@ -78,7 +91,8 @@ function setLayout(elements) {
                         configureTile(suggestionTile);
                     } else {
                         /// Special handling when tile is wrapped in div
-                        suggestionTile.setAttribute('style', 'margin-bottom: 0px !important;');
+                        // suggestionTile.setAttribute('style', 'margin-bottom: 0px !important;');
+                        suggestionTile.style.marginBottom = '0px';
                         configureTile(suggestionTile.firstChild);
                     }
 
@@ -92,7 +106,7 @@ function setLayout(elements) {
                         } else {
                             counter.style.top = '0px';
                         }
-                        counter.setAttribute('id', 'g-tile-counter-hint');
+                        counter.id = 'g-tile-counter-hint';
                         numericNavigationIndex += 1;
                         counter.textContent = numericNavigationIndex;
                         if (numericNavigationIndex < 10) {
@@ -221,7 +235,6 @@ function setLayout(elements) {
             searchField.appendChild(zeroCounter);
         } catch (error) { console.log(error); }
     }
-
 
     /// Set keyboard listeners
     if (configs.navigateWithKeyboard || configs.numericNavigation) {
