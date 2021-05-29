@@ -97,23 +97,23 @@ function setLayout(elements) {
                     }
 
                     /// Add index hint
-                    if (configs.addTileCounter && configs.numericNavigation && configs.numbersNavigateTabs == false) {
-                        var counter = document.createElement('p');
-                        counter.setAttribute("style", `color: ${countedHintColor};opacity: ${configs.indexHintOpacity};position:absolute; right: ${configs.innerPadding}px;transition: all 300ms ease-out`);
+                    // if (configs.addTileCounter && configs.numericNavigation && configs.numbersNavigateTabs == false) {
+                    //     var counter = document.createElement('p');
+                    //     counter.setAttribute("style", `color: ${countedHintColor};opacity: ${configs.indexHintOpacity};position:absolute; right: ${configs.innerPadding}px;transition: all 300ms ease-out`);
 
-                        if (counterHintsOnBottom) {
-                            counter.style.bottom = '0px';
-                        } else {
-                            counter.style.top = '0px';
-                        }
-                        counter.id = 'g-tile-counter-hint';
-                        numericNavigationIndex += 1;
-                        counter.textContent = numericNavigationIndex;
-                        if (numericNavigationIndex < 10) {
-                            counterHintsList.push(counter);
-                            suggestionTile.appendChild(counter);
-                        }
-                    }
+                    //     if (counterHintsOnBottom) {
+                    //         counter.style.bottom = '0px';
+                    //     } else {
+                    //         counter.style.top = '0px';
+                    //     }
+                    //     counter.id = 'g-tile-counter-hint';
+                    //     numericNavigationIndex += 1;
+                    //     counter.textContent = numericNavigationIndex;
+                    //     if (numericNavigationIndex < 10) {
+                    //         counterHintsList.push(counter);
+                    //         suggestionTile.appendChild(counter);
+                    //     }
+                    // }
                 }
                 // } catch (error) { console.log('Google Tiles error: ' + error); }
 
@@ -227,7 +227,12 @@ function setLayout(elements) {
     if (configs.addTileCounter && configs.numericNavigation) {
         try {
             var zeroCounter = document.createElement('span');
-            zeroCounter.setAttribute("style", `position: absolute; z-index:0; right: -15px; top: 50%; color: ${countedHintColor};opacity: ${configs.indexHintOpacity}; transition: all 300ms ease-in-out`);
+            zeroCounter.id = 'g-tile-counter-hint';
+            zeroCounter.style.zIndex = '0';
+            zeroCounter.style.right = '-15px';
+            zeroCounter.style.top = '50%';
+
+            // zeroCounter.setAttribute("style", `position: absolute; z-index:0; right: -15px; top: 50%; color: ${countedHintColor};opacity: ${configs.indexHintOpacity}; transition: all 300ms ease-in-out`);
             zeroCounter.innerHTML = '0';
             counterHintsList.push(zeroCounter);
 

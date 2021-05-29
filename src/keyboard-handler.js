@@ -67,8 +67,9 @@ function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHint
                     if (configs.addTileCounter)
                         try {
                             let counter = document.createElement('p');
-                            counter.setAttribute("style", `color: ${countedHintColor};opacity: ${configs.indexHintOpacity};position:absolute;top:0px;left: 0px;transition: all 300ms ease-out`);
                             counter.id = 'g-tile-counter-hint';
+                            counter.style.top = '0px';
+                            counter.style.left = '0px';
                             counter.textContent = parseInt(i) + 1;
                             counterHintsList.push(counter);
 
@@ -81,6 +82,28 @@ function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHint
             }
         }
 
+    }
+
+    var numericNavigationIndex = 0;
+
+    if (configs.addTileCounter && configs.numericNavigation && configs.numbersNavigateTabs == false) {
+        document.querySelectorAll('.g').forEach(function (suggestionTile) {
+            let counter = document.createElement('p');
+            counter.id = 'g-tile-counter-hint';
+
+            if (counterHintsOnBottom) {
+                counter.style.bottom = '0px';
+            } else {
+                counter.style.top = '0px';
+            }
+            counter.style.right = `${configs.innerPadding}px`;
+            numericNavigationIndex += 1;
+            counter.textContent = numericNavigationIndex;
+            if (numericNavigationIndex < 10) {
+                counterHintsList.push(counter);
+                suggestionTile.appendChild(counter);
+            }
+        })
     }
 
 

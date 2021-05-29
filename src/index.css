@@ -41,3 +41,9 @@
 #g-tile {
     color: black;outline: none !important;text-decoration: none !important;text-decoration-color: transparent !important; border: 0 !important;
 }
+
+#g-tile-counter-hint {
+    color: var(--gtiles-counter-color);
+    opacity: var(--gtiles-counter-opacity);
+    position:absolute; transition: all 300ms ease-out;
+}

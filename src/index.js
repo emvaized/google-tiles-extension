@@ -60,7 +60,10 @@ function loadConfigs() {
         document.body.style.setProperty('--gtiles-tile-padding', `${configs.innerPadding}px`);
         document.body.style.setProperty('--gtiles-tile-shadow', configs.shadowEnabled ? `0px 5px 15px rgba(0, 0, 0, ${configs.shadowOpacity})` : 'unset');
         document.body.style.setProperty('--gtiles-tile-width', configs.widerTiles ? '100%' : 'unset');
-        document.body.style.setProperty('--gtiles-navbar-padding', `padding: 0px ${configs.innerPadding}px;`);
+        document.body.style.setProperty('--gtiles-navbar-padding', `padding: 0px ${configs.innerPadding}px`);
+
+        document.body.style.setProperty('--gtiles-counter-color', `padding: 0px ${countedHintColor}px`);
+        document.body.style.setProperty('--gtiles-counter-opacity', configs.indexHintOpacity);
 
       }
     }
