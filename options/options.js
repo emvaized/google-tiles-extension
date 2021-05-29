@@ -57,7 +57,7 @@ function restoreOptions() {
       });
 
       /// Set translated tooltips
-      document.querySelector("#moveSuggestionsToBottomTooltip").innerHTML = chrome.i18n.getMessage("moveSuggestionsToBottomTooltip");
+      // document.querySelector("#moveSuggestionsToBottomTooltip").innerHTML = chrome.i18n.getMessage("moveSuggestionsToBottomTooltip");
       document.querySelector("#numericNavigationTooltip").innerHTML = chrome.i18n.getMessage("numericNavigationTooltip");
       document.querySelector("#navigateWithKeyboardTooltip").innerHTML = chrome.i18n.getMessage("navigateWithKeyboardTooltip");
       document.querySelector("#firstNumberPressScrollsToElementTooltip").innerHTML = chrome.i18n.getMessage("firstNumberPressScrollsToElementTooltip");
@@ -91,7 +91,7 @@ function updateDisabledOptions() {
   document.querySelector("#faviconRadius").parentNode.className = document.querySelector("#addFavicons").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#shadowOpacity").parentNode.className = document.querySelector("#shadowEnabled").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#keyboardCycle").parentNode.className = document.querySelector("#navigateWithKeyboard").checked ? 'enabled-option' : 'disabled-option';
-  document.querySelector("#applyStyleToWidgets").parentNode.className = document.querySelector("#tryToPlaceSuggestionsOnTheSide").checked ? 'enabled-option' : 'disabled-option';
+  // document.querySelector("#applyStyleToWidgets").parentNode.className = document.querySelector("#tryToPlaceSuggestionsOnTheSide").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#keyboardFocusBorderColor").parentNode.className = document.querySelector("#navigateWithKeyboard").checked ? 'enabled-option' : 'disabled-option';
   // document.querySelector("#focusedBorderWidth").parentNode.className = document.querySelector("#navigateWithKeyboard").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#focusedBorderWidth").parentNode.className = document.querySelector("#addTileBorder").checked ? 'enabled-option' : 'disabled-option';
@@ -103,7 +103,7 @@ function updateDisabledOptions() {
   document.querySelector("#titleHoverColor").parentNode.className = document.querySelector("#highlightTitleOnHover").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#tileBackgroundColor").parentNode.className = document.querySelector("#addTileBackground").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#borderColor").parentNode.className = document.querySelector("#addTileBorder").checked ? 'enabled-option' : 'disabled-option';
-  document.querySelector("#sidebarWidthMultiplier").parentNode.className = document.querySelector("#tryToPlaceSuggestionsOnTheSide").checked ? 'enabled-option' : 'disabled-option';
+  // document.querySelector("#sidebarWidthMultiplier").parentNode.className = document.querySelector("#tryToPlaceSuggestionsOnTheSide").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#firstNumberPressScrollsToElement").parentNode.className = document.querySelector("#numericNavigation").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#sideArrowsFocusSidebarFirst").parentNode.className = document.querySelector("#navigateWithKeyboard").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#colorizeBorderAfterFavicon").parentNode.className = document.querySelector("#addFavicons").checked ? 'enabled-option' : 'disabled-option';

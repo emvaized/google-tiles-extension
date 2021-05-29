@@ -88,8 +88,9 @@ function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHint
         /// Dont listen for number or arrow keys when searchfield is focused
         if (document.activeElement === searchField || document.activeElement.tagName === 'INPUT') return;
 
-        // e = e || window.event;
+        e = e || window.event;
 
+        console.log(e);
 
         /// Arrow keys navigation
         if (configs.navigateWithKeyboard && regularResultsColumn !== null) {

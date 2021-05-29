@@ -64,8 +64,8 @@ function setLayout(elements) {
                         }
                     } else {
                         /// Otherwise, attach it on bottom of regular results scrollbar
-                        // if (configs.moveSuggestionsToBottom)
-                        //     regularResultsColumn.append(suggestionTile);
+                        if (configs.moveSuggestionsToBottom)
+                            regularResultsColumn.append(suggestionTile);
 
                         if (configs.applyStyleToWidgets) {
                             configureTile(suggestionTile, regularResultsColumnWidth);

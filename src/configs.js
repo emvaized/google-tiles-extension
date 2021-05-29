@@ -7,6 +7,7 @@ var configs = {
     "applyStyleToWidgets": true,
     "borderColor": "#DADCE0",
     "borderRadius": 12,
+    "changeCursorOverTile": true,
     "centerizeSelectedResult": true,
     "colorizeBorderAfterFavicon": false,
     "delayToScrollOnHover": 150,

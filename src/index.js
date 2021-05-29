@@ -40,6 +40,8 @@ function loadConfigs() {
     configKeys, function (value) {
       configs.tilesEnabled = value.tilesEnabled ?? true;
 
+      document.body.style.setProperty('--gtiles-tile-margin', configs.enabled ? `0px 0px ${configs.externalPadding}px` : '0px 0px 30px 0px');
+
       if (configs.tilesEnabled) {
 
         /// load configs
@@ -56,10 +58,10 @@ function loadConfigs() {
         document.body.style.setProperty('--gtiles-tile-border-radius', `${configs.borderRadius}px`);
         document.body.style.setProperty('--gtiles-transition', `all ${configs.hoverTransitionDuration}ms ease-out`);
         document.body.style.setProperty('--gtiles-tile-padding', `${configs.innerPadding}px`);
-        document.body.style.setProperty('--gtiles-tile-margin', `0px 0px ${configs.externalPadding}px`);
         document.body.style.setProperty('--gtiles-tile-shadow', configs.shadowEnabled ? `0px 5px 15px rgba(0, 0, 0, ${configs.shadowOpacity})` : 'unset');
         document.body.style.setProperty('--gtiles-tile-width', configs.widerTiles ? '100%' : 'unset');
         document.body.style.setProperty('--gtiles-navbar-padding', `padding: 0px ${configs.innerPadding}px;`);
+
       }
     }
   )
@@ -99,7 +101,7 @@ function init() {
               ch.forEach(function (c) {
                 if (c.className == 'g') {
                   mainResults.push(c);
-                  regularResultsColumnElement.appendChild(c);
+                  // regularResultsColumnElement.appendChild(c);
 
                   if (configs.addFavicons || configs.simplifyDomain) {
                     configureTileHeader(c, c.querySelector('a').href)

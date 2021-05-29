@@ -1,10 +1,12 @@
 function configureTile(tile, maxWidth) {
     if (tile.tagName == 'H2') return;
 
+    if (tile.parentNode && tile.parentNode.tagName == 'A') return; /// Don't style the same tile twice
+
     /// Create 'a' wrapper
     var wrapper = document.createElement('a');
     // wrapper.setAttribute("style", "outline: none !important;text-decoration: none !important;text-decoration-color: transparent !important; border: 0 !important;");
-    wrapper.setAttribute("style", "color: black;outline: none !important;text-decoration: none !important;text-decoration-color: transparent !important; border: 0 !important;");
+    wrapper.setAttribute("style", `cursor: ${configs.changeCursorOverTile ? 'pointer' : 'unset'};color: black;outline: none !important;text-decoration: none !important;text-decoration-color: transparent !important; border: 0 !important;`);
 
     wrapper.setAttribute("id", "g-tile");
 
@@ -256,9 +258,13 @@ function configureTile(tile, maxWidth) {
 function setBoundingWidthToAllChildren(tile, maxWidth) {
 
     tile.querySelectorAll('div').forEach(function (child) {
-        try {
-            child.style.maxWidth = `${maxWidth == null ? '100%' : (maxWidth - configs.innerPadding) + 'px'}`;
-        } catch (e) { console.log(e); }
+        if (child.parentNode.nextElementSibling && child.parentNode.nextElementSibling.tagName == 'TABLE') {
+            /// Special handling for 'g' class elements wrapped inside another (revert styling)
+            child.setAttribute('style', 'all: revert; margin: 0px !important;')
+        } else
+            try {
+                child.style.maxWidth = `${maxWidth == null ? '100%' : (maxWidth - configs.innerPadding) + 'px'}`;
+            } catch (e) { console.log(e); }
     });
 }
 
@@ -311,7 +317,7 @@ function configureTileHeader(tile, url) {
             // let faviconKitFaviconUrl = `https://api.faviconkit.com/${domainForFavicon}/16`;
 
             favicon.addEventListener('error', function () {
-                console.log('error loading favicon for ' + domainForFavicon);
+                // console.log('error loading favicon for ' + domainForFavicon);
 
                 /// Loading favicon from Google service instead
                 favicon.setAttribute("src", googleFaviconUrl);
