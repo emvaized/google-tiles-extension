@@ -259,7 +259,7 @@
         "message": "Color del título",
         "description": ""
     },
-    "tryToPlaceSuggestionsOnTheSide": {
+    "tryToPlaceWidgetsOnTheSide": {
         "message": "Mover los widgets de búsqueda a la columna de la derecha",
         "description": ""
     },

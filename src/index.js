@@ -28,11 +28,12 @@ var imagesPageCategoryButtonSelector = `[class*='NZmxZe']`;
 var sidebarPadding = 25;
 var imageScaleUpOnHoverAmount = 1.5;
 var loadPreviews = false;
-var counterHintsOnBottom = true;
+var counterHintsOnBottom = false;
 var paddingWhenNavbarMoved = 20;
 var countedHintColor = 'grey';
 var counterHintFocusColor = '#EA4335';
 var topBar;
+var tileTransition;
 
 
 function loadConfigs() {
@@ -55,11 +56,13 @@ function loadConfigs() {
             configs[key] = value[key];
         }
 
+        tileTransition = `background-color ${configs.hoverTransitionDuration}ms ease-out`
+
         /// set styles
         document.body.style.setProperty('--gtiles-tile-background', configs.addTileBackground ? `${configs.tileBackgroundColor}` : '');
         document.body.style.setProperty('--gtiles-tile-border', `solid ${configs.focusedBorderWidth}px ${configs.addTileBorder ? configs.borderColor : 'transparent'}`);
         document.body.style.setProperty('--gtiles-tile-border-radius', `${configs.borderRadius}px`);
-        document.body.style.setProperty('--gtiles-transition', `all ${configs.hoverTransitionDuration}ms ease-out`);
+        document.body.style.setProperty('--gtiles-transition', tileTransition);
         document.body.style.setProperty('--gtiles-tile-padding', `${configs.innerPadding}px`);
         document.body.style.setProperty('--gtiles-tile-shadow', configs.shadowEnabled ? `0px 5px 15px rgba(0, 0, 0, ${configs.shadowOpacity})` : 'unset');
         document.body.style.setProperty('--gtiles-tile-width', configs.widerTiles ? '100%' : 'unset');

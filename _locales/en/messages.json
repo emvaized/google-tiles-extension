@@ -172,7 +172,7 @@
     "description": ""
   },
   "moveSuggestionsToBottomTooltip": {
-    "message": "Various earch suggestions will be shown after regular results",
+    "message": "Various search suggestions will be shown after regular results",
     "description": ""
   },
   "navigateWithKeyboard": {
@@ -267,7 +267,7 @@
     "message": "Title color",
     "description": ""
   },
-  "tryToPlaceSuggestionsOnTheSide": {
+  "tryToPlaceWidgetsOnTheSide": {
     "message": "Move search widgets to the right column",
     "description": ""
   },

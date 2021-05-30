@@ -68,7 +68,8 @@ function configureTile(tile, maxWidth) {
             tile.style.backgroundColor = configs.tileBackgroundColor;
         tile.style.border = `solid ${configs.focusedBorderWidth}px ${configs.addTileBorder ? configs.borderColor : 'transparent'}`;
         tile.style.borderRadius = `${configs.borderRadius}px`;
-        tile.style.transition = `all ${configs.hoverTransitionDuration}ms ease-out`;
+        // tile.style.transition = `all ${configs.hoverTransitionDuration}ms ease-out`;
+        tile.style.transition = tileTransition;
         tile.style.padding = `${configs.innerPadding}px`;
         tile.style.margin = `0px 0px ${configs.externalPadding}px`;
         tile.style.boxShadow = `${configs.shadowEnabled ? `0px 5px 15px rgba(0, 0, 0, ${configs.shadowOpacity})` : 'unset'}`;

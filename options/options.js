@@ -57,7 +57,7 @@ function restoreOptions() {
       });
 
       /// Set translated tooltips
-      // document.querySelector("#moveSuggestionsToBottomTooltip").innerHTML = chrome.i18n.getMessage("moveSuggestionsToBottomTooltip");
+      document.querySelector("#moveSuggestionsToBottomTooltip").innerHTML = chrome.i18n.getMessage("moveSuggestionsToBottomTooltip");
       document.querySelector("#numericNavigationTooltip").innerHTML = chrome.i18n.getMessage("numericNavigationTooltip");
       document.querySelector("#navigateWithKeyboardTooltip").innerHTML = chrome.i18n.getMessage("navigateWithKeyboardTooltip");
       document.querySelector("#firstNumberPressScrollsToElementTooltip").innerHTML = chrome.i18n.getMessage("firstNumberPressScrollsToElementTooltip");

@@ -298,10 +298,15 @@ function setTopBar() {
     document.querySelector('.sfbg').appendChild(topBar);
     // topBar.setAttribute('style', 'position: absolute; right: 180px; top: 10px; bottom: 0px; ');
     topBar.style.position = 'absolute';
-    topBar.style.right = '180px';
+    // topBar.style.right = '180px';
+    topBar.style.right = '10%';
     topBar.style.top = '10px';
 
     // topBarParent.style.maxHeight = '15px';
     topBarParent.parentNode.removeChild(topBarParent);
     document.querySelector('.appbar').style.paddingTop = `${paddingWhenNavbarMoved}px`;
+
+    // window.addEventListener('resize', function () {
+    //     topBar.setAttribute('style', '')
+    // })
 }

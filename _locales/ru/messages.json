@@ -259,7 +259,7 @@
         "message": "Цвет заголовка",
         "description": ""
     },
-    "tryToPlaceSuggestionsOnTheSide": {
+    "tryToPlaceWidgetsOnTheSide": {
         "message": "Переместить поисковые виджеты в колонку справа",
         "description": ""
     },
