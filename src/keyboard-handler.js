@@ -113,8 +113,6 @@ function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHint
 
         e = e || window.event;
 
-        console.log(e.key);
-
         /// Arrow keys navigation
         if (configs.navigateWithKeyboard && regularResultsColumn !== null) {
 
