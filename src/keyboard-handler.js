@@ -38,17 +38,13 @@ function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHint
     }
 
     let tabButtons;
-    let topBar;
 
     /// Attach index hints to tab categories when numeric tab navigation is configs.enabled
     if (configs.numericNavigation && configs.numbersNavigateTabs) {
 
         // var topBar = document.querySelector(regularCategoryButtonsParentSelector);
-        topBar = document.getElementById(regularCategoryButtonsParentId);
-
-        /// Some experiments to place category buttons near to searchbox
-        // document.querySelector('sfbg').appendChild(topBar.firstChild);
-        // topBar.firstChild.setAttribute('style', 'position: absolute;right: 0px; top: 0px;');
+        if (topBar == null)
+            topBar = document.getElementById(regularCategoryButtonsParentId);
 
         if (topBar == null) {
             /// Selectors for 'images' tab

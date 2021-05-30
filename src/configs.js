@@ -26,6 +26,7 @@ var configs = {
     "innerPadding": 12,
     "keyboardCycle": true,
     "keyboardFocusBorderColor": "#210DAB",
+    "moveNavbarToSearchbar": false,
     "moveSuggestionsToBottom": true,
     "navigateWithKeyboard": true,
     "numbersNavigateTabs": false,

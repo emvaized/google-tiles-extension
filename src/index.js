@@ -29,8 +29,10 @@ var sidebarPadding = 25;
 var imageScaleUpOnHoverAmount = 1.5;
 var loadPreviews = false;
 var counterHintsOnBottom = true;
+var paddingWhenNavbarMoved = 20;
 var countedHintColor = 'grey';
 var counterHintFocusColor = '#EA4335';
+var topBar;
 
 
 function loadConfigs() {
@@ -40,7 +42,8 @@ function loadConfigs() {
     configKeys, function (value) {
       configs.tilesEnabled = value.tilesEnabled ?? true;
 
-      document.body.style.setProperty('--gtiles-tile-margin', configs.enabled ? `0px 0px ${configs.externalPadding}px` : '0px 0px 30px 0px');
+      document.body.style.setProperty('--gtiles-tile-margin', value.enabled ? `0px 0px ${value.externalPadding}px` : '0px 0px 30px 0px');
+      document.body.style.setProperty('--gtiles-topbar-max-height', value.tilesEnabled && value.moveNavbarToSearchbar ? `${paddingWhenNavbarMoved}px` : 'unset');
 
       if (configs.tilesEnabled) {
 
@@ -73,6 +76,9 @@ function loadConfigs() {
 
 function init() {
   if (configs.tilesEnabled) {
+
+    if (configs.moveNavbarToSearchbar)
+      setTopBar();
 
     var mainResults = document.getElementById(columnWithRegularResultsId);
 

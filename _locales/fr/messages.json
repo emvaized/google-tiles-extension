@@ -155,6 +155,10 @@
         "message": "Navigation au clavier",
         "description": ""
     },
+    "moveNavbarToSearchbar": {
+        "message": "Déplacer la barre de navigation vers la barre de recherche",
+        "description": ""
+    },
     "moveSuggestionsToBottom": {
         "message": "Déplacer les résultats de recherche réguliers en haut",
         "description": ""

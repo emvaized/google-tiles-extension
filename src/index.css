@@ -48,3 +48,9 @@
     position:absolute;
     transition: all 300ms ease-out;
 }
+
+
+#hdtb {
+    max-height: var(--gtiles-topbar-max-height) !important;
+    /* max-height: 20px !important; */
+}

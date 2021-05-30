@@ -4,6 +4,7 @@
 - Project restructured
 - Changed extension name to 'G-Tiles'
 - Added setting 'Change cursor over tile to pointer'
+- Implemented new feature 'Move navbar to searchbar'
 
 #2.1.7
 - Fixed layout issues for some search queries

@@ -17,10 +17,11 @@ function setLayout(elements) {
         sidebarContainer.id = 'g-tiles-sidebar';
         sidebarContainer.style.position = 'absolute';
         sidebarContainer.style.top = '0';
-        sidebarContainer.style.left = `${regularResultsColumnWidth * 1.07 + sidebarPadding}px`;
+        // sidebarContainer.style.left = `${regularResultsColumnWidth * 1.07 + sidebarPadding}px`;
+        sidebarContainer.style.left = `${regularResultsColumnWidth * 1.12 + sidebarPadding}px`;
         sidebarContainer.style.width = `${regularResultsColumnWidth * configs.sidebarWidthMultiplier}px`;
         sidebarContainer.style.paddingTop = '0px';
-        sidebarContainer.style.paddingTLeft = `${sidebarPadding}px;`;
+        sidebarContainer.style.paddingLeft = `${sidebarPadding}px;`;
 
         // sidebarContainer.setAttribute('id', 'g-tiles-sidebar');
         // sidebarContainer.setAttribute("style", `position: absolute; top: 0; left:${regularResultsColumnWidth * 1.07 + sidebarPadding}px;width: ${regularResultsColumnWidth * configs.sidebarWidthMultiplier}px !important;padding-left:${sidebarPadding}px;padding-top:0px;`);
@@ -282,8 +283,25 @@ function setSidebarWidgets(sidebarContainer) {
         if (item.clientHeight !== 0.0 && item.clientWidth !== 0.0 && (item.tagName == 'DIV' || item.tagName == 'G-SECTION-WITH-HEADER')) {
             configureTile(item);
 
-            /// For whatever reason these items are always less wide by 5% - fix this:
-            item.style.width = '105%';
+            // item.style.width = '105%';
+            item.style.boxSizing = 'unset';
         }
     });
+}
+
+
+function setTopBar() {
+    /// Some experiments to place category buttons near to searchbox
+    if (topBar == null)
+        topBar = document.getElementById(regularCategoryButtonsParentId);
+    let topBarParent = topBar.parentNode;
+    document.querySelector('.sfbg').appendChild(topBar);
+    // topBar.setAttribute('style', 'position: absolute; right: 180px; top: 10px; bottom: 0px; ');
+    topBar.style.position = 'absolute';
+    topBar.style.right = '180px';
+    topBar.style.top = '10px';
+
+    // topBarParent.style.maxHeight = '15px';
+    topBarParent.parentNode.removeChild(topBarParent);
+    document.querySelector('.appbar').style.paddingTop = `${paddingWhenNavbarMoved}px`;
 }

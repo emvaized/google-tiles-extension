@@ -155,6 +155,10 @@
         "message": "Navegación con el teclado",
         "description": ""
     },
+    "moveNavbarToSearchbar": {
+        "message": "Mover la barra de navegación a la barra de búsqueda",
+        "description": ""
+    },
     "moveSuggestionsToBottom": {
         "message": "Mover los resultados de búsqueda habituales a la parte superior",
         "description": ""

@@ -155,6 +155,10 @@
         "message": "Клавиатурная навигация",
         "description": ""
     },
+    "moveNavbarToSearchbar": {
+        "message": "Переместить панель навигации в панель поиска",
+        "description": ""
+    },
     "moveSuggestionsToBottom": {
         "message": "Переместить обычные результаты наверх",
         "description": ""

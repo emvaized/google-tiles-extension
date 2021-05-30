@@ -163,6 +163,10 @@
     "message": "Keyboard navigation",
     "description": ""
   },
+  "moveNavbarToSearchbar": {
+    "message": "Move navbar to searchbar",
+    "description": ""
+  },
   "moveSuggestionsToBottom": {
     "message": "Move regular search results on top",
     "description": ""
