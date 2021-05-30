@@ -43,6 +43,10 @@
         "message": "Apoyar el desarrollo",
         "description": ""
     },
+    "changeCursorOverTile": {
+        "message": "Cambiar el cursor sobre el mosaico a puntero",
+        "description": ""
+    },
     "centerizeSelectedResult": {
         "message": "Centrar resultado seleccionado",
         "description": ""

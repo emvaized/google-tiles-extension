@@ -226,9 +226,9 @@ function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHint
                     focusedRegularResult = parsed - 1;
                     var resultToFocus = regularSearchResults[parsed - 1];
                     if (configs.firstNumberPressScrollsToElement == false || document.activeElement === resultToFocus) {
-                        // animateCounterFocus(parsed - 1);
-                        // resultToFocus.focus();
-                        // resultToFocus.click();
+                        animateCounterFocus(parsed);
+                        resultToFocus.focus();
+                        resultToFocus.click();
                     } else {
                         animateCounterFocus(parsed);
 

@@ -136,8 +136,6 @@ function init() {
 
         setLayout(mainResults);
 
-
-
       } else {
         /// Image page results handling (all proccessing done inside method)
 

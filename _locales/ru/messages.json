@@ -43,6 +43,10 @@
         "message": "Поддержать разработку",
         "description": ""
     },
+    "changeCursorOverTile": {
+        "message": "Измените курсор над плиткой на указательный",
+        "description": ""
+    },
     "centerizeSelectedResult": {
         "message": "Отцентровать выбранный результат",
         "description": ""
@@ -172,7 +176,7 @@
         "description": ""
     },
     "numbersNavigateTabs": {
-        "message": "Клавиши цифр переключают вкладки (если выключено - результаты поиска)",
+        "message": "Клавиши цифр переключают вкладки (выключено — результаты поиска)",
         "description": ""
     },
     "numericNavigation": {

@@ -3,6 +3,7 @@
 - Favicons now should load faster
 - Project restructured
 - Changed extension name to 'G-Tiles'
+- Added setting 'Change cursor over tile to pointer'
 
 #2.1.7
 - Fixed layout issues for some search queries

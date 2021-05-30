@@ -46,5 +46,5 @@
     color: var(--gtiles-counter-color);
     opacity: var(--gtiles-counter-opacity);
     position:absolute;
-     transition: all 300ms ease-out;
+    transition: all 300ms ease-out;
 }

@@ -5,9 +5,10 @@ function configureTile(tile, maxWidth) {
 
     /// Create 'a' wrapper
     var wrapper = document.createElement('a');
-    // wrapper.style.cursor = configs.changeCursorOverTile ? 'pointer' : 'unset';
+    wrapper.style.cursor = configs.changeCursorOverTile ? 'pointer' : 'unset';
 
     wrapper.id = 'g-tile';
+
 
     /// Set url for 'a' wrapper 
     var url;
@@ -58,15 +59,7 @@ function configureTile(tile, maxWidth) {
         }
     }
 
-    /// Add favicons to website titles
-    // if (configs.addFavicons || configs.simplifyDomain) {
-
-    //     /// Create favicon
-    //     configureTileHeader(tile, url)
-    // }
-
     /// Add default style for tile
-
     // tile.setAttribute("style", `position:relative;${configs.addTileBackground ? `background-color: ${configs.tileBackgroundColor}` : ''};border:solid ${configs.focusedBorderWidth}px ${configs.addTileBorder ? configs.borderColor : 'transparent'};border-radius: ${configs.borderRadius}px;transition:all ${configs.hoverTransitionDuration}ms ease-out;padding: ${configs.innerPadding}px;margin: 0px 0px ${configs.externalPadding}px;box-shadow: ${configs.shadowEnabled ? `0px 5px 15px rgba(0, 0, 0, ${configs.shadowOpacity})` : 'unset'};`);
 
     if (tile.style.margin !== `margin: 0px 0px ${configs.externalPadding}px`) {
@@ -137,7 +130,6 @@ function configureTile(tile, maxWidth) {
     /// Without these lines interactive widgets (like weather forecast) horizontally overflow the tile
     var interactiveWidget = tile.querySelector(interactiveWidgetSelector);
     if (interactiveWidget !== null && maxWidth !== null) {
-        // interactiveWidget.setAttribute("style", `max-width: ${maxWidth}px !important;`);
         interactiveWidget.style.maxWidth = `${maxWidth}px`;
     }
 
@@ -165,8 +157,7 @@ function configureTile(tile, maxWidth) {
     if (configs.navigateWithKeyboard || configs.numericNavigation) {
         let dot;
         /// Highlight item focused with keyboard
-        // wrapper.addEventListener('focus', (event) => {
-        wrapper.onfocus = function (event) {
+        wrapper.addEventListener('focus', function (event) {
             /// Change border
             if (configs.focusedTileDifferentBorder)
                 wrapper.firstChild.style.border = `solid ${configs.focusedBorderWidth}px ${configs.keyboardFocusBorderColor}`;
@@ -187,10 +178,11 @@ function configureTile(tile, maxWidth) {
                 // dot.setAttribute('style', `background: ${configs.keyboardFocusBorderColor}; opacity: ${configs.focusedTileDotOpacity}; top: -${tile.clientHeight / 2 + configs.externalPadding}px; `);
                 wrapper.appendChild(dot);
             }
-        }
+        });
 
         /// Remove the highlight from item on focus loss
-        wrapper.onblur = function () {
+
+        wrapper.addEventListener('blur', function (event) {
             if (configs.focusedTileDifferentBorder)
                 wrapper.firstChild.style.border = `solid ${configs.focusedBorderWidth}px ${configs.addTileBorder ? configs.borderColor : 'transparent'}`;
 
@@ -203,7 +195,7 @@ function configureTile(tile, maxWidth) {
                 if (dot !== null && dot !== undefined)
                     wrapper.removeChild(dot);
             }
-        }
+        });
     }
 
 

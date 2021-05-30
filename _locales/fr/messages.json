@@ -43,6 +43,10 @@
         "message": "Soutenir le développement",
         "description": ""
     },
+    "changeCursorOverTile": {
+        "message": "Changer le curseur sur la tuile en pointeur",
+        "description": ""
+    },
     "centerizeSelectedResult": {
         "message": "Centrer le résultat sélectionné",
         "description": ""

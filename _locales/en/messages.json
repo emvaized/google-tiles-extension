@@ -43,6 +43,10 @@
     "message": "Support development",
     "description": ""
   },
+  "changeCursorOverTile": {
+    "message": "Change cursor over tile to pointer",
+    "description": ""
+  },
   "centerizeSelectedResult": {
     "message": "Centerize selected result",
     "description": ""
@@ -180,7 +184,7 @@
     "description": ""
   },
   "numbersNavigateTabs": {
-    "message": "Number keys navigate tabs (navigate search resuls when turned off)",
+    "message": "Number keys navigate tabs (search resuls when turned off)",
     "description": ""
   },
   "numericNavigation": {
