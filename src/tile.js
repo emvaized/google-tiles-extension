@@ -46,7 +46,9 @@ function configureTile(tile, maxWidth) {
     /// Don't wrap if calculated link is the same as url + '#'
     let linkIsValid = url !== null && url !== undefined && url !== window.location.href + '#';
 
-    if (linkIsValid && tile.className.toLowerCase()[0] == 'g') {
+    if (linkIsValid && tile.className.toLowerCase()[0] == 'g'
+        || (tile.firstChild && tile.firstChild.tagName.toLowerCase() == newsPageCardSelector)
+        || tile.className == shopPageCardClass) {
         wrapper.href = url;
 
         /// Disable link underline for H3 headers
@@ -70,7 +72,8 @@ function configureTile(tile, maxWidth) {
         tile.style.borderRadius = `${configs.borderRadius}px`;
         // tile.style.transition = `all ${configs.hoverTransitionDuration}ms ease-out`;
         tile.style.transition = tileTransition;
-        tile.style.padding = `${configs.innerPadding}px`;
+        if (tile.firstChild.tagName.toLowerCase() !== newsPageCardSelector)
+            tile.style.padding = `${configs.innerPadding}px`;
         tile.style.margin = `0px 0px ${configs.externalPadding}px`;
         tile.style.boxShadow = `${configs.shadowEnabled ? `0px 5px 15px rgba(0, 0, 0, ${configs.shadowOpacity})` : 'unset'}`;
     }
@@ -91,7 +94,8 @@ function configureTile(tile, maxWidth) {
 
     /// Set 'on hover' styling for each tile
     var originalTitleColor;
-    if (tile.className.toLowerCase()[0] == 'g') {
+    // if (tile.className.toLowerCase()[0] == 'g') {
+    if (tile.className.toLowerCase()[0] == 'g' || (tile.firstChild && tile.firstChild.tagName.toLowerCase() == newsPageCardSelector)) {
 
         tile.addEventListener('mouseover', function () {
             // if (addBackground)

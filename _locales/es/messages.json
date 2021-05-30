@@ -159,6 +159,10 @@
         "message": "Mover la barra de navegación a la barra de búsqueda",
         "description": ""
     },
+    "moveNavbarToSearchbarTooltip": {
+        "message": "Experimental: puede verse mal en una ventana no maximizada",
+        "description": ""
+    },
     "moveSuggestionsToBottom": {
         "message": "Mover los resultados de búsqueda habituales a la parte superior",
         "description": ""

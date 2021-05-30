@@ -62,6 +62,7 @@ function restoreOptions() {
       document.querySelector("#navigateWithKeyboardTooltip").innerHTML = chrome.i18n.getMessage("navigateWithKeyboardTooltip");
       document.querySelector("#firstNumberPressScrollsToElementTooltip").innerHTML = chrome.i18n.getMessage("firstNumberPressScrollsToElementTooltip");
       document.querySelector("#colorizeBorderAfterFaviconTooltip").innerHTML = chrome.i18n.getMessage("colorizeBorderAfterFaviconTooltip");
+      document.querySelector("#moveNavbarToSearchbarTooltip").innerHTML = chrome.i18n.getMessage("moveNavbarToSearchbarTooltip");
 
       /// Set translated headers
       document.querySelector("#previewHeader").innerHTML = chrome.i18n.getMessage("preview");

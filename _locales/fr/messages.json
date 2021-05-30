@@ -159,6 +159,10 @@
         "message": "Déplacer la barre de navigation vers la barre de recherche",
         "description": ""
     },
+    "moveNavbarToSearchbarTooltip": {
+        "message": "Expérimental : peut sembler mauvais dans une fenêtre non maximisée",
+        "description": ""
+    },
     "moveSuggestionsToBottom": {
         "message": "Déplacer les résultats de recherche réguliers en haut",
         "description": ""

@@ -159,6 +159,10 @@
         "message": "Переместить панель навигации в панель поиска",
         "description": ""
     },
+    "moveNavbarToSearchbarTooltip": {
+        "message": "Экспериментально: может плохо выглядеть в не развернутом окне",
+        "description": ""
+    },
     "moveSuggestionsToBottom": {
         "message": "Переместить обычные результаты наверх",
         "description": ""

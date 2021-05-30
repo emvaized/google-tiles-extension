@@ -53,8 +53,6 @@ function setLayout(elements) {
         tiles.unshift(addsBlock);
     }
 
-    var numericNavigationIndex = 0;
-
     /// Apply styles for all the other elements
     // if (regularResultsColumn !== null)
     if (tiles !== null)
@@ -298,15 +296,26 @@ function setTopBar() {
     document.querySelector('.sfbg').appendChild(topBar);
     // topBar.setAttribute('style', 'position: absolute; right: 180px; top: 10px; bottom: 0px; ');
     topBar.style.position = 'absolute';
-    // topBar.style.right = '180px';
-    topBar.style.right = '10%';
+
     topBar.style.top = '10px';
+    topBar.style.right = '10%';
+    // topBar.style.right = '150px';
+
+    // topBar.style.maxWidth = '20%';
+    // topBar.style.minWidth = '20%';
+
+    // topBar.style.maxWidth = '500px';
+    // topBar.style.minWidth = '500px';
 
     // topBarParent.style.maxHeight = '15px';
     topBarParent.parentNode.removeChild(topBarParent);
     document.querySelector('.appbar').style.paddingTop = `${paddingWhenNavbarMoved}px`;
 
     // window.addEventListener('resize', function () {
-    //     topBar.setAttribute('style', '')
+    //     // topBar.setAttribute('style', '')
+    //     topBar.style.maxWidth = '200px';
+    //     topBar.style.minWidth = '200px';
+    //     // topBar.style.right = '10%';
+    //     // topBar.style.right = '200px';
     // })
 }
