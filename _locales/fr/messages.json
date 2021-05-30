@@ -160,7 +160,7 @@
         "description": ""
     },
     "moveNavbarToSearchbarTooltip": {
-        "message": "Expérimental : peut sembler mauvais dans une fenêtre non maximisée",
+        "message": "Expérimental: peut sembler mauvais dans une fenêtre non maximisée ou à échelle non régulière",
         "description": ""
     },
     "moveSuggestionsToBottom": {

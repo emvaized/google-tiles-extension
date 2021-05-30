@@ -40,7 +40,6 @@ function setLayout(elements) {
         }
     }
 
-
     /// Add search suggestions div to proccessed elements
     var botstuff = document.getElementById(peopleAlsoSearchForId);
     if (botstuff !== null && botstuff !== undefined) {
@@ -225,18 +224,22 @@ function setLayout(elements) {
     /// Add '0' index hint for search field
     if (configs.addTileCounter && configs.numericNavigation) {
         try {
-            var zeroCounter = document.createElement('span');
-            zeroCounter.id = 'g-tile-counter-hint';
-            zeroCounter.style.zIndex = '0';
-            zeroCounter.style.right = '-15px';
-            zeroCounter.style.top = '50%';
+            let zeroCounter = document.createElement('span');
 
             // zeroCounter.setAttribute("style", `position: absolute; z-index:0; right: -15px; top: 50%; color: ${countedHintColor};opacity: ${configs.indexHintOpacity}; transition: all 300ms ease-in-out`);
-            zeroCounter.innerHTML = '0';
             counterHintsList.push(zeroCounter);
 
-            var searchField = document.querySelector('button').parentNode.parentNode;
-            searchField.appendChild(zeroCounter);
+            if (configs.addZeroCounterHint) {
+                zeroCounter.id = 'g-tile-counter-hint';
+                zeroCounter.style.zIndex = '0';
+                zeroCounter.style.right = '-15px';
+                zeroCounter.style.top = '50%';
+                zeroCounter.innerHTML = '0';
+
+                let searchField = document.querySelector('button').parentNode.parentNode;
+                searchField.appendChild(zeroCounter);
+            }
+
         } catch (error) { console.log(error); }
     }
 
@@ -294,27 +297,26 @@ function setTopBar() {
         topBar = document.getElementById(regularCategoryButtonsParentId);
     let topBarParent = topBar.parentNode;
     document.querySelector('.sfbg').appendChild(topBar);
-    // topBar.setAttribute('style', 'position: absolute; right: 180px; top: 10px; bottom: 0px; ');
+
     topBar.style.position = 'absolute';
-
     topBar.style.top = '10px';
-    topBar.style.right = '10%';
-    // topBar.style.right = '150px';
+    topBar.style.right = '12%';
+    topBar.style.marginLeft = '0';
 
-    // topBar.style.maxWidth = '20%';
-    // topBar.style.minWidth = '20%';
+    // topBar.style.maxWidth = '40%';
+    // topBar.style.minWidth = '40%';
 
-    // topBar.style.maxWidth = '500px';
-    // topBar.style.minWidth = '500px';
-
-    // topBarParent.style.maxHeight = '15px';
     topBarParent.parentNode.removeChild(topBarParent);
     document.querySelector('.appbar').style.paddingTop = `${paddingWhenNavbarMoved}px`;
 
-    // window.addEventListener('resize', function () {
+    // window.addEventListener('resize', function (e) {
+    //     console.log(e);
     //     // topBar.setAttribute('style', '')
-    //     topBar.style.maxWidth = '200px';
-    //     topBar.style.minWidth = '200px';
+    //     topBar.style.maxWidth = `${window.innerWidth * 0.35}px`;
+    //     topBar.style.minWidth = `${window.innerWidth * 0.35}px`;
+    //     topBar.style.overflow = 'hidden';
+    //     topBar.style.right = '12.5%';
+
     //     // topBar.style.right = '10%';
     //     // topBar.style.right = '200px';
     // })

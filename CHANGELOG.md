@@ -1,3 +1,8 @@
+#2.2.1
+- Fix for search suggestions widget being stylized twice
+- Fix for external padding setting not being applied
+- Added version number and 'what's new' in ф popup
+
 #2.2.0
 - Implemented new feature 'Move navbar to searchbar'
 - Great performance improvements

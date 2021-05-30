@@ -41,20 +41,21 @@ function loadConfigs() {
 
   chrome.storage.local.get(
     configKeys, function (value) {
-      configs.tilesEnabled = value.tilesEnabled ?? true;
+      // configs.tilesEnabled = value.tilesEnabled ?? true;
 
-      document.body.style.setProperty('--gtiles-tile-margin', value.enabled ? `0px 0px ${value.externalPadding}px` : '0px 0px 30px 0px');
-      document.body.style.setProperty('--gtiles-topbar-max-height', value.tilesEnabled && value.moveNavbarToSearchbar ? `${paddingWhenNavbarMoved}px` : 'unset');
+      /// load configs
+      for (var i = 0; i < configKeys.length; i++) {
+        let key = configKeys[i];
+
+        if (value[key] !== null && value[key] !== undefined)
+          configs[key] = value[key];
+      }
+
+      console.log(value.externalPadding);
+      document.body.style.setProperty('--gtiles-tile-margin', configs.tilesEnabled ? `0px 0px ${configs.externalPadding}px` : '0px 0px 30px 0px');
+      document.body.style.setProperty('--gtiles-topbar-max-height', configs.tilesEnabled && configs.moveNavbarToSearchbar ? `${paddingWhenNavbarMoved}px` : 'unset');
 
       if (configs.tilesEnabled) {
-
-        /// load configs
-        for (var i = 0; i < configKeys.length; i++) {
-          let key = configKeys[i];
-
-          if (value[key] !== null && value[key] !== undefined)
-            configs[key] = value[key];
-        }
 
         tileTransition = `background-color ${configs.hoverTransitionDuration}ms ease-out`
 

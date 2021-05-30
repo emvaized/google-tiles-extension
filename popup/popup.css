@@ -20,18 +20,8 @@ input {
   vertical-align: middle;
 }
 
-
-#updatePageLabel {
-  color: grey;
-  opacity: 0.5;
- font-size: 75%; 
- text-align: center;
- transition: all 300ms ease-in-out;
-}
-
-
 .enabled-checkbox, .checkboxLabel {
-    padding: 0px 0px 6px 0px;
+    padding: 6px 0px 6px 0px;
     text-align: center;
     cursor: pointer;
 }
@@ -42,17 +32,13 @@ input {
   border-radius: 3px;
 }
 
-
 #tilesEnabled {
   cursor: pointer;
 }
 
-
-.clear {
- background-color: #FBFBC9;
+#extension-version {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 6px;
+  margin-top: 3px;
 }
-
-.clear:hover {
- background-color: #EAEAC9;
-}
-

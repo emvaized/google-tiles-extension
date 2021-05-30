@@ -168,7 +168,7 @@
     "description": ""
   },
   "moveNavbarToSearchbarTooltip": {
-    "message": "Experimental: may look bad in non-maximized window",
+    "message": "Experimental: may look bad in non-maximized window or with non-regular scale",
     "description": ""
   },
   "moveSuggestionsToBottom": {

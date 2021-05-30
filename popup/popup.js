@@ -6,6 +6,8 @@ function saveOptions(e) {
 }
 
 function restoreOptions() {
+  setVersionLabel();
+
   var settingsButton = document.querySelector('#settingsButton');
   settingsButton.innerHTML = settingsButton.innerHTML + ' ' + chrome.i18n.getMessage("configure");
   var enabledCheckbox = document.querySelector('#tilesEnabled');
@@ -17,6 +19,11 @@ function restoreOptions() {
     });
 }
 
+function setVersionLabel() {
+  let label = document.getElementById('extension-version');
+  var manifestData = chrome.runtime.getManifest();
+  label.innerHTML = manifestData.version + ` (<a target='_blank' href='https://github.com/emvaized/google-tiles-extension/blob/master/CHANGELOG.md'>${chrome.i18n.getMessage("whatsNew") ?? "What's new"}</a>)`;
+}
 
 
 document.addEventListener('DOMContentLoaded', restoreOptions);

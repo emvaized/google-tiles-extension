@@ -9,7 +9,6 @@ function configureTile(tile, maxWidth) {
 
     wrapper.id = 'g-tile';
 
-
     /// Set url for 'a' wrapper 
     var url;
     if (tile.className == regularResultClassName || tile.firstChild.className == regularResultClassName) {

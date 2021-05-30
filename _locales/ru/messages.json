@@ -160,7 +160,7 @@
         "description": ""
     },
     "moveNavbarToSearchbarTooltip": {
-        "message": "Экспериментально: может плохо выглядеть в не развернутом окне",
+        "message": "Экспериментально: может плохо выглядеть в не развернутом окне или с нестандартным масштабом",
         "description": ""
     },
     "moveSuggestionsToBottom": {
