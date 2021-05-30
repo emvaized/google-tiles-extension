@@ -45,5 +45,6 @@
 #g-tile-counter-hint {
     color: var(--gtiles-counter-color);
     opacity: var(--gtiles-counter-opacity);
-    position:absolute; transition: all 300ms ease-out;
+    position:absolute;
+     transition: all 300ms ease-out;
 }

@@ -1,8 +1,9 @@
 
 function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHintsList) {
 
-    // document.onkeydown = checkKey;
-    document.addEventListener('keydown', (e) => checkKey(e))
+    document.onkeydown = checkKey;
+    // document.addEventListener('keydown', (e) => checkKey(e))
+    // document.addEventListener('keyup', (e) => checkKey(e))
 
     var searchField = document.querySelector(searchFieldSelector);
     var averageRegularResultsPerWidget = 3.5;
@@ -12,6 +13,7 @@ function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHint
     var focusedSidebarWidget = 0;
 
     var currentTabIndex;
+
 
     if (regularResultsColumn !== null)
         var regularSearchResults = regularResultsColumn.querySelectorAll('#g-tile');
@@ -87,7 +89,8 @@ function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHint
     var numericNavigationIndex = 0;
 
     if (configs.addTileCounter && configs.numericNavigation && configs.numbersNavigateTabs == false) {
-        document.querySelectorAll('.g').forEach(function (suggestionTile) {
+        // document.querySelectorAll('.g').forEach(function (suggestionTile) {
+        regularSearchResults.forEach(function (suggestionTile) {
             let counter = document.createElement('p');
             counter.id = 'g-tile-counter-hint';
 
@@ -101,19 +104,20 @@ function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHint
             counter.textContent = numericNavigationIndex;
             if (numericNavigationIndex < 10) {
                 counterHintsList.push(counter);
-                suggestionTile.appendChild(counter);
+                suggestionTile.firstChild.appendChild(counter);
             }
         })
     }
 
 
     function checkKey(e) {
+
         /// Dont listen for number or arrow keys when searchfield is focused
         if (document.activeElement === searchField || document.activeElement.tagName === 'INPUT') return;
 
         e = e || window.event;
 
-        console.log(e);
+        console.log(e.key);
 
         /// Arrow keys navigation
         if (configs.navigateWithKeyboard && regularResultsColumn !== null) {
@@ -159,11 +163,23 @@ function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHint
         /// Numeric keyboard focus
         if (configs.numericNavigation) {
 
+            /// Spacebar to select
+            if (e.keyCode == 32) {
+                if (document.activeElement.id == 'g-tile') {
+                    e.preventDefault();
+                    document.activeElement.click();
+
+                    return !(e.keyCode == 32);
+                }
+            }
+
             const parsed = parseInt(e.key, 10);
 
             // console.log(parsed);
 
             if (isNaN(parsed)) { return; }
+
+            e.preventDefault();
 
             if (parsed == 0) {
                 /// Focus the search field
@@ -210,10 +226,12 @@ function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHint
                     focusedRegularResult = parsed - 1;
                     var resultToFocus = regularSearchResults[parsed - 1];
                     if (configs.firstNumberPressScrollsToElement == false || document.activeElement === resultToFocus) {
-                        animateCounterFocus(parsed - 1);
-                        resultToFocus.focus();
-                        resultToFocus.click();
+                        // animateCounterFocus(parsed - 1);
+                        // resultToFocus.focus();
+                        // resultToFocus.click();
                     } else {
+                        animateCounterFocus(parsed);
+
                         resultToFocus.focus();
                         resultToFocus.scrollIntoView({ block: 'center', inline: "nearest", behavior: "smooth" });
                     }
@@ -251,11 +269,12 @@ function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHint
     }
 
     function animateCounterFocus(index) {
-        counterHintsList[index].style.color = counterHintFocusColor;
-        counterHintsList[index].style.opacity = 1.0;
+        let focusedCounterHint = counterHintsList[index];
+        focusedCounterHint.style.color = counterHintFocusColor;
+        focusedCounterHint.style.opacity = 1.0;
         setTimeout(function () {
-            counterHintsList[index].style.color = countedHintColor;
-            counterHintsList[index].style.opacity = configs.indexHintOpacity;
+            focusedCounterHint.style.color = countedHintColor;
+            focusedCounterHint.style.opacity = configs.indexHintOpacity;
         }, 300);
     }
 
@@ -298,7 +317,6 @@ function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHint
         if (configs.centerizeSelectedResult)
             sidebarSearchResults[focusedSidebarWidget].scrollIntoView({ block: 'center', inline: "nearest", behavior: "smooth" });
     }
-
 
     function focusPreviousSearchResult() {
         if (sideBarIsFocused) {

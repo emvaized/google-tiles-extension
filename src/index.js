@@ -62,7 +62,7 @@ function loadConfigs() {
         document.body.style.setProperty('--gtiles-tile-width', configs.widerTiles ? '100%' : 'unset');
         document.body.style.setProperty('--gtiles-navbar-padding', `padding: 0px ${configs.innerPadding}px`);
 
-        document.body.style.setProperty('--gtiles-counter-color', `padding: 0px ${countedHintColor}px`);
+        document.body.style.setProperty('--gtiles-counter-color', countedHintColor);
         document.body.style.setProperty('--gtiles-counter-opacity', configs.indexHintOpacity);
 
       }

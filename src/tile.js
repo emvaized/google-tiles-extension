@@ -342,7 +342,7 @@ function configureTileHeader(tile, url) {
             /// Set size and style
             favicon.height = `${configs.faviconRadius}px`;
             favicon.width = `${configs.faviconRadius}px`;
-            favicon.crossorigin = 'anonymous';
+            favicon.setAttribute('crossorigin', 'anonymous');
             favicon.src = ddGoFaviconUrl;
             favicon.style.paddingRight = '5px';
             favicon.style.height = `${configs.faviconRadius}px`;

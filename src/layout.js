@@ -241,6 +241,28 @@ function setLayout(elements) {
         } catch (error) { console.log(error); }
     }
 
+    // if (configs.addTileCounter && configs.numericNavigation && configs.numbersNavigateTabs == false) {
+    //     document.querySelectorAll('.g').forEach(function (suggestionTile) {
+    //         // regularSearchResults.forEach(function (suggestionTile) {
+    //         let counter = document.createElement('p');
+    //         counter.id = 'g-tile-counter-hint';
+
+    //         if (counterHintsOnBottom) {
+    //             counter.style.bottom = '0px';
+    //         } else {
+    //             counter.style.top = '0px';
+    //         }
+    //         counter.style.right = `${configs.innerPadding}px`;
+
+    //         numericNavigationIndex += 1;
+    //         counter.textContent = numericNavigationIndex;
+    //         if (numericNavigationIndex < 10) {
+    //             suggestionTile.appendChild(counter);
+    //             counterHintsList.push(counter);
+    //         }
+    //     })
+    // }
+
     /// Set keyboard listeners
     if (configs.navigateWithKeyboard || configs.numericNavigation) {
         setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHintsList);
