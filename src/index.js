@@ -111,7 +111,7 @@ function init() {
 
             if (wrappedCards !== null && wrappedCards !== undefined && wrappedCards.length > 0) {
 
-              var regularResultsColumnElement = document.getElementById(columnWithRegularResultsId);
+              const regularResultsColumnElement = document.getElementById(columnWithRegularResultsId);
 
               wrappedCards.forEach(function (wrappedCard) {
                 mainResults.push(wrappedCard);
@@ -148,7 +148,7 @@ function init() {
 
         /// Special handling for news results page
         if (mainResults.length == 2) {
-          var newsMainResults = mainResults[0].querySelectorAll(newsPageCardSelector);
+          let newsMainResults = mainResults[0].querySelectorAll(newsPageCardSelector);
           newsMainResults = Array.prototype.slice.call(newsMainResults);
 
           mainResults[1].firstChild.style.cssText = 'overflow-x: auto !important';
@@ -157,7 +157,7 @@ function init() {
         }
         else if (mainResults.length <= 5) {
           /// Special handling for shop page (quite a shaky way to determine - desirably to rewrite)
-          var newsMainResults = document.getElementById(columnWithRegularResultsId).querySelectorAll(`.${shopPageCardClass}`);
+          let newsMainResults = document.getElementById(columnWithRegularResultsId).querySelectorAll(`.${shopPageCardClass}`);
           newsMainResults = Array.prototype.slice.call(newsMainResults);
           mainResults = newsMainResults;
         }

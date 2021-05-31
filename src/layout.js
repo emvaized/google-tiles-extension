@@ -41,13 +41,13 @@ function setLayout(elements) {
     }
 
     /// Add search suggestions div to proccessed elements
-    var botstuff = document.getElementById(peopleAlsoSearchForId);
+    const botstuff = document.getElementById(peopleAlsoSearchForId);
     if (botstuff !== null && botstuff !== undefined) {
         tiles.push(botstuff);
     }
 
     /// Add adverts to proccessed elements
-    var addsBlock = document.getElementById('tads');
+    const addsBlock = document.getElementById('tads');
     if (addsBlock !== null && addsBlock !== undefined) {
         tiles.unshift(addsBlock);
     }
@@ -295,7 +295,7 @@ function setTopBar() {
     /// Some experiments to place category buttons near to searchbox
     if (topBar == null)
         topBar = document.getElementById(regularCategoryButtonsParentId);
-    let topBarParent = topBar.parentNode;
+    const topBarParent = topBar.parentNode;
     document.querySelector('.sfbg').appendChild(topBar);
 
     topBar.style.position = 'absolute';

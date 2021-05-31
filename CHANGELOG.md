@@ -1,5 +1,5 @@
 #2.2.2
-- Small layout fixes and improvements
+- Small layout fixes and performance improvements
 
 #2.2.1
 - Fix for search suggestions widget being stylized twice

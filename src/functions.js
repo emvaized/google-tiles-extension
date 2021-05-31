@@ -7,12 +7,12 @@ HTMLElement.prototype.wrap = function (wrapper) {
 function getFaviconColor(img) {
     var colorList = {};
 
-    var imageWidth = img.width;
-    var imageHeight = img.height;
+    const imageWidth = img.width;
+    const imageHeight = img.height;
     var canvas = document.createElement('canvas');
     canvas.height = imageHeight;
     canvas.width = imageWidth;
-    var context = canvas.getContext('2d');
+    const context = canvas.getContext('2d');
     context.drawImage(img, 0, 0, imageWidth, imageHeight);
     var imageData;
 
@@ -24,7 +24,7 @@ function getFaviconColor(img) {
 
     if (imageData == null) return '#000000';
 
-    var data = imageData.data;
+    const data = imageData.data;
     // quickly iterate over all pixels
     for (var i = 0; i < data.length; i += 4) {
         var r = data[i];
@@ -45,7 +45,7 @@ function getFaviconColor(img) {
     }
     // console.log(colorList);
 
-    var sorted_keys = Object.keys(colorList).sort(function (a, b) { return colorList[a] - (colorList[b]); }).reverse();
+    const sorted_keys = Object.keys(colorList).sort(function (a, b) { return colorList[a] - (colorList[b]); }).reverse();
 
     if (sorted_keys.length == 0) return '#000000';
     colorToReturn = colorList[sorted_keys[0]] - colorList[sorted_keys[1]] > 2 ? sorted_keys[0] : sorted_keys[1];

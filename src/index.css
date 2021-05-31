@@ -20,13 +20,13 @@
     max-width: 500px;
 }
 
-/* [id='result-stats'] {
+[id='result-stats'] {
     padding: var(--gtiles-navbar-padding);
 }
 
 [id='top_nav']{
     padding: var(--gtiles-navbar-padding);
-} */
+}
 
 
 .g-tile-focused-tile-dot {

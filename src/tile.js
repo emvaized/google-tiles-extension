@@ -4,7 +4,7 @@ function configureTile(tile, maxWidth) {
     if (tile.parentNode && tile.parentNode.tagName == 'A') return; /// Don't style the same tile twice
 
     /// Create 'a' wrapper
-    var wrapper = document.createElement('a');
+    const wrapper = document.createElement('a');
     wrapper.style.cursor = configs.changeCursorOverTile ? 'pointer' : 'unset';
 
     wrapper.id = 'g-tile';
@@ -43,7 +43,7 @@ function configureTile(tile, maxWidth) {
 
 
     /// Don't wrap if calculated link is the same as url + '#'
-    let linkIsValid = url !== null && url !== undefined && url !== window.location.href + '#';
+    const linkIsValid = url !== null && url !== undefined && url !== window.location.href + '#';
 
     if (linkIsValid && tile.className.toLowerCase()[0] == 'g'
         || (tile.firstChild && tile.firstChild.tagName.toLowerCase() == newsPageCardSelector)
@@ -137,13 +137,13 @@ function configureTile(tile, maxWidth) {
 
     /// Interactive widget handling 
     /// Without these lines interactive widgets (like weather forecast) horizontally overflow the tile
-    var interactiveWidget = tile.querySelector(interactiveWidgetSelector);
+    const interactiveWidget = tile.querySelector(interactiveWidgetSelector);
     if (interactiveWidget !== null && maxWidth !== null) {
         interactiveWidget.style.maxWidth = `${maxWidth}px`;
     }
 
     /// Ignore clicks on dropdown buttons
-    var accordion = tile.querySelector('g-accordion-expander');
+    const accordion = tile.querySelector('g-accordion-expander');
     if (accordion !== null && accordion !== undefined) {
         // var tileDescriptions = tile.querySelectorAll('span');
         // if (tileDescriptions !== null && tileDescriptions !== undefined) {
@@ -184,7 +184,6 @@ function configureTile(tile, maxWidth) {
                 dot.style.background = configs.keyboardFocusBorderColor;
                 dot.style.opacity = configs.focusedTileDotOpacity;
                 dot.style.top = `-${tile.clientHeight / 2 + configs.externalPadding}px`;
-                // dot.setAttribute('style', `background: ${configs.keyboardFocusBorderColor}; opacity: ${configs.focusedTileDotOpacity}; top: -${tile.clientHeight / 2 + configs.externalPadding}px; `);
                 wrapper.appendChild(dot);
             }
         });
@@ -209,7 +208,7 @@ function configureTile(tile, maxWidth) {
 
 
     /// Remove some default tile stylings for children, such as borders and background colors
-    var firstTileChild = tile.firstChild;
+    const firstTileChild = tile.firstChild;
     if (firstTileChild !== undefined && firstTileChild.style !== undefined) {
         firstTileChild.style.borderColor = 'transparent';
         firstTileChild.style.backgroundColor = 'transparent';
@@ -227,7 +226,6 @@ function configureTile(tile, maxWidth) {
                 // firstTileChild.firstChild.setAttribute('style', 'transition: none !important');
             }
         }
-
     }
 
     /// Set max width to all div children so that they don't exceed tile border
@@ -267,7 +265,7 @@ function setSpecificStylesToChildren(tile, maxWidth) {
         } else
             /// set max width to all children
             try {
-                child.style.maxWidth = `${maxWidth == null ? '100%' : (maxWidth - configs.innerPadding) + 'px'}`;
+                child.style.maxWidth = `${maxWidth == null ? '100%' : (maxWidth - (configs.innerPadding / 2)) + 'px'}`;
             } catch (e) { console.log(e); }
     });
 }
@@ -276,7 +274,7 @@ function setSpecificStylesToChildren(tile, maxWidth) {
 function configureTileHeader(tile, url) {
     var faviconColor;
 
-    let domain = tile.querySelector(domainNameSelector);
+    const domain = tile.querySelector(domainNameSelector);
 
     if (domain != null && domain !== undefined) {
 
@@ -284,7 +282,7 @@ function configureTileHeader(tile, url) {
         if (configs.simplifyDomain) {
             try {
                 var titleText;
-                var domainContent = domain.textContent.split('.');
+                const domainContent = domain.textContent.split('.');
 
                 if (domainContent.length == 2) {
                     titleText = domainContent[0];
@@ -300,7 +298,7 @@ function configureTileHeader(tile, url) {
                 /// Add tooltip with full domain on hover
                 if (configs.showFullDomainOnHover)
                     domain.setAttribute('title', domain.textContent);
-                var domainPathSpan = domain.querySelector('span');
+                const domainPathSpan = domain.querySelector('span');
                 domain.textContent = titleText + (domainPathSpan == null ? '' : domainPathSpan.textContent);
             } catch (error) { console.log(error); }
         }
@@ -308,8 +306,8 @@ function configureTileHeader(tile, url) {
 
         if (configs.addFavicons && url !== null && url !== undefined && url !== '' && (tile.className == regularResultClassName || tile.firstChild.className == regularResultClassName)) {
             // var favicon = document.createElement('img');
-            let favicon = new Image();
-            let domainForFavicon = url.split('/')[2];
+            const favicon = new Image();
+            const domainForFavicon = url.split('/')[2];
             if (domainForFavicon == null || domainForFavicon == undefined)
                 domainForFavicon = url;
 

@@ -14,7 +14,6 @@ function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHint
 
     var currentTabIndex;
 
-
     if (regularResultsColumn !== null)
         var regularSearchResults = regularResultsColumn.querySelectorAll('#g-tile');
     if (sidebarContainer !== null)
