@@ -63,7 +63,10 @@ function configureTile(tile, maxWidth) {
     /// Add default style for tile
     // tile.setAttribute("style", `position:relative;${configs.addTileBackground ? `background-color: ${configs.tileBackgroundColor}` : ''};border:solid ${configs.focusedBorderWidth}px ${configs.addTileBorder ? configs.borderColor : 'transparent'};border-radius: ${configs.borderRadius}px;transition:all ${configs.hoverTransitionDuration}ms ease-out;padding: ${configs.innerPadding}px;margin: 0px 0px ${configs.externalPadding}px;box-shadow: ${configs.shadowEnabled ? `0px 5px 15px rgba(0, 0, 0, ${configs.shadowOpacity})` : 'unset'};`);
 
-    if (tile.style.margin !== `margin: 0px 0px ${configs.externalPadding}px`) {
+    // if (tile.style.margin !== `margin: 0px 0px ${configs.externalPadding}px`) {
+    if (tile.style.margin !== `margin: 0px 0px ${configs.externalPadding}px`
+        // && (tile.className.toLowerCase()[0] == 'g' || (tile.firstChild && tile.firstChild.tagName.toLowerCase() == newsPageCardSelector))
+    ) {
         tile.style.position = 'relative';
         if (configs.addTileBackground)
             tile.style.backgroundColor = configs.tileBackgroundColor;
@@ -75,11 +78,13 @@ function configureTile(tile, maxWidth) {
             tile.style.padding = `${configs.innerPadding}px`;
         tile.style.margin = `0px 0px ${configs.externalPadding}px`;
         tile.style.boxShadow = `${configs.shadowEnabled ? `0px 5px 15px rgba(0, 0, 0, ${configs.shadowOpacity})` : 'unset'}`;
+
+        if (configs.widerTiles) {
+            tile.style.width = '100%';
+        }
     }
 
-    if (configs.widerTiles) {
-        tile.style.width = '100%';
-    }
+
 
     /// Get result's full title
     // try {

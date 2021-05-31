@@ -321,3 +321,10 @@ function setTopBar() {
     //     // topBar.style.right = '200px';
     // })
 }
+
+
+// function removeSearchbarShadow() {
+//     let searchbar = document.querySelector('button').parentNode;
+//     searchbar.style.boxShadow = 'none';
+//     searchbar.style.border = '1px solid lightgray';
+// }

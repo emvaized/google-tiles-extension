@@ -51,7 +51,6 @@ function loadConfigs() {
           configs[key] = value[key];
       }
 
-      console.log(value.externalPadding);
       document.body.style.setProperty('--gtiles-tile-margin', configs.tilesEnabled ? `0px 0px ${configs.externalPadding}px` : '0px 0px 30px 0px');
       document.body.style.setProperty('--gtiles-topbar-max-height', configs.tilesEnabled && configs.moveNavbarToSearchbar ? `${paddingWhenNavbarMoved}px` : 'unset');
 
@@ -84,6 +83,8 @@ function init() {
     if (configs.moveNavbarToSearchbar)
       setTopBar();
 
+    // removeSearchbarShadow();
+
     var mainResults = document.getElementById(columnWithRegularResultsId);
 
     try {
@@ -105,24 +106,41 @@ function init() {
               configureTileHeader(result, result.querySelector('a').href)
             }
           } else {
-            let ch = result.children;
 
-            ch = Array.prototype.slice.call(ch);
+            let wrappedCards = result.querySelectorAll(`[class='g']`)
 
-            if (ch !== null && ch !== undefined && ch !== []) {
+            if (wrappedCards !== null && wrappedCards !== undefined && wrappedCards.length > 0) {
+
               var regularResultsColumnElement = document.getElementById(columnWithRegularResultsId);
-              ch.forEach(function (c) {
 
-                if (c.className == 'g') {
-                  mainResults.push(c);
-                  // regularResultsColumnElement.appendChild(c);
+              wrappedCards.forEach(function (wrappedCard) {
+                mainResults.push(wrappedCard);
+                regularResultsColumnElement.insertBefore(wrappedCard, result);
 
-                  if (configs.addFavicons || configs.simplifyDomain) {
-                    configureTileHeader(c, c.querySelector('a').href)
-                  }
+                if (configs.addFavicons || configs.simplifyDomain) {
+                  configureTileHeader(wrappedCard, wrappedCard.querySelector('a').href)
                 }
               })
             }
+
+            // let ch = result.children;
+
+            // ch = Array.prototype.slice.call(ch);
+
+            // if (ch !== null && ch !== undefined && ch !== []) {
+            //   var regularResultsColumnElement = document.getElementById(columnWithRegularResultsId);
+            //   ch.forEach(function (c) {
+
+            //     if (c.className == 'g') {
+            //       mainResults.push(c);
+            //       regularResultsColumnElement.insertBefore(c, result);
+
+            //       if (configs.addFavicons || configs.simplifyDomain) {
+            //         configureTileHeader(c, c.querySelector('a').href)
+            //       }
+            //     }
+            //   })
+            // }
           }
 
 

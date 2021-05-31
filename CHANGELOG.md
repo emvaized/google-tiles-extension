@@ -1,3 +1,6 @@
+#2.2.2
+- Small layout fixes and improvements
+
 #2.2.1
 - Fix for search suggestions widget being stylized twice
 - Fix for external padding setting not being applied
