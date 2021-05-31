@@ -44,7 +44,7 @@ function loadConfigs() {
       // configs.tilesEnabled = value.tilesEnabled ?? true;
 
       /// load configs
-      for (var i = 0; i < configKeys.length; i++) {
+      for (let i = 0, n = configKeys.length; i < n; i++) {
         let key = configKeys[i];
 
         if (value[key] !== null && value[key] !== undefined)
@@ -80,6 +80,8 @@ function loadConfigs() {
 function init() {
   if (configs.tilesEnabled) {
 
+    console.time('G-Tiles finished proccessing page in');
+
     if (configs.moveNavbarToSearchbar)
       setTopBar();
 
@@ -100,47 +102,46 @@ function init() {
         /// Handling when cards are wrapped in div 
         //             if (mainResults.length <= 8)
         mainResults.forEach(function (result) {
-
           if (result.className == 'g') {
             if (configs.addFavicons || configs.simplifyDomain) {
               configureTileHeader(result, result.querySelector('a').href)
             }
           } else {
 
-            let wrappedCards = result.querySelectorAll(`[class='g']`)
+            // let wrappedCards = result.querySelectorAll(`[class='g']`)
 
-            if (wrappedCards !== null && wrappedCards !== undefined && wrappedCards.length > 0) {
+            // if (wrappedCards !== null && wrappedCards !== undefined && wrappedCards.length > 0) {
 
-              const regularResultsColumnElement = document.getElementById(columnWithRegularResultsId);
+            //   const regularResultsColumnElement = document.getElementById(columnWithRegularResultsId);
 
-              wrappedCards.forEach(function (wrappedCard) {
-                mainResults.push(wrappedCard);
-                regularResultsColumnElement.insertBefore(wrappedCard, result);
+            //   wrappedCards.forEach(function (wrappedCard) {
+            //     mainResults.push(wrappedCard);
+            //     regularResultsColumnElement.insertBefore(wrappedCard, result);
 
-                if (configs.addFavicons || configs.simplifyDomain) {
-                  configureTileHeader(wrappedCard, wrappedCard.querySelector('a').href)
-                }
-              })
-            }
-
-            // let ch = result.children;
-
-            // ch = Array.prototype.slice.call(ch);
-
-            // if (ch !== null && ch !== undefined && ch !== []) {
-            //   var regularResultsColumnElement = document.getElementById(columnWithRegularResultsId);
-            //   ch.forEach(function (c) {
-
-            //     if (c.className == 'g') {
-            //       mainResults.push(c);
-            //       regularResultsColumnElement.insertBefore(c, result);
-
-            //       if (configs.addFavicons || configs.simplifyDomain) {
-            //         configureTileHeader(c, c.querySelector('a').href)
-            //       }
+            //     if (configs.addFavicons || configs.simplifyDomain) {
+            //       configureTileHeader(wrappedCard, wrappedCard.querySelector('a').href)
             //     }
             //   })
             // }
+
+            let ch = result.children;
+
+            ch = Array.prototype.slice.call(ch);
+
+            if (ch !== null && ch !== undefined && ch.length > 0) {
+              var regularResultsColumnElement = document.getElementById(columnWithRegularResultsId);
+
+              ch.forEach(function (c) {
+                if (c.className == 'g') {
+                  mainResults.push(c);
+                  regularResultsColumnElement.insertBefore(c, result);
+
+                  if (configs.addFavicons || configs.simplifyDomain) {
+                    configureTileHeader(c, c.querySelector('a').href)
+                  }
+                }
+              })
+            }
           }
 
 

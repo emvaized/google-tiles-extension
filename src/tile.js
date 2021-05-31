@@ -254,6 +254,7 @@ function configureTile(tile, maxWidth) {
                 })
                 .catch(err => console.log(err));
     }
+
 }
 
 function setSpecificStylesToChildren(tile, maxWidth) {
@@ -272,7 +273,6 @@ function setSpecificStylesToChildren(tile, maxWidth) {
 
 
 function configureTileHeader(tile, url) {
-    var faviconColor;
 
     const domain = tile.querySelector(domainNameSelector);
 
@@ -288,7 +288,6 @@ function configureTileHeader(tile, url) {
                     titleText = domainContent[0];
                 } else if (domainContent.length == 3) {
                     titleText = domainContent[1] == 'com' || domainContent[1] == 'net' ? domainContent[0] : domainContent[1];
-
                 } else {
                     titleText = domain.textContent.replace(/.+\/\/|www.|\..+/g, '');
                 }
@@ -297,7 +296,8 @@ function configureTileHeader(tile, url) {
 
                 /// Add tooltip with full domain on hover
                 if (configs.showFullDomainOnHover)
-                    domain.setAttribute('title', domain.textContent);
+                    // domain.setAttribute('title', domain.textContent);
+                    domain.title = domain.textContent;
                 const domainPathSpan = domain.querySelector('span');
                 domain.textContent = titleText + (domainPathSpan == null ? '' : domainPathSpan.textContent);
             } catch (error) { console.log(error); }
@@ -322,7 +322,8 @@ function configureTileHeader(tile, url) {
                 // console.log('error loading favicon for ' + domainForFavicon);
 
                 /// Loading favicon from Google service instead
-                favicon.setAttribute("src", googleFaviconUrl);
+                // favicon.setAttribute("src", googleFaviconUrl);
+                favicon.src = googleFaviconUrl;
                 // favicon.setAttribute("src", faviconKitFaviconUrl);
             });
 
@@ -351,13 +352,13 @@ function configureTileHeader(tile, url) {
             domain.parentNode.prepend(favicon);
 
             /// Fix dropdown button position
-            var dropdownMenu = tile.querySelector(dropdownMenuSelector);
+            const dropdownMenu = tile.querySelector(dropdownMenuSelector);
             if (dropdownMenu != null) {
                 domain.appendChild(dropdownMenu);
             }
 
             /// Fix 'translate page' button position
-            var translatePageButton = tile.querySelector(translatePageButtonSelector);
+            const translatePageButton = tile.querySelector(translatePageButtonSelector);
             if (translatePageButton != null && translatePageButton !== undefined) {
                 translatePageButton.style.cssText = `margin-left: 6px;`;
                 if (dropdownMenu != null) {
@@ -370,7 +371,7 @@ function configureTileHeader(tile, url) {
 
             if (configs.colorizeBorderAfterFavicon)
                 favicon.addEventListener("load", function () {
-                    faviconColor = getFaviconColor(favicon);
+                    const faviconColor = getFaviconColor(favicon);
                     if (faviconColor !== null && faviconColor !== undefined) {
 
                         if (faviconColor !== '#ffffff')

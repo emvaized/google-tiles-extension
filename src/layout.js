@@ -30,9 +30,8 @@ function setLayout(elements) {
             regularResultsColumn.parentNode.appendChild(sidebarContainer);
 
     } else {
-        // sidebarContainer.setAttribute("style", `width: ${regularResultsColumnWidth * configs.sidebarWidthMultiplier}px !important;padding-top:6px;`);
-        sidebarContainer.style.width = `${regularResultsColumnWidth * configs.sidebarWidthMultiplier}px`;
         sidebarContainer.style.paddingTop = `6px`;
+        sidebarContainer.style.width = `${regularResultsColumnWidth * configs.sidebarWidthMultiplier}px`;
 
         /// Apply styles for elements already in sidebar
         if (sidebarContainer !== null) {
@@ -54,6 +53,7 @@ function setLayout(elements) {
 
     /// Apply styles for all the other elements
     // if (regularResultsColumn !== null)
+
     if (tiles !== null)
         tiles.forEach(function (suggestionTile) {
 
@@ -270,7 +270,8 @@ function setLayout(elements) {
         setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHintsList);
     }
 
-    console.log('Google Tiles finished proccessing page');
+    // console.log('Google Tiles finished proccessing page');
+    console.timeEnd('G-Tiles finished proccessing page in');
 }
 
 
