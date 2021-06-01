@@ -71,6 +71,8 @@ function loadConfigs() {
         document.body.style.setProperty('--gtiles-sidebar-width', `${configs.sidebarWidth}px`);
         document.body.style.setProperty('--gtiles-sidebar-child-width', `${configs.sidebarWidth - (configs.innerPadding * 2)}px`);
 
+        document.body.style.setProperty('--gtiles-tile-image-border-radius', `${configs.borderRadius}px ${configs.borderRadius}px 0px 0px`);
+
       }
     }
   )
@@ -87,12 +89,8 @@ function init() {
 
     // removeSearchbarShadow();
 
-
-
     try {
-
       setLayout()
-
     } catch (error) {
       console.log('Google Tiles error:');
       console.log(error);

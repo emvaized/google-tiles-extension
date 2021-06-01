@@ -186,9 +186,9 @@ function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHint
                 /// Animate color of hint
                 animateCounterFocus(0);
             } else {
-                /// Focus search result at number
                 e.preventDefault();
 
+                /// Focus search category
                 if (configs.numbersNavigateTabs) {
                     /// Don't handle buttons beyond the 'more' - they are too tricky
                     if (parsed - 1 > 5) return;
@@ -200,7 +200,7 @@ function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHint
                     }
 
                     if (isVisible || configs.firstNumberPressScrollsToElement == false) {
-                        animateCounterFocus(parsed <= currentTabIndex ? parsed : parsed - 1);
+                        animateCounterFocus(parsed <= currentTabIndex ? parsed - 1 : parsed - 2);
                         setTimeout(function () {
                             /// Click through some button elements 
                             /// On different search pages different button's element respond to click - these set covers almost all of them
@@ -214,6 +214,8 @@ function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHint
 
 
                 } else {
+                    /// Focus search result at number
+
                     focusedRegularResult = parsed - 1;
                     var resultToFocus = regularSearchResults[parsed - 1];
                     if (configs.firstNumberPressScrollsToElement == false || document.activeElement === resultToFocus) {

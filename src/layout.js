@@ -145,19 +145,21 @@ function setLayout() {
                             try {
                                 var height = image.clientHeight;
 
-                                image.onmouseover = function (event) {
-                                    this.setAttribute('style', `${image.parentNode.classList.contains(imageCarouselClass) ? `margin: 0px ${height * heightPadding}px;` : ''} -webkit-transform:scale(${imageScaleUpOnHoverAmount}); z-index: 999; transition: all 150ms ease-in-out; box-shadow: 0px 5px 15px rgba(0, 0, 0, ${configs.shadowOpacity}) `);
-                                }
-                                image.onmouseout = function () {
-                                    this.setAttribute('style', `-webkit-transform:scale(1.0); z-index: 0; transition: all 150ms ease-in-out;`);
-                                }
+                                image.addEventListener('mouseover', function (event) {
+                                    this.setAttribute('style', `${image.parentNode.classList.contains(imageCarouselClass) ? `margin: 0px ${height * heightPadding}px;` : ''} -webkit-transform:scale(${imageScaleUpOnHoverAmount}); transform:scale(${imageScaleUpOnHoverAmount}); z-index: 1; transition: all 150ms ease-in-out; box-shadow: 0px 5px 15px rgba(0, 0, 0, ${configs.shadowOpacity}) `);
+                                })
 
-                                /// If image is inside horizontal carouosel, add padding
+                                image.addEventListener('mouseout', function (event) {
+                                    this.setAttribute('style', `-webkit-transform:scale(1.0); transform: scale(1.0); z-index: 0; transition: all 150ms ease-in-out;`);
+                                })
+
+                                /// If image is inside horizontal carouosel, add margins
+                                /// TODO: Needs a better implementation, doesn't work in current state
                                 if (image.parentNode.classList.contains(imageCarouselClass)) {
                                     var imageCarouselContainer = image.parentNode;
 
                                     imageCarouselContainer.onmouseover = function (event) {
-                                        imageCarouselContainer.setAttribute('style', ` margin-bottom: ${height * heightPadding}px;margin-top: ${height * heightPadding}px;transition: all 150ms ease-in-out;`);
+                                        imageCarouselContainer.setAttribute('style', `margin-bottom: ${height * heightPadding}px;margin-top: ${height * heightPadding}px;transition: all 150ms ease-in-out;`);
                                     }
                                     imageCarouselContainer.onmouseout = function () {
                                         imageCarouselContainer.setAttribute('style', `margin: 0px; transition: all 150ms ease-in-out;`);
@@ -215,8 +217,6 @@ function setLayout() {
 
         // console.log('Google Tiles finished proccessing page');
         console.timeEnd('G-Tiles finished proccessing page in');
-
-
 
     } else {
         /// Image page results handling

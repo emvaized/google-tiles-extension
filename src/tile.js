@@ -15,13 +15,6 @@ function configureTile(tile, maxWidth) {
 
     if (tile.parentNode && tile.parentNode.tagName == 'A') return; /// Don't style the same tile twice
 
-    if (tile.className == 'G')
-        try {
-            setSpecificStyleToGridResult(tile);
-        } catch (e) {
-            console.log(e);
-        }
-
     /// Create 'a' wrapper
     const wrapper = linkWrapperPrototype.cloneNode(true);
 
@@ -236,27 +229,6 @@ function configureTile(tile, maxWidth) {
     }
 
 }
-
-function setSpecificStyleToGridResult(tile) {
-
-    let tableChild = tile.querySelector('table');
-    if (tableChild !== null && tableChild !== undefined && tableChild.previousElementSibling) {
-        tableChild.previousElementSibling.firstChild.setAttribute('style', 'all: revert; margin: 0px !important;')
-    }
-
-    // tile.querySelectorAll('div').forEach(function (child) {
-    //     if (child.parentNode.nextElementSibling && child.parentNode.nextElementSibling.tagName == 'TABLE') {
-    //         /// Special handling for 'g' class elements wrapped inside another (revert styling)
-    //         child.setAttribute('style', 'all: revert; margin: 0px !important;')
-    //     }
-    //     // else
-    //     //     /// set max width to all children
-    //     //     try {
-    //     //         child.style.maxWidth = `${maxWidth == null ? '100%' : (maxWidth - (configs.innerPadding / 2)) + 'px'}`;
-    //     //     } catch (e) { console.log(e); }
-    // });
-}
-
 
 function configureTileHeader(tile, url) {
 
