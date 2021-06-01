@@ -251,6 +251,10 @@
     "message": "Sidebar padding",
     "description": ""
   },
+  "sidebarWidth": {
+    "message": "Sidebar width (px)",
+    "description": ""
+  },
   "sidebarWidthMultiplier": {
     "message": "Sidebar width",
     "description": ""

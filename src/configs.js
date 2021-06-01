@@ -41,6 +41,7 @@ var configs = {
     "showFullDomainOnHover": true,
     "sideArrowsFocusSidebarFirst": false,
     "sidebarWidthMultiplier": 0.75,
+    "sidebarWidth": 500,
     "simplifyDomain": true,
     "tileBackgroundColor": "#FFFFFF",
     "tilesEnabled": true,

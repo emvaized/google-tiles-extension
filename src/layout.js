@@ -1,124 +1,142 @@
-function setLayout(elements) {
-    var counterHintsList = [];
+function setLayout() {
 
     var regularResultsColumn = document.getElementById(columnWithRegularResultsId);
-    var tiles = elements;
-
-    var sidebarContainer = document.getElementById('rhs');
-
-    regularResultsColumn = document.getElementById(columnWithRegularResultsId);
-
     var regularResultsColumnWidth = regularResultsColumn.clientWidth;
 
-    if (sidebarContainer == null) {
-        /// Setting up the sidebar
-        sidebarContainer = document.createElement('div');
+    var mainResults;
+    var counterHintsList = [];
 
-        sidebarContainer.id = 'g-tiles-sidebar';
-        sidebarContainer.style.position = 'absolute';
-        sidebarContainer.style.top = '0';
-        // sidebarContainer.style.left = `${regularResultsColumnWidth * 1.07 + sidebarPadding}px`;
-        sidebarContainer.style.left = `${regularResultsColumnWidth * 1.12 + sidebarPadding}px`;
-        sidebarContainer.style.width = `${regularResultsColumnWidth * configs.sidebarWidthMultiplier}px`;
-        sidebarContainer.style.paddingTop = '0px';
-        sidebarContainer.style.paddingLeft = `${sidebarPadding}px;`;
+    if (regularResultsColumn !== null) {
 
-        // sidebarContainer.setAttribute('id', 'g-tiles-sidebar');
-        // sidebarContainer.setAttribute("style", `position: absolute; top: 0; left:${regularResultsColumnWidth * 1.07 + sidebarPadding}px;width: ${regularResultsColumnWidth * configs.sidebarWidthMultiplier}px !important;padding-left:${sidebarPadding}px;padding-top:0px;`);
+        /// Regular results handling
+        if (regularResultsColumn.children.length == 1)
+            mainResults = Array.prototype.slice.call(regularResultsColumn.firstChild.children);
+        else
+            mainResults = Array.prototype.slice.call(regularResultsColumn.children);
 
-        if (regularResultsColumn !== null)
-            regularResultsColumn.parentNode.appendChild(sidebarContainer);
+        /// Special handling for news results page
+        // if (mainResults.length == 2) {
+        //   let newsMainResults = mainResults[0].querySelectorAll(newsPageCardSelector);
+        //   newsMainResults = Array.prototype.slice.call(newsMainResults);
 
-    } else {
-        sidebarContainer.style.paddingTop = `6px`;
-        sidebarContainer.style.width = `${regularResultsColumnWidth * configs.sidebarWidthMultiplier}px`;
+        //   mainResults[1].firstChild.style.cssText = 'overflow-x: auto !important';
+        //   newsMainResults.push(mainResults[1]);
+        //   mainResults = newsMainResults;
+        // }
+        // else if (mainResults.length <= 5) {
+        //   /// Special handling for shop page (quite a shaky way to determine - desirably to rewrite)
+        //   let newsMainResults = document.getElementById(columnWithRegularResultsId).querySelectorAll(`.${shopPageCardClass}`);
+        //   newsMainResults = Array.prototype.slice.call(newsMainResults);
+        //   mainResults = newsMainResults;
+        // }
 
-        /// Apply styles for elements already in sidebar
-        if (sidebarContainer !== null) {
-            setSidebarWidgets(sidebarContainer);
+        /// Add search suggestions div to proccessed elements
+
+        const botstuff = document.getElementById(peopleAlsoSearchForId);
+        if (botstuff !== null && botstuff !== undefined) {
+            mainResults.push(botstuff);
         }
-    }
 
-    /// Add search suggestions div to proccessed elements
-    const botstuff = document.getElementById(peopleAlsoSearchForId);
-    if (botstuff !== null && botstuff !== undefined) {
-        tiles.push(botstuff);
-    }
+        /// Add adverts to proccessed elements
+        const addsBlock = document.getElementById('tads');
+        if (addsBlock !== null && addsBlock !== undefined) {
+            mainResults.unshift(addsBlock);
+        }
 
-    /// Add adverts to proccessed elements
-    const addsBlock = document.getElementById('tads');
-    if (addsBlock !== null && addsBlock !== undefined) {
-        tiles.unshift(addsBlock);
-    }
 
-    /// Apply styles for all the other elements
-    // if (regularResultsColumn !== null)
+        /// Detect or create sidebar container
+        var sidebarContainer = document.getElementById('rhs');
 
-    if (tiles !== null)
-        tiles.forEach(function (suggestionTile) {
+        if (sidebarContainer == null) {
+            /// Setting up new sidebar
+            sidebarContainer = document.createElement('div');
 
-            if (suggestionTile.clientHeight !== 0.0 && suggestionTile.clientWidth !== 0.0 && suggestionTile.firstChild !== undefined) {
+            sidebarContainer.id = 'g-tiles-sidebar';
+            // sidebarContainer.style.position = 'absolute';
+            // sidebarContainer.style.top = '0';
+            sidebarContainer.style.left = `${regularResultsColumnWidth * 1.12 + sidebarPadding}px`;
+            // sidebarContainer.style.width = `${regularResultsColumnWidth * configs.sidebarWidthMultiplier}px`;
+            // sidebarContainer.style.paddingTop = '0px';
+            sidebarContainer.style.paddingLeft = `${sidebarPadding}px;`;
 
-                // if (suggestionTile.className !== regularResultClassName) {
-                if (suggestionTile.className !== regularResultClassName && suggestionTile.firstChild.className !== regularResultClassName) {
+            if (regularResultsColumn !== null)
+                regularResultsColumn.parentNode.appendChild(sidebarContainer);
 
+        }
+
+
+        let sidebarNewChildrenContainer = document.createElement('span');
+        let sidebarHeight = sidebarContainer.scrollHeight;
+        let regularResultsNewChildrenContainer = document.createElement('span');
+
+        mainResults.forEach(function (result) {
+            if (result.tagName == 'H2') {
+            } else if (result.tagName == 'HR') {
+                result.parentNode.removeChild(result);
+            } else if (result.className == regularResultClassName) {
+                /// Regular result
+
+                if (configs.addFavicons || configs.simplifyDomain) {
+                    configureTileHeader(result, result.querySelector('a').href)
+                }
+
+                configureTile(result);
+            }
+
+            else if (result.querySelector(`[class='g']`) !== null) {
+                /// Regular result wrapped in div
+
+                let ch = result.children;
+                ch = Array.prototype.slice.call(ch);
+                if (ch !== null && ch !== undefined && ch.length > 0) {
+                    var regularResultsColumnElement = document.getElementById(columnWithRegularResultsId);
+                    result.style.margin = '0px';
+
+                    ch.forEach(function (c) {
+                        if (c.className == 'g') {
+                            // mainResults.push(c);
+                            regularResultsColumnElement.insertBefore(c, result);
+
+                            // result.parentNode.removeChild(result);
+
+                            if (configs.addFavicons || configs.simplifyDomain) {
+                                configureTileHeader(c, c.querySelector('a').href)
+                            }
+                            configureTile(c);
+                        }
+                    })
+                }
+            } else if (result.clientHeight !== 0.0 && result.clientWidth !== 0.0 && result.firstChild !== undefined) {
+
+                /// Search widget
+                if (sidebarContainer !== null && sidebarHeight + result.clientHeight <= regularResultsColumn.clientHeight
+                    && result.className !== shopPageCardClass && result.tagName !== newsPageCardSelector.toUpperCase()) {
+                    /// Move widget to sidebar
                     /// If sidebar height won't exceed regular results height, move tile there
-                    if (sidebarContainer !== null && sidebarContainer.clientHeight + suggestionTile.clientHeight <= regularResultsColumn.clientHeight && suggestionTile.className !== shopPageCardClass && suggestionTile.tagName !== newsPageCardSelector.toUpperCase()) {
 
-                        /// Attach widget to sidebar
-                        if (configs.tryToPlaceWidgetsOnTheSide)
-                            sidebarContainer.appendChild(suggestionTile);
-                        else if (configs.moveSuggestionsToBottom)
-                            regularResultsColumn.append(suggestionTile);
-                        if (configs.applyStyleToWidgets) {
-                            configureTile(suggestionTile, regularResultsColumnWidth * configs.sidebarWidthMultiplier);
-                        }
-                    } else {
-                        /// Otherwise, attach it on bottom of regular results scrollbar
-                        if (configs.moveSuggestionsToBottom)
-                            regularResultsColumn.append(suggestionTile);
+                    if (configs.tryToPlaceWidgetsOnTheSide) {
+                        sidebarHeight += result.clientHeight;
+                        sidebarNewChildrenContainer.appendChild(result);
+                    }
+                    else if (configs.moveSuggestionsToBottom) {
+                        regularResultsNewChildrenContainer.appendChild(result);
+                        if (configs.applyStyleToWidgets)
+                            result.classList.add('g');
 
-                        if (configs.applyStyleToWidgets) {
-                            configureTile(suggestionTile, regularResultsColumnWidth);
-                        }
                     }
                 } else {
-                    // configureTile(suggestionTile);
-
-                    if (suggestionTile.className == regularResultClassName) {
-                        configureTile(suggestionTile);
-                    } else {
-                        /// Special handling when tile is wrapped in div
-                        // suggestionTile.setAttribute('style', 'margin-bottom: 0px !important;');
-                        suggestionTile.style.marginBottom = '0px';
-                        configureTile(suggestionTile.firstChild);
+                    /// Otherwise, attach it on bottom of regular results scrollbar
+                    if (configs.moveSuggestionsToBottom) {
+                        regularResultsNewChildrenContainer.appendChild(result);
+                        if (configs.applyStyleToWidgets)
+                            result.classList.add('g');
                     }
-
-                    /// Add index hint
-                    // if (configs.addTileCounter && configs.numericNavigation && configs.numbersNavigateTabs == false) {
-                    //     var counter = document.createElement('p');
-                    //     counter.setAttribute("style", `color: ${countedHintColor};opacity: ${configs.indexHintOpacity};position:absolute; right: ${configs.innerPadding}px;transition: all 300ms ease-out`);
-
-                    //     if (counterHintsOnBottom) {
-                    //         counter.style.bottom = '0px';
-                    //     } else {
-                    //         counter.style.top = '0px';
-                    //     }
-                    //     counter.id = 'g-tile-counter-hint';
-                    //     numericNavigationIndex += 1;
-                    //     counter.textContent = numericNavigationIndex;
-                    //     if (numericNavigationIndex < 10) {
-                    //         counterHintsList.push(counter);
-                    //         suggestionTile.appendChild(counter);
-                    //     }
-                    // }
                 }
-                // } catch (error) { console.log('Google Tiles error: ' + error); }
 
 
                 /// Add scale-up effect for image results
                 if (configs.scaleUpImageResultsOnHover) {
-                    var imageResults = suggestionTile.querySelectorAll(imageResultTileSelector);
+                    var imageResults = result.querySelectorAll(imageResultTileSelector);
 
                     var heightPadding = (imageScaleUpOnHoverAmount - 1.0) / 2;
 
@@ -157,18 +175,12 @@ function setLayout(elements) {
                 /// Add scroll-on-hover listeners
                 if (configs.scrollHorizontalViewOnHover) {
 
-                    // var list = suggestionTile.querySelector(`[role='list']`);
-                    // if (list !== null) {
-                    // var scrollableCards = Array.prototype.slice.call(list.children);
-
-
-                    // var scrollableCards = suggestionTile.querySelectorAll(scrollableCardSelector);
-                    var scrollableCards = suggestionTile.querySelectorAll(`[role='listitem'], g-inner-card`);
+                    var scrollableCards = result.querySelectorAll(scrollableCardSelector);
 
                     if (scrollableCards !== null && scrollableCards !== undefined) {
                         /// Try to proccess 'More news' cards on news page
                         if (scrollableCards.length == 0)
-                            scrollableCards = suggestionTile.querySelectorAll(newsPageCardSelector);
+                            scrollableCards = result.querySelectorAll(newsPageCardSelector);
 
                         if (scrollableCards !== null && scrollableCards !== undefined && scrollableCards.length > 0)
                             scrollableCards.forEach(function (card) {
@@ -183,95 +195,37 @@ function setLayout(elements) {
                     }
 
                 }
+
+
             } else {
-                /// Remove the weird bottom margin for empty divs on page
-                suggestionTile.style.margin = '0px';
+                /// Remove bottom margin for empty divs on page
+                result.style.margin = '0px';
+                result.style.marginBottom = '0px';
             }
-        });
-    // } catch (error) {
-    //   console.log('Google Tiles error: ' + error)
-    // }
-    else {
-        ///Add scale-up effect for image results page
-        if (configs.scaleUpImageResultsOnHover) {
-            var imageResults = document.querySelectorAll(imagesPageImageSelector);
 
-            if (imageResults !== null && imageResults !== undefined) {
-                imageResults.forEach(function (image) {
-                    image.onmouseover = function (event) {
-                        this.parentNode.setAttribute('style', `-webkit-transform:scale(${imageScaleUpOnHoverAmount}); z-index: 999; transition: all 150ms ease-in-out; box-shadow: 0px 5px 15px rgba(0, 0, 0, ${configs.shadowOpacity}) `);
-                        this.parentNode.parentNode.style.overflow = 'visible';
-                    }
-                    image.onmouseout = function () {
-                        this.parentNode.setAttribute('style', `-webkit-transform:scale(1.0); z-index: 0; transition: all 150ms ease-in-out;`);
-                        setTimeout(function () {
-                            image.parentNode.parentNode.style.overflow = 'hidden';
-                        }, 150);
-                    }
+        })
 
-                    image.onmousedown = function () {
-                        this.parentNode.setAttribute('style', `-webkit-transform:scale(1.0); z-index: 0; transition: all 150ms ease-in-out;`);
-                        setTimeout(function () {
-                            image.parentNode.parentNode.style.overflow = 'hidden';
-                        }, 150);
-                    }
+        sidebarContainer.appendChild(sidebarNewChildrenContainer);
+        regularResultsColumn.appendChild(regularResultsNewChildrenContainer);
 
-                });
-            }
+        /// Set keyboard listeners
+        if (configs.navigateWithKeyboard || configs.numericNavigation) {
+            setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHintsList);
         }
+
+        // console.log('Google Tiles finished proccessing page');
+        console.timeEnd('G-Tiles finished proccessing page in');
+
+
+
+    } else {
+        /// Image page results handling
+
+        // var container = document.getElementById('islrg');
+        // var images = container.firstChild.children;
+
+        // setLayout();
     }
-
-    /// Add '0' index hint for search field
-    if (configs.addTileCounter && configs.numericNavigation) {
-        try {
-            let zeroCounter = document.createElement('span');
-
-            // zeroCounter.setAttribute("style", `position: absolute; z-index:0; right: -15px; top: 50%; color: ${countedHintColor};opacity: ${configs.indexHintOpacity}; transition: all 300ms ease-in-out`);
-            counterHintsList.push(zeroCounter);
-
-            if (configs.addZeroCounterHint) {
-                zeroCounter.id = 'g-tile-counter-hint';
-                zeroCounter.style.zIndex = '0';
-                zeroCounter.style.right = '-15px';
-                zeroCounter.style.top = '50%';
-                zeroCounter.innerHTML = '0';
-
-                let searchField = document.querySelector('button').parentNode.parentNode;
-                searchField.appendChild(zeroCounter);
-            }
-
-        } catch (error) { console.log(error); }
-    }
-
-    // if (configs.addTileCounter && configs.numericNavigation && configs.numbersNavigateTabs == false) {
-    //     document.querySelectorAll('.g').forEach(function (suggestionTile) {
-    //         // regularSearchResults.forEach(function (suggestionTile) {
-    //         let counter = document.createElement('p');
-    //         counter.id = 'g-tile-counter-hint';
-
-    //         if (counterHintsOnBottom) {
-    //             counter.style.bottom = '0px';
-    //         } else {
-    //             counter.style.top = '0px';
-    //         }
-    //         counter.style.right = `${configs.innerPadding}px`;
-
-    //         numericNavigationIndex += 1;
-    //         counter.textContent = numericNavigationIndex;
-    //         if (numericNavigationIndex < 10) {
-    //             suggestionTile.appendChild(counter);
-    //             counterHintsList.push(counter);
-    //         }
-    //     })
-    // }
-
-    /// Set keyboard listeners
-    if (configs.navigateWithKeyboard || configs.numericNavigation) {
-        setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHintsList);
-    }
-
-    // console.log('Google Tiles finished proccessing page');
-    console.timeEnd('G-Tiles finished proccessing page in');
 }
 
 
@@ -297,6 +251,8 @@ function setTopBar() {
     if (topBar == null)
         topBar = document.getElementById(regularCategoryButtonsParentId);
     const topBarParent = topBar.parentNode;
+
+    topBarParent.removeChild(topBar);
     document.querySelector('.sfbg').appendChild(topBar);
 
     topBar.style.position = 'absolute';

@@ -243,6 +243,10 @@
         "message": "Relleno de la barra lateral",
         "description": ""
     },
+    "sidebarWidth": {
+        "message": "Ancho de la barra lateral (px)",
+        "description": ""
+    },
     "sidebarWidthMultiplier": {
         "message": "Ancho de la barra lateral",
         "description": ""

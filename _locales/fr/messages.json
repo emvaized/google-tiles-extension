@@ -243,6 +243,10 @@
         "message": "Rembourrage de la barre latérale",
         "description": ""
     },
+    "sidebarWidth": {
+        "message": "Largeur de la barre latérale (px)",
+        "description": ""
+    },
     "sidebarWidthMultiplier": {
         "message": "Largeur de la barre latérale",
         "description": ""

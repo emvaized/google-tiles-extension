@@ -1,6 +1,8 @@
-/* .g { */
-[class='g'] {
-    position: relative;
+/* Regular search result styling */
+.g {
+/* [class='g']{ */
+    /* [class='g'], #rso > div:not(:empty):not(.g), #rso > span > div:not(.g){ */
+    /* position: relative; */
     background-color: var(--gtiles-tile-background);
     border: var(--gtiles-tile-border);
     border-radius: var(--gtiles-tile-border-radius);
@@ -11,15 +13,85 @@
     width: var(--gtiles-tile-width) !important;
 }
 
-#rhs > div:not(.cu-container) {
+/* Regular search result link wrapper */
+#g-tile {
+    color: black;outline: none !important;text-decoration: none !important;text-decoration-color: transparent !important; border: 0 !important;
+}
+
+/* General styling for sidebar */
+#rhs {
+    max-width: var(--gtiles-sidebar-width) !important;
+}
+
+#g-tiles-sidebar {
+    position: absolute;
+    top: 0;
+    padding-top: 0px;
+    min-width: var(--gtiles-sidebar-width) !important;
+}
+
+
+/* Styling for sidebar widgets */
+#rhs > div:not(.cu-container),  #rhs > g-section-with-header, #rhs > span > div {
+
+    /* box-sizing: unset !important; */
+    box-sizing: border-box !important;
+
+    background-color: var(--gtiles-tile-background) !important;
+    border: var(--gtiles-tile-border) !important;
+    border-radius: var(--gtiles-tile-border-radius);
+    padding: var(--gtiles-tile-padding) !important;
+    margin: var(--gtiles-tile-margin) !important;
+    box-shadow: var(--gtiles-tile-shadow);
+    width: var(--gtiles-tile-width) !important;
+}
+
+
+#g-tiles-sidebar > span > div, #g-tiles-sidebar > span > g-section-with-header {
     background-color: var(--gtiles-tile-background);
     border: var(--gtiles-tile-border);
     border-radius: var(--gtiles-tile-border-radius);
     transition: var(--gtiles-transition);
+    padding: var(--gtiles-tile-padding) !important;
+    margin: var(--gtiles-tile-margin) !important;
     box-shadow: var(--gtiles-tile-shadow);
-    max-width: 500px;
+    width: var(--gtiles-tile-width) !important;
+    max-width: var(--gtiles-sidebar-child-width) !important;
 }
 
+
+/* Fix for widget image overflow (maps widget suffers from this the most) */
+ #rhs > span > div div, #g-tiles-sidebar div div  {
+    max-width: var(--gtiles-sidebar-child-width) !important;
+}
+
+#g-tiles-sidebar div a[style*='height'], #rhs div a[style*='height'] {
+    height: auto !important;
+}
+
+/* #g-tiles-sidebar div img, #rhs div img  { */
+/* a > g-img > img  { */
+#g-tiles-sidebar div a[style*='height'] > g-img > img, #rhs div a[style*='height'] > g-img > img {
+    max-width: var(--gtiles-sidebar-child-width); 
+    min-width: var(--gtiles-sidebar-child-width); 
+    height: auto !important;
+}
+
+
+
+
+/* Search suggestions container */
+#botstuff div {
+    margin: 0 !important;
+}
+
+/* Fix for overflowing g cards in accordion knowledge widget */
+.xpdopen .g {
+    box-sizing: border-box !important;
+}
+
+
+/* Add padding for top labels */
 [id='result-stats'] {
     padding: var(--gtiles-navbar-padding);
 }
@@ -28,19 +100,27 @@
     padding: var(--gtiles-navbar-padding);
 }
 
+/* Remove inside decorations on some search widgets */
+[class$='vk_c'], [class*='g-blk'], .xpd {
+    background-color: transparent;margin: 0px !important; padding: 0px;border: none !important; outline: none !important;
+}
 
+[class*='g-blk'] > div {
+    border: none !important;
+}
+
+/* Fix 'Show all' button width (commonly seen in image & video results widget) */
+g-more-link > a{
+    width: 100%;
+    padding-top: 12px;
+}
+
+/* Focused tile dot indicator */
 .g-tile-focused-tile-dot {
     height: 10px; width: 10px; border-radius: 50%; float: left; position: relative; left: -40px;
 }
 
-[class$='vk_c'] {
-    background-color: transparent;margin: 0px; padding: 0px;border: none !important; outline: none !important;
-}
-
-#g-tile {
-    color: black;outline: none !important;text-decoration: none !important;text-decoration-color: transparent !important; border: 0 !important;
-}
-
+/* Counter index hint */
 #g-tile-counter-hint {
     color: var(--gtiles-counter-color);
     opacity: var(--gtiles-counter-opacity);
@@ -48,6 +128,12 @@
     transition: all 300ms ease-out;
 }
 
+/* Top bar height placeholder before it's moved to searchbar */
 #hdtb {
     max-height: var(--gtiles-topbar-max-height) !important;
+}
+
+/* Translate button margin */
+.g [class*='fl '] {
+    margin-left: 6px;
 }

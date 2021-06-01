@@ -243,6 +243,10 @@
         "message": "Отступ боковой колонки",
         "description": ""
     },
+    "sidebarWidth": {
+        "message": "Ширина боковой колонки (px)",
+        "description": ""
+    },
     "sidebarWidthMultiplier": {
         "message": "Ширина боковой колонки",
         "description": ""

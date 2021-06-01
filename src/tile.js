@@ -1,13 +1,29 @@
+let linkWrapperPrototype = document.createElement('a');
+linkWrapperPrototype.style.cursor = configs.changeCursorOverTile ? 'pointer' : 'unset';
+linkWrapperPrototype.id = 'g-tile';
+
+let websiteFaviconPrototype = new Image();
+websiteFaviconPrototype.style.height = `${configs.faviconRadius}px`;
+websiteFaviconPrototype.style.width = `${configs.faviconRadius}px`;
+websiteFaviconPrototype.height = `${configs.faviconRadius}px`;
+websiteFaviconPrototype.width = `${configs.faviconRadius}px`;
+websiteFaviconPrototype.style.paddingRight = '5px';
+websiteFaviconPrototype.setAttribute('crossorigin', 'anonymous');
+
 function configureTile(tile, maxWidth) {
     if (tile.tagName == 'H2') return;
 
     if (tile.parentNode && tile.parentNode.tagName == 'A') return; /// Don't style the same tile twice
 
-    /// Create 'a' wrapper
-    const wrapper = document.createElement('a');
-    wrapper.style.cursor = configs.changeCursorOverTile ? 'pointer' : 'unset';
+    if (tile.className == 'G')
+        try {
+            setSpecificStyleToGridResult(tile);
+        } catch (e) {
+            console.log(e);
+        }
 
-    wrapper.id = 'g-tile';
+    /// Create 'a' wrapper
+    const wrapper = linkWrapperPrototype.cloneNode(true);
 
     /// Set url for 'a' wrapper 
     var url;
@@ -60,32 +76,6 @@ function configureTile(tile, maxWidth) {
         }
     }
 
-    /// Add default style for tile
-    // tile.setAttribute("style", `position:relative;${configs.addTileBackground ? `background-color: ${configs.tileBackgroundColor}` : ''};border:solid ${configs.focusedBorderWidth}px ${configs.addTileBorder ? configs.borderColor : 'transparent'};border-radius: ${configs.borderRadius}px;transition:all ${configs.hoverTransitionDuration}ms ease-out;padding: ${configs.innerPadding}px;margin: 0px 0px ${configs.externalPadding}px;box-shadow: ${configs.shadowEnabled ? `0px 5px 15px rgba(0, 0, 0, ${configs.shadowOpacity})` : 'unset'};`);
-
-    // if (tile.style.margin !== `margin: 0px 0px ${configs.externalPadding}px`) {
-    if (tile.style.margin !== `margin: 0px 0px ${configs.externalPadding}px`
-        // && (tile.className.toLowerCase()[0] == 'g' || (tile.firstChild && tile.firstChild.tagName.toLowerCase() == newsPageCardSelector))
-    ) {
-        tile.style.position = 'relative';
-        if (configs.addTileBackground)
-            tile.style.backgroundColor = configs.tileBackgroundColor;
-        tile.style.border = `solid ${configs.focusedBorderWidth}px ${configs.addTileBorder ? configs.borderColor : 'transparent'}`;
-        tile.style.borderRadius = `${configs.borderRadius}px`;
-        // tile.style.transition = `all ${configs.hoverTransitionDuration}ms ease-out`;
-        tile.style.transition = tileTransition;
-        if (tile.firstChild.tagName.toLowerCase() !== newsPageCardSelector)
-            tile.style.padding = `${configs.innerPadding}px`;
-        tile.style.margin = `0px 0px ${configs.externalPadding}px`;
-        tile.style.boxShadow = `${configs.shadowEnabled ? `0px 5px 15px rgba(0, 0, 0, ${configs.shadowOpacity})` : 'unset'}`;
-
-        if (configs.widerTiles) {
-            tile.style.width = '100%';
-        }
-    }
-
-
-
     /// Get result's full title
     // try {
     //   if (titles !== undefined && titles[0] !== undefined && titles[0].textContent.endsWith('...') && url !== null && url !== undefined && url !== '')
@@ -133,13 +123,6 @@ function configureTile(tile, maxWidth) {
         tile.addEventListener('mouseup', function () {
             this.style.boxShadow = `0px 5px 15px rgba(0, 0, 0, ${configs.shadowOpacity})`;
         })
-    }
-
-    /// Interactive widget handling 
-    /// Without these lines interactive widgets (like weather forecast) horizontally overflow the tile
-    const interactiveWidget = tile.querySelector(interactiveWidgetSelector);
-    if (interactiveWidget !== null && maxWidth !== null) {
-        interactiveWidget.style.maxWidth = `${maxWidth}px`;
     }
 
     /// Ignore clicks on dropdown buttons
@@ -208,28 +191,25 @@ function configureTile(tile, maxWidth) {
 
 
     /// Remove some default tile stylings for children, such as borders and background colors
-    const firstTileChild = tile.firstChild;
-    if (firstTileChild !== undefined && firstTileChild.style !== undefined) {
-        firstTileChild.style.borderColor = 'transparent';
-        firstTileChild.style.backgroundColor = 'transparent';
-        firstTileChild.style.overflowX = 'hidden';
-        firstTileChild.style.overflowY = 'hidden';
+    // const firstTileChild = tile.firstChild;
+    // if (firstTileChild !== undefined && firstTileChild.style !== undefined) {
+    //     firstTileChild.style.borderColor = 'transparent';
+    //     firstTileChild.style.backgroundColor = 'transparent';
+    //     firstTileChild.style.overflowX = 'hidden';
+    //     firstTileChild.style.overflowY = 'hidden';
 
-        if (firstTileChild.firstChild !== null) {
-            if (firstTileChild.firstChild.style !== undefined)
-                firstTileChild.firstChild.style.maxWidth = `${maxWidth == null ? '100%' : maxWidth + 'px'}`;
+    //     if (firstTileChild.firstChild !== null) {
+    //         if (firstTileChild.firstChild.style !== undefined)
+    //             firstTileChild.firstChild.style.maxWidth = `${maxWidth == null ? '100%' : maxWidth + 'px'}`;
 
-            if (firstTileChild.firstChild.tagName !== undefined) {
-                firstTileChild.firstChild.style.borderColor = 'transparent';
-                firstTileChild.firstChild.style.backgroundColor = 'transparent';
+    //         if (firstTileChild.firstChild.tagName !== undefined) {
+    //             firstTileChild.firstChild.style.borderColor = 'transparent';
+    //             firstTileChild.firstChild.style.backgroundColor = 'transparent';
 
-                // firstTileChild.firstChild.setAttribute('style', 'transition: none !important');
-            }
-        }
-    }
-
-    /// Set max width to all div children so that they don't exceed tile border
-    setSpecificStylesToChildren(tile, maxWidth);
+    //             // firstTileChild.firstChild.setAttribute('style', 'transition: none !important');
+    //         }
+    //     }
+    // }
 
     /// Appending page snapshot
     if (loadPreviews) {
@@ -257,18 +237,24 @@ function configureTile(tile, maxWidth) {
 
 }
 
-function setSpecificStylesToChildren(tile, maxWidth) {
+function setSpecificStyleToGridResult(tile) {
 
-    tile.querySelectorAll('div').forEach(function (child) {
-        if (child.parentNode.nextElementSibling && child.parentNode.nextElementSibling.tagName == 'TABLE') {
-            /// Special handling for 'g' class elements wrapped inside another (revert styling)
-            child.setAttribute('style', 'all: revert; margin: 0px !important;')
-        } else
-            /// set max width to all children
-            try {
-                child.style.maxWidth = `${maxWidth == null ? '100%' : (maxWidth - (configs.innerPadding / 2)) + 'px'}`;
-            } catch (e) { console.log(e); }
-    });
+    let tableChild = tile.querySelector('table');
+    if (tableChild !== null && tableChild !== undefined && tableChild.previousElementSibling) {
+        tableChild.previousElementSibling.firstChild.setAttribute('style', 'all: revert; margin: 0px !important;')
+    }
+
+    // tile.querySelectorAll('div').forEach(function (child) {
+    //     if (child.parentNode.nextElementSibling && child.parentNode.nextElementSibling.tagName == 'TABLE') {
+    //         /// Special handling for 'g' class elements wrapped inside another (revert styling)
+    //         child.setAttribute('style', 'all: revert; margin: 0px !important;')
+    //     }
+    //     // else
+    //     //     /// set max width to all children
+    //     //     try {
+    //     //         child.style.maxWidth = `${maxWidth == null ? '100%' : (maxWidth - (configs.innerPadding / 2)) + 'px'}`;
+    //     //     } catch (e) { console.log(e); }
+    // });
 }
 
 
@@ -299,20 +285,20 @@ function configureTileHeader(tile, url) {
                     // domain.setAttribute('title', domain.textContent);
                     domain.title = domain.textContent;
                 const domainPathSpan = domain.querySelector('span');
-                domain.textContent = titleText + (domainPathSpan == null ? '' : domainPathSpan.textContent);
+                domain.innerText = titleText + (domainPathSpan == null ? '' : domainPathSpan.textContent);
             } catch (error) { console.log(error); }
         }
 
 
         if (configs.addFavicons && url !== null && url !== undefined && url !== '' && (tile.className == regularResultClassName || tile.firstChild.className == regularResultClassName)) {
-            // var favicon = document.createElement('img');
-            const favicon = new Image();
-            const domainForFavicon = url.split('/')[2];
+            // const favicon = new Image();
+            const favicon = websiteFaviconPrototype.cloneNode(true);
+            let domainForFavicon = url.split('/')[2];
             if (domainForFavicon == null || domainForFavicon == undefined)
                 domainForFavicon = url;
 
-            const websiteFaviconUrl = 'https://' + domainForFavicon + '/' + 'favicon.ico';
-            const faviconKitFaviconUrl = 'https://api.faviconkit.com/' + domainForFavicon + '/' + '16';
+            // const websiteFaviconUrl = 'https://' + domainForFavicon + '/' + 'favicon.ico';
+            // const faviconKitFaviconUrl = 'https://api.faviconkit.com/' + domainForFavicon + '/' + '16';
             const googleFaviconUrl = 'https://www.google.com/s2/favicons?domain=' + domainForFavicon;
             const ddGoFaviconUrl = 'https://icons.duckduckgo.com/ip2/' + domainForFavicon + '.ico';
 
@@ -322,9 +308,7 @@ function configureTileHeader(tile, url) {
                 // console.log('error loading favicon for ' + domainForFavicon);
 
                 /// Loading favicon from Google service instead
-                // favicon.setAttribute("src", googleFaviconUrl);
                 favicon.src = googleFaviconUrl;
-                // favicon.setAttribute("src", faviconKitFaviconUrl);
             });
 
             /// Trying to load favicon from website
@@ -338,17 +322,7 @@ function configureTileHeader(tile, url) {
 
             // });
 
-
-            /// Set size and style
-            favicon.height = `${configs.faviconRadius}px`;
-            favicon.width = `${configs.faviconRadius}px`;
-            favicon.setAttribute('crossorigin', 'anonymous');
             favicon.src = ddGoFaviconUrl;
-            favicon.style.paddingRight = '5px';
-            favicon.style.height = `${configs.faviconRadius}px`;
-            favicon.style.width = `${configs.faviconRadius}px`;
-
-            // favicon.style.cssText = `height:${configs.faviconRadius}px; width:${configs.faviconRadius}px; padding-right: 5px;`;
             domain.parentNode.prepend(favicon);
 
             /// Fix dropdown button position
@@ -360,7 +334,6 @@ function configureTileHeader(tile, url) {
             /// Fix 'translate page' button position
             const translatePageButton = tile.querySelector(translatePageButtonSelector);
             if (translatePageButton != null && translatePageButton !== undefined) {
-                translatePageButton.style.cssText = `margin-left: 6px;`;
                 if (dropdownMenu != null) {
                     dropdownMenu.appendChild(translatePageButton);
                 }

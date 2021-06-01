@@ -1,5 +1,6 @@
 #2.2.2
-- Small layout fixes and performance improvements
+- Great performance improvements by moving part of styling to css
+- Changed configs for sidebar width for precise pixels
 
 #2.2.1
 - Fix for search suggestions widget being stylized twice

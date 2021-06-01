@@ -1,8 +1,6 @@
 /// CSS selectors
 var regularResultClassName = 'g';
 var searchFieldSelector = `[name = 'q']`;
-var resultStatsSelector = `[id='result-stats']`;
-var navBarSelector = `[id='top_nav']`;
 var domainNameSelector = `cite`;
 var dropdownMenuSelector = `[class='action-menu']`;
 var translatePageButtonSelector = `[class*='fl ']`;
@@ -14,11 +12,10 @@ var imageCarouselClass = 'GNxIwf';
 var interactiveWidgetSelector = `[class$='vk_c']`;
 var nextResultsPageButtonId = 'pnnext';
 var previousResultsPageButtonId = 'pnprev';
-var scrollableCardSelector = `g-inner-card`;
+var scrollableCardSelector = `[role='listitem'], g-inner-card`;
 var imagesPageImageSelector = `[class*='rg_i']`;
 var newsPageCardSelector = 'g-card';
 var shopPageCardClass = 'sh-dlr__list-result';
-var regularCategoryButtonsParentSelector = '#hdtb-msb';
 var regularCategoryButtonsParentId = 'hdtb-msb';
 var regularCategoryButtonSelector = '.hdtb-mitem';
 var imagesPageCategoryButtonsParentSelector = '.T47uwc';
@@ -71,6 +68,9 @@ function loadConfigs() {
         document.body.style.setProperty('--gtiles-counter-color', countedHintColor);
         document.body.style.setProperty('--gtiles-counter-opacity', configs.indexHintOpacity);
 
+        document.body.style.setProperty('--gtiles-sidebar-width', `${configs.sidebarWidth}px`);
+        document.body.style.setProperty('--gtiles-sidebar-child-width', `${configs.sidebarWidth - (configs.innerPadding * 2)}px`);
+
       }
     }
   )
@@ -87,98 +87,19 @@ function init() {
 
     // removeSearchbarShadow();
 
-    var mainResults = document.getElementById(columnWithRegularResultsId);
+
 
     try {
 
-      if (mainResults !== null) {
-
-        /// Regular results handling
-        if (mainResults.children.length == 1)
-          mainResults = Array.prototype.slice.call(mainResults.firstChild.children);
-        else
-          mainResults = Array.prototype.slice.call(mainResults.children);
-
-        /// Handling when cards are wrapped in div 
-        //             if (mainResults.length <= 8)
-        mainResults.forEach(function (result) {
-          if (result.className == 'g') {
-            if (configs.addFavicons || configs.simplifyDomain) {
-              configureTileHeader(result, result.querySelector('a').href)
-            }
-          } else {
-
-            // let wrappedCards = result.querySelectorAll(`[class='g']`)
-
-            // if (wrappedCards !== null && wrappedCards !== undefined && wrappedCards.length > 0) {
-
-            //   const regularResultsColumnElement = document.getElementById(columnWithRegularResultsId);
-
-            //   wrappedCards.forEach(function (wrappedCard) {
-            //     mainResults.push(wrappedCard);
-            //     regularResultsColumnElement.insertBefore(wrappedCard, result);
-
-            //     if (configs.addFavicons || configs.simplifyDomain) {
-            //       configureTileHeader(wrappedCard, wrappedCard.querySelector('a').href)
-            //     }
-            //   })
-            // }
-
-            let ch = result.children;
-
-            ch = Array.prototype.slice.call(ch);
-
-            if (ch !== null && ch !== undefined && ch.length > 0) {
-              var regularResultsColumnElement = document.getElementById(columnWithRegularResultsId);
-
-              ch.forEach(function (c) {
-                if (c.className == 'g') {
-                  mainResults.push(c);
-                  regularResultsColumnElement.insertBefore(c, result);
-
-                  if (configs.addFavicons || configs.simplifyDomain) {
-                    configureTileHeader(c, c.querySelector('a').href)
-                  }
-                }
-              })
-            }
-          }
-
-
-        })
-
-        /// Special handling for news results page
-        if (mainResults.length == 2) {
-          let newsMainResults = mainResults[0].querySelectorAll(newsPageCardSelector);
-          newsMainResults = Array.prototype.slice.call(newsMainResults);
-
-          mainResults[1].firstChild.style.cssText = 'overflow-x: auto !important';
-          newsMainResults.push(mainResults[1]);
-          mainResults = newsMainResults;
-        }
-        else if (mainResults.length <= 5) {
-          /// Special handling for shop page (quite a shaky way to determine - desirably to rewrite)
-          let newsMainResults = document.getElementById(columnWithRegularResultsId).querySelectorAll(`.${shopPageCardClass}`);
-          newsMainResults = Array.prototype.slice.call(newsMainResults);
-          mainResults = newsMainResults;
-        }
-
-        setLayout(mainResults);
-
-      } else {
-        /// Image page results handling (all proccessing done inside method)
-
-        // var container = document.getElementById('islrg');
-        // var images = container.firstChild.children;
-
-        setLayout();
-      }
-
+      setLayout()
 
     } catch (error) {
       console.log('Google Tiles error:');
       console.log(error);
     }
+
+
+
   }
 }
 

@@ -96,7 +96,7 @@ function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHint
             }
             counter.style.right = `${configs.innerPadding}px`;
             numericNavigationIndex += 1;
-            counter.textContent = numericNavigationIndex;
+            counter.innerText = numericNavigationIndex;
             if (numericNavigationIndex < 10) {
                 counterHintsList.push(counter);
                 suggestionTile.firstChild.appendChild(counter);
@@ -192,9 +192,7 @@ function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHint
                 if (configs.numbersNavigateTabs) {
                     /// Don't handle buttons beyond the 'more' - they are too tricky
                     if (parsed - 1 > 5) return;
-
                     var button = tabButtons[parsed - 1];
-
                     var isVisible;
 
                     if (configs.firstNumberPressScrollsToElement) {
@@ -219,11 +217,11 @@ function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHint
                     focusedRegularResult = parsed - 1;
                     var resultToFocus = regularSearchResults[parsed - 1];
                     if (configs.firstNumberPressScrollsToElement == false || document.activeElement === resultToFocus) {
-                        animateCounterFocus(parsed);
+                        animateCounterFocus(parsed - 1);
                         resultToFocus.focus();
                         resultToFocus.click();
                     } else {
-                        animateCounterFocus(parsed);
+                        animateCounterFocus(parsed - 1);
 
                         resultToFocus.focus();
                         resultToFocus.scrollIntoView({ block: 'center', inline: "nearest", behavior: "smooth" });
@@ -233,8 +231,6 @@ function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHint
             }
         }
     }
-
-
 
     function goToPreviousPage() {
         var prevPageButton = document.getElementById(previousResultsPageButtonId);
