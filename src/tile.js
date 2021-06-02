@@ -82,7 +82,7 @@ function configureTile(tile, maxWidth) {
     /// Set 'on hover' styling for each tile
     var originalTitleColor;
     // if (tile.className.toLowerCase()[0] == 'g') {
-    if (tile.className.toLowerCase()[0] == 'g' || (tile.firstChild && tile.firstChild.tagName.toLowerCase() == newsPageCardSelector)) {
+    if (tile.className[0] == 'g' || tile.className.includes(' g') || (tile.firstChild && tile.firstChild.tagName.toLowerCase() == newsPageCardSelector)) {
 
         tile.addEventListener('mouseover', function () {
             // if (addBackground)
@@ -102,85 +102,92 @@ function configureTile(tile, maxWidth) {
                 titles[0].style.color = originalTitleColor ?? 'unset';
         })
 
+        /// Append onClick listeners to visually emulate button press on card by changing shadow 
+        if (configs.shadowEnabled && configs.wholeTileIsClickable) {
+            tile.addEventListener('mousedown', function () {
+                this.style.boxShadow = `0px 5px 15px rgba(0, 0, 0, ${configs.shadowOpacity / 2})`;
+
+                if (configs.scaleUpFocusedResult)
+                    wrapper.firstChild.style.webkitTransform = `scale(1.0)`;
+            })
+
+            tile.addEventListener('mouseup', function () {
+                this.style.boxShadow = `0px 5px 15px rgba(0, 0, 0, ${configs.shadowOpacity})`;
+            })
+        }
+
+        /// Ignore clicks on dropdown buttons
+        const accordion = tile.querySelector('g-accordion-expander');
+        if (accordion !== null && accordion !== undefined) {
+            // var tileDescriptions = tile.querySelectorAll('span');
+            // if (tileDescriptions !== null && tileDescriptions !== undefined) {
+            //   for (i in tileDescriptions) {
+            //     var elem = tileDescriptions[i];
+            //     if (elem.clientHeight !== 0.0 && elem.clientWidth !== 0.0) {
+            //       elem.wrap(wrapper);
+            //       break;
+            //     }
+            //   }
+            // }
+        } else {
+            /// Wrap tile with 'a' created element
+            if (configs.wholeTileIsClickable && linkIsValid)
+                tile.wrap(wrapper);
+        }
+
+
+
+        /// Add keyboard focus listeners
+        if (configs.navigateWithKeyboard || configs.numericNavigation) {
+            let dot;
+            /// Highlight item focused with keyboard
+            wrapper.addEventListener('focus', function (event) {
+                /// Change border
+                if (configs.focusedTileDifferentBorder)
+                    wrapper.firstChild.style.border = `solid ${configs.focusedBorderWidth}px ${configs.keyboardFocusBorderColor}`;
+
+                /// Scale up
+                if (configs.scaleUpFocusedResult) {
+                    wrapper.firstChild.style.webkitTransform = `scale(${configs.scaleUpFocusedResultAmount})`;
+                    wrapper.firstChild.style.zIndex = '2';
+                }
+
+                /// Add dot on the left
+                if (configs.addFocusedTileDot) {
+                    dot = document.createElement('div');
+                    dot.className = 'g-tile-focused-tile-dot';
+                    dot.style.background = configs.keyboardFocusBorderColor;
+                    dot.style.opacity = configs.focusedTileDotOpacity;
+                    dot.style.top = `-${tile.clientHeight / 2 + configs.externalPadding}px`;
+                    wrapper.appendChild(dot);
+                }
+            });
+
+            /// Remove the highlight from item on focus loss
+
+            wrapper.addEventListener('blur', function (event) {
+                if (configs.focusedTileDifferentBorder)
+                    wrapper.firstChild.style.border = `solid ${configs.focusedBorderWidth}px ${configs.addTileBorder ? configs.borderColor : 'transparent'}`;
+
+                if (configs.scaleUpFocusedResult) {
+                    wrapper.firstChild.style.webkitTransform = `scale(1.0)`;
+                    wrapper.firstChild.style.zIndex = '1';
+                }
+
+                if (configs.addFocusedTileDot) {
+                    if (dot !== null && dot !== undefined)
+                        wrapper.removeChild(dot);
+                }
+            });
+        }
     }
 
-    /// Append onClick listeners to visually emulate button press on card by changing shadow 
-    if (configs.shadowEnabled && configs.wholeTileIsClickable) {
-        tile.addEventListener('mousedown', function () {
-            this.style.boxShadow = `0px 5px 15px rgba(0, 0, 0, ${configs.shadowOpacity / 2})`;
-
-            if (configs.scaleUpFocusedResult)
-                wrapper.firstChild.style.webkitTransform = `scale(1.0)`;
-        })
-
-        tile.addEventListener('mouseup', function () {
-            this.style.boxShadow = `0px 5px 15px rgba(0, 0, 0, ${configs.shadowOpacity})`;
-        })
-    }
-
-    /// Ignore clicks on dropdown buttons
-    const accordion = tile.querySelector('g-accordion-expander');
-    if (accordion !== null && accordion !== undefined) {
-        // var tileDescriptions = tile.querySelectorAll('span');
-        // if (tileDescriptions !== null && tileDescriptions !== undefined) {
-        //   for (i in tileDescriptions) {
-        //     var elem = tileDescriptions[i];
-        //     if (elem.clientHeight !== 0.0 && elem.clientWidth !== 0.0) {
-        //       elem.wrap(wrapper);
-        //       break;
-        //     }
-        //   }
-        // }
-    } else {
-        /// Wrap tile with 'a' created element
-        if (configs.wholeTileIsClickable && linkIsValid)
-            tile.wrap(wrapper);
-    }
 
 
-    /// Add keyboard focus listeners
-    if (configs.navigateWithKeyboard || configs.numericNavigation) {
-        let dot;
-        /// Highlight item focused with keyboard
-        wrapper.addEventListener('focus', function (event) {
-            /// Change border
-            if (configs.focusedTileDifferentBorder)
-                wrapper.firstChild.style.border = `solid ${configs.focusedBorderWidth}px ${configs.keyboardFocusBorderColor}`;
 
-            /// Scale up
-            if (configs.scaleUpFocusedResult) {
-                wrapper.firstChild.style.webkitTransform = `scale(${configs.scaleUpFocusedResultAmount})`;
-                wrapper.firstChild.style.zIndex = '2';
-            }
 
-            /// Add dot on the left
-            if (configs.addFocusedTileDot) {
-                dot = document.createElement('div');
-                dot.className = 'g-tile-focused-tile-dot';
-                dot.style.background = configs.keyboardFocusBorderColor;
-                dot.style.opacity = configs.focusedTileDotOpacity;
-                dot.style.top = `-${tile.clientHeight / 2 + configs.externalPadding}px`;
-                wrapper.appendChild(dot);
-            }
-        });
 
-        /// Remove the highlight from item on focus loss
 
-        wrapper.addEventListener('blur', function (event) {
-            if (configs.focusedTileDifferentBorder)
-                wrapper.firstChild.style.border = `solid ${configs.focusedBorderWidth}px ${configs.addTileBorder ? configs.borderColor : 'transparent'}`;
-
-            if (configs.scaleUpFocusedResult) {
-                wrapper.firstChild.style.webkitTransform = `scale(1.0)`;
-                wrapper.firstChild.style.zIndex = '1';
-            }
-
-            if (configs.addFocusedTileDot) {
-                if (dot !== null && dot !== undefined)
-                    wrapper.removeChild(dot);
-            }
-        });
-    }
 
 
     /// Remove some default tile stylings for children, such as borders and background colors

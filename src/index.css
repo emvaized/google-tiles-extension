@@ -136,4 +136,8 @@ g-more-link > a{
     margin: 0px !important;
 }
 
-
+/* Remove news card styling */
+.g g-card {
+    margin: 0px;
+    border: none;
+}

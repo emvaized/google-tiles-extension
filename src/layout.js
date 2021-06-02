@@ -7,28 +7,33 @@ function setLayout() {
     var counterHintsList = [];
 
     if (regularResultsColumn !== null) {
+        // let regularResultsChildren = regularResultsColumn.children;
+        let regularResultsChildren = regularResultsColumn.querySelectorAll(`#${columnWithRegularResultsId} > div`);
 
         /// Regular results handling
-        if (regularResultsColumn.children.length == 1)
-            mainResults = Array.prototype.slice.call(regularResultsColumn.firstChild.children);
+        if (regularResultsChildren.length == 1)
+            // mainResults = Array.prototype.slice.call(regularResultsColumn.firstChild.children);
+            mainResults = Array.prototype.slice.call(regularResultsColumn.firstChild.querySelectorAll(`#${columnWithRegularResultsId} > div`));
         else
-            mainResults = Array.prototype.slice.call(regularResultsColumn.children);
+            mainResults = Array.prototype.slice.call(regularResultsChildren);
 
         /// Special handling for news results page
         // if (mainResults.length == 2) {
-        //   let newsMainResults = mainResults[0].querySelectorAll(newsPageCardSelector);
-        //   newsMainResults = Array.prototype.slice.call(newsMainResults);
+        //     let newsMainResults = mainResults[0].querySelectorAll(newsPageCardSelector);
+        //     newsMainResults = Array.prototype.slice.call(newsMainResults);
 
-        //   mainResults[1].firstChild.style.cssText = 'overflow-x: auto !important';
-        //   newsMainResults.push(mainResults[1]);
-        //   mainResults = newsMainResults;
+        //     mainResults[1].firstChild.style.cssText = 'overflow-x: auto !important';
+        //     newsMainResults.push(mainResults[1]);
+        //     mainResults = newsMainResults;
         // }
-        // else if (mainResults.length <= 5) {
-        //   /// Special handling for shop page (quite a shaky way to determine - desirably to rewrite)
-        //   let newsMainResults = document.getElementById(columnWithRegularResultsId).querySelectorAll(`.${shopPageCardClass}`);
-        //   newsMainResults = Array.prototype.slice.call(newsMainResults);
-        //   mainResults = newsMainResults;
-        // }
+        // else
+
+        /// Special handling for shop page (quite a shaky way to determine - desirably to rewrite)
+        if (mainResults.length <= 5) {
+            let shopPageResults = regularResultsColumn.querySelectorAll(`.${shopPageCardClass}`);
+            shopPageResults = Array.prototype.slice.call(shopPageResults);
+            mainResults = shopPageResults;
+        }
 
         /// Add search suggestions div to proccessed elements
 
@@ -70,7 +75,7 @@ function setLayout() {
         let regularResultsNewChildrenContainer = document.createElement('span');
 
         mainResults.forEach(function (result) {
-            if (result.tagName == 'H2') {
+            if (result.tagName == 'H2' || result.tagName == 'SCRIPT') {
             } else if (result.tagName == 'HR') {
                 result.parentNode.removeChild(result);
             } else if (result.className == regularResultClassName) {
@@ -89,15 +94,11 @@ function setLayout() {
                 let ch = result.children;
                 ch = Array.prototype.slice.call(ch);
                 if (ch !== null && ch !== undefined && ch.length > 0) {
-                    var regularResultsColumnElement = document.getElementById(columnWithRegularResultsId);
                     result.style.margin = '0px';
 
                     ch.forEach(function (c) {
                         if (c.className == 'g') {
-                            // mainResults.push(c);
-                            regularResultsColumnElement.insertBefore(c, result);
-
-                            // result.parentNode.removeChild(result);
+                            regularResultsColumn.insertBefore(c, result);
 
                             if (configs.addFavicons || configs.simplifyDomain) {
                                 configureTileHeader(c, c.querySelector('a').href)
@@ -110,7 +111,8 @@ function setLayout() {
 
                 /// Search widget
                 if (sidebarContainer !== null && sidebarHeight + result.clientHeight <= regularResultsColumn.clientHeight
-                    && result.className !== shopPageCardClass && result.tagName !== newsPageCardSelector.toUpperCase()) {
+                    && result.className !== shopPageCardClass
+                    && result.tagName !== newsPageCardSelector.toUpperCase() && result.firstChild.tagName !== newsPageCardSelector.toUpperCase()) {
                     /// Move widget to sidebar
                     /// If sidebar height won't exceed regular results height, move tile there
 
@@ -130,9 +132,10 @@ function setLayout() {
                         regularResultsNewChildrenContainer.appendChild(result);
                         if (configs.applyStyleToWidgets)
                             result.classList.add('g');
+
+                        configureTile(result)
                     }
                 }
-
 
                 /// Add scale-up effect for image results
                 if (configs.scaleUpImageResultsOnHover) {

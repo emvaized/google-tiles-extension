@@ -2,6 +2,7 @@
 - Added rounded corners on top for maps widget image
 - Fix for wrong index highlighted on numeric navigation for categories
 - Fix for layout issue with 'table' search tile
+- Fix for news page not working + broken 'buy' page layout
 
 #2.2.2
 - Great performance improvements by moving part of styling to css
