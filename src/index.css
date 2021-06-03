@@ -1,6 +1,6 @@
 /* Regular search result styling */
-.g {
-/* [class='g']{ */
+/* .g { */
+.g, .g-blk{
     /* [class='g'], #rso > div:not(:empty):not(.g), #rso > span > div:not(.g){ */
     /* position: relative; */
     background-color: var(--gtiles-tile-background);
@@ -111,7 +111,7 @@
 }
 
 /* Remove inside decorations on some search widgets */
-[class$='vk_c'], [class*='g-blk'], .xpd {
+[class$='vk_c'],  #rhs [class*='g-blk'], #g-tiles-sidebar [class*='g-blk'] .xpd {
     background-color: transparent;margin: 0px !important; padding: 0px;border: none !important; outline: none !important;
 }
 

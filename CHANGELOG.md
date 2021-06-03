@@ -1,3 +1,6 @@
+#2.2.4
+- Fix for styles not being applied to excerpt widgets
+
 #2.2.3
 - Added rounded corners on top for maps widget image
 - Fix for wrong index highlighted on numeric navigation for categories
