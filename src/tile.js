@@ -276,8 +276,8 @@ function configureTileHeader(tile, url) {
             if (domainForFavicon == null || domainForFavicon == undefined)
                 domainForFavicon = url;
 
-            // const websiteFaviconUrl = 'https://' + domainForFavicon + '/' + 'favicon.ico';
-            // const faviconKitFaviconUrl = 'https://api.faviconkit.com/' + domainForFavicon + '/' + '16';
+            /// Trying to load favicon from website
+            // const websiteFaviconUrl = 'https://' + domainForFavicon + '/' + 'favicon.ico'; 
             const googleFaviconUrl = 'https://www.google.com/s2/favicons?domain=' + domainForFavicon;
             const ddGoFaviconUrl = 'https://icons.duckduckgo.com/ip2/' + domainForFavicon + '.ico';
 
@@ -289,17 +289,6 @@ function configureTileHeader(tile, url) {
                 /// Loading favicon from Google service instead
                 favicon.src = googleFaviconUrl;
             });
-
-            /// Trying to load favicon from website
-            // favicon.setAttribute("src", domainForFavicon == 'medium.com' ? 'https://cdn4.iconfinder.com/data/icons/social-media-2210/24/Medium-512.png' : websiteFaviconUrl);
-
-
-            // favicon.addEventListener('load', function (e) {
-            //     // console.log('error loading favicon for ' + domainForFavicon);
-            //     console.log(domainForFavicon);
-            //     console.log(e);
-
-            // });
 
             favicon.src = ddGoFaviconUrl;
             domain.parentNode.prepend(favicon);

@@ -1,3 +1,6 @@
+#2.2.5
+- Fix for misplaced tile index hints
+
 #2.2.4
 - Fix for styles not being applied to excerpt widgets
 

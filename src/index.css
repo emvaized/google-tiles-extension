@@ -1,8 +1,6 @@
 /* Regular search result styling */
-/* .g { */
 .g, .g-blk{
-    /* [class='g'], #rso > div:not(:empty):not(.g), #rso > span > div:not(.g){ */
-    /* position: relative; */
+    position: relative; /* needed for correct placement of absolute index hints */
     background-color: var(--gtiles-tile-background);
     border: var(--gtiles-tile-border);
     border-radius: var(--gtiles-tile-border-radius);

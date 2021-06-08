@@ -94,6 +94,7 @@ function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHint
             } else {
                 counter.style.top = '0px';
             }
+
             counter.style.right = `${configs.innerPadding}px`;
             numericNavigationIndex += 1;
             counter.innerText = numericNavigationIndex;
