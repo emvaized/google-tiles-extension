@@ -75,139 +75,146 @@ function setLayout() {
         let regularResultsNewChildrenContainer = document.createElement('span');
 
         mainResults.forEach(function (result) {
-            if (result.tagName == 'H2' || result.tagName == 'SCRIPT') {
-            } else if (result.tagName == 'HR') {
-                result.parentNode.removeChild(result);
-            } else if (result.className == regularResultClassName) {
-                /// Regular result
+            try {
 
-                if (configs.addFavicons || configs.simplifyDomain) {
-                    configureTileHeader(result, result.querySelector('a').href)
+                if (result.tagName == 'H2' || result.tagName == 'SCRIPT') {
+                } else if (result.tagName == 'HR') {
+                    result.parentNode.removeChild(result);
+                    // } else if (result.className == regularResultClassName) {
+                } else if (result.className == regularResultClassName || result.className.substring(0, 2) == 'g ') {
+                    /// Regular result
+
+                    if (configs.addFavicons || configs.simplifyDomain) {
+                        configureTileHeader(result, result.querySelector('a').href)
+                    }
+
+                    configureTile(result);
                 }
 
-                configureTile(result);
-            }
+                else if (result.querySelector(`[class='g']`) !== null || result.querySelector(`[class^='g ']`) !== null) {
+                    /// Regular result wrapped in div
 
-            else if (result.querySelector(`[class='g']`) !== null) {
-                /// Regular result wrapped in div
+                    let ch = result.children;
+                    ch = Array.prototype.slice.call(ch);
+                    if (ch !== null && ch !== undefined && ch.length > 0) {
+                        result.style.margin = '0px';
 
-                let ch = result.children;
-                ch = Array.prototype.slice.call(ch);
-                if (ch !== null && ch !== undefined && ch.length > 0) {
-                    result.style.margin = '0px';
+                        ch.forEach(function (c) {
+                            if (c.className == 'g' || result.className.substring(0, 2) == 'g ') {
+                                regularResultsColumn.insertBefore(c, result);
 
-                    ch.forEach(function (c) {
-                        if (c.className == 'g') {
-                            regularResultsColumn.insertBefore(c, result);
-
-                            if (configs.addFavicons || configs.simplifyDomain) {
-                                configureTileHeader(c, c.querySelector('a').href)
-                            }
-                            configureTile(c);
-                        }
-                    })
-                }
-            } else if (result.clientHeight !== 0.0 && result.clientWidth !== 0.0 && result.firstChild !== undefined) {
-
-                /// Search widget
-                if (sidebarContainer !== null && sidebarHeight + result.clientHeight <= regularResultsColumn.clientHeight
-                    && result.className !== shopPageCardClass
-                    && result.tagName !== newsPageCardSelector.toUpperCase() && result.firstChild.tagName !== newsPageCardSelector.toUpperCase()) {
-                    /// Move widget to sidebar
-                    /// If sidebar height won't exceed regular results height, move tile there
-
-                    if (configs.tryToPlaceWidgetsOnTheSide) {
-                        sidebarHeight += result.clientHeight;
-                        sidebarNewChildrenContainer.appendChild(result);
-                    }
-                    else if (configs.moveSuggestionsToBottom) {
-                        regularResultsNewChildrenContainer.appendChild(result);
-                        if (configs.applyStyleToWidgets)
-                            result.classList.add('g');
-
-                    }
-                } else {
-                    /// Otherwise, attach it on bottom of regular results scrollbar
-                    if (configs.moveSuggestionsToBottom) {
-                        regularResultsNewChildrenContainer.appendChild(result);
-                        if (configs.applyStyleToWidgets)
-                            result.classList.add('g');
-
-                        configureTile(result)
-                    }
-                }
-
-                /// Add scale-up effect for image results
-                if (configs.scaleUpImageResultsOnHover) {
-                    var imageResults = result.querySelectorAll(imageResultTileSelector);
-
-                    var heightPadding = (imageScaleUpOnHoverAmount - 1.0) / 2;
-
-                    if (imageResults !== null && imageResults !== undefined) {
-                        imageResults.forEach(function (image) {
-                            try {
-                                var height = image.clientHeight;
-
-                                image.addEventListener('mouseover', function (event) {
-                                    this.setAttribute('style', `${image.parentNode.classList.contains(imageCarouselClass) ? `margin: 0px ${height * heightPadding}px;` : ''} -webkit-transform:scale(${imageScaleUpOnHoverAmount}); transform:scale(${imageScaleUpOnHoverAmount}); z-index: 1; transition: all 150ms ease-in-out; box-shadow: 0px 5px 15px rgba(0, 0, 0, ${configs.shadowOpacity}) `);
-                                })
-
-                                image.addEventListener('mouseout', function (event) {
-                                    this.setAttribute('style', `-webkit-transform:scale(1.0); transform: scale(1.0); z-index: 0; transition: all 150ms ease-in-out;`);
-                                })
-
-                                /// If image is inside horizontal carouosel, add margins
-                                /// TODO: Needs a better implementation, doesn't work in current state
-                                if (image.parentNode.classList.contains(imageCarouselClass)) {
-                                    var imageCarouselContainer = image.parentNode;
-
-                                    imageCarouselContainer.onmouseover = function (event) {
-                                        imageCarouselContainer.setAttribute('style', `margin-bottom: ${height * heightPadding}px;margin-top: ${height * heightPadding}px;transition: all 150ms ease-in-out;`);
-                                    }
-                                    imageCarouselContainer.onmouseout = function () {
-                                        imageCarouselContainer.setAttribute('style', `margin: 0px; transition: all 150ms ease-in-out;`);
-                                    }
+                                if (configs.addFavicons || configs.simplifyDomain) {
+                                    configureTileHeader(c, c.querySelector('a').href)
                                 }
-                            } catch (error) {
-                                console.log(error);
+                                configureTile(c);
                             }
-                        });
-                    } else {
-                        console.log('Google Tiles: no zoomable images found');
+                        })
                     }
-                }
+                } else if (result.clientHeight !== 0.0 && result.clientWidth !== 0.0 && result.firstChild !== undefined) {
 
-                /// Add scroll-on-hover listeners
-                if (configs.scrollHorizontalViewOnHover) {
+                    /// Search widget
+                    if (sidebarContainer !== null && sidebarHeight + result.clientHeight <= regularResultsColumn.clientHeight
+                        && result.className !== shopPageCardClass
+                        && result.tagName !== newsPageCardSelector.toUpperCase() && result.firstChild.tagName !== newsPageCardSelector.toUpperCase()) {
+                        /// Move widget to sidebar
+                        /// If sidebar height won't exceed regular results height, move tile there
 
-                    var scrollableCards = result.querySelectorAll(scrollableCardSelector);
+                        if (configs.tryToPlaceWidgetsOnTheSide) {
+                            sidebarHeight += result.clientHeight;
+                            sidebarNewChildrenContainer.appendChild(result);
+                        }
+                        else if (configs.moveSuggestionsToBottom) {
+                            regularResultsNewChildrenContainer.appendChild(result);
+                            if (configs.applyStyleToWidgets)
+                                result.classList.add('g');
 
-                    if (scrollableCards !== null && scrollableCards !== undefined) {
-                        /// Try to proccess 'More news' cards on news page
-                        if (scrollableCards.length == 0)
-                            scrollableCards = result.querySelectorAll(newsPageCardSelector);
+                        }
+                    } else {
+                        /// Otherwise, attach it on bottom of regular results scrollbar
+                        if (configs.moveSuggestionsToBottom) {
+                            regularResultsNewChildrenContainer.appendChild(result);
+                            if (configs.applyStyleToWidgets)
+                                result.classList.add('g');
 
-                        if (scrollableCards !== null && scrollableCards !== undefined && scrollableCards.length > 0)
-                            scrollableCards.forEach(function (card) {
+                            configureTile(result)
+                        }
+                    }
 
-                                card.onmouseover = function (event) {
-                                    // card.scrollIntoView({ block: 'nearest', inline: "center", behavior: "smooth" });
-                                    setTimeout(function () {
-                                        card.scrollIntoView({ block: 'nearest', inline: "center", behavior: "smooth" });
-                                    }, configs.delayToScrollOnHover);
+                    /// Add scale-up effect for image results
+                    if (configs.scaleUpImageResultsOnHover) {
+                        var imageResults = result.querySelectorAll(imageResultTileSelector);
+
+                        var heightPadding = (imageScaleUpOnHoverAmount - 1.0) / 2;
+
+                        if (imageResults !== null && imageResults !== undefined) {
+                            imageResults.forEach(function (image) {
+                                try {
+                                    var height = image.clientHeight;
+
+                                    image.addEventListener('mouseover', function (event) {
+                                        this.setAttribute('style', `${image.parentNode.classList.contains(imageCarouselClass) ? `margin: 0px ${height * heightPadding}px;` : ''} -webkit-transform:scale(${imageScaleUpOnHoverAmount}); transform:scale(${imageScaleUpOnHoverAmount}); z-index: 1; transition: all 150ms ease-in-out; box-shadow: 0px 5px 15px rgba(0, 0, 0, ${configs.shadowOpacity}) `);
+                                    })
+
+                                    image.addEventListener('mouseout', function (event) {
+                                        this.setAttribute('style', `-webkit-transform:scale(1.0); transform: scale(1.0); z-index: 0; transition: all 150ms ease-in-out;`);
+                                    })
+
+                                    /// If image is inside horizontal carouosel, add margins
+                                    /// TODO: Needs a better implementation, doesn't work in current state
+                                    if (image.parentNode.classList.contains(imageCarouselClass)) {
+                                        var imageCarouselContainer = image.parentNode;
+
+                                        imageCarouselContainer.onmouseover = function (event) {
+                                            imageCarouselContainer.setAttribute('style', `margin-bottom: ${height * heightPadding}px;margin-top: ${height * heightPadding}px;transition: all 150ms ease-in-out;`);
+                                        }
+                                        imageCarouselContainer.onmouseout = function () {
+                                            imageCarouselContainer.setAttribute('style', `margin: 0px; transition: all 150ms ease-in-out;`);
+                                        }
+                                    }
+                                } catch (error) {
+                                    console.log(error);
                                 }
                             });
+                        } else {
+                            console.log('Google Tiles: no zoomable images found');
+                        }
                     }
 
+                    /// Add scroll-on-hover listeners
+                    if (configs.scrollHorizontalViewOnHover) {
+
+                        var scrollableCards = result.querySelectorAll(scrollableCardSelector);
+
+                        if (scrollableCards !== null && scrollableCards !== undefined) {
+                            /// Try to proccess 'More news' cards on news page
+                            if (scrollableCards.length == 0)
+                                scrollableCards = result.querySelectorAll(newsPageCardSelector);
+
+                            if (scrollableCards !== null && scrollableCards !== undefined && scrollableCards.length > 0)
+                                scrollableCards.forEach(function (card) {
+
+                                    card.onmouseover = function (event) {
+                                        // card.scrollIntoView({ block: 'nearest', inline: "center", behavior: "smooth" });
+                                        setTimeout(function () {
+                                            card.scrollIntoView({ block: 'nearest', inline: "center", behavior: "smooth" });
+                                        }, configs.delayToScrollOnHover);
+                                    }
+                                });
+                        }
+
+                    }
+
+
+
+                } else {
+                    /// Remove bottom margin for empty divs on page
+                    result.style.margin = '0px';
+                    result.style.marginBottom = '0px';
                 }
 
-
-            } else {
-                /// Remove bottom margin for empty divs on page
-                result.style.margin = '0px';
-                result.style.marginBottom = '0px';
+            } catch (e) {
+                console.log(e);
             }
-
         })
 
         sidebarContainer.appendChild(sidebarNewChildrenContainer);
@@ -229,6 +236,8 @@ function setLayout() {
 
         // setLayout();
     }
+
+
 }
 
 

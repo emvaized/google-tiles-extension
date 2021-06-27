@@ -8,6 +8,7 @@ websiteFaviconPrototype.style.width = `${configs.faviconRadius}px`;
 websiteFaviconPrototype.height = `${configs.faviconRadius}px`;
 websiteFaviconPrototype.width = `${configs.faviconRadius}px`;
 websiteFaviconPrototype.style.paddingRight = '5px';
+websiteFaviconPrototype.aspectRadio = 'unset';
 websiteFaviconPrototype.setAttribute('crossorigin', 'anonymous');
 
 function configureTile(tile, maxWidth) {
@@ -30,7 +31,7 @@ function configureTile(tile, maxWidth) {
             for (i in links) {
                 var linkItem = links[i];
 
-                if (linkItem.href !== undefined) {
+                if (linkItem.href !== undefined && !linkItem.href.includes('webcache.googleusercontent') && !linkItem.className.includes('fl ')) {
                     if (linkItem.href.includes('wikipedia.org')) {
                         url = linkItem.href;
                         break;
@@ -269,7 +270,10 @@ function configureTileHeader(tile, url) {
         }
 
 
-        if (configs.addFavicons && url !== null && url !== undefined && url !== '' && (tile.className == regularResultClassName || tile.firstChild.className == regularResultClassName)) {
+        if (configs.addFavicons && url !== null && url !== undefined && url !== '' && (
+            tile.className == regularResultClassName || tile.firstChild.className == regularResultClassName ||
+            tile.className.substring(0, 2) == 'g ' || tile.firstChild.className.substring(0, 2) == 'g '
+        )) {
             // const favicon = new Image();
             const favicon = websiteFaviconPrototype.cloneNode(true);
             let domainForFavicon = url.split('/')[2];
@@ -292,6 +296,15 @@ function configureTileHeader(tile, url) {
 
             favicon.src = ddGoFaviconUrl;
             domain.parentNode.prepend(favicon);
+
+            /// Fix positioning
+            /// HiHjCd
+            /// Detect tile with bottom line of links
+            if (tile.className !== 'g') {
+                domain.parentNode.style.position = 'absolute';
+                domain.parentNode.style.top = `${configs.innerPadding}px`;
+                domain.parentNode.style.left = `${configs.innerPadding}px`;
+            }
 
             /// Fix dropdown button position
             const dropdownMenu = tile.querySelector(dropdownMenuSelector);

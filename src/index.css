@@ -1,11 +1,11 @@
 /* Regular search result styling */
-.g, .g-blk{
+.g, .g-blk, [class^='g ']{
     position: relative; /* needed for correct placement of absolute index hints */
     background-color: var(--gtiles-tile-background);
     border: var(--gtiles-tile-border);
     border-radius: var(--gtiles-tile-border-radius);
     transition: var(--gtiles-transition);
-    padding: var(--gtiles-tile-padding);
+    padding: var(--gtiles-tile-padding) !important;
     margin: var(--gtiles-tile-margin) !important;
     box-shadow: var(--gtiles-tile-shadow);
     width: var(--gtiles-tile-width) !important;

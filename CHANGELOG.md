@@ -1,3 +1,6 @@
+#2.2.6
+- Crucial fixes after recent Google search page HTML update
+
 #2.2.5
 - Fix for misplaced tile index hints
 
