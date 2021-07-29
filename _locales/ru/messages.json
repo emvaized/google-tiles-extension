@@ -255,6 +255,10 @@
         "message": "Упростить домен сайта",
         "description": ""
     },
+    "support": {
+        "message": "Поддержать",
+        "description": ""
+    },
     "tileBackgroundColor": {
         "message": "Цвет фона",
         "description": ""

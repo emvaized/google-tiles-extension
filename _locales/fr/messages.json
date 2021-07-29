@@ -255,6 +255,10 @@
         "message": "Simplifier le domaine du site Web",
         "description": ""
     },
+    "support": {
+        "message": "Soutenir",
+        "description": ""
+    },
     "tileBackgroundColor": {
         "message": "Couleur d'arrière-plan",
         "description": ""

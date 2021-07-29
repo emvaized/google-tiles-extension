@@ -2,13 +2,17 @@
   min-width: 120px;
 }
 
-.button {
+button {
   margin: 3% auto;
   padding: 4px;
   text-align: center;
   font-size: 1.0em;
   cursor: pointer;
   width: 100%;
+}
+
+button img {
+  position: relative; left: 0px; top: 2px;
 }
 
 h3 {

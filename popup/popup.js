@@ -8,8 +8,15 @@ function saveOptions(e) {
 function restoreOptions() {
   setVersionLabel();
 
-  var settingsButton = document.querySelector('#settingsButton');
+  const settingsButton = document.querySelector('#settingsButton');
   settingsButton.innerHTML = settingsButton.innerHTML + ' ' + chrome.i18n.getMessage("configure");
+
+  const supportButton = document.querySelector('#supportButton');
+  supportButton.innerHTML = supportButton.innerHTML + ' ' + chrome.i18n.getMessage("support");
+
+  const githubButton = document.querySelector('#githubPage');
+  githubButton.innerHTML = githubButton.innerHTML + ' ' + 'Github';
+
   var enabledCheckbox = document.querySelector('#tilesEnabled');
   enabledCheckbox.parentNode.innerHTML = chrome.i18n.getMessage("enabled") + enabledCheckbox.parentNode.innerHTML;
 
@@ -33,9 +40,16 @@ document.addEventListener("click", (e) => {
     window.close();
   }
   else if (e.target.classList.contains("checkbox") || e.target.classList.contains("checkboxLabel")) {
-
     saveOptions(e);
-
   }
+});
+
+document.querySelector("#supportButton").addEventListener("click", function (val) {
+  window.close();
+  window.open('https://emvaized.diaka.ua/donate', '_blank');
+});
+document.querySelector("#githubPage").addEventListener("click", function (val) {
+  window.close();
+  window.open('https://github.com/emvaized/google-tiles-extension', '_blank');
 });
 

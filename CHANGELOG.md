@@ -1,3 +1,9 @@
+#2.2.7
+- Changed extension name
+- Fix for favicon size not being applied
+- Performance improvements
+- Added links to popup
+
 #2.2.6
 - Crucial fixes after recent Google search page HTML update
 

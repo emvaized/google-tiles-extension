@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
   "default_locale": "en",
-  "name": "G-Tiles",
-  "version": "2.2.6",
+  "name": "Google Tiles — better google search",
+  "version": "2.2.7",
   "description": "__MSG_extensionDescription__",
   "icons": {
     "48": "icons/google-tiles-new-icon-48.png",

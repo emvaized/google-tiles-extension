@@ -1,15 +1,17 @@
-let linkWrapperPrototype = document.createElement('a');
-linkWrapperPrototype.style.cursor = configs.changeCursorOverTile ? 'pointer' : 'unset';
+const linkWrapperPrototype = document.createElement('a');
 linkWrapperPrototype.id = 'g-tile';
 
-let websiteFaviconPrototype = new Image();
+// let websiteFaviconPrototype;
+const websiteFaviconPrototype = new Image();
+websiteFaviconPrototype.style.paddingRight = '5px';
+websiteFaviconPrototype.aspectRadio = 'unset';
+websiteFaviconPrototype.setAttribute('crossorigin', 'anonymous');
+
 websiteFaviconPrototype.style.height = `${configs.faviconRadius}px`;
 websiteFaviconPrototype.style.width = `${configs.faviconRadius}px`;
 websiteFaviconPrototype.height = `${configs.faviconRadius}px`;
 websiteFaviconPrototype.width = `${configs.faviconRadius}px`;
-websiteFaviconPrototype.style.paddingRight = '5px';
-websiteFaviconPrototype.aspectRadio = 'unset';
-websiteFaviconPrototype.setAttribute('crossorigin', 'anonymous');
+
 
 function configureTile(tile, maxWidth) {
     if (tile.tagName == 'H2') return;
@@ -17,6 +19,7 @@ function configureTile(tile, maxWidth) {
     if (tile.parentNode && tile.parentNode.tagName == 'A') return; /// Don't style the same tile twice
 
     /// Create 'a' wrapper
+    if (linkWrapperPrototype.style.cursor == null || linkWrapperPrototype.style.cursor == undefined) linkWrapperPrototype.style.cursor = configs.changeCursorOverTile ? 'pointer' : 'unset';
     const wrapper = linkWrapperPrototype.cloneNode(true);
 
     /// Set url for 'a' wrapper 
@@ -83,7 +86,9 @@ function configureTile(tile, maxWidth) {
     /// Set 'on hover' styling for each tile
     var originalTitleColor;
     // if (tile.className.toLowerCase()[0] == 'g') {
-    if (tile.className[0] == 'g' || tile.className.includes(' g') || (tile.firstChild && tile.firstChild.tagName.toLowerCase() == newsPageCardSelector)) {
+    if (tile.className[0] == 'g' || tile.className.includes(' g')
+        // || tile.className.substring(0, 2) == 'g ' || tile.firstChild.className.substring(0, 2) == 'g '
+        || (tile.firstChild && tile.firstChild.tagName.toLowerCase() == newsPageCardSelector)) {
 
         tile.addEventListener('mouseover', function () {
             // if (addBackground)
@@ -239,7 +244,6 @@ function configureTile(tile, maxWidth) {
 }
 
 function configureTileHeader(tile, url) {
-
     const domain = tile.querySelector(domainNameSelector);
 
     if (domain != null && domain !== undefined) {
@@ -274,8 +278,18 @@ function configureTileHeader(tile, url) {
             tile.className == regularResultClassName || tile.firstChild.className == regularResultClassName ||
             tile.className.substring(0, 2) == 'g ' || tile.firstChild.className.substring(0, 2) == 'g '
         )) {
-            // const favicon = new Image();
+            if (websiteFaviconPrototype.height !== `${configs.faviconRadius}px`) {
+                websiteFaviconPrototype.style.height = `${configs.faviconRadius}px`;
+                websiteFaviconPrototype.style.width = `${configs.faviconRadius}px`;
+                websiteFaviconPrototype.height = `${configs.faviconRadius}px`;
+                websiteFaviconPrototype.width = `${configs.faviconRadius}px`;
+            }
+
             const favicon = websiteFaviconPrototype.cloneNode(true);
+
+
+
+
             let domainForFavicon = url.split('/')[2];
             if (domainForFavicon == null || domainForFavicon == undefined)
                 domainForFavicon = url;

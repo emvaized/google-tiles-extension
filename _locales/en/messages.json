@@ -263,6 +263,10 @@
     "message": "Simplify website domain",
     "description": ""
   },
+  "support": {
+    "message": "Support",
+    "description": ""
+  },
   "tileBackgroundColor": {
     "message": "Background color",
     "description": ""
