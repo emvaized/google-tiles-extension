@@ -277,11 +277,11 @@ function setTopBar() {
     topBar.style.marginLeft = '0';
     topBar.style.justifyContent = 'start';
 
-    // topBar.style.maxWidth = '40%';
-    // topBar.style.minWidth = '40%';
-
     topBarParent.parentNode.removeChild(topBarParent);
     document.querySelector('.appbar').style.paddingTop = `${paddingWhenNavbarMoved}px`;
+
+    /// Fix the position for search settings bar
+    document.querySelector('#hdtbMenus').style.top = '30px';
 
     // window.addEventListener('resize', function (e) {
     //     console.log(e);

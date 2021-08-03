@@ -1,6 +1,7 @@
 #2.2.8 
 - Improved short header calculation
 - Improved 'move category buttons on top' option
+- Improved grid-link cards proccessing
 
 #2.2.7
 - Changed extension name

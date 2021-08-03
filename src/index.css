@@ -128,10 +128,11 @@ g-more-link > a{
     box-sizing: border-box !important;
 }
 
-/* Revert style for 'g' cards wrapped in another 'g' card */
+/* Fix style for '.g' cards wrapped in another '.g' card (grid links result) */
 .g .g {
     all:revert;
     margin: 0px !important;
+    box-sizing: border-box;
 }
 
 /* Remove news card styling */
