@@ -258,12 +258,6 @@ function configureTileHeader(tile, url) {
 
                 const domainContent = titleText.split('.');
 
-                console.log(domain.textContent);
-                console.log(domainContent);
-                console.log(domainContent[0].length);
-                console.log(domainContent[1].length);
-                console.log('```');
-
                 if (domainContent.length == 2) {
                     titleText = domainContent[0];
                 } else if (domainContent.length == 3) {
@@ -276,7 +270,6 @@ function configureTileHeader(tile, url) {
                 } else {
                     titleText = domain.textContent.replace(/.+\/\/|www.|\..+/g, '');
                 }
-
 
                 /// Add tooltip with full domain on hover
                 if (configs.showFullDomainOnHover)
