@@ -251,22 +251,35 @@ function configureTileHeader(tile, url) {
         /// Replace domain with simplier version
         if (configs.simplifyDomain) {
             try {
-                var titleText;
-                const domainContent = domain.textContent.split('.');
+                var titleText = domain.textContent.split('/')[2].split('›')[0];
+
+                // titleText = titleText.replaceAll('https://', '');
+                // titleText = titleText.replaceAll('http://', '');
+
+                const domainContent = titleText.split('.');
+
+                console.log(domain.textContent);
+                console.log(domainContent);
+                console.log(domainContent[0].length);
+                console.log(domainContent[1].length);
+                console.log('```');
 
                 if (domainContent.length == 2) {
                     titleText = domainContent[0];
                 } else if (domainContent.length == 3) {
-                    titleText = domainContent[1] == 'com' || domainContent[1] == 'net' ? domainContent[0] : domainContent[1];
+                    // titleText = domainContent[1] == 'com' || domainContent[1] == 'net' || domainContent[0].length > domainContent[1].length ? domainContent[0] : domainContent[1];
+                    titleText = domainContent[1].length > domainContent[0].length ?
+                        domainContent[1] == 'google' ? domainContent[0] : domainContent[1]
+                        :
+                        domainContent[0] == 'www' || domainContent[0] == 'news' ? domainContent[1] : domainContent[0];
+
                 } else {
                     titleText = domain.textContent.replace(/.+\/\/|www.|\..+/g, '');
                 }
-                titleText = titleText.replaceAll('https://', '');
-                titleText = titleText.replaceAll('http://', '');
+
 
                 /// Add tooltip with full domain on hover
                 if (configs.showFullDomainOnHover)
-                    // domain.setAttribute('title', domain.textContent);
                     domain.title = domain.textContent;
                 const domainPathSpan = domain.querySelector('span');
                 domain.innerText = titleText + (domainPathSpan == null ? '' : domainPathSpan.textContent);

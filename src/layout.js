@@ -57,11 +57,7 @@ function setLayout() {
             sidebarContainer = document.createElement('div');
 
             sidebarContainer.id = 'g-tiles-sidebar';
-            // sidebarContainer.style.position = 'absolute';
-            // sidebarContainer.style.top = '0';
             sidebarContainer.style.left = `${regularResultsColumnWidth * 1.12 + sidebarPadding}px`;
-            // sidebarContainer.style.width = `${regularResultsColumnWidth * configs.sidebarWidthMultiplier}px`;
-            // sidebarContainer.style.paddingTop = '0px';
             sidebarContainer.style.paddingLeft = `${sidebarPadding}px;`;
 
             if (regularResultsColumn !== null)
@@ -257,9 +253,17 @@ function setSidebarWidgets(sidebarContainer) {
     });
 }
 
+function hideNumberResultsRow() {
+    /// Hides the 'number results found' line
+    const appbar = document.getElementById('appbar');
+    appbar.style.visibility = 'hidden';
+    appbar.style.height = '0px';
+    appbar.style.paddingTop = '42px';
+
+}
 
 function setTopBar() {
-    /// Some experiments to place category buttons near to searchbox
+    /// Some experiments to place category buttons to the right of searchbox
     if (topBar == null)
         topBar = document.getElementById(regularCategoryButtonsParentId);
     const topBarParent = topBar.parentNode;
@@ -271,6 +275,7 @@ function setTopBar() {
     topBar.style.top = '10px';
     topBar.style.right = '12%';
     topBar.style.marginLeft = '0';
+    topBar.style.justifyContent = 'start';
 
     // topBar.style.maxWidth = '40%';
     // topBar.style.minWidth = '40%';

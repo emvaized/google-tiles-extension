@@ -20,6 +20,7 @@ var configs = {
     "focusedBorderWidth": 1,
     "focusedTileDifferentBorder": true,
     "focusedTileDotOpacity": 0.4,
+    "hideNumberResultsRow": true,
     "highlightTitleOnHover": true,
     "hoverBackground": "#f0f2f4",
     "hoverTransitionDuration": 75,

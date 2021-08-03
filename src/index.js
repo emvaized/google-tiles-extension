@@ -64,13 +64,10 @@ function loadConfigs() {
         document.body.style.setProperty('--gtiles-tile-shadow', configs.shadowEnabled ? `0px 5px 15px rgba(0, 0, 0, ${configs.shadowOpacity})` : 'unset');
         document.body.style.setProperty('--gtiles-tile-width', configs.widerTiles ? '100%' : 'unset');
         document.body.style.setProperty('--gtiles-navbar-padding', `padding: 0px ${configs.innerPadding}px`);
-
         document.body.style.setProperty('--gtiles-counter-color', countedHintColor);
         document.body.style.setProperty('--gtiles-counter-opacity', configs.indexHintOpacity);
-
         document.body.style.setProperty('--gtiles-sidebar-width', `${configs.sidebarWidth}px`);
         document.body.style.setProperty('--gtiles-sidebar-child-width', `${configs.sidebarWidth - (configs.innerPadding * 2)}px`);
-
         document.body.style.setProperty('--gtiles-tile-image-border-radius', `${configs.borderRadius}px ${configs.borderRadius}px 0px 0px`);
 
       }
@@ -86,6 +83,9 @@ function init() {
 
     if (configs.moveNavbarToSearchbar)
       setTopBar();
+
+    // if (configs.hideNumberResultsRow)
+    //   hideNumberResultsRow();
 
     // removeSearchbarShadow();
 

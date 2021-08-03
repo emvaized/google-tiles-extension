@@ -1,3 +1,7 @@
+#2.2.8 
+- Improved short header calculation
+- Improved 'move category buttons on top' option
+
 #2.2.7
 - Changed extension name
 - Fix for favicon size not being applied
