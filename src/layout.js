@@ -197,10 +197,7 @@ function setLayout() {
                                     }
                                 });
                         }
-
                     }
-
-
 
                 } else {
                     /// Remove bottom margin for empty divs on page
@@ -215,6 +212,26 @@ function setLayout() {
 
         sidebarContainer.appendChild(sidebarNewChildrenContainer);
         regularResultsColumn.appendChild(regularResultsNewChildrenContainer);
+
+
+        /// Populate sidebar with regular results
+        if (configs.populateSidebarWithRegularResults && sidebarContainer.children.length == 1) {
+            const regularResultsChildrenArray = regularResultsColumn.children;
+
+            for (let i = regularResultsChildrenArray.length; i > -1; i--) {
+                const child = regularResultsChildrenArray[i];
+                if (child == undefined) continue;
+                const childHeight = child.getBoundingClientRect().height;
+
+                if (sidebarHeight + childHeight <= regularResultsColumn.scrollHeight - 200) {
+                    try {
+                        sidebarHeight = sidebarHeight + childHeight;
+                        sidebarContainer.prepend(child);
+                        // child.style.maxWidth = `${configs.sidebarWidth}px`;
+                    } catch (e) { console.log(e); }
+                } else { break; }
+            }
+        }
 
         /// Set keyboard listeners
         if (configs.navigateWithKeyboard || configs.numericNavigation) {
@@ -232,8 +249,6 @@ function setLayout() {
 
         // setLayout();
     }
-
-
 }
 
 
@@ -269,15 +284,17 @@ function setTopBar() {
     const topBarParent = topBar.parentNode;
 
     topBarParent.removeChild(topBar);
-    document.querySelector('.sfbg').appendChild(topBar);
+    // topBarParent.parentNode.removeChild(topBarParent);
+    topBarParent.style.height = '0px';
 
     topBar.style.position = 'absolute';
     topBar.style.top = '10px';
     topBar.style.right = '12%';
     topBar.style.marginLeft = '0';
     topBar.style.justifyContent = 'start';
+    document.querySelector('.sfbg').appendChild(topBar);
 
-    topBarParent.parentNode.removeChild(topBarParent);
+    /// Fix padding for 'results found' bar
     document.querySelector('.appbar').style.paddingTop = `${paddingWhenNavbarMoved}px`;
 
     /// Fix the position for search settings bar

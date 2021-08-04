@@ -195,6 +195,10 @@
         "message": "Une pression sur la touche 1 mettra l'accent sur le premier élément, 2 sur le deuxième, et ainsi de suite. Une pression sur 0 fera la mise au point sur le champ de recherche",
         "description": ""
     },
+    "populateSidebarWithRegularResults": {
+        "message": "Remplir la barre latérale avec des résultats réguliers lorsqu'elle a de l'espace",
+        "description": ""
+    },
     "preview": {
         "message": "Aperçu de la vignette",
         "description": ""

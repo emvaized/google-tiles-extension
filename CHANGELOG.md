@@ -2,6 +2,7 @@
 - Improved short header calculation
 - Improved 'move category buttons on top' option
 - Improved grid-link cards proccessing
+- Added 'populate sidebar with regular results' option
 
 #2.2.7
 - Changed extension name

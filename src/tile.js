@@ -1,12 +1,10 @@
 const linkWrapperPrototype = document.createElement('a');
 linkWrapperPrototype.id = 'g-tile';
 
-// let websiteFaviconPrototype;
 const websiteFaviconPrototype = new Image();
 websiteFaviconPrototype.style.paddingRight = '5px';
 websiteFaviconPrototype.aspectRadio = 'unset';
 websiteFaviconPrototype.setAttribute('crossorigin', 'anonymous');
-
 websiteFaviconPrototype.style.height = `${configs.faviconRadius}px`;
 websiteFaviconPrototype.style.width = `${configs.faviconRadius}px`;
 websiteFaviconPrototype.height = `${configs.faviconRadius}px`;
@@ -124,18 +122,7 @@ function configureTile(tile, maxWidth) {
 
         /// Ignore clicks on dropdown buttons
         const accordion = tile.querySelector('g-accordion-expander');
-        if (accordion !== null && accordion !== undefined) {
-            // var tileDescriptions = tile.querySelectorAll('span');
-            // if (tileDescriptions !== null && tileDescriptions !== undefined) {
-            //   for (i in tileDescriptions) {
-            //     var elem = tileDescriptions[i];
-            //     if (elem.clientHeight !== 0.0 && elem.clientWidth !== 0.0) {
-            //       elem.wrap(wrapper);
-            //       break;
-            //     }
-            //   }
-            // }
-        } else {
+        if (accordion !== null && accordion !== undefined) { } else {
             /// Wrap tile with 'a' created element
             if (configs.wholeTileIsClickable && linkIsValid)
                 tile.wrap(wrapper);
@@ -187,14 +174,6 @@ function configureTile(tile, maxWidth) {
             });
         }
     }
-
-
-
-
-
-
-
-
 
     /// Remove some default tile stylings for children, such as borders and background colors
     // const firstTileChild = tile.firstChild;
@@ -251,11 +230,7 @@ function configureTileHeader(tile, url) {
         /// Replace domain with simplier version
         if (configs.simplifyDomain) {
             try {
-                var titleText = domain.textContent.split('/')[2].split('›')[0];
-
-                // titleText = titleText.replaceAll('https://', '');
-                // titleText = titleText.replaceAll('http://', '');
-
+                let titleText = domain.textContent.split('/')[2].split('›')[0];
                 const domainContent = titleText.split('.');
 
                 if (domainContent.length == 2) {
@@ -293,9 +268,6 @@ function configureTileHeader(tile, url) {
 
             const favicon = websiteFaviconPrototype.cloneNode(true);
 
-
-
-
             let domainForFavicon = url.split('/')[2];
             if (domainForFavicon == null || domainForFavicon == undefined)
                 domainForFavicon = url;
@@ -304,12 +276,9 @@ function configureTileHeader(tile, url) {
             // const websiteFaviconUrl = 'https://' + domainForFavicon + '/' + 'favicon.ico'; 
             const googleFaviconUrl = 'https://www.google.com/s2/favicons?domain=' + domainForFavicon;
             const ddGoFaviconUrl = 'https://icons.duckduckgo.com/ip2/' + domainForFavicon + '.ico';
-
-            // let faviconKitFaviconUrl = `https://api.faviconkit.com/${domainForFavicon}/16`;
+            // const faviconKitFaviconUrl = `https://api.faviconkit.com/${domainForFavicon}/16`;
 
             favicon.addEventListener('error', function () {
-                // console.log('error loading favicon for ' + domainForFavicon);
-
                 /// Loading favicon from Google service instead
                 favicon.src = googleFaviconUrl;
             });
@@ -318,7 +287,7 @@ function configureTileHeader(tile, url) {
             domain.parentNode.prepend(favicon);
 
             /// Fix positioning
-            /// HiHjCd
+
             /// Detect tile with bottom line of links
             if (tile.className !== 'g') {
                 domain.parentNode.style.position = 'absolute';

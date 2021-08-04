@@ -33,6 +33,7 @@ var configs = {
     "navigateWithKeyboard": true,
     "numbersNavigateTabs": false,
     "numericNavigation": true,
+    "populateSidebarWithRegularResults": false,
     "scaleUpFocusedResult": false,
     "scaleUpFocusedResultAmount": 1.05,
     "scaleUpImageResultsOnHover": false,

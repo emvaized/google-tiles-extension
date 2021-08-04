@@ -195,6 +195,10 @@
         "message": "Al presionar la tecla 1 se enfocará el primer elemento, el 2 enfocará el segundo, y así sucesivamente. Al presionar 0 se enfocará el campo de búsqueda",
         "description": ""
     },
+    "populateSidebarWithRegularResults": {
+        "message": "Complete la barra lateral con resultados regulares cuando tenga espacio",
+        "description": ""
+    },
     "preview": {
         "message": "Vista previa del mosaico",
         "description": ""

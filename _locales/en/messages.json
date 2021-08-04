@@ -203,6 +203,10 @@
     "message": "Pressing key 1 will focus first element, 2 will focus second, and so on. Pressing 0 will focus search field",
     "description": ""
   },
+  "populateSidebarWithRegularResults": {
+    "message": "Populate sidebar with regular results when it has space",
+    "description": ""
+  },
   "preview": {
     "message": "Tile preview",
     "description": ""
