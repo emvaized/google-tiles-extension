@@ -5,16 +5,10 @@ const websiteFaviconPrototype = new Image();
 websiteFaviconPrototype.setAttribute('class', 'favicon favicon-loading-spinner');
 websiteFaviconPrototype.aspectRadio = 'unset';
 websiteFaviconPrototype.crossOrigin = "anonymous";
-// websiteFaviconPrototype.height = `${configs.faviconRadius}px`;
-// websiteFaviconPrototype.width = `${configs.faviconRadius}px`;
-// websiteFaviconPrototype.style.height = `${configs.faviconRadius}px`;
-// websiteFaviconPrototype.style.width = `${configs.faviconRadius}px`;
-// websiteFaviconPrototype.style.paddingRight = '5px';
 
 
 function configureTile(tile, maxWidth) {
     if (tile.tagName == 'H2') return;
-
     if (tile.parentNode && tile.parentNode.tagName == 'A') return; /// Don't style the same tile twice
 
     /// Create 'a' wrapper
@@ -222,6 +216,9 @@ function configureTileHeader(tile, url) {
     const domain = tile.querySelector(domainNameSelector);
 
     if (domain != null && domain !== undefined) {
+
+        /// Vertically align domain
+        domain.style.verticalAlign = 'baseline';
 
         /// Replace domain with simplier version
         if (configs.simplifyDomain) {

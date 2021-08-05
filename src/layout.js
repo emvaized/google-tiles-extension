@@ -65,9 +65,9 @@ function setLayout() {
         }
 
 
-        let sidebarNewChildrenContainer = document.createElement('span');
         let sidebarHeight = sidebarContainer.scrollHeight;
-        let regularResultsNewChildrenContainer = document.createElement('span');
+        const sidebarNewChildrenContainer = document.createElement('span');
+        const regularResultsNewChildrenContainer = document.createElement('span');
 
         mainResults.forEach(function (result) {
             try {
@@ -85,7 +85,8 @@ function setLayout() {
                     configureTile(result);
                 }
 
-                else if (result.querySelector(`[class='g']`) !== null || result.querySelector(`[class^='g ']`) !== null) {
+                // else if (result.querySelector(`[class='g']`) !== null || result.querySelector(`[class^='g ']`) !== null) {
+                else if (result.querySelector(`[class='g'],[class^='g ']`) !== null) {
                     /// Regular result wrapped in div
 
                     let ch = result.children;
