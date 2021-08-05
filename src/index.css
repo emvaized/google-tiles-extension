@@ -52,7 +52,8 @@
 }
 
 /* Styling for sidebar widgets */
-#rhs > div:not(.cu-container),  #rhs > g-section-with-header, #rhs > span > div {
+/* #rhs > div:not(.cu-container),  #rhs > g-section-with-header, #rhs > span > div { */
+#rhs.stylized-sidebar > div:not(.cu-container),  #rhs.stylized-sidebar > g-section-with-header, #rhs.stylized-sidebar > span > div {
     box-sizing: border-box !important;
     background-color: var(--gtiles-tile-background) !important;
     border: var(--gtiles-tile-border) !important;
@@ -63,7 +64,8 @@
     width: var(--gtiles-tile-width) !important;
 }
 
-#g-tiles-sidebar > span > div, #g-tiles-sidebar > span > g-section-with-header {
+/* #g-tiles-sidebar > span > div, #g-tiles-sidebar > span > g-section-with-header { */
+#g-tiles-sidebar.stylized-sidebar > span > div, #g-tiles-sidebar.stylized-sidebar > span > g-section-with-header {
     background-color: var(--gtiles-tile-background);
     border: var(--gtiles-tile-border);
     border-radius: var(--gtiles-tile-border-radius);

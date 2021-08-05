@@ -3,6 +3,7 @@
 - Improved favicons search
 - Added loading spinner when loading favicons
 - Favicons are now aligned with title
+- Fixed for 'Apply style to widgets' not disabling correctly
 - Small performance and layout improvements
 
 #2.2.8 

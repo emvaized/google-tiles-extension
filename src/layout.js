@@ -62,6 +62,7 @@ function setLayout() {
                 regularResultsColumn.parentNode.appendChild(sidebarContainer);
         }
 
+        if (configs.applyStyleToWidgets) sidebarContainer.classList.add('stylized-sidebar');
 
         let sidebarHeight = sidebarContainer.scrollHeight;
         const sidebarNewChildrenContainer = document.createElement('span');
@@ -225,7 +226,6 @@ function setLayout() {
             setTimeout(function () {
                 sidebarHeight = sidebarContainer.clientHeight;
 
-                // if (sidebarContainer.children.length == 1) {
                 const regularResultsChildrenArray = regularResultsColumn.children;
                 const l = regularResultsChildrenArray.length;
                 const sidebarMovedRegularResultsContainer = document.createElement('span');
@@ -248,8 +248,8 @@ function setLayout() {
                         } catch (e) { console.log(e); }
                     } else { break; }
                 }
-                sidebarContainer.prepend(sidebarMovedRegularResultsContainer);
-                // }
+                // sidebarContainer.prepend(sidebarMovedRegularResultsContainer);
+                sidebarContainer.appendChild(sidebarMovedRegularResultsContainer);
             }, 1);
 
 
