@@ -54,7 +54,6 @@ function setLayout() {
         if (sidebarContainer == null) {
             /// Setting up new sidebar
             sidebarContainer = document.createElement('div');
-
             sidebarContainer.id = 'g-tiles-sidebar';
             sidebarContainer.style.left = `${regularResultsColumnWidth * 1.12 + sidebarPadding}px`;
             sidebarContainer.style.paddingLeft = `${sidebarPadding}px;`;
@@ -69,141 +68,150 @@ function setLayout() {
         const regularResultsNewChildrenContainer = document.createElement('span');
 
         mainResults.forEach(function (result) {
-            try {
-                if (result.tagName == 'H2' || result.tagName == 'SCRIPT') {
-                } else if (result.tagName == 'HR') {
-                    result.parentNode.removeChild(result);
-                } else if (result.className == regularResultClassName || result.className.substring(0, 2) == 'g ') {
-                    /// Regular result
+            if (result.tagName == 'H2' || result.tagName == 'SCRIPT') {
+                /// Don't proccess
+            } else if (result.tagName == 'HR') {
+                result.parentNode.removeChild(result);
+            } else if (result.className == regularResultClassName || result.className.substring(0, 2) == 'g ') {
+                /// Regular result
 
-                    if (configs.addFavicons || configs.simplifyDomain) {
-                        configureTileHeader(result, result.querySelector('a').href)
+                if (configs.addFavicons || configs.simplifyDomain) {
+                    configureTileHeader(result, result.querySelector('a').href)
+                }
+                configureTile(result);
+
+            } else if (result.querySelector(`[class='g'], [class^='g ']`) !== null) {
+                /// Regular result wrapped in div
+
+                const ch = result.firstChild;
+                if (ch !== null && ch !== undefined) {
+                    result.style.margin = '0px';
+
+                    // if (ch.className == 'g' || result.className.substring(0, 2) == 'g ') {
+                    const className = ch.className;
+                    if (className[0] == 'g' && (className[1] == undefined || className[1] == '')) {
+                        regularResultsColumn.insertBefore(ch, result);
+
+                        if (configs.addFavicons || configs.simplifyDomain) {
+                            configureTileHeader(ch, ch.querySelector('a').href)
+                        }
+                        configureTile(ch);
                     }
-
-                    configureTile(result);
                 }
 
-                // else if (result.querySelector(`[class='g']`) !== null || result.querySelector(`[class^='g ']`) !== null) {
-                else if (result.querySelector(`[class='g'],[class^='g ']`) !== null) {
-                    /// Regular result wrapped in div
+                // let ch = result.children;
+                // ch = Array.prototype.slice.call(ch);
+                // console.log(ch.length);
+                // if (ch !== null && ch !== undefined && ch.length > 0) {
+                //     result.style.margin = '0px';
 
-                    let ch = result.children;
-                    ch = Array.prototype.slice.call(ch);
-                    if (ch !== null && ch !== undefined && ch.length > 0) {
-                        result.style.margin = '0px';
+                //     ch.forEach(function (c) {
+                //         if (c.className == 'g' || result.className.substring(0, 2) == 'g ') {
+                //             regularResultsColumn.insertBefore(c, result);
 
-                        ch.forEach(function (c) {
-                            if (c.className == 'g' || result.className.substring(0, 2) == 'g ') {
-                                regularResultsColumn.insertBefore(c, result);
+                //             if (configs.addFavicons || configs.simplifyDomain) {
+                //                 configureTileHeader(c, c.querySelector('a').href)
+                //             }
+                //             configureTile(c);
+                //         }
+                //     })
+                // }
+            } else if (result.clientHeight !== 0.0 && result.clientWidth !== 0.0 && result.firstChild !== undefined) {
+                /// Search widget
 
-                                if (configs.addFavicons || configs.simplifyDomain) {
-                                    configureTileHeader(c, c.querySelector('a').href)
-                                }
-                                configureTile(c);
-                            }
-                        })
+                if (sidebarContainer !== null && sidebarHeight + result.clientHeight <= regularResultsColumn.scrollHeight
+                    && result.className !== shopPageCardClass
+                    && result.tagName !== newsPageCardSelector.toUpperCase() && result.firstChild.tagName !== newsPageCardSelector.toUpperCase()) {
+                    /// Move widget to sidebar
+                    /// If sidebar height won't exceed regular results height, move tile there
+
+                    if (configs.tryToPlaceWidgetsOnTheSide) {
+                        sidebarHeight += result.clientHeight;
+                        sidebarNewChildrenContainer.appendChild(result);
                     }
-                } else if (result.clientHeight !== 0.0 && result.clientWidth !== 0.0 && result.firstChild !== undefined) {
+                    else if (configs.moveSuggestionsToBottom) {
+                        regularResultsNewChildrenContainer.appendChild(result);
+                        if (configs.applyStyleToWidgets)
+                            result.classList.add('g');
 
-                    /// Search widget
-                    if (sidebarContainer !== null && sidebarHeight + result.clientHeight <= regularResultsColumn.scrollHeight
-                        && result.className !== shopPageCardClass
-                        && result.tagName !== newsPageCardSelector.toUpperCase() && result.firstChild.tagName !== newsPageCardSelector.toUpperCase()) {
-                        /// Move widget to sidebar
-                        /// If sidebar height won't exceed regular results height, move tile there
-
-                        if (configs.tryToPlaceWidgetsOnTheSide) {
-                            sidebarHeight += result.clientHeight;
-                            sidebarNewChildrenContainer.appendChild(result);
-                        }
-                        else if (configs.moveSuggestionsToBottom) {
-                            regularResultsNewChildrenContainer.appendChild(result);
-                            if (configs.applyStyleToWidgets)
-                                result.classList.add('g');
-
-                        }
-                    } else {
-                        /// Otherwise, attach it on bottom of regular results scrollbar
-                        if (configs.moveSuggestionsToBottom) {
-                            regularResultsNewChildrenContainer.appendChild(result);
-                            if (configs.applyStyleToWidgets)
-                                result.classList.add('g');
-
-                            configureTile(result)
-                        }
                     }
+                } else {
+                    /// Otherwise, attach it on bottom of regular results scrollbar
+                    if (configs.moveSuggestionsToBottom) {
+                        regularResultsNewChildrenContainer.appendChild(result);
+                        if (configs.applyStyleToWidgets)
+                            result.classList.add('g');
 
-                    /// Add scale-up effect for image results
-                    if (configs.scaleUpImageResultsOnHover) {
-                        var imageResults = result.querySelectorAll(imageResultTileSelector);
+                        configureTile(result)
+                    }
+                }
 
-                        var heightPadding = (imageScaleUpOnHoverAmount - 1.0) / 2;
+                /// Add scale-up effect for image results
+                if (configs.scaleUpImageResultsOnHover) {
+                    var imageResults = result.querySelectorAll(imageResultTileSelector);
+                    const heightPadding = (imageScaleUpOnHoverAmount - 1.0) / 2;
 
-                        if (imageResults !== null && imageResults !== undefined) {
-                            imageResults.forEach(function (image) {
-                                try {
-                                    var height = image.clientHeight;
+                    if (imageResults !== null && imageResults !== undefined) {
+                        imageResults.forEach(function (image) {
+                            try {
+                                const height = image.clientHeight;
 
-                                    image.addEventListener('mouseover', function (event) {
-                                        this.setAttribute('style', `${image.parentNode.classList.contains(imageCarouselClass) ? `margin: 0px ${height * heightPadding}px;` : ''} -webkit-transform:scale(${imageScaleUpOnHoverAmount}); transform:scale(${imageScaleUpOnHoverAmount}); z-index: 1; transition: all 150ms ease-in-out; box-shadow: 0px 5px 15px rgba(0, 0, 0, ${configs.shadowOpacity}) `);
-                                    })
+                                image.addEventListener('mouseover', function (event) {
+                                    this.setAttribute('style', `${image.parentNode.classList.contains(imageCarouselClass) ? `margin: 0px ${height * heightPadding}px;` : ''} -webkit-transform:scale(${imageScaleUpOnHoverAmount}); transform:scale(${imageScaleUpOnHoverAmount}); z-index: 1; transition: all 150ms ease-in-out; box-shadow: 0px 5px 15px rgba(0, 0, 0, ${configs.shadowOpacity}) `);
+                                })
 
-                                    image.addEventListener('mouseout', function (event) {
-                                        this.setAttribute('style', `-webkit-transform:scale(1.0); transform: scale(1.0); z-index: 0; transition: all 150ms ease-in-out;`);
-                                    })
+                                image.addEventListener('mouseout', function (event) {
+                                    this.setAttribute('style', `-webkit-transform:scale(1.0); transform: scale(1.0); z-index: 0; transition: all 150ms ease-in-out;`);
+                                })
 
-                                    /// If image is inside horizontal carouosel, add margins
-                                    /// TODO: Needs a better implementation, doesn't work in current state
-                                    if (image.parentNode.classList.contains(imageCarouselClass)) {
-                                        var imageCarouselContainer = image.parentNode;
+                                /// If image is inside horizontal carouosel, add margins
+                                /// TODO: Needs a better implementation, doesn't work in current state
+                                if (image.parentNode.classList.contains(imageCarouselClass)) {
+                                    var imageCarouselContainer = image.parentNode;
 
-                                        imageCarouselContainer.onmouseover = function (event) {
-                                            imageCarouselContainer.setAttribute('style', `margin-bottom: ${height * heightPadding}px;margin-top: ${height * heightPadding}px;transition: all 150ms ease-in-out;`);
-                                        }
-                                        imageCarouselContainer.onmouseout = function () {
-                                            imageCarouselContainer.setAttribute('style', `margin: 0px; transition: all 150ms ease-in-out;`);
-                                        }
+                                    imageCarouselContainer.onmouseover = function (event) {
+                                        imageCarouselContainer.setAttribute('style', `margin-bottom: ${height * heightPadding}px;margin-top: ${height * heightPadding}px;transition: all 150ms ease-in-out;`);
                                     }
-                                } catch (error) {
-                                    console.log(error);
+                                    imageCarouselContainer.onmouseout = function () {
+                                        imageCarouselContainer.setAttribute('style', `margin: 0px; transition: all 150ms ease-in-out;`);
+                                    }
+                                }
+                            } catch (error) {
+                                console.log(error);
+                            }
+                        });
+                    } else {
+                        console.log('Google Tiles: no zoomable images found');
+                    }
+                }
+
+                /// Add scroll-on-hover listeners
+                if (configs.scrollHorizontalViewOnHover) {
+
+                    var scrollableCards = result.querySelectorAll(scrollableCardSelector);
+
+                    if (scrollableCards !== null && scrollableCards !== undefined) {
+                        /// Try to proccess 'More news' cards on news page
+                        if (scrollableCards.length == 0)
+                            scrollableCards = result.querySelectorAll(newsPageCardSelector);
+
+                        if (scrollableCards !== null && scrollableCards !== undefined && scrollableCards.length > 0)
+                            scrollableCards.forEach(function (card) {
+
+                                card.onmouseover = function (event) {
+                                    // card.scrollIntoView({ block: 'nearest', inline: "center", behavior: "smooth" });
+                                    setTimeout(function () {
+                                        card.scrollIntoView({ block: 'nearest', inline: "center", behavior: "smooth" });
+                                    }, configs.delayToScrollOnHover);
                                 }
                             });
-                        } else {
-                            console.log('Google Tiles: no zoomable images found');
-                        }
                     }
-
-                    /// Add scroll-on-hover listeners
-                    if (configs.scrollHorizontalViewOnHover) {
-
-                        var scrollableCards = result.querySelectorAll(scrollableCardSelector);
-
-                        if (scrollableCards !== null && scrollableCards !== undefined) {
-                            /// Try to proccess 'More news' cards on news page
-                            if (scrollableCards.length == 0)
-                                scrollableCards = result.querySelectorAll(newsPageCardSelector);
-
-                            if (scrollableCards !== null && scrollableCards !== undefined && scrollableCards.length > 0)
-                                scrollableCards.forEach(function (card) {
-
-                                    card.onmouseover = function (event) {
-                                        // card.scrollIntoView({ block: 'nearest', inline: "center", behavior: "smooth" });
-                                        setTimeout(function () {
-                                            card.scrollIntoView({ block: 'nearest', inline: "center", behavior: "smooth" });
-                                        }, configs.delayToScrollOnHover);
-                                    }
-                                });
-                        }
-                    }
-
-                } else {
-                    /// Remove bottom margin for empty divs on page
-                    result.style.margin = '0px';
-                    result.style.marginBottom = '0px';
                 }
 
-            } catch (e) {
-                console.log(e);
+            } else {
+                /// Remove bottom margin for empty divs on page
+                result.style.margin = '0px';
+                result.style.marginBottom = '0px';
             }
         })
 
@@ -215,25 +223,28 @@ function setLayout() {
             setTimeout(function () {
                 sidebarHeight = sidebarContainer.clientHeight;
 
-                if (sidebarContainer.children.length == 1) {
-                    const regularResultsChildrenArray = regularResultsColumn.children;
+                // if (sidebarContainer.children.length == 1) {
+                const regularResultsChildrenArray = regularResultsColumn.children;
+                const l = regularResultsChildrenArray.length;
 
-                    for (let i = regularResultsChildrenArray.length; i > -1; i--) {
-                        const child = regularResultsChildrenArray[i];
-                        if (child == undefined) continue;
-                        const childHeight = child.getBoundingClientRect().height;
+                for (let i = l; i > -1; i--) {
+                    const child = regularResultsChildrenArray[i];
+                    if (child == undefined) continue;
 
-                        // if (sidebarHeight + childHeight <= regularResultsColumn.scrollHeight - document.getElementById('footcnt').clientHeight) {
-                        if (sidebarHeight + childHeight <= regularResultsColumn.scrollHeight - 200) {
-                            try {
-                                sidebarHeight = sidebarHeight + childHeight;
-                                sidebarContainer.prepend(child);
-                                if (child.firstChild != null)
-                                    child.firstChild.classList.add('nofullwidth'); /// override 'width: 100%'
-                            } catch (e) { console.log(e); }
-                        } else { break; }
-                    }
+                    const childHeight = child.getBoundingClientRect().height;
+                    if (childHeight == 0.0) continue;
+
+                    // if (sidebarHeight + childHeight <= regularResultsColumn.scrollHeight - document.getElementById('footcnt').clientHeight) {
+                    if (sidebarHeight + childHeight <= regularResultsColumn.scrollHeight - 200) {
+                        try {
+                            sidebarHeight = sidebarHeight + childHeight;
+                            sidebarContainer.prepend(child);
+                            if (child.firstChild != null)
+                                child.firstChild.classList.add('nofullwidth'); /// override 'width: 100%'
+                        } catch (e) { console.log(e); }
+                    } else { break; }
                 }
+                // }
             }, 1);
 
 
@@ -257,8 +268,6 @@ function setSidebarWidgets(sidebarContainer) {
     sidebarWidgets.reverse().forEach(function (item) {
         if (item.clientHeight !== 0.0 && item.clientWidth !== 0.0 && (item.tagName == 'DIV' || item.tagName == 'G-SECTION-WITH-HEADER')) {
             configureTile(item);
-
-            // item.style.width = '105%';
             item.style.boxSizing = 'unset';
         }
     });

@@ -146,6 +146,13 @@ g-more-link > a{
     width: unset !important;
 }
 
+/* Fix for h3 headers smtimes being too small when result was moved to sidebar */
+/* .nofullwidth h3 { */
+#rhs h3 {
+    font-size: 20px;
+}
+
+/* Favicon styling */
 .favicon {
     height: var(--gtiles-favicon-radius);
     width: var(--gtiles-favicon-radius);

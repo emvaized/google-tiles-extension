@@ -94,9 +94,6 @@ function init() {
       console.log('Google Tiles error:');
       console.log(error);
     }
-
-
-
   }
 }
 

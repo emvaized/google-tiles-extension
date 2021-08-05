@@ -7,7 +7,7 @@ websiteFaviconPrototype.aspectRadio = 'unset';
 websiteFaviconPrototype.crossOrigin = "anonymous";
 
 
-function configureTile(tile, maxWidth) {
+function configureTile(tile) {
     if (tile.tagName == 'H2') return;
     if (tile.parentNode && tile.parentNode.tagName == 'A') return; /// Don't style the same tile twice
 
@@ -21,30 +21,34 @@ function configureTile(tile, maxWidth) {
         /// For regular result use first found link inside element
         url = tile.querySelector('a').href;
     } else {
+        // url = tile.querySelector('a').href;
         /// For search widget, use the first found 'wikipedia' link - otherwise, the last found link
-        try {
-            var links = tile.querySelectorAll('a');
-            for (i in links) {
-                var linkItem = links[i];
+        // try {
+        //     var links = tile.querySelectorAll('a');
+        //     for (i in links) {
+        //         console.log(i);
+        //         var linkItem = links[i];
 
-                if (linkItem.href !== undefined && !linkItem.href.includes('webcache.googleusercontent') && !linkItem.className.includes('fl ')) {
-                    if (linkItem.href.includes('wikipedia.org')) {
-                        url = linkItem.href;
-                        break;
-                    } else if (i == links.length - 1) {
-                        url = linkItem.href;
-                    }
-                }
-            }
+        //         if (linkItem.href !== undefined && !linkItem.href.includes('webcache.googleusercontent') && !linkItem.className.includes('fl ')) {
+        //             if (linkItem.href.includes('wikipedia.org')) {
+        //                 url = linkItem.href;
+        //                 break;
+        //             } else if (i == links.length - 1) {
+        //                 url = linkItem.href;
+        //             }
+        //         }
+        //     }
 
-            /// If failed, use the first found link
-            if (url == null || url == undefined || url == '') {
-                var firstLink = tile.querySelector('a');
-                if (firstLink !== null)
-                    url = tile.querySelector('a').href;
-                else url = '';
-            }
-        } catch (error) { console.log('Google Tiles error: ' + error); }
+        //     console.log('~~~')
+
+        //     /// If failed, use the first found link
+        //     if (url == null || url == undefined || url == '') {
+        //         var firstLink = tile.querySelector('a');
+        //         if (firstLink !== null)
+        //             url = firstLink.href;
+        //         else url = '';
+        //     }
+        // } catch (error) { console.log('Google Tiles error: ' + error); }
     }
 
 
@@ -58,11 +62,13 @@ function configureTile(tile, maxWidth) {
 
         /// Disable link underline for H3 headers
         if (configs.disableTitleUnderlineOnHover) {
-            var titles = tile.querySelectorAll('h3');
-
-            titles.forEach(function (title) {
+            var title = tile.querySelector('h3');
+            if (title !== null)
                 title.style.textDecoration = 'none';
-            })
+            // var titles = tile.querySelectorAll('h3');
+            // titles.forEach(function (title) {
+            //     title.style.textDecoration = 'none';
+            // })
         }
     }
 
@@ -84,9 +90,9 @@ function configureTile(tile, maxWidth) {
         tile.addEventListener('mouseover', function () {
             // if (addBackground)
             this.style.backgroundColor = configs.hoverBackground;
-            if (configs.highlightTitleOnHover && titles[0] !== undefined && linkIsValid) {
-                originalTitleColor = titles[0].style.color;
-                titles[0].style.color = configs.titleHoverColor;
+            if (configs.highlightTitleOnHover && title !== undefined && linkIsValid) {
+                originalTitleColor = title.style.color;
+                title.style.color = configs.titleHoverColor;
             }
         })
 
@@ -95,8 +101,8 @@ function configureTile(tile, maxWidth) {
             this.style.backgroundColor = configs.addTileBackground ? configs.tileBackgroundColor : 'transparent';
 
             // regular link color: #1A0DAB;
-            if (configs.highlightTitleOnHover && titles[0] !== undefined && linkIsValid)
-                titles[0].style.color = originalTitleColor ?? 'unset';
+            if (configs.highlightTitleOnHover && title !== undefined && linkIsValid)
+                title.style.color = originalTitleColor ?? 'unset';
         })
 
         /// Append onClick listeners to visually emulate button press on card by changing shadow 

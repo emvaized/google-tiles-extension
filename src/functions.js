@@ -3,7 +3,6 @@ HTMLElement.prototype.wrap = function (wrapper) {
     wrapper.appendChild(this);
 }
 
-
 function getFaviconColor(img) {
     var colorList = {};
 
@@ -31,7 +30,6 @@ function getFaviconColor(img) {
         var g = data[i + 1];
         var b = data[i + 2];
 
-
         if (r > 200 && g > 200 && b > 200) continue;
         if (r == 0 && g == 0 && b == 0) continue;
 
@@ -43,13 +41,12 @@ function getFaviconColor(img) {
             colorList[hex] += 1;
         }
     }
-    // console.log(colorList);
 
     const sorted_keys = Object.keys(colorList).sort(function (a, b) { return colorList[a] - (colorList[b]); }).reverse();
 
     if (sorted_keys.length == 0) return '#000000';
     colorToReturn = colorList[sorted_keys[0]] - colorList[sorted_keys[1]] > 2 ? sorted_keys[0] : sorted_keys[1];
-    /// Color returned for results with no favicon. Return white, which will be ignored
+    /// Color returned for results with no favicon. Return white, which will get ignored
     if (colorToReturn == '#4040bf') return '#ffffff';
 
     // console.log(img.src);
