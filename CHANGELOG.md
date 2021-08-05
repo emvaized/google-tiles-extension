@@ -2,7 +2,7 @@
 - Improved 'populate sidebar with regular results' functionality
 - Improved favicons search
 - Added loading spinner when loading favicons
-- Favicons are not aligned with title
+- Favicons are now aligned with title
 
 #2.2.8 
 - Improved short header calculation
