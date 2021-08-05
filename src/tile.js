@@ -21,7 +21,6 @@ function configureTile(tile) {
         /// For regular result use first found link inside element
         url = tile.querySelector('a').href;
     } else {
-        // url = tile.querySelector('a').href;
         /// For search widget, use the first found 'wikipedia' link - otherwise, the last found link
         // try {
         //     var links = tile.querySelectorAll('a');
@@ -171,27 +170,6 @@ function configureTile(tile) {
         }
     }
 
-    /// Remove some default tile stylings for children, such as borders and background colors
-    // const firstTileChild = tile.firstChild;
-    // if (firstTileChild !== undefined && firstTileChild.style !== undefined) {
-    //     firstTileChild.style.borderColor = 'transparent';
-    //     firstTileChild.style.backgroundColor = 'transparent';
-    //     firstTileChild.style.overflowX = 'hidden';
-    //     firstTileChild.style.overflowY = 'hidden';
-
-    //     if (firstTileChild.firstChild !== null) {
-    //         if (firstTileChild.firstChild.style !== undefined)
-    //             firstTileChild.firstChild.style.maxWidth = `${maxWidth == null ? '100%' : maxWidth + 'px'}`;
-
-    //         if (firstTileChild.firstChild.tagName !== undefined) {
-    //             firstTileChild.firstChild.style.borderColor = 'transparent';
-    //             firstTileChild.firstChild.style.backgroundColor = 'transparent';
-
-    //             // firstTileChild.firstChild.setAttribute('style', 'transition: none !important');
-    //         }
-    //     }
-    // }
-
     /// Appending page snapshot
     if (loadPreviews) {
         console.log(`fetching ${url} preview...`);
@@ -249,7 +227,7 @@ function configureTileHeader(tile, url) {
                 if (configs.showFullDomainOnHover)
                     domain.title = domain.textContent;
                 const domainPathSpan = domain.querySelector('span');
-                domain.innerText = titleText + (domainPathSpan == null ? '' : domainPathSpan.textContent);
+                domain.textContent = titleText + (domainPathSpan == null ? '' : domainPathSpan.textContent);
             } catch (error) { console.log(error); }
         }
 
@@ -258,13 +236,6 @@ function configureTileHeader(tile, url) {
             tile.className == regularResultClassName || tile.firstChild.className == regularResultClassName ||
             tile.className.substring(0, 2) == 'g ' || tile.firstChild.className.substring(0, 2) == 'g '
         )) {
-            // if (websiteFaviconPrototype.height !== `${configs.faviconRadius}px`) {
-            //     websiteFaviconPrototype.style.height = `${configs.faviconRadius}px`;
-            //     websiteFaviconPrototype.style.width = `${configs.faviconRadius}px`;
-            //     websiteFaviconPrototype.height = `${configs.faviconRadius}px`;
-            //     websiteFaviconPrototype.width = `${configs.faviconRadius}px`;
-            // }
-
             const favicon = websiteFaviconPrototype.cloneNode(true);
 
             let domainForFavicon = url.split('/')[2];
@@ -272,7 +243,6 @@ function configureTileHeader(tile, url) {
                 domainForFavicon = url;
 
             /// Trying to load favicon from website
-            // const googleFaviconUrl = 'https://www.google.com/s2/favicons?domain=' + domainForFavicon;
             const googleFaviconUrl = `https://www.google.com/s2/favicons?sz=24&domain=` + domainForFavicon;
             const faviconKitFaviconUrl = `https://api.faviconkit.com/${domainForFavicon}/24`;
 

@@ -166,3 +166,12 @@ g-more-link > a{
     background-size: contain;
     background-repeat: no-repeat;
 }
+
+/* Styling for top bar with categories, moved to search bar */
+.moved-top-bar {
+    position: absolute !important;
+    justify-content: start !important;
+    top: 10px;
+    right: 12%;
+    margin-left: 0;
+}
