@@ -61,7 +61,6 @@ function setLayout() {
 
             if (regularResultsColumn !== null)
                 regularResultsColumn.parentNode.appendChild(sidebarContainer);
-
         }
 
 
@@ -74,7 +73,6 @@ function setLayout() {
                 if (result.tagName == 'H2' || result.tagName == 'SCRIPT') {
                 } else if (result.tagName == 'HR') {
                     result.parentNode.removeChild(result);
-                    // } else if (result.className == regularResultClassName) {
                 } else if (result.className == regularResultClassName || result.className.substring(0, 2) == 'g ') {
                     /// Regular result
 
@@ -246,13 +244,6 @@ function setLayout() {
 
         console.timeEnd('Google Tiles finished proccessing page in');
 
-    } else {
-        /// Image page results handling
-
-        // var container = document.getElementById('islrg');
-        // var images = container.firstChild.children;
-
-        // setLayout();
     }
 }
 
