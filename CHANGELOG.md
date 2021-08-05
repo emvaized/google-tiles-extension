@@ -3,7 +3,7 @@
 - Improved favicons search
 - Added loading spinner when loading favicons
 - Favicons are now aligned with title
-- Small performance improvements
+- Small performance and layout improvements
 
 #2.2.8 
 - Improved short header calculation

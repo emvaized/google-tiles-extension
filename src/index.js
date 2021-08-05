@@ -85,11 +85,16 @@ function init() {
 
     // if (configs.hideNumberResultsRow)
     //   hideNumberResultsRow();
-
     // removeSearchbarShadow();
 
     try {
-      setLayout()
+      setLayout();
+
+      // window.addEventListener('popstate', function () {
+      //   setLayout();
+      //   if (configs.debugMode) console.log('Google Tiles reproccessed updated page');
+      // });
+
     } catch (error) {
       console.log('Google Tiles error:');
       console.log(error);

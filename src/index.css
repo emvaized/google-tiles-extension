@@ -39,8 +39,6 @@
     margin-left: 6px;
 }
 
-
-
 /* General styling for sidebar */
 #rhs {
     max-width: var(--gtiles-sidebar-width) !important;
@@ -97,6 +95,11 @@
 /* Search suggestions container */
 #botstuff div {
     margin: 0 !important;
+}
+
+/* Fix right margin for accordeon tiles */
+#botstuff .ngjNee {
+    margin-right: 16px !important;
 }
 
 /* Add padding for top labels */
