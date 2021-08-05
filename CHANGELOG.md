@@ -1,6 +1,6 @@
 #2.2.9
 - Improved 'populate sidebar with regular results' functionality
-- Added option to configure populated results position
+- Added option to configure populated results position (top/bottom)
 - Improved favicons search
 - Added loading spinner when loading favicons
 - Favicons are now aligned with title
