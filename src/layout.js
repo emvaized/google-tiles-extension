@@ -36,7 +36,6 @@ function setLayout() {
         }
 
         /// Add search suggestions div to proccessed elements
-
         const botstuff = document.getElementById(peopleAlsoSearchForId);
         if (botstuff !== null && botstuff !== undefined) {
             mainResults.push(botstuff);
@@ -72,7 +71,6 @@ function setLayout() {
 
         mainResults.forEach(function (result) {
             try {
-
                 if (result.tagName == 'H2' || result.tagName == 'SCRIPT') {
                 } else if (result.tagName == 'HR') {
                     result.parentNode.removeChild(result);
@@ -109,7 +107,7 @@ function setLayout() {
                 } else if (result.clientHeight !== 0.0 && result.clientWidth !== 0.0 && result.firstChild !== undefined) {
 
                     /// Search widget
-                    if (sidebarContainer !== null && sidebarHeight + result.clientHeight <= regularResultsColumn.clientHeight
+                    if (sidebarContainer !== null && sidebarHeight + result.clientHeight <= regularResultsColumn.scrollHeight
                         && result.className !== shopPageCardClass
                         && result.tagName !== newsPageCardSelector.toUpperCase() && result.firstChild.tagName !== newsPageCardSelector.toUpperCase()) {
                         /// Move widget to sidebar
@@ -213,33 +211,39 @@ function setLayout() {
         sidebarContainer.appendChild(sidebarNewChildrenContainer);
         regularResultsColumn.appendChild(regularResultsNewChildrenContainer);
 
-
         /// Populate sidebar with regular results
-        if (configs.populateSidebarWithRegularResults && sidebarContainer.children.length == 1) {
-            const regularResultsChildrenArray = regularResultsColumn.children;
+        if (configs.populateSidebarWithRegularResults)
+            setTimeout(function () {
+                sidebarHeight = sidebarContainer.clientHeight;
 
-            for (let i = regularResultsChildrenArray.length; i > -1; i--) {
-                const child = regularResultsChildrenArray[i];
-                if (child == undefined) continue;
-                const childHeight = child.getBoundingClientRect().height;
+                if (sidebarContainer.children.length == 1) {
+                    const regularResultsChildrenArray = regularResultsColumn.children;
 
-                if (sidebarHeight + childHeight <= regularResultsColumn.scrollHeight - 200) {
-                    try {
-                        sidebarHeight = sidebarHeight + childHeight;
-                        sidebarContainer.prepend(child);
-                        // child.style.maxWidth = `${configs.sidebarWidth}px`;
-                    } catch (e) { console.log(e); }
-                } else { break; }
-            }
-        }
+                    for (let i = regularResultsChildrenArray.length; i > -1; i--) {
+                        const child = regularResultsChildrenArray[i];
+                        if (child == undefined) continue;
+                        const childHeight = child.getBoundingClientRect().height;
+
+                        // if (sidebarHeight + childHeight <= regularResultsColumn.scrollHeight - document.getElementById('footcnt').clientHeight) {
+                        if (sidebarHeight + childHeight <= regularResultsColumn.scrollHeight - 200) {
+                            try {
+                                sidebarHeight = sidebarHeight + childHeight;
+                                sidebarContainer.prepend(child);
+                                if (child.firstChild != null)
+                                    child.firstChild.classList.add('nofullwidth'); /// override 'width: 100%'
+                            } catch (e) { console.log(e); }
+                        } else { break; }
+                    }
+                }
+            }, 1);
+
 
         /// Set keyboard listeners
         if (configs.navigateWithKeyboard || configs.numericNavigation) {
             setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHintsList);
         }
 
-        // console.log('Google Tiles finished proccessing page');
-        console.timeEnd('G-Tiles finished proccessing page in');
+        console.timeEnd('Google Tiles finished proccessing page in');
 
     } else {
         /// Image page results handling

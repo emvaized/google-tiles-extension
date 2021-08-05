@@ -32,7 +32,6 @@ var counterHintFocusColor = '#EA4335';
 var topBar;
 var tileTransition;
 
-
 function loadConfigs() {
   let configKeys = Object.keys(configs);
 
@@ -67,9 +66,9 @@ function loadConfigs() {
         document.body.style.setProperty('--gtiles-counter-color', countedHintColor);
         document.body.style.setProperty('--gtiles-counter-opacity', configs.indexHintOpacity);
         document.body.style.setProperty('--gtiles-sidebar-width', `${configs.sidebarWidth}px`);
+        document.body.style.setProperty('--gtiles-favicon-radius', `${configs.faviconRadius}px`);
         document.body.style.setProperty('--gtiles-sidebar-child-width', `${configs.sidebarWidth - (configs.innerPadding * 2)}px`);
         document.body.style.setProperty('--gtiles-tile-image-border-radius', `${configs.borderRadius}px ${configs.borderRadius}px 0px 0px`);
-
       }
     }
   )
@@ -79,7 +78,7 @@ function loadConfigs() {
 function init() {
   if (configs.tilesEnabled) {
 
-    console.time('G-Tiles finished proccessing page in');
+    console.time('Google Tiles finished proccessing page in');
 
     if (configs.moveNavbarToSearchbar)
       setTopBar();

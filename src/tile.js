@@ -2,13 +2,14 @@ const linkWrapperPrototype = document.createElement('a');
 linkWrapperPrototype.id = 'g-tile';
 
 const websiteFaviconPrototype = new Image();
-websiteFaviconPrototype.style.paddingRight = '5px';
+websiteFaviconPrototype.setAttribute('class', 'favicon favicon-loading-spinner');
 websiteFaviconPrototype.aspectRadio = 'unset';
-websiteFaviconPrototype.setAttribute('crossorigin', 'anonymous');
-websiteFaviconPrototype.style.height = `${configs.faviconRadius}px`;
-websiteFaviconPrototype.style.width = `${configs.faviconRadius}px`;
-websiteFaviconPrototype.height = `${configs.faviconRadius}px`;
-websiteFaviconPrototype.width = `${configs.faviconRadius}px`;
+websiteFaviconPrototype.crossOrigin = "anonymous";
+// websiteFaviconPrototype.height = `${configs.faviconRadius}px`;
+// websiteFaviconPrototype.width = `${configs.faviconRadius}px`;
+// websiteFaviconPrototype.style.height = `${configs.faviconRadius}px`;
+// websiteFaviconPrototype.style.width = `${configs.faviconRadius}px`;
+// websiteFaviconPrototype.style.paddingRight = '5px';
 
 
 function configureTile(tile, maxWidth) {
@@ -83,9 +84,7 @@ function configureTile(tile, maxWidth) {
 
     /// Set 'on hover' styling for each tile
     var originalTitleColor;
-    // if (tile.className.toLowerCase()[0] == 'g') {
     if (tile.className[0] == 'g' || tile.className.includes(' g')
-        // || tile.className.substring(0, 2) == 'g ' || tile.firstChild.className.substring(0, 2) == 'g '
         || (tile.firstChild && tile.firstChild.tagName.toLowerCase() == newsPageCardSelector)) {
 
         tile.addEventListener('mouseover', function () {
@@ -128,8 +127,6 @@ function configureTile(tile, maxWidth) {
                 tile.wrap(wrapper);
         }
 
-
-
         /// Add keyboard focus listeners
         if (configs.navigateWithKeyboard || configs.numericNavigation) {
             let dot;
@@ -157,7 +154,6 @@ function configureTile(tile, maxWidth) {
             });
 
             /// Remove the highlight from item on focus loss
-
             wrapper.addEventListener('blur', function (event) {
                 if (configs.focusedTileDifferentBorder)
                     wrapper.firstChild.style.border = `solid ${configs.focusedBorderWidth}px ${configs.addTileBorder ? configs.borderColor : 'transparent'}`;
@@ -238,7 +234,7 @@ function configureTileHeader(tile, url) {
                 } else if (domainContent.length == 3) {
                     // titleText = domainContent[1] == 'com' || domainContent[1] == 'net' || domainContent[0].length > domainContent[1].length ? domainContent[0] : domainContent[1];
                     titleText = domainContent[1].length > domainContent[0].length ?
-                        domainContent[1] == 'google' ? domainContent[0] : domainContent[1]
+                        domainContent[1] == 'google' && domainContent[0] != 'www' ? domainContent[0] : domainContent[1]
                         :
                         domainContent[0] == 'www' || domainContent[0] == 'news' ? domainContent[1] : domainContent[0];
 
@@ -259,12 +255,12 @@ function configureTileHeader(tile, url) {
             tile.className == regularResultClassName || tile.firstChild.className == regularResultClassName ||
             tile.className.substring(0, 2) == 'g ' || tile.firstChild.className.substring(0, 2) == 'g '
         )) {
-            if (websiteFaviconPrototype.height !== `${configs.faviconRadius}px`) {
-                websiteFaviconPrototype.style.height = `${configs.faviconRadius}px`;
-                websiteFaviconPrototype.style.width = `${configs.faviconRadius}px`;
-                websiteFaviconPrototype.height = `${configs.faviconRadius}px`;
-                websiteFaviconPrototype.width = `${configs.faviconRadius}px`;
-            }
+            // if (websiteFaviconPrototype.height !== `${configs.faviconRadius}px`) {
+            //     websiteFaviconPrototype.style.height = `${configs.faviconRadius}px`;
+            //     websiteFaviconPrototype.style.width = `${configs.faviconRadius}px`;
+            //     websiteFaviconPrototype.height = `${configs.faviconRadius}px`;
+            //     websiteFaviconPrototype.width = `${configs.faviconRadius}px`;
+            // }
 
             const favicon = websiteFaviconPrototype.cloneNode(true);
 
@@ -273,18 +269,46 @@ function configureTileHeader(tile, url) {
                 domainForFavicon = url;
 
             /// Trying to load favicon from website
-            // const websiteFaviconUrl = 'https://' + domainForFavicon + '/' + 'favicon.ico'; 
-            const googleFaviconUrl = 'https://www.google.com/s2/favicons?domain=' + domainForFavicon;
-            const ddGoFaviconUrl = 'https://icons.duckduckgo.com/ip2/' + domainForFavicon + '.ico';
-            // const faviconKitFaviconUrl = `https://api.faviconkit.com/${domainForFavicon}/16`;
+            // const googleFaviconUrl = 'https://www.google.com/s2/favicons?domain=' + domainForFavicon;
+            const googleFaviconUrl = `https://www.google.com/s2/favicons?sz=24&domain=` + domainForFavicon;
+            const faviconKitFaviconUrl = `https://api.faviconkit.com/${domainForFavicon}/24`;
+
+            /// Doesn't work because of CORS
+            // const keewebFaciconUrl = `https://services.keeweb.info/favicon/${domainForFavicon}`; 
+            // const ddGoFaviconUrl = 'https://icons.duckduckgo.com/ip2/' + domainForFavicon + '.ico'; 
+            // const websiteFaviconUrl = 'https://' + domainForFavicon + '/' + 'favicon.ico';
 
             favicon.addEventListener('error', function () {
-                /// Loading favicon from Google service instead
-                favicon.src = googleFaviconUrl;
+                /// Fallback favicon
+                favicon.src = faviconKitFaviconUrl;
             });
 
-            favicon.src = ddGoFaviconUrl;
+            favicon.addEventListener('load', function (ev) {
+                if (favicon.naturalHeight == 16 && favicon.src == googleFaviconUrl) {
+                    /// If Google is returning a 'globe', try to load from FaviconKit
+                    favicon.src = faviconKitFaviconUrl;
+                    return;
+                }
+
+                /// Remove the loading spinner
+                favicon.classList.remove('favicon-loading-spinner');
+
+                /// Get tile border color from favicon's dominant color
+                if (configs.colorizeBorderAfterFavicon) {
+                    const faviconColor = getFaviconColor(favicon);
+                    if (faviconColor !== null && faviconColor !== undefined) {
+
+                        if (faviconColor !== '#ffffff')
+                            tile.style.borderColor = faviconColor;
+                    }
+                }
+            });
+
+            favicon.src = googleFaviconUrl;
             domain.parentNode.prepend(favicon);
+
+            /// Transparent image to test spinner
+            // favicon.src = 'https://upload.wikimedia.org/wikipedia/commons/8/89/HD_transparent_picture.png'; 
 
             /// Fix positioning
 
@@ -312,15 +336,7 @@ function configureTileHeader(tile, url) {
                 }
             }
 
-            if (configs.colorizeBorderAfterFavicon)
-                favicon.addEventListener("load", function () {
-                    const faviconColor = getFaviconColor(favicon);
-                    if (faviconColor !== null && faviconColor !== undefined) {
 
-                        if (faviconColor !== '#ffffff')
-                            tile.style.borderColor = faviconColor;
-                    }
-                });
         }
 
     }

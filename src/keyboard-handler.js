@@ -169,8 +169,6 @@ function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHint
 
             const parsed = parseInt(e.key, 10);
 
-            // console.log(parsed);
-
             if (isNaN(parsed)) { return; }
 
             e.preventDefault();
