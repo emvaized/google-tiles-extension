@@ -199,6 +199,10 @@
         "message": "Remplir la barre latérale avec des résultats réguliers lorsqu'elle a de l'espace",
         "description": ""
     },
+    "populatedSidebarResultsOnTop": {
+        "message": "Placer les résultats réguliers en haut de la barre latérale",
+        "description": ""
+    },
     "preview": {
         "message": "Aperçu de la vignette",
         "description": ""

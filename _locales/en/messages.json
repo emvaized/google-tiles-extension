@@ -207,6 +207,10 @@
     "message": "Populate sidebar with regular results when it has space",
     "description": ""
   },
+  "populatedSidebarResultsOnTop": {
+    "message": "Place regular results on top of sidebar",
+    "description": ""
+  },
   "preview": {
     "message": "Tile preview",
     "description": ""

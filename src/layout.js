@@ -248,8 +248,10 @@ function setLayout() {
                         } catch (e) { console.log(e); }
                     } else { break; }
                 }
-                // sidebarContainer.prepend(sidebarMovedRegularResultsContainer);
-                sidebarContainer.appendChild(sidebarMovedRegularResultsContainer);
+                if (configs.populatedSidebarResultsOnTop)
+                    sidebarContainer.prepend(sidebarMovedRegularResultsContainer);
+                else
+                    sidebarContainer.appendChild(sidebarMovedRegularResultsContainer);
             }, 1);
 
 

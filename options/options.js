@@ -111,6 +111,8 @@ function updateDisabledOptions() {
   document.querySelector("#keyboardFocusBorderColor").parentNode.className = document.querySelector("#focusedTileDifferentBorder").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#scaleUpFocusedResultAmount").parentNode.className = document.querySelector("#scaleUpFocusedResult").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#focusedTileDotOpacity").parentNode.className = document.querySelector("#addFocusedTileDot").checked ? 'enabled-option' : 'disabled-option';
+
+  document.querySelector("#populatedSidebarResultsOnTop").parentNode.className = document.querySelector("#populateSidebarWithRegularResults").checked ? 'enabled-option' : 'disabled-option';
 }
 
 function updatePreviewTile() {

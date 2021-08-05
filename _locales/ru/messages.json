@@ -199,6 +199,10 @@
         "message": "Заполнить боковую колонку обычными результатами, если есть место",
         "description": ""
     },
+    "populatedSidebarResultsOnTop": {
+        "message": "Поместить обычные результаты вверху боковой панели",
+        "description": ""
+    },
     "preview": {
         "message": "Превью плитки",
         "description": ""

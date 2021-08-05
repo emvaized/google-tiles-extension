@@ -199,6 +199,10 @@
         "message": "Complete la barra lateral con resultados regulares cuando tenga espacio",
         "description": ""
     },
+    "populatedSidebarResultsOnTop": {
+        "message": "Coloque los resultados regulares en la parte superior de la barra lateral",
+        "description": ""
+    },
     "preview": {
         "message": "Vista previa del mosaico",
         "description": ""
