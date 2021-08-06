@@ -168,7 +168,7 @@
         "description": ""
     },
     "moveSuggestionsToBottomTooltip": {
-        "message": "Поисковые подсказки будут показаны после обычных результатов",
+        "message": "Поисковые виджеты и подсказки будут показаны после обычных результатов",
         "description": ""
     },
     "navigateWithKeyboard": {

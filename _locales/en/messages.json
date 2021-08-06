@@ -176,7 +176,7 @@
     "description": ""
   },
   "moveSuggestionsToBottomTooltip": {
-    "message": "Various search suggestions will be shown after regular results",
+    "message": "Search widgets and suggestions will be shown after regular results",
     "description": ""
   },
   "navigateWithKeyboard": {

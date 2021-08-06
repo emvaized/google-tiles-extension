@@ -64,7 +64,11 @@
     width: var(--gtiles-tile-width) !important;
 }
 
-/* #g-tiles-sidebar > span > div, #g-tiles-sidebar > span > g-section-with-header { */
+/* Add left padding for non-stylized sidebar */
+#rhs:not(.stylized-sidebar) > div:not(.cu-container),  #rhs:not(.stylized-sidebar) > g-section-with-header, #rhs:not(.stylized-sidebar) > span > div {
+    padding-left: var(--gtiles-tile-padding) !important;
+}
+
 #g-tiles-sidebar.stylized-sidebar > span > div, #g-tiles-sidebar.stylized-sidebar > span > g-section-with-header {
     background-color: var(--gtiles-tile-background);
     border: var(--gtiles-tile-border);

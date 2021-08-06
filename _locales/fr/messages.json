@@ -168,7 +168,7 @@
         "description": ""
     },
     "moveSuggestionsToBottomTooltip": {
-        "message": "Diverses suggestions de recherche seront affichées après les résultats réguliers",
+        "message": "Les widgets de recherche et les suggestions seront affichés après les résultats réguliers",
         "description": ""
     },
     "navigateWithKeyboard": {

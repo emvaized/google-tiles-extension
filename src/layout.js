@@ -47,7 +47,6 @@ function setLayout() {
             mainResults.unshift(addsBlock);
         }
 
-
         /// Detect or create sidebar container
         var sidebarContainer = document.getElementById('rhs');
 
@@ -218,6 +217,8 @@ function setLayout() {
             }
         })
 
+        if (configs.applyStyleToWidgets == false)
+            sidebarNewChildrenContainer.style.paddingLeft = '12px';
         sidebarContainer.appendChild(sidebarNewChildrenContainer);
         regularResultsColumn.appendChild(regularResultsNewChildrenContainer);
 
@@ -248,10 +249,17 @@ function setLayout() {
                         } catch (e) { console.log(e); }
                     } else { break; }
                 }
-                if (configs.populatedSidebarResultsOnTop)
+                if (configs.populatedSidebarResultsOnTop) {
                     sidebarContainer.prepend(sidebarMovedRegularResultsContainer);
-                else
+                }
+                else {
+                    /// Add spacing on top
+                    const spacing = document.createElement('div');
+                    spacing.style.height = `${configs.externalPadding}px`;
+                    sidebarMovedRegularResultsContainer.prepend(spacing);
+
                     sidebarContainer.appendChild(sidebarMovedRegularResultsContainer);
+                }
             }, 1);
 
 
