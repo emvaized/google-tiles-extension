@@ -254,9 +254,9 @@ function setLayout() {
                 }
                 else {
                     /// Add spacing on top
-                    const spacing = document.createElement('div');
-                    spacing.style.height = `${configs.externalPadding}px`;
-                    sidebarMovedRegularResultsContainer.prepend(spacing);
+                    // const spacing = document.createElement('div');
+                    // spacing.style.height = `${configs.externalPadding}px`;
+                    // sidebarMovedRegularResultsContainer.prepend(spacing);
 
                     sidebarContainer.appendChild(sidebarMovedRegularResultsContainer);
                 }

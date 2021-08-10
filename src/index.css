@@ -137,10 +137,11 @@ g-more-link > a{
     box-sizing: border-box !important;
 }
 
-/* Fix style for '.g' cards wrapped in another '.g' card (grid links result) */
+/* Revert styles for '.g' cards wrapped in another '.g' card (grid links result) */
 .g .g {
     all:revert;
     margin: 0px !important;
+    padding: 0px !important;
     box-sizing: border-box;
 }
 

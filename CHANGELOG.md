@@ -1,11 +1,11 @@
-#2.2.9
+#2.3.0
 - Improved 'populate sidebar with regular results' functionality
 - Added option to configure populated results position (top/bottom)
 - Improved favicons search
 - Added loading spinner when loading favicons
 - Favicons are now aligned with title
 - Fixed for 'Apply style to widgets' not disabling correctly
-- Performance and layout improvements
+- Various performance and layout improvements
 
 #2.2.8 
 - Improved short header calculation
