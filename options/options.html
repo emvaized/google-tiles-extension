@@ -57,16 +57,19 @@
                   <div class='option'> <label><input type="color" id="tileBackgroundColor">
                         </label>
                   </div>
+                  <hr />
                   <div class='option'> <label><input type="checkbox" id="addTileBorder"> </label> </div>
                   <div class='option'> <label><input type="color" id="borderColor"> </label> </div>
                   <div class='option'> <label> <input type="number" min='1' max='10' id="focusedBorderWidth"> </label>
                   </div>
-                  <div class='option'> <label><input type="checkbox" id="shadowEnabled"> </label> </div>
-                  <div class='option'> <label><input type="number" step='0.05' min='0.0' max='1.0' id="shadowOpacity">
-                        </label> </div>
                   <div class='option tooltip'> <label><input type="checkbox" id="colorizeBorderAfterFavicon"> </label>
                         <span id="colorizeBorderAfterFaviconTooltip" class="tooltiptext"> </span>
                   </div>
+                  <hr />
+                  <div class='option'> <label><input type="checkbox" id="shadowEnabled"> </label> </div>
+                  <div class='option'> <label><input type="number" step='0.05' min='0.0' max='1.0' id="shadowOpacity">
+                        </label> </div>
+
             </div>
 
             <h3 class='collapsible-header' id='faviconsHeader'></h3>
@@ -78,6 +81,7 @@
                   </div>
                   <div class='option'> <label><input type="checkbox" id="showFullDomainOnHover">
                         </label></div>
+                  <hr />
                   <div class='option'> <label><input type="checkbox" id="disableTitleUnderlineOnHover">
                         </label></div>
                   <div class='option'> <label><input type="checkbox" id="highlightTitleOnHover">
@@ -95,6 +99,7 @@
                   </div>
                   <div class='option'> <label><input type="checkbox" id="changeCursorOverTile">
                         </label></div>
+                  <hr />
                   <div class='option'> <label><input type="checkbox" id="scaleUpImageResultsOnHover">
                         </label></div>
                   <div class='option'> <label><input type="checkbox" id="scrollHorizontalViewOnHover">
@@ -116,6 +121,13 @@
                               bottom of page</span>
                   </div>
                   <br />
+                  <div class='option'> <label><input type="checkbox" id="applyStyleToWidgets"> </label>
+                  </div>
+                  <div class='option tooltip'>
+                        <label><input type="checkbox" id="moveNavbarToSearchbar"> </label>
+                        <span id="moveNavbarToSearchbarTooltip" class="tooltiptext">Experimental: may look bad in
+                              non-maximized window</span>
+                  </div>
                   <div class='option tooltip'>
                         <label><input type="checkbox" id="tryToPlaceWidgetsOnTheSide">
                         </label>
@@ -129,19 +141,11 @@
                   <div class='option'> <label><input type="number" min='100' max='1000' step='50' id="sidebarWidth">
                         </label>
                   </div>
-                  <div class='option'> <label><input type="checkbox" id="applyStyleToWidgets"> </label>
-                  </div>
-
-                  <!-- <div class='option tooltip'> <label><input type="checkbox" id="disableExpandAnimations"> </label>
-                        <span id="disableExpandAnimationsHint" class="tooltiptext"></span>
-                  </div> -->
 
 
-                  <div class='option tooltip'>
-                        <label><input type="checkbox" id="moveNavbarToSearchbar"> </label>
-                        <span id="moveNavbarToSearchbarTooltip" class="tooltiptext">Experimental: may look bad in
-                              non-maximized window</span>
-                  </div>
+
+
+
             </div>
 
             <h3 class='collapsible-header' id='keyboardNavigationHeader'></h3>
@@ -156,6 +160,7 @@
                   <div class='option'> <label> <input type="checkbox" id="centerizeSelectedResult"> </label> </div>
                   <div class='option'> <label> <input type="checkbox" id="keyboardCycle"> </label> </div>
                   <div class='option'> <label> <input type="checkbox" id="sideArrowsFocusSidebarFirst"> </label> </div>
+                  <hr />
                   <div class='option '><label><input type="checkbox" id="focusedTileDifferentBorder"></label>
                   </div>
                   <div class='option'> <label> <input type="color" id="keyboardFocusBorderColor">
@@ -171,7 +176,7 @@
                         </label>
                   </div>
 
-                  <br />
+                  <hr />
                   <div class='option tooltip'> <label><input type="checkbox" id="numericNavigation">
                         </label>
                         <span id="numericNavigationTooltip" class="tooltiptext">Pressing '1' will focus first search

@@ -5,6 +5,7 @@
 - Added loading spinner when loading favicons
 - Favicons are now aligned with title
 - Fixed for 'Apply style to widgets' not disabling correctly
+- Small fixes for extension settings
 - Various performance and layout improvements
 
 #2.2.8 

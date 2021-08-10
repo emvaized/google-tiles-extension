@@ -69,7 +69,7 @@ h4 {
  .tooltip {
     position: relative;
     display: inline-block;
-    border-bottom: 1px dotted grey; /* If you want dots under the hoverable text */
+    border-bottom: 0.5px dotted grey; /* If you want dots under the hoverable text */
   }
   
   /* Tooltip text */
@@ -118,11 +118,6 @@ h4 {
     margin-top: 9px;
     cursor: pointer;
   }
-
-  #footer-buttons {
-    /* display: flex; */
-    /* padding-top: 30px; */
-}
 
 button {
     margin-left: 6px;
