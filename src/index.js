@@ -32,6 +32,8 @@ var counterHintFocusColor = '#EA4335';
 var topBar;
 var tileTransition;
 
+var localDomain;
+
 function loadConfigs() {
   let configKeys = Object.keys(configs);
 
@@ -79,6 +81,7 @@ function init() {
   if (configs.tilesEnabled) {
 
     console.time('Google Tiles finished proccessing page in');
+    console.log('~~~')
 
     if (configs.moveNavbarToSearchbar)
       setTopBar();
@@ -88,6 +91,7 @@ function init() {
     // removeSearchbarShadow();
 
     try {
+      localDomain = window.location.href.substring(0, 30).split('/')[2];
       setLayout();
 
       // window.addEventListener('popstate', function () {

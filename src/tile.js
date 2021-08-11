@@ -120,7 +120,8 @@ function configureTile(tile) {
 
         /// Ignore clicks on dropdown buttons
         const accordion = tile.querySelector('g-accordion-expander');
-        if (accordion !== null && accordion !== undefined) { } else {
+        if (accordion !== null && accordion !== undefined) {
+        } else {
             /// Wrap tile with 'a' created element
             if (configs.wholeTileIsClickable && linkIsValid)
                 tile.wrap(wrapper);
@@ -243,7 +244,8 @@ function configureTileHeader(tile, url) {
                 domainForFavicon = url;
 
             /// Trying to load favicon from website
-            const googleFaviconUrl = `https://www.google.com/s2/favicons?sz=24&domain=` + domainForFavicon;
+            // const googleFaviconUrl = `https://www.google.com/s2/favicons?sz=24&domain=` + domainForFavicon;
+            const googleFaviconUrl = `https://${localDomain}/s2/favicons?sz=24&domain=` + domainForFavicon;
             const faviconKitFaviconUrl = `https://api.faviconkit.com/${domainForFavicon}/24`;
 
             /// Doesn't work because of CORS
@@ -259,6 +261,7 @@ function configureTileHeader(tile, url) {
             favicon.addEventListener('load', function (ev) {
                 if (favicon.naturalHeight == 16 && favicon.src == googleFaviconUrl) {
                     /// If Google is returning a 'globe', try to load from FaviconKit
+                    favicon.src = ''; /// reset 'globe' icon
                     favicon.src = faviconKitFaviconUrl;
                     return;
                 }

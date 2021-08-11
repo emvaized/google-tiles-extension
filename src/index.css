@@ -185,3 +185,9 @@ g-more-link > a{
     right: 12%;
     margin-left: 0;
 }
+
+/* Fix for Twitter card styling */
+.V0XQK {
+    top: 0 !important;
+    left: 0 !important;
+}

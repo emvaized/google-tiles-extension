@@ -1,3 +1,7 @@
+#2.3.1
+- Added support for more local Google domains
+- Layout fixes and improvements
+
 #2.3.0
 - Improved 'populate sidebar with regular results' functionality
 - Added option to configure populated results position (top/bottom)
