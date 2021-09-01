@@ -33,7 +33,7 @@ var configs = {
     "navigateWithKeyboard": true,
     "numbersNavigateTabs": false,
     "numericNavigation": true,
-    "populateSidebarWithRegularResults": true,
+    "populateSidebarWithRegularResults": false,
     "populatedSidebarResultsOnTop": false,
     "scaleUpFocusedResult": false,
     "scaleUpFocusedResultAmount": 1.05,

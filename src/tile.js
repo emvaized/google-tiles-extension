@@ -198,122 +198,129 @@ function configureTile(tile) {
 }
 
 function configureTileHeader(tile, url) {
-    const domain = tile.querySelector(domainNameSelector);
+    // const domain = tile.querySelector(domainNameSelector);
+    const domains = tile.querySelectorAll(domainNameSelector);
 
-    if (domain != null && domain !== undefined) {
+    if (domains != null && domains !== undefined)
+        domains.forEach(domain => {
+            if (domain != null && domain !== undefined) {
 
-        /// Vertically align domain
-        domain.style.verticalAlign = 'baseline';
+                /// Vertically align domain
+                domain.style.verticalAlign = 'baseline';
 
-        /// Replace domain with simplier version
-        if (configs.simplifyDomain) {
-            try {
-                let titleText = domain.textContent.split('/')[2].split('›')[0];
-                const domainContent = titleText.split('.');
+                /// Replace domain with simplier version
+                if (configs.simplifyDomain) {
+                    try {
+                        let titleText = domain.textContent.split('/')[2].split('›')[0];
+                        const domainContent = titleText.split('.');
 
-                if (domainContent.length == 2) {
-                    titleText = domainContent[0];
-                } else if (domainContent.length == 3) {
-                    // titleText = domainContent[1] == 'com' || domainContent[1] == 'net' || domainContent[0].length > domainContent[1].length ? domainContent[0] : domainContent[1];
-                    titleText = domainContent[1].length > domainContent[0].length ?
-                        domainContent[1] == 'google' && domainContent[0] != 'www' ? domainContent[0] : domainContent[1]
-                        :
-                        domainContent[0] == 'www' || domainContent[0] == 'news' ? domainContent[1] : domainContent[0];
+                        if (domainContent.length == 2) {
+                            titleText = domainContent[0];
+                        } else if (domainContent.length == 3) {
+                            // titleText = domainContent[1] == 'com' || domainContent[1] == 'net' || domainContent[0].length > domainContent[1].length ? domainContent[0] : domainContent[1];
+                            titleText = domainContent[1].length > domainContent[0].length ?
+                                domainContent[1] == 'google' && domainContent[0] != 'www' ? domainContent[0] : domainContent[1]
+                                :
+                                domainContent[0] == 'www' || domainContent[0] == 'news' ? domainContent[1] : domainContent[0];
 
-                } else {
-                    titleText = domain.textContent.replace(/.+\/\/|www.|\..+/g, '');
+                        } else {
+                            titleText = domain.textContent.replace(/.+\/\/|www.|\..+/g, '');
+                        }
+
+                        /// Add tooltip with full domain on hover
+                        if (configs.showFullDomainOnHover)
+                            domain.title = domain.textContent;
+                        const domainPathSpan = domain.querySelector('span');
+                        domain.textContent = titleText + (domainPathSpan == null ? '' : domainPathSpan.textContent);
+                    } catch (error) { console.log(error); }
                 }
 
-                /// Add tooltip with full domain on hover
-                if (configs.showFullDomainOnHover)
-                    domain.title = domain.textContent;
-                const domainPathSpan = domain.querySelector('span');
-                domain.textContent = titleText + (domainPathSpan == null ? '' : domainPathSpan.textContent);
-            } catch (error) { console.log(error); }
-        }
 
+                if (configs.addFavicons && url !== null && url !== undefined && url !== '' && (
+                    tile.className == regularResultClassName || tile.firstChild.className == regularResultClassName ||
+                    tile.className.substring(0, 2) == 'g ' || tile.firstChild.className.substring(0, 2) == 'g '
+                )) {
+                    const favicon = websiteFaviconPrototype.cloneNode(true);
 
-        if (configs.addFavicons && url !== null && url !== undefined && url !== '' && (
-            tile.className == regularResultClassName || tile.firstChild.className == regularResultClassName ||
-            tile.className.substring(0, 2) == 'g ' || tile.firstChild.className.substring(0, 2) == 'g '
-        )) {
-            const favicon = websiteFaviconPrototype.cloneNode(true);
+                    let domainForFavicon = url.split('/')[2];
+                    if (domainForFavicon == null || domainForFavicon == undefined)
+                        domainForFavicon = url;
 
-            let domainForFavicon = url.split('/')[2];
-            if (domainForFavicon == null || domainForFavicon == undefined)
-                domainForFavicon = url;
+                    /// Trying to load favicon from website
+                    // const googleFaviconUrl = `https://www.google.com/s2/favicons?sz=24&domain=` + domainForFavicon;
+                    const googleFaviconUrl = `https://${localDomain}/s2/favicons?sz=24&domain=` + domainForFavicon;
+                    const faviconKitFaviconUrl = `https://api.faviconkit.com/${domainForFavicon}/24`;
 
-            /// Trying to load favicon from website
-            // const googleFaviconUrl = `https://www.google.com/s2/favicons?sz=24&domain=` + domainForFavicon;
-            const googleFaviconUrl = `https://${localDomain}/s2/favicons?sz=24&domain=` + domainForFavicon;
-            const faviconKitFaviconUrl = `https://api.faviconkit.com/${domainForFavicon}/24`;
+                    /// Doesn't work because of CORS
+                    // const keewebFaciconUrl = `https://services.keeweb.info/favicon/${domainForFavicon}`; 
+                    // const ddGoFaviconUrl = 'https://icons.duckduckgo.com/ip2/' + domainForFavicon + '.ico'; 
+                    // const websiteFaviconUrl = 'https://' + domainForFavicon + '/' + 'favicon.ico';
 
-            /// Doesn't work because of CORS
-            // const keewebFaciconUrl = `https://services.keeweb.info/favicon/${domainForFavicon}`; 
-            // const ddGoFaviconUrl = 'https://icons.duckduckgo.com/ip2/' + domainForFavicon + '.ico'; 
-            // const websiteFaviconUrl = 'https://' + domainForFavicon + '/' + 'favicon.ico';
+                    favicon.addEventListener('error', function () {
+                        /// Fallback favicon
+                        favicon.src = faviconKitFaviconUrl;
+                    });
 
-            favicon.addEventListener('error', function () {
-                /// Fallback favicon
-                favicon.src = faviconKitFaviconUrl;
-            });
+                    favicon.addEventListener('load', function (ev) {
+                        if (favicon.naturalHeight == 16 && favicon.src == googleFaviconUrl) {
+                            /// If Google is returning a 'globe', try to load from FaviconKit
+                            favicon.src = ''; /// reset 'globe' icon
+                            favicon.src = faviconKitFaviconUrl;
+                            return;
+                        }
 
-            favicon.addEventListener('load', function (ev) {
-                if (favicon.naturalHeight == 16 && favicon.src == googleFaviconUrl) {
-                    /// If Google is returning a 'globe', try to load from FaviconKit
-                    favicon.src = ''; /// reset 'globe' icon
-                    favicon.src = faviconKitFaviconUrl;
-                    return;
-                }
+                        /// Remove the loading spinner
+                        favicon.classList.remove('favicon-loading-spinner');
 
-                /// Remove the loading spinner
-                favicon.classList.remove('favicon-loading-spinner');
+                        /// Get tile border color from favicon's dominant color
+                        if (configs.colorizeBorderAfterFavicon) {
+                            const faviconColor = getFaviconColor(favicon);
+                            if (faviconColor !== null && faviconColor !== undefined) {
 
-                /// Get tile border color from favicon's dominant color
-                if (configs.colorizeBorderAfterFavicon) {
-                    const faviconColor = getFaviconColor(favicon);
-                    if (faviconColor !== null && faviconColor !== undefined) {
+                                if (faviconColor !== '#ffffff')
+                                    tile.style.borderColor = faviconColor;
+                            }
+                        }
+                    });
 
-                        if (faviconColor !== '#ffffff')
-                            tile.style.borderColor = faviconColor;
+                    favicon.src = googleFaviconUrl;
+                    domain.parentNode.prepend(favicon);
+
+                    /// Transparent image to test spinner
+                    // favicon.src = 'https://upload.wikimedia.org/wikipedia/commons/8/89/HD_transparent_picture.png'; 
+
+                    /// Fix positioning
+
+                    /// Detect tile with bottom line of links
+                    if (tile.className !== 'g') {
+                        domain.parentNode.style.position = 'absolute';
+                        domain.parentNode.style.top = `${configs.innerPadding}px`;
+                        domain.parentNode.style.left = `${configs.innerPadding}px`;
                     }
+
+                    /// Fix dropdown button position
+                    const dropdownMenu = tile.querySelector(dropdownMenuSelector);
+                    if (dropdownMenu != null) {
+                        domain.appendChild(dropdownMenu);
+                    }
+
+                    /// Fix 'translate page' button position
+                    const translatePageButton = tile.querySelector(translatePageButtonSelector);
+                    if (translatePageButton != null && translatePageButton !== undefined) {
+                        if (dropdownMenu != null) {
+                            dropdownMenu.appendChild(translatePageButton);
+                        }
+                        else {
+                            domain.appendChild(translatePageButton);
+                        }
+                    }
+
+
                 }
-            });
 
-            favicon.src = googleFaviconUrl;
-            domain.parentNode.prepend(favicon);
-
-            /// Transparent image to test spinner
-            // favicon.src = 'https://upload.wikimedia.org/wikipedia/commons/8/89/HD_transparent_picture.png'; 
-
-            /// Fix positioning
-
-            /// Detect tile with bottom line of links
-            if (tile.className !== 'g') {
-                domain.parentNode.style.position = 'absolute';
-                domain.parentNode.style.top = `${configs.innerPadding}px`;
-                domain.parentNode.style.left = `${configs.innerPadding}px`;
             }
-
-            /// Fix dropdown button position
-            const dropdownMenu = tile.querySelector(dropdownMenuSelector);
-            if (dropdownMenu != null) {
-                domain.appendChild(dropdownMenu);
-            }
-
-            /// Fix 'translate page' button position
-            const translatePageButton = tile.querySelector(translatePageButtonSelector);
-            if (translatePageButton != null && translatePageButton !== undefined) {
-                if (dropdownMenu != null) {
-                    dropdownMenu.appendChild(translatePageButton);
-                }
-                else {
-                    domain.appendChild(translatePageButton);
-                }
-            }
+        });
 
 
-        }
 
-    }
 }

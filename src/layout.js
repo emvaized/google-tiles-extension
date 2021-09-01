@@ -224,42 +224,44 @@ function setLayout() {
         regularResultsColumn.appendChild(regularResultsNewChildrenContainer);
 
         /// Populate sidebar with regular results
-        if (configs.populateSidebarWithRegularResults)
+        if (configs.populateSidebarWithRegularResults == true)
             setTimeout(function () {
-                sidebarHeight = sidebarContainer.clientHeight;
+                if (configs.populateSidebarWithRegularResults !== false) {
+                    sidebarHeight = sidebarContainer.clientHeight;
 
-                const regularResultsChildrenArray = regularResultsColumn.children;
-                const l = regularResultsChildrenArray.length;
-                const sidebarMovedRegularResultsContainer = document.createElement('span');
+                    const regularResultsChildrenArray = regularResultsColumn.children;
+                    const l = regularResultsChildrenArray.length;
+                    const sidebarMovedRegularResultsContainer = document.createElement('span');
 
-                for (let i = l; i > -1; i--) {
-                    const child = regularResultsChildrenArray[i];
-                    if (child == undefined) continue;
+                    for (let i = l; i > -1; i--) {
+                        const child = regularResultsChildrenArray[i];
+                        if (child == undefined) continue;
 
-                    const childHeight = child.getBoundingClientRect().height;
-                    if (childHeight == 0.0) continue;
+                        const childHeight = child.getBoundingClientRect().height;
+                        if (childHeight == 0.0) continue;
 
-                    // if (sidebarHeight + childHeight <= regularResultsColumn.scrollHeight - document.getElementById('footcnt').clientHeight) {
-                    if (sidebarHeight + childHeight <= regularResultsColumn.scrollHeight - 200) {
-                        try {
-                            sidebarHeight = sidebarHeight + childHeight;
-                            sidebarMovedRegularResultsContainer.prepend(child);
+                        // if (sidebarHeight + childHeight <= regularResultsColumn.scrollHeight - document.getElementById('footcnt').clientHeight) {
+                        if (sidebarHeight + childHeight <= regularResultsColumn.scrollHeight - 200) {
+                            try {
+                                sidebarHeight = sidebarHeight + childHeight;
+                                sidebarMovedRegularResultsContainer.prepend(child);
 
-                            if (child.firstChild != null)
-                                child.firstChild.classList.add('nofullwidth'); /// override 'width: 100%'
-                        } catch (e) { console.log(e); }
-                    } else { break; }
-                }
-                if (configs.populatedSidebarResultsOnTop) {
-                    sidebarContainer.prepend(sidebarMovedRegularResultsContainer);
-                }
-                else {
-                    /// Add spacing on top
-                    // const spacing = document.createElement('div');
-                    // spacing.style.height = `${configs.externalPadding}px`;
-                    // sidebarMovedRegularResultsContainer.prepend(spacing);
+                                if (child.firstChild != null)
+                                    child.firstChild.classList.add('nofullwidth'); /// override 'width: 100%'
+                            } catch (e) { console.log(e); }
+                        } else { break; }
+                    }
+                    if (configs.populatedSidebarResultsOnTop) {
+                        sidebarContainer.prepend(sidebarMovedRegularResultsContainer);
+                    }
+                    else {
+                        /// Add spacing on top
+                        // const spacing = document.createElement('div');
+                        // spacing.style.height = `${configs.externalPadding}px`;
+                        // sidebarMovedRegularResultsContainer.prepend(spacing);
 
-                    sidebarContainer.appendChild(sidebarMovedRegularResultsContainer);
+                        sidebarContainer.appendChild(sidebarMovedRegularResultsContainer);
+                    }
                 }
             }, 1);
 

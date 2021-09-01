@@ -38,7 +38,7 @@ function loadConfigs() {
   let configKeys = Object.keys(configs);
 
   chrome.storage.local.get(
-    configKeys, function (value) {
+    configKeys, async function (value) {
       // configs.tilesEnabled = value.tilesEnabled ?? true;
 
       /// load configs
@@ -49,14 +49,14 @@ function loadConfigs() {
           configs[key] = value[key];
       }
 
+      if (document.body == null) await new Promise(resolve => setTimeout(resolve, 1));
+
       document.body.style.setProperty('--gtiles-tile-margin', configs.tilesEnabled ? `0px 0px ${configs.externalPadding}px` : '0px 0px 30px 0px');
       document.body.style.setProperty('--gtiles-topbar-max-height', configs.tilesEnabled && configs.moveNavbarToSearchbar ? `${paddingWhenNavbarMoved}px` : 'unset');
 
       if (configs.tilesEnabled) {
-
         tileTransition = `background-color ${configs.hoverTransitionDuration}ms ease-out`
 
-        /// set styles
         document.body.style.setProperty('--gtiles-tile-background', configs.addTileBackground ? `${configs.tileBackgroundColor}` : '');
         document.body.style.setProperty('--gtiles-tile-border', `solid ${configs.focusedBorderWidth}px ${configs.addTileBorder ? configs.borderColor : 'transparent'}`);
         document.body.style.setProperty('--gtiles-tile-border-radius', `${configs.borderRadius}px`);

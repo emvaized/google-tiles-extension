@@ -1,3 +1,8 @@
+#2.3.2
+- Fix non-processed headers for 'g' card wrapped in another 'g' card
+- Fix for 'populate sidebar with regular results' being always on
+- Other small fixes
+
 #2.3.1
 - Added support for more local Google domains
 - Layout fixes and improvements
