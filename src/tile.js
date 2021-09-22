@@ -12,44 +12,16 @@ function configureTile(tile) {
     if (tile.parentNode && tile.parentNode.tagName == 'A') return; /// Don't style the same tile twice
 
     /// Create 'a' wrapper
-    if (linkWrapperPrototype.style.cursor == null || linkWrapperPrototype.style.cursor == undefined) linkWrapperPrototype.style.cursor = configs.changeCursorOverTile ? 'pointer' : 'unset';
+    if (linkWrapperPrototype.style.cursor == null || linkWrapperPrototype.style.cursor == undefined)
+        linkWrapperPrototype.style.cursor = configs.changeCursorOverTile ? 'pointer' : 'unset';
     const wrapper = linkWrapperPrototype.cloneNode(true);
 
     /// Set url for 'a' wrapper 
     var url;
-    if (tile.className == regularResultClassName || tile.firstChild.className == regularResultClassName) {
+    if (tile.className == regularResultClassName || tile.firstChild.className == regularResultClassName || tile.className.toLowerCase()[0] == 'g') {
         /// For regular result use first found link inside element
         url = tile.querySelector('a').href;
-    } else {
-        /// For search widget, use the first found 'wikipedia' link - otherwise, the last found link
-        // try {
-        //     var links = tile.querySelectorAll('a');
-        //     for (i in links) {
-        //         console.log(i);
-        //         var linkItem = links[i];
-
-        //         if (linkItem.href !== undefined && !linkItem.href.includes('webcache.googleusercontent') && !linkItem.className.includes('fl ')) {
-        //             if (linkItem.href.includes('wikipedia.org')) {
-        //                 url = linkItem.href;
-        //                 break;
-        //             } else if (i == links.length - 1) {
-        //                 url = linkItem.href;
-        //             }
-        //         }
-        //     }
-
-        //     console.log('~~~')
-
-        //     /// If failed, use the first found link
-        //     if (url == null || url == undefined || url == '') {
-        //         var firstLink = tile.querySelector('a');
-        //         if (firstLink !== null)
-        //             url = firstLink.href;
-        //         else url = '';
-        //     }
-        // } catch (error) { console.log('Google Tiles error: ' + error); }
     }
-
 
     /// Don't wrap if calculated link is the same as url + '#'
     const linkIsValid = url !== null && url !== undefined && url !== window.location.href + '#';
@@ -64,28 +36,8 @@ function configureTile(tile) {
             title.style.textDecoration = 'none'
 
         /// Disable link underline for H3 headers
-        if (configs.disableTitleUnderlineOnHover) {
-            wrapper.classList.add('remove-text-decoration');
-            // var title = tile.querySelector('h3');
-            // if (title !== null)
-            //     title.style.textDecoration = 'none';
-
-            // var titles = tile.querySelectorAll('h3');
-            // titles.forEach(function (title) {
-            //     title.style.textDecoration = 'none';
-            // })
-        }
+        if (configs.disableTitleUnderlineOnHover) wrapper.classList.add('remove-text-decoration');
     }
-
-    /// Get result's full title
-    // try {
-    //   if (titles !== undefined && titles[0] !== undefined && titles[0].textContent.endsWith('...') && url !== null && url !== undefined && url !== '')
-    //     getResultFullTilte(url, titles[0]);
-    // } catch (e) {
-    //   console.log('Error during adding on-hover full title:');
-    //   console.log(e);
-    // }
-
 
     /// Set 'on hover' styling for each tile
     var originalTitleColor;

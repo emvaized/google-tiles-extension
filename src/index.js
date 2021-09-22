@@ -1,7 +1,7 @@
 /// CSS selectors
 var regularResultClassName = 'g';
 var searchFieldSelector = `[name = 'q']`;
-var domainNameSelector = `cite`;
+var domainNameSelector = 'cite';
 var dropdownMenuSelector = `[class='action-menu']`;
 var translatePageButtonSelector = `[class*='fl ']`;
 var columnWithRegularResultsId = 'rso';
