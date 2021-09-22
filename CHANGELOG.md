@@ -1,3 +1,7 @@
+#2.3.3
+- Added 'tile opacity' parameter
+- Removed link underline for grid-like search results
+
 #2.3.2
 - Fix non-processed headers for 'g' card wrapped in another 'g' card
 - Fix for 'populate sidebar with regular results' being always on

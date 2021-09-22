@@ -16,6 +16,10 @@
     color: black;outline: none !important;text-decoration: none !important;text-decoration-color: transparent !important; border: 0 !important;
 }
 
+.remove-text-decoration h3{
+    text-decoration: none !important;
+}
+
 /* Focused tile dot indicator */
 .g-tile-focused-tile-dot {
     height: 10px; width: 10px; border-radius: 50%; float: left; position: relative; left: -40px;
@@ -190,4 +194,8 @@ g-more-link > a{
 .V0XQK {
     top: 0 !important;
     left: 0 !important;
+}
+
+g-inner-card {
+    background-color: transparent !important;
 }

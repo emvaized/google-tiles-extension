@@ -32,6 +32,9 @@ var counterHintFocusColor = '#EA4335';
 var topBar;
 var tileTransition;
 
+var tileBackgroundColor;
+var hoverBackgroundColor;
+
 var localDomain;
 
 function loadConfigs() {
@@ -57,7 +60,18 @@ function loadConfigs() {
       if (configs.tilesEnabled) {
         tileTransition = `background-color ${configs.hoverTransitionDuration}ms ease-out`
 
-        document.body.style.setProperty('--gtiles-tile-background', configs.addTileBackground ? `${configs.tileBackgroundColor}` : '');
+        try {
+          let color = hexToRgb(configs.tileBackgroundColor);
+          tileBackgroundColor = `rgba(${color.red}, ${color.green}, ${color.blue},${configs.tileBackgroundOpacity})`;
+
+          let hColor = hexToRgb(configs.hoverBackground);
+          hoverBackgroundColor = `rgba(${hColor.red}, ${hColor.green}, ${hColor.blue}, ${configs.tileBackgroundOpacity})`;
+        } catch (e) {
+          tileBackgroundColor = configs.tileBackgroundColor;
+          hoverBackgroundColor = configs.hoverBackground;
+        }
+
+        document.body.style.setProperty('--gtiles-tile-background', configs.addTileBackground ? `${tileBackgroundColor}` : '');
         document.body.style.setProperty('--gtiles-tile-border', `solid ${configs.focusedBorderWidth}px ${configs.addTileBorder ? configs.borderColor : 'transparent'}`);
         document.body.style.setProperty('--gtiles-tile-border-radius', `${configs.borderRadius}px`);
         document.body.style.setProperty('--gtiles-transition', tileTransition);

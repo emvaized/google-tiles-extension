@@ -59,11 +59,17 @@ function configureTile(tile) {
         || tile.className == shopPageCardClass) {
         wrapper.href = url;
 
+        var title = tile.querySelector('h3');
+        if (title !== null)
+            title.style.textDecoration = 'none'
+
         /// Disable link underline for H3 headers
         if (configs.disableTitleUnderlineOnHover) {
-            var title = tile.querySelector('h3');
-            if (title !== null)
-                title.style.textDecoration = 'none';
+            wrapper.classList.add('remove-text-decoration');
+            // var title = tile.querySelector('h3');
+            // if (title !== null)
+            //     title.style.textDecoration = 'none';
+
             // var titles = tile.querySelectorAll('h3');
             // titles.forEach(function (title) {
             //     title.style.textDecoration = 'none';
@@ -88,7 +94,7 @@ function configureTile(tile) {
 
         tile.addEventListener('mouseover', function () {
             // if (addBackground)
-            this.style.backgroundColor = configs.hoverBackground;
+            this.style.backgroundColor = hoverBackgroundColor;
             if (configs.highlightTitleOnHover && title !== undefined && linkIsValid) {
                 originalTitleColor = title.style.color;
                 title.style.color = configs.titleHoverColor;
@@ -97,7 +103,7 @@ function configureTile(tile) {
 
 
         tile.addEventListener('mouseout', function () {
-            this.style.backgroundColor = configs.addTileBackground ? configs.tileBackgroundColor : 'transparent';
+            this.style.backgroundColor = configs.addTileBackground ? tileBackgroundColor : 'transparent';
 
             // regular link color: #1A0DAB;
             if (configs.highlightTitleOnHover && title !== undefined && linkIsValid)
