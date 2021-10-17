@@ -1,3 +1,6 @@
+#2.3.4
+- Small css improvements
+
 #2.3.3
 - Added 'tile opacity' parameter
 - Removed link underline for grid-like search results

@@ -13,7 +13,8 @@
 
 /* Regular search result link wrapper */
 #g-tile {
-    color: black;outline: none !important;text-decoration: none !important;text-decoration-color: transparent !important; border: 0 !important;
+    /* color: black; */
+    outline: none !important;text-decoration: none !important;text-decoration-color: transparent !important; border: 0 !important;
 }
 
 .remove-text-decoration h3{
@@ -197,5 +198,10 @@ g-more-link > a{
 }
 
 g-inner-card {
+    background-color: transparent !important;
+}
+
+/* Fix for hover bg of 'short answer from network' card */
+.kp-blk {
     background-color: transparent !important;
 }
