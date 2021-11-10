@@ -210,23 +210,23 @@ function configureTileHeader(tile, url) {
                     const faviconKitFaviconUrl = `https://api.faviconkit.com/${domainForFavicon}/24`;
 
                     /// Doesn't work because of CORS
-                    // const keewebFaciconUrl = `https://services.keeweb.info/favicon/${domainForFavicon}`; 
-                    // const ddGoFaviconUrl = 'https://icons.duckduckgo.com/ip2/' + domainForFavicon + '.ico'; 
+                    // const keewebFaciconUrl = `https://services.keeweb.info/favicon/${domainForFavicon}`;
+                    // const ddGoFaviconUrl = 'https://icons.duckduckgo.com/ip2/' + domainForFavicon + '.ico';
                     // const websiteFaviconUrl = 'https://' + domainForFavicon + '/' + 'favicon.ico';
 
                     favicon.addEventListener('error', function () {
                         /// Fallback favicon
                         // favicon.src = faviconKitFaviconUrl;
-                        favicon.src = googleFaviconUrl;
+                        // favicon.src = googleFaviconUrl;
                     });
 
                     favicon.addEventListener('load', function (ev) {
-                        if (favicon.naturalHeight == 16 && favicon.src == googleFaviconUrl) {
-                            /// If Google is returning a 'globe', try to load from FaviconKit
-                            favicon.src = ''; /// reset 'globe' icon
-                            favicon.src = faviconKitFaviconUrl;
-                            return;
-                        }
+                        // if (favicon.naturalHeight == 16 && favicon.src == googleFaviconUrl) {
+                        //     /// If Google is returning a 'globe', try to load from FaviconKit
+                        //     favicon.src = ''; /// reset 'globe' icon
+                        //     favicon.src = faviconKitFaviconUrl;
+                        //     return;
+                        // }
 
                         /// Remove the loading spinner
                         favicon.classList.remove('favicon-loading-spinner');
