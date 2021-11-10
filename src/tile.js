@@ -216,7 +216,8 @@ function configureTileHeader(tile, url) {
 
                     favicon.addEventListener('error', function () {
                         /// Fallback favicon
-                        favicon.src = faviconKitFaviconUrl;
+                        // favicon.src = faviconKitFaviconUrl;
+                        favicon.src = googleFaviconUrl;
                     });
 
                     favicon.addEventListener('load', function (ev) {

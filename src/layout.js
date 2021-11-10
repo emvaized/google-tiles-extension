@@ -83,23 +83,21 @@ function setLayout() {
 
                 } else {
                     // const wrappedCard = result.querySelector(`[class='g'], [class^='g ']`);
-                    const wrappedCard = result.querySelector(`.g`);
+                    const wrappedCard = result.querySelector('.g');
 
-                    if (wrappedCard !== null) {
+                    if (wrappedCard !== null && wrappedCard !== undefined) {
                         /// Regular result wrapped in div
 
-                        if (wrappedCard !== null && wrappedCard !== undefined) {
-                            result.style.margin = '0px';
+                        result.style.margin = '0px';
 
-                            const className = wrappedCard.className;
-                            if (className[0] == 'g' && (className[1] == undefined || className[1] == ' ')) {
-                                regularResultsColumn.insertBefore(wrappedCard, result);
+                        const className = wrappedCard.className;
+                        if (className[0] == 'g' && (className[1] == undefined || className[1] == ' ')) {
+                            regularResultsColumn.insertBefore(wrappedCard, result);
 
-                                if (configs.addFavicons || configs.simplifyDomain)
-                                    configureTileHeader(wrappedCard, wrappedCard.querySelector('a').href);
+                            if (configs.addFavicons || configs.simplifyDomain)
+                                configureTileHeader(wrappedCard, wrappedCard.querySelector('a').href);
 
-                                configureTile(wrappedCard);
-                            }
+                            configureTile(wrappedCard);
                         }
 
                         // let ch = result.children;
