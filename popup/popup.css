@@ -25,8 +25,8 @@ input {
 }
 
 .enabled-checkbox, .checkboxLabel {
-    padding: 6px 0px 6px 0px;
-    text-align: center;
+    padding: 3px 0px 6px 0px;
+    /* text-align: center; */
     cursor: pointer;
 }
 

@@ -1,3 +1,8 @@
+#2.3.5
+- Removed FaviconKit favicons
+- Fixed some configs not working + not affecting tile preview on options page
+- Other small fixes and improvements
+
 #2.3.4
 - Small css improvements
 
