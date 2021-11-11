@@ -14,7 +14,7 @@
 /* Regular search result link wrapper */
 #g-tile {
     /* color: black; */
-    outline: none !important;text-decoration: none !important;text-decoration-color: transparent !important; border: 0 !important;
+    outline: none !important;text-decoration: none !important;text-decoration-color: transparent !important; border: 0 !important; position: relative;
 }
 
 .remove-text-decoration h3{
@@ -22,8 +22,12 @@
 }
 
 /* Focused tile dot indicator */
+
+/* #g-tile:focus::before { */
+/* content: ""; */
 .g-tile-focused-tile-dot {
-    height: 10px; width: 10px; border-radius: 50%; float: left; position: relative; left: -40px;
+    height: 10px; width: 10px; border-radius: 50%; 
+    position: absolute; top: 60px; left: -40px;
 }
 
 /* Counter index hint */

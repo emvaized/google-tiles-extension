@@ -252,7 +252,6 @@ function setLayout() {
         }
 
         console.timeEnd('Google Tiles finished proccessing page in');
-
     }
 }
 

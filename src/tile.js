@@ -100,14 +100,14 @@ function configureTile(tile) {
                     wrapper.firstChild.style.zIndex = '2';
                 }
 
-                /// Add dot on the left
+                // // /// Add dot on the left
                 if (configs.addFocusedTileDot) {
                     dot = document.createElement('div');
                     dot.className = 'g-tile-focused-tile-dot';
                     dot.style.background = configs.keyboardFocusBorderColor;
                     dot.style.opacity = configs.focusedTileDotOpacity;
-                    dot.style.top = `-${tile.clientHeight / 2 + configs.externalPadding}px`;
-                    wrapper.appendChild(dot);
+                    // dot.style.top = `-${tile.clientHeight}px`;
+                    wrapper.prepend(dot);
                 }
             });
 
@@ -123,7 +123,8 @@ function configureTile(tile) {
 
                 if (configs.addFocusedTileDot) {
                     if (dot !== null && dot !== undefined)
-                        wrapper.removeChild(dot);
+                        // wrapper.removeChild(dot);
+                        dot.remove();
                 }
             });
         }
