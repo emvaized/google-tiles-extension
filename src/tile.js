@@ -31,7 +31,7 @@ function configureTile(tile) {
         || tile.className == shopPageCardClass) {
         wrapper.href = url;
 
-        const title = tile.querySelector('h3');
+        var title = tile.querySelector('h3');
         if (title !== null)
             title.style.textDecoration = 'none'
 
@@ -40,7 +40,7 @@ function configureTile(tile) {
     }
 
     /// Set 'on hover' styling for each tile
-    let originalTitleColor;
+    var originalTitleColor;
     if (tile.className[0] == 'g' || tile.className.includes(' g')
         || (tile.firstChild && tile.firstChild.tagName.toLowerCase() == newsPageCardSelector)) {
 
