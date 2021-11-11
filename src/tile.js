@@ -214,11 +214,11 @@ function configureTileHeader(tile, url) {
                     // const ddGoFaviconUrl = 'https://icons.duckduckgo.com/ip2/' + domainForFavicon + '.ico';
                     // const websiteFaviconUrl = 'https://' + domainForFavicon + '/' + 'favicon.ico';
 
-                    favicon.addEventListener('error', function () {
-                        /// Fallback favicon
-                        // favicon.src = faviconKitFaviconUrl;
-                        // favicon.src = googleFaviconUrl;
-                    });
+                    // favicon.addEventListener('error', function () {
+                    //     /// Fallback favicon
+                    //     favicon.src = faviconKitFaviconUrl;
+                    //     favicon.src = googleFaviconUrl;
+                    // });
 
                     favicon.addEventListener('load', function (ev) {
                         // if (favicon.naturalHeight == 16 && favicon.src == googleFaviconUrl) {
@@ -226,7 +226,12 @@ function configureTileHeader(tile, url) {
                         //     favicon.src = ''; /// reset 'globe' icon
                         //     favicon.src = faviconKitFaviconUrl;
                         //     return;
-                        // }
+                        // } 
+                        if (favicon.naturalHeight == 16) {
+                            /// If Google is returning default 'globe' icon, remove the favicon
+                            favicon.remove();
+                            return;
+                        }
 
                         /// Remove the loading spinner
                         favicon.classList.remove('favicon-loading-spinner');
@@ -244,11 +249,6 @@ function configureTileHeader(tile, url) {
 
                     favicon.src = googleFaviconUrl;
                     domain.parentNode.prepend(favicon);
-
-                    /// Transparent image to test spinner
-                    // favicon.src = 'https://upload.wikimedia.org/wikipedia/commons/8/89/HD_transparent_picture.png'; 
-
-                    /// Fix positioning
 
                     /// Detect tile with bottom line of links
                     if (tile.className !== 'g') {
@@ -273,8 +273,6 @@ function configureTileHeader(tile, url) {
                             domain.appendChild(translatePageButton);
                         }
                     }
-
-
                 }
 
             }
