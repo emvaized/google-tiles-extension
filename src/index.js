@@ -68,7 +68,7 @@ function loadConfigs() {
           hoverBackgroundColor = configs.hoverBackground;
         }
 
-        if (document.readyState === "complete") init();
+        if (document.readyState === "complete" || document.readyState === 'interactive') init();
         else document.addEventListener('DOMContentLoaded', init);
       }
     }

@@ -277,7 +277,4 @@ function configureTileHeader(tile, url) {
 
             }
         });
-
-
-
 }
