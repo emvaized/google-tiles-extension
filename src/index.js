@@ -77,7 +77,7 @@ function loadConfigs() {
 
 
 function init() {
-  console.log('initiating google tiles script');
+  // console.log('initiating google tiles script');
 
   if (configs.moveNavbarToSearchbar)
     setTopBar();

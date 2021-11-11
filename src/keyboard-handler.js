@@ -1,9 +1,9 @@
 
 function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHintsList) {
 
-    document.onkeydown = checkKey;
+    // document.onkeydown = checkKey;
     // document.addEventListener('keydown', (e) => checkKey(e))
-    // document.addEventListener('keyup', (e) => checkKey(e))
+    document.addEventListener('keydown', (e) => checkKey(e))
 
     var searchField = document.querySelector(searchFieldSelector);
     var averageRegularResultsPerWidget = 3.5;
@@ -171,7 +171,7 @@ function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHint
 
             if (isNaN(parsed)) { return; }
 
-            e.preventDefault();
+            // e.preventDefault();
 
             if (parsed == 0) {
                 /// Focus the search field
