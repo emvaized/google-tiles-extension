@@ -285,6 +285,7 @@ function setTopBar() {
     /// Some experiments to place category buttons to the right of searchbox
     if (topBar == null)
         topBar = document.getElementById(regularCategoryButtonsParentId);
+    if (topBar == null) return;
     const topBarParent = topBar.parentNode;
 
     topBarParent.removeChild(topBar);

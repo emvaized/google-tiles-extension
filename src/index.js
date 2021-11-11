@@ -52,10 +52,7 @@ function loadConfigs() {
           configs[key] = value[key];
       }
 
-      if (document.body == null) await new Promise(resolve => setTimeout(resolve, 1));
-
-      document.body.style.setProperty('--gtiles-tile-margin', configs.tilesEnabled ? `0px 0px ${configs.externalPadding}px` : '0px 0px 30px 0px');
-      document.body.style.setProperty('--gtiles-topbar-max-height', configs.tilesEnabled && configs.moveNavbarToSearchbar ? `${paddingWhenNavbarMoved}px` : 'unset');
+      // if (document.body == null) await new Promise(resolve => setTimeout(resolve, 1));
 
       if (configs.tilesEnabled) {
         tileTransition = `background-color ${configs.hoverTransitionDuration}ms ease-out`
@@ -71,20 +68,8 @@ function loadConfigs() {
           hoverBackgroundColor = configs.hoverBackground;
         }
 
-        document.body.style.setProperty('--gtiles-tile-background', configs.addTileBackground ? `${tileBackgroundColor}` : '');
-        document.body.style.setProperty('--gtiles-tile-border', `solid ${configs.focusedBorderWidth}px ${configs.addTileBorder ? configs.borderColor : 'transparent'}`);
-        document.body.style.setProperty('--gtiles-tile-border-radius', `${configs.borderRadius}px`);
-        document.body.style.setProperty('--gtiles-transition', tileTransition);
-        document.body.style.setProperty('--gtiles-tile-padding', `${configs.innerPadding}px`);
-        document.body.style.setProperty('--gtiles-tile-shadow', configs.shadowEnabled ? `0px 5px 15px rgba(0, 0, 0, ${configs.shadowOpacity})` : 'unset');
-        document.body.style.setProperty('--gtiles-tile-width', configs.widerTiles ? '100%' : 'unset');
-        document.body.style.setProperty('--gtiles-navbar-padding', `padding: 0px ${configs.innerPadding}px`);
-        document.body.style.setProperty('--gtiles-counter-color', countedHintColor);
-        document.body.style.setProperty('--gtiles-counter-opacity', configs.indexHintOpacity);
-        document.body.style.setProperty('--gtiles-sidebar-width', `${configs.sidebarWidth}px`);
-        document.body.style.setProperty('--gtiles-favicon-radius', `${configs.faviconRadius}px`);
-        document.body.style.setProperty('--gtiles-sidebar-child-width', `${configs.sidebarWidth - (configs.innerPadding * 2)}px`);
-        document.body.style.setProperty('--gtiles-tile-image-border-radius', `${configs.borderRadius}px ${configs.borderRadius}px 0px 0px`);
+        if (document.readyState === "complete") init();
+        else document.addEventListener('DOMContentLoaded', init);
       }
     }
   )
@@ -92,35 +77,48 @@ function loadConfigs() {
 
 
 function init() {
-  if (configs.tilesEnabled) {
+  console.log('initiating google tiles script');
 
-    console.time('Google Tiles finished proccessing page in');
-    // console.log('~~~')
+  if (configs.moveNavbarToSearchbar)
+    setTopBar();
 
-    if (configs.moveNavbarToSearchbar)
-      setTopBar();
+  // if (configs.hideNumberResultsRow)
+  //   hideNumberResultsRow();
+  // removeSearchbarShadow();
 
-    // if (configs.hideNumberResultsRow)
-    //   hideNumberResultsRow();
-    // removeSearchbarShadow();
+  try {
+    localDomain = window.location.href.substring(0, 30).split('/')[2];
+    setLayout();
 
-    try {
-      localDomain = window.location.href.substring(0, 30).split('/')[2];
-      setLayout();
+    // window.addEventListener('popstate', function () {
+    //   setLayout();
+    //   if (configs.debugMode) console.log('Google Tiles reproccessed updated page');
+    // });
 
-      // window.addEventListener('popstate', function () {
-      //   setLayout();
-      //   if (configs.debugMode) console.log('Google Tiles reproccessed updated page');
-      // });
-
-    } catch (error) {
-      console.log('Google Tiles error:');
-      console.log(error);
-    }
+  } catch (error) {
+    console.log('Google Tiles error:');
+    console.log(error);
   }
-}
 
-document.addEventListener('DOMContentLoaded', init);
+  document.body.style.setProperty('--gtiles-tile-background', configs.addTileBackground ? `${tileBackgroundColor}` : '');
+  document.body.style.setProperty('--gtiles-tile-border', `solid ${configs.focusedBorderWidth}px ${configs.addTileBorder ? configs.borderColor : 'transparent'}`);
+  document.body.style.setProperty('--gtiles-tile-border-radius', `${configs.borderRadius}px`);
+  document.body.style.setProperty('--gtiles-transition', tileTransition);
+  document.body.style.setProperty('--gtiles-tile-padding', `${configs.innerPadding}px`);
+  document.body.style.setProperty('--gtiles-tile-shadow', configs.shadowEnabled ? `0px 5px 15px rgba(0, 0, 0, ${configs.shadowOpacity})` : 'unset');
+  document.body.style.setProperty('--gtiles-tile-width', configs.widerTiles ? '100%' : 'unset');
+  document.body.style.setProperty('--gtiles-navbar-padding', `padding: 0px ${configs.innerPadding}px`);
+  document.body.style.setProperty('--gtiles-counter-color', countedHintColor);
+  document.body.style.setProperty('--gtiles-counter-opacity', configs.indexHintOpacity);
+  document.body.style.setProperty('--gtiles-sidebar-width', `${configs.sidebarWidth}px`);
+  document.body.style.setProperty('--gtiles-favicon-radius', `${configs.faviconRadius}px`);
+  document.body.style.setProperty('--gtiles-sidebar-child-width', `${configs.sidebarWidth - (configs.innerPadding * 2)}px`);
+  document.body.style.setProperty('--gtiles-tile-image-border-radius', `${configs.borderRadius}px ${configs.borderRadius}px 0px 0px`);
+  document.body.style.setProperty('--gtiles-tile-margin', configs.tilesEnabled ? `0px 0px ${configs.externalPadding}px` : '0px 0px 30px 0px');
+  document.body.style.setProperty('--gtiles-topbar-max-height', configs.tilesEnabled && configs.moveNavbarToSearchbar ? `${paddingWhenNavbarMoved}px` : 'unset');
+
+  console.time('Google Tiles finished proccessing page in');
+}
 
 loadConfigs();
 

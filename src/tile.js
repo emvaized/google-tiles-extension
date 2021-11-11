@@ -207,7 +207,7 @@ function configureTileHeader(tile, url) {
                     /// Trying to load favicon from website
                     // const googleFaviconUrl = `https://www.google.com/s2/favicons?sz=24&domain=` + domainForFavicon;
                     const googleFaviconUrl = `https://${localDomain}/s2/favicons?sz=24&domain=` + domainForFavicon;
-                    const faviconKitFaviconUrl = `https://api.faviconkit.com/${domainForFavicon}/24`;
+                    // const faviconKitFaviconUrl = `https://api.faviconkit.com/${domainForFavicon}/24`;
 
                     /// Doesn't work because of CORS
                     // const keewebFaciconUrl = `https://services.keeweb.info/favicon/${domainForFavicon}`;
