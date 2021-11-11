@@ -58,8 +58,8 @@
                   <div class='option'> <label><input type="color" id="tileBackgroundColor">
                         </label>
                   </div>
-                  <div class='option'><label> <input type="number" min="0.0" max="1.0" step="0.1"
-                                    id="tileBackgroundOpacity"></label>
+                  <div class='option'>
+                        <label> <input type="number" min="0.0" max="1.0" step="0.1" id="tileBackgroundOpacity"></label>
                   </div>
                   <hr />
                   <div class='option'> <label><input type="checkbox" id="addTileBorder"> </label> </div>
@@ -98,6 +98,11 @@
             <h3 class='collapsible-header' id='hoverHeader'></h3>
             <div class='collapsible-content'>
                   <div class='option'> <label> <input type="color" id="hoverBackground"> </label>
+                  </div>
+                  <div class='option'>
+                        <label>
+                              <input type="number" min="0.0" max="1.0" step="0.1" id="tileHoverBackgroundOpacity">
+                        </label>
                   </div>
                   <div class='option'> <label><input type="number" min='0' id="hoverTransitionDuration"> </label>
                   </div>
@@ -163,13 +168,14 @@
                   </div>
                   <div class='option'> <label> <input type="checkbox" id="centerizeSelectedResult"> </label> </div>
                   <div class='option'> <label> <input type="checkbox" id="keyboardCycle"> </label> </div>
-                  <div class='option'> <label> <input type="checkbox" id="sideArrowsFocusSidebarFirst"> </label> </div>
+                  <!-- <div class='option'> <label> <input type="checkbox" id="sideArrowsFocusSidebarFirst"> </label> </div> -->
                   <hr />
-                  <div class='option '><label><input type="checkbox" id="focusedTileDifferentBorder"></label>
-                  </div>
                   <div class='option'> <label> <input type="color" id="keyboardFocusBorderColor">
                         </label>
                   </div>
+                  <div class='option '><label><input type="checkbox" id="focusedTileDifferentBorder"></label>
+                  </div>
+
                   <div class='option '><label><input type="checkbox" id="addFocusedTileDot"></label>
                   </div>
                   <div class='option '><label><input type="number" step='0.1' min='0.1' max='1.0'
@@ -247,22 +253,6 @@
 
             <h4 id='allChangesSavedAutomaticallyHeader'></h4>
 
-            <!-- Footer buttons -->
-            <!-- <div id='footer-buttons'>
-
-                  <button id='resetButton' type="reset">Restore
-                        defaults</button>
-
-                  <button id='donateButton'> <img height='18px' width='18px'
-                              style="position: relative; left: 3px; top: 3px;"
-                              src="https://image.flaticon.com/icons/png/128/3071/3071581.png" /> </button>
-
-            </div>
-            <div id='footer-buttons'>
-                  <button id='githubButton' style="margin-top: 5px"> <img height='15px' width='15px'
-                              style="position: relative; left: 3px; top: 3px;"
-                              src="https://image.flaticon.com/icons/png/512/25/25231.png" /> </button>
-            </div> -->
             <div id='footer-buttons'>
                   <!-- <button id='resetButton' type="reset">Restore defaults</button> -->
                   <button id='writeAReviewButton' type="reset">Write a review</button>
@@ -281,6 +271,7 @@
       </form>
 
       <script src="../src/configs.js"></script>
+      <script src="../src/functions.js"></script>
       <script src="options.js"></script>
 
 </body>

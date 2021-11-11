@@ -112,7 +112,7 @@
         "description": ""
     },
     "header": {
-        "message": "Encabezado de mosaico",
+        "message": "Encabezado",
         "description": ""
     },
     "highlightTitleOnHover": {
@@ -140,7 +140,7 @@
         "description": ""
     },
     "innerPadding": {
-        "message": "Relleno interior",
+        "message": "Relleno interior (px)",
         "description": ""
     },
     "keyboardCycle": {
@@ -148,7 +148,7 @@
         "description": ""
     },
     "keyboardFocusBorderColor": {
-        "message": "Color de borde para mosaico enfocado",
+        "message": "Color de resaltado de la baldosa enfocada",
         "description": ""
     },
     "keyboardNavigation": {
@@ -232,7 +232,7 @@
         "description": ""
     },
     "shadowEnabled": {
-        "message": "Sombras habilitadas",
+        "message": "Agregar sombra",
         "description": ""
     },
     "shadowOpacity": {
@@ -272,7 +272,11 @@
         "description": ""
     },
     "tileBackgroundOpacity": {
-        "message": "Opacidad del azulejo",
+        "message": "Opacidad de fondo",
+        "description": ""
+    },
+    "tileHoverBackgroundOpacity": {
+        "message": "Opacidad de fondo al pasar el mouse",
         "description": ""
     },
     "tiles": {

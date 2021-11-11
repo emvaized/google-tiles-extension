@@ -57,20 +57,20 @@ function restoreOptions() {
       });
 
       /// Set translated tooltips
-      document.querySelector("#moveSuggestionsToBottomTooltip").innerHTML = chrome.i18n.getMessage("moveSuggestionsToBottomTooltip");
-      document.querySelector("#numericNavigationTooltip").innerHTML = chrome.i18n.getMessage("numericNavigationTooltip");
-      document.querySelector("#navigateWithKeyboardTooltip").innerHTML = chrome.i18n.getMessage("navigateWithKeyboardTooltip");
-      document.querySelector("#firstNumberPressScrollsToElementTooltip").innerHTML = chrome.i18n.getMessage("firstNumberPressScrollsToElementTooltip");
-      document.querySelector("#colorizeBorderAfterFaviconTooltip").innerHTML = chrome.i18n.getMessage("colorizeBorderAfterFaviconTooltip");
-      document.querySelector("#moveNavbarToSearchbarTooltip").innerHTML = chrome.i18n.getMessage("moveNavbarToSearchbarTooltip");
+      document.querySelector("#moveSuggestionsToBottomTooltip").innerText = chrome.i18n.getMessage("moveSuggestionsToBottomTooltip");
+      document.querySelector("#numericNavigationTooltip").innerText = chrome.i18n.getMessage("numericNavigationTooltip");
+      document.querySelector("#navigateWithKeyboardTooltip").innerText = chrome.i18n.getMessage("navigateWithKeyboardTooltip");
+      document.querySelector("#firstNumberPressScrollsToElementTooltip").innerText = chrome.i18n.getMessage("firstNumberPressScrollsToElementTooltip");
+      document.querySelector("#colorizeBorderAfterFaviconTooltip").innerText = chrome.i18n.getMessage("colorizeBorderAfterFaviconTooltip");
+      document.querySelector("#moveNavbarToSearchbarTooltip").innerText = chrome.i18n.getMessage("moveNavbarToSearchbarTooltip");
 
       /// Set translated headers
-      document.querySelector("#previewHeader").innerHTML = chrome.i18n.getMessage("preview");
-      document.querySelector("#appearanceHeader").innerHTML = chrome.i18n.getMessage("appearance");
-      document.querySelector("#faviconsHeader").innerHTML = chrome.i18n.getMessage("header");
-      document.querySelector("#hoverHeader").innerHTML = chrome.i18n.getMessage("hover");
-      document.querySelector("#searchResultsHeader").innerHTML = chrome.i18n.getMessage("searchResults");
-      document.querySelector("#keyboardNavigationHeader").innerHTML = chrome.i18n.getMessage("keyboardNavigation");
+      document.querySelector("#previewHeader").innerText = chrome.i18n.getMessage("preview");
+      document.querySelector("#appearanceHeader").innerText = chrome.i18n.getMessage("appearance");
+      document.querySelector("#faviconsHeader").innerText = chrome.i18n.getMessage("header");
+      document.querySelector("#hoverHeader").innerText = chrome.i18n.getMessage("hover");
+      document.querySelector("#searchResultsHeader").innerText = chrome.i18n.getMessage("searchResults");
+      document.querySelector("#keyboardNavigationHeader").innerText = chrome.i18n.getMessage("keyboardNavigation");
       // document.querySelector("#allChangesSavedAutomaticallyHeader").innerHTML = '💾 ' + chrome.i18n.getMessage("allChangesSavedAutomatically");
       document.querySelector("#allChangesSavedAutomaticallyHeader").innerHTML = chrome.i18n.getMessage("allChangesSavedAutomatically");
 
@@ -92,10 +92,9 @@ function updateDisabledOptions() {
   document.querySelector("#faviconRadius").parentNode.className = document.querySelector("#addFavicons").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#shadowOpacity").parentNode.className = document.querySelector("#shadowEnabled").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#keyboardCycle").parentNode.className = document.querySelector("#navigateWithKeyboard").checked ? 'enabled-option' : 'disabled-option';
-  // document.querySelector("#applyStyleToWidgets").parentNode.className = document.querySelector("#tryToPlaceSuggestionsOnTheSide").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#keyboardFocusBorderColor").parentNode.className = document.querySelector("#navigateWithKeyboard").checked ? 'enabled-option' : 'disabled-option';
-  // document.querySelector("#focusedBorderWidth").parentNode.className = document.querySelector("#navigateWithKeyboard").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#focusedBorderWidth").parentNode.className = document.querySelector("#addTileBorder").checked ? 'enabled-option' : 'disabled-option';
+  document.querySelector("#colorizeBorderAfterFavicon").parentNode.parentNode.className = document.querySelector("#addTileBorder").checked ? 'option tooltip enabled-option' : 'option tooltip disabled-option';
   document.querySelector("#addTileCounter").parentNode.className = document.querySelector("#numericNavigation").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#numbersNavigateTabs").parentNode.className = document.querySelector("#numericNavigation").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#indexHintOpacity").parentNode.className = document.querySelector("#addTileCounter").checked && document.querySelector("#numericNavigation").checked ? 'enabled-option' : 'disabled-option';
@@ -103,15 +102,15 @@ function updateDisabledOptions() {
   document.querySelector("#showFullDomainOnHover").parentNode.className = document.querySelector("#simplifyDomain").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#titleHoverColor").parentNode.className = document.querySelector("#highlightTitleOnHover").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#tileBackgroundColor").parentNode.className = document.querySelector("#addTileBackground").checked ? 'enabled-option' : 'disabled-option';
+  document.querySelector("#tileBackgroundOpacity").parentNode.className = document.querySelector("#addTileBackground").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#borderColor").parentNode.className = document.querySelector("#addTileBorder").checked ? 'enabled-option' : 'disabled-option';
-  // document.querySelector("#sidebarWidthMultiplier").parentNode.className = document.querySelector("#tryToPlaceSuggestionsOnTheSide").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#firstNumberPressScrollsToElement").parentNode.className = document.querySelector("#numericNavigation").checked ? 'enabled-option' : 'disabled-option';
-  document.querySelector("#sideArrowsFocusSidebarFirst").parentNode.className = document.querySelector("#navigateWithKeyboard").checked ? 'enabled-option' : 'disabled-option';
+  // document.querySelector("#sideArrowsFocusSidebarFirst").parentNode.className = document.querySelector("#navigateWithKeyboard").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#colorizeBorderAfterFavicon").parentNode.className = document.querySelector("#addFavicons").checked ? 'enabled-option' : 'disabled-option';
-  document.querySelector("#keyboardFocusBorderColor").parentNode.className = document.querySelector("#focusedTileDifferentBorder").checked ? 'enabled-option' : 'disabled-option';
+  // document.querySelector("#keyboardFocusBorderColor").parentNode.className = document.querySelector("#focusedTileDifferentBorder").checked ? 'enabled-option' : 'disabled-option';
+  document.querySelector("#keyboardFocusBorderColor").parentNode.className = !document.querySelector("#focusedTileDifferentBorder").checked && !document.getElementById('addFocusedTileDot').checked ? 'disabled-option' : 'enabled-option';
   document.querySelector("#scaleUpFocusedResultAmount").parentNode.className = document.querySelector("#scaleUpFocusedResult").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#focusedTileDotOpacity").parentNode.className = document.querySelector("#addFocusedTileDot").checked ? 'enabled-option' : 'disabled-option';
-
   document.querySelector("#populatedSidebarResultsOnTop").parentNode.className = document.querySelector("#populateSidebarWithRegularResults").checked ? 'enabled-option' : 'disabled-option';
 }
 
@@ -119,6 +118,7 @@ function updatePreviewTile() {
   var innerPadding = document.querySelector("#innerPadding").value;
   var hoverTransitionDuration = document.querySelector("#hoverTransitionDuration").value;
   var borderRadius = document.querySelector("#borderRadius").value;
+  var borderColor = document.querySelector("#borderColor").value;
   var hoverBackground = document.querySelector("#hoverBackground").value;
   var shadowEnabled = document.querySelector("#shadowEnabled").checked;
   var shadowOpacity = document.querySelector("#shadowOpacity").value;
@@ -130,7 +130,7 @@ function updatePreviewTile() {
   var simplifyDomain = document.querySelector("#simplifyDomain").checked;
   var widerTiles = document.querySelector("#widerTiles").checked;
   var addTileBorder = document.querySelector("#addTileBorder").checked;
-  var tileBackgroundColor = document.querySelector("#tileBackgroundColor").value;
+  var tileBackgroundColor = !document.querySelector("#addTileBackground").checked ? 'transparent' : document.querySelector("#tileBackgroundColor").value;
   var faviconRadius = document.querySelector("#faviconRadius").value;
   var highlightTitleOnHover = document.querySelector("#highlightTitleOnHover").checked;
   var titleHoverColor = document.querySelector("#titleHoverColor").value;
@@ -139,19 +139,28 @@ function updatePreviewTile() {
   var numericNavigation = document.querySelector("#numericNavigation").checked;
   var showFullDomainOnHover = document.querySelector("#showFullDomainOnHover").checked;
   var colorizeBorderAfterFavicon = document.querySelector("#colorizeBorderAfterFavicon").checked;
+  let tileBackgroundOpacity = document.querySelector("#tileBackgroundOpacity").value;
+  let tileHoverBackgroundOpacity = document.querySelector("#tileHoverBackgroundOpacity").value;
+  let changeCursorOverTile = document.querySelector("#changeCursorOverTile").checked;
+
+  if (tileBackgroundColor !== 'transparent') {
+    let color = hexToRgb(tileBackgroundColor);
+    tileBackgroundColor = `rgba(${color.red}, ${color.green}, ${color.blue},${tileBackgroundOpacity})`;
+  }
+
+  let hColor = hexToRgb(hoverBackground);
+  hoverBackground = `rgba(${hColor.red}, ${hColor.green}, ${hColor.blue}, ${tileHoverBackgroundOpacity})`;
 
   /// Set preview tile style
   var tile = document.querySelector('#previewTile');
-  tile.setAttribute("style", `background-color:${tileBackgroundColor};align-items: center;width: ${widerTiles ? 100 : 85}%;cursor:${wholeTileIsClickable ? 'pointer' : 'auto'};border:solid ${focusedBorderWidth || '1'}px ${addTileBorder ? colorizeBorderAfterFavicon ? '#4A96F5' : '#DADCE0' : 'transparent'};border-radius: ${borderRadius || '6'}px;transition:all ${hoverTransitionDuration || '300'}ms ease-out;padding: ${innerPadding || '12'}px;box-shadow: ${(shadowEnabled ?? true) ? `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity || '0.15'})` : 'unset'};`);
+  tile.setAttribute("style", `background-color:${tileBackgroundColor};align-items: center;width: ${widerTiles ? 100 : 85}%;cursor:${wholeTileIsClickable && changeCursorOverTile ? 'pointer' : 'auto'};border:solid ${focusedBorderWidth || '1'}px ${addTileBorder ? (colorizeBorderAfterFavicon ? '#4A96F5' : (borderColor ?? '#DADCE0')) : 'transparent'};border-radius: ${borderRadius || '6'}px;transition:all ${hoverTransitionDuration || '300'}ms ease-out;padding: ${innerPadding || '12'}px;box-shadow: ${(shadowEnabled ?? true) ? `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity || '0.15'})` : 'unset'};`);
 
   /// Change favicon and counter hint visibility
   document.querySelector('#previewFavicon').style.cssText = `display: ${addFavicons == false ? 'none' : 'inline'};height:${faviconRadius}px; width:${faviconRadius}px;  `;
-
   document.querySelector('#previewCounter').style.visibility = addTileCounter == false || numbersNavigateTabs == true || numericNavigation == false ? 'collapse' : 'visible';
   document.querySelector('#previewCounter').style.opacity = indexHintOpacity;
   document.querySelector('#previewDomain').textContent = simplifyDomain ? 'google' : 'www.google.com.ua';
   document.querySelector('#previewDomain').title = showFullDomainOnHover ? 'www.google.com.ua' : '';
-
 
   var title = document.getElementById('previewTitle');
 

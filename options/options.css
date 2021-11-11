@@ -156,15 +156,15 @@ button {
     transition: max-height 0.2s ease-out;
 }
 
-.collapsible-header:after {
-    content: '\02795'; /* Unicode character for "plus" sign (+) */
+/* .collapsible-header:after {
+    content: '\02795'; 
     font-size: 10px;
     float: right;
 }
   
 .active:after {
-    content: "\2796"; /* Unicode character for "minus" sign (-) */
-}
+    content: "\2796"; 
+} */
 
 #google-tiles-version {
   text-align: center;

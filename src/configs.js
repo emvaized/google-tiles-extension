@@ -49,6 +49,7 @@ var configs = {
     "simplifyDomain": true,
     "tileBackgroundColor": "#FFFFFF",
     "tileBackgroundOpacity": 1.0,
+    "tileHoverBackgroundOpacity": 1.0,
     "tilesEnabled": true,
     "titleHoverColor": "#EA4335",
     "tryToPlaceWidgetsOnTheSide": true,

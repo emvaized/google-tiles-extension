@@ -65,7 +65,7 @@ function loadConfigs() {
           tileBackgroundColor = `rgba(${color.red}, ${color.green}, ${color.blue},${configs.tileBackgroundOpacity})`;
 
           let hColor = hexToRgb(configs.hoverBackground);
-          hoverBackgroundColor = `rgba(${hColor.red}, ${hColor.green}, ${hColor.blue}, ${configs.tileBackgroundOpacity})`;
+          hoverBackgroundColor = `rgba(${hColor.red}, ${hColor.green}, ${hColor.blue}, ${configs.tileHoverBackgroundOpacity})`;
         } catch (e) {
           tileBackgroundColor = configs.tileBackgroundColor;
           hoverBackgroundColor = configs.hoverBackground;

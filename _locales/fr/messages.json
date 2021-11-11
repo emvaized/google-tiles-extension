@@ -112,7 +112,7 @@
         "description": ""
     },
     "header": {
-        "message": "En-tête de vignette",
+        "message": "Entête",
         "description": ""
     },
     "highlightTitleOnHover": {
@@ -140,7 +140,7 @@
         "description": ""
     },
     "innerPadding": {
-        "message": "Rembourrage intérieur",
+        "message": "Rembourrage intérieur (px)",
         "description": ""
     },
     "keyboardCycle": {
@@ -148,7 +148,7 @@
         "description": ""
     },
     "keyboardFocusBorderColor": {
-        "message": "Couleur de la bordure de la vignette ciblée",
+        "message": "Couleur de surbrillance de la tuile focalisée",
         "description": ""
     },
     "keyboardNavigation": {
@@ -232,7 +232,7 @@
         "description": ""
     },
     "shadowEnabled": {
-        "message": "Ombres activées",
+        "message": "Ajouter une ombre",
         "description": ""
     },
     "shadowOpacity": {
@@ -272,7 +272,11 @@
         "description": ""
     },
     "tileBackgroundOpacity": {
-        "message": "Opacité des carreaux",
+        "message": "Opacité de l'arrière-plan",
+        "description": ""
+    },
+    "tileHoverBackgroundOpacity": {
+        "message": "Survoler l'opacité de l'arrière-plan",
         "description": ""
     },
     "tiles": {

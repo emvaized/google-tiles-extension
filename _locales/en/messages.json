@@ -56,7 +56,7 @@
     "description": ""
   },
   "colorizeBorderAfterFaviconTooltip": {
-    "message": "This setting conflicts with 'Different border for focused tile'",
+    "message": "This setting conflicts with 'Highlight border for focused tile'",
     "description": ""
   },
   "configure": {
@@ -112,7 +112,7 @@
     "description": ""
   },
   "focusedTileDifferentBorder": {
-    "message": "Different border for focused tile",
+    "message": "Highlight border for focused tile",
     "description": ""
   },
   "focusedTileDotOpacity": {
@@ -120,7 +120,7 @@
     "description": ""
   },
   "header": {
-    "message": "Tile header",
+    "message": "Header",
     "description": ""
   },
   "highlightTitleOnHover": {
@@ -148,7 +148,7 @@
     "description": ""
   },
   "innerPadding": {
-    "message": "Inner padding",
+    "message": "Inner padding (px)",
     "description": ""
   },
   "keyboardCycle": {
@@ -156,7 +156,7 @@
     "description": ""
   },
   "keyboardFocusBorderColor": {
-    "message": "Border color for focused tile",
+    "message": "Focused tile's highlight color",
     "description": ""
   },
   "keyboardNavigation": {
@@ -184,7 +184,7 @@
     "description": ""
   },
   "navigateWithKeyboardTooltip": {
-    "message": "Use ↑ and ↓ keys to navigate results, ← and → to swtich pages, and 'Enter' to open",
+    "message": "Use ↑ and ↓ keys to navigate results, \n← and → to swtich pages, and\n 'Enter' or Spacebar to open",
     "description": ""
   },
   "numbersNavigateResults": {
@@ -240,7 +240,7 @@
     "description": ""
   },
   "shadowEnabled": {
-    "message": "Shadows enabled",
+    "message": "Add shadow",
     "description": ""
   },
   "shadowOpacity": {
@@ -280,7 +280,11 @@
     "description": ""
   },
   "tileBackgroundOpacity": {
-    "message": "Tile opacity",
+    "message": "Background opacity",
+    "description": ""
+  },
+  "tileHoverBackgroundOpacity": {
+    "message": "Hover background opacity",
     "description": ""
   },
   "tiles": {

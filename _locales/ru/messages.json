@@ -4,7 +4,7 @@
         "description": ""
     },
     "addFocusedTileDot": {
-        "message": "Добавить точку к сфокусированной плитке",
+        "message": "Добавить точку к выделенной плитке",
         "description": ""
     },
     "addTileBackground": {
@@ -56,7 +56,7 @@
         "description": ""
     },
     "colorizeBorderAfterFaviconTooltip": {
-        "message": "Эта настройка конфликтует с 'Другая рамка для выделенной плитки'",
+        "message": "Эта настройка конфликтует с 'Окрашивать рамку выделенной плитки'",
         "description": ""
     },
     "configure": {
@@ -104,7 +104,7 @@
         "description": ""
     },
     "focusedTileDifferentBorder": {
-        "message": "Другая рамка для выделенной плитки",
+        "message": "Окрашивать рамку выделенной плитки",
         "description": ""
     },
     "focusedTileDotOpacity": {
@@ -112,7 +112,7 @@
         "description": ""
     },
     "header": {
-        "message": "Заголовок плитки",
+        "message": "Заголовок",
         "description": ""
     },
     "highlightTitleOnHover": {
@@ -140,7 +140,7 @@
         "description": ""
     },
     "innerPadding": {
-        "message": "Внутренний отступ",
+        "message": "Внутренний отступ (px)",
         "description": ""
     },
     "keyboardCycle": {
@@ -148,7 +148,7 @@
         "description": ""
     },
     "keyboardFocusBorderColor": {
-        "message": "Цвет рамки выделенной плитки",
+        "message": "Цвет выделения плитки",
         "description": ""
     },
     "keyboardNavigation": {
@@ -176,7 +176,7 @@
         "description": ""
     },
     "navigateWithKeyboardTooltip": {
-        "message": "Использовать ↑ и ↓ для переключения между результатами, ← и → для переключения страницы, и 'Enter' чтобы открыть",
+        "message": "Использовать ↑ и ↓ для переключения между результатами, \n← и → для переключения страницы, и\n 'Enter' или Пробел, чтобы открыть",
         "description": ""
     },
     "numbersNavigateResults": {
@@ -232,7 +232,7 @@
         "description": ""
     },
     "shadowEnabled": {
-        "message": "Тени включены",
+        "message": "Добавить тень",
         "description": ""
     },
     "shadowOpacity": {
@@ -272,7 +272,11 @@
         "description": ""
     },
     "tileBackgroundOpacity": {
-        "message": "Прозрачность плитки",
+        "message": "Прозрачность фона",
+        "description": ""
+    },
+    "tileHoverBackgroundOpacity": {
+        "message": "Прозрачность фона при наведении",
         "description": ""
     },
     "tiles": {
