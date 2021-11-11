@@ -100,23 +100,6 @@ function setLayout() {
                             configureTile(wrappedCard);
                         }
 
-                        // let ch = result.children;
-                        // ch = Array.prototype.slice.call(ch);
-                        // console.log(ch.length);
-                        // if (ch !== null && ch !== undefined && ch.length > 0) {
-                        //     result.style.margin = '0px';
-
-                        //     ch.forEach(function (c) {
-                        //         if (c.className == 'g' || result.className.substring(0, 2) == 'g ') {
-                        //             regularResultsColumn.insertBefore(c, result);
-
-                        //             if (configs.addFavicons || configs.simplifyDomain) {
-                        //                 configureTileHeader(c, c.querySelector('a').href)
-                        //             }
-                        //             configureTile(c);
-                        //         }
-                        //     })
-                        // }
                     } else if (result.clientHeight !== 0.0 && result.clientWidth !== 0.0 && result.firstChild !== undefined) {
                         /// Search widget
 

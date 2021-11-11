@@ -1,6 +1,6 @@
 var configs = {
     "addFavicons": true,
-    "addFocusedTileDot": false,
+    "addFocusedTileDot": true,
     "addTileBackground": true,
     "addTileBorder": true,
     "addTileCounter": true,
@@ -18,7 +18,7 @@ var configs = {
     "faviconRadius": 12,
     "firstNumberPressScrollsToElement": true,
     "focusedBorderWidth": 1,
-    "focusedTileDifferentBorder": true,
+    "focusedTileDifferentBorder": false,
     "focusedTileDotOpacity": 0.4,
     "hideNumberResultsRow": true,
     "highlightTitleOnHover": true,

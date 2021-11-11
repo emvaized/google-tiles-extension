@@ -12,7 +12,6 @@ function configureTile(tile) {
     if (tile.parentNode && tile.parentNode.tagName == 'A') return; /// Don't style the same tile twice
 
     /// Create 'a' wrapper
-    console.log(linkWrapperPrototype.style.cursor);
     if (linkWrapperPrototype.style.cursor == '')
         linkWrapperPrototype.style.cursor = configs.changeCursorOverTile ? 'pointer' : 'unset';
     const wrapper = linkWrapperPrototype.cloneNode(true);

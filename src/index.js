@@ -95,7 +95,7 @@ function init() {
   if (configs.tilesEnabled) {
 
     console.time('Google Tiles finished proccessing page in');
-    console.log('~~~')
+    // console.log('~~~')
 
     if (configs.moveNavbarToSearchbar)
       setTopBar();
