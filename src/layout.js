@@ -73,7 +73,6 @@ function setLayout() {
             } else if (result.tagName == 'HR') {
                 result.parentNode.removeChild(result);
             } else
-                // if (result.className == regularResultClassName || result.className.substring(0, 2) == 'g ') {
                 if (result.className[0] == 'g' && (result.className[1] == undefined || result.className[1] == ' ')) {
                     /// Regular result
                     if (configs.addFavicons || configs.simplifyDomain)
