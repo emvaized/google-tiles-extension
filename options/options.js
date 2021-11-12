@@ -154,6 +154,7 @@ function updatePreviewTile() {
   /// Set preview tile style
   var tile = document.querySelector('#previewTile');
   tile.setAttribute("style", `background-color:${tileBackgroundColor};align-items: center;width: ${widerTiles ? 100 : 85}%;cursor:${wholeTileIsClickable && changeCursorOverTile ? 'pointer' : 'auto'};border:solid ${focusedBorderWidth || '1'}px ${addTileBorder ? (colorizeBorderAfterFavicon ? '#4A96F5' : (borderColor ?? '#DADCE0')) : 'transparent'};border-radius: ${borderRadius || '6'}px;transition:all ${hoverTransitionDuration || '300'}ms ease-out;padding: ${innerPadding || '12'}px;box-shadow: ${(shadowEnabled ?? true) ? `0px 5px 15px rgba(0, 0, 0, ${shadowOpacity || '0.15'})` : 'unset'};`);
+  tile.style.width = '96%';
 
   /// Change favicon and counter hint visibility
   document.querySelector('#previewFavicon').style.cssText = `display: ${addFavicons == false ? 'none' : 'inline'};height:${faviconRadius}px; width:${faviconRadius}px;  `;
@@ -236,7 +237,7 @@ function resetOptions() {
 function setVersionLabel() {
   let label = document.getElementById('google-tiles-version');
   var manifestData = chrome.runtime.getManifest();
-  label.innerHTML = 'Google Tiles ' + manifestData.version + ` (<a target='_blank' href='https://github.com/emvaized/google-tiles-extension/blob/master/CHANGELOG.md'>${chrome.i18n.getMessage("whatsNew") ?? "What's new"}</a>)`;
+  label.innerHTML = 'Google Tweaks ' + manifestData.version + ` (<a target='_blank' href='https://github.com/emvaized/google-tiles-extension/blob/master/CHANGELOG.md'>${chrome.i18n.getMessage("whatsNew") ?? "What's new"}</a>)`;
 }
 
 

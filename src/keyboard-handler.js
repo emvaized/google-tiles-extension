@@ -100,7 +100,9 @@ function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHint
             counter.innerText = numericNavigationIndex;
             if (numericNavigationIndex < 10) {
                 counterHintsList.push(counter);
-                suggestionTile.firstChild.appendChild(counter);
+                // suggestionTile.firstChild.appendChild(counter);
+                let divChild = suggestionTile.querySelector('.g');
+                if (divChild) divChild.appendChild(counter);
             }
         })
     }

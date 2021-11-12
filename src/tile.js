@@ -102,13 +102,13 @@ function configureTile(tile) {
                     wrapper.firstChild.style.zIndex = '2';
                 }
 
-                // // /// Add dot on the left
+                /// Add dot on the left
                 if (configs.addFocusedTileDot) {
                     dot = document.createElement('div');
                     dot.className = 'g-tile-focused-tile-dot';
                     dot.style.background = configs.keyboardFocusBorderColor;
                     dot.style.opacity = configs.focusedTileDotOpacity;
-                    // dot.style.top = `-${tile.clientHeight}px`;
+                    dot.style.top = `${(tile.clientHeight / 2) - 5}px`;
                     wrapper.prepend(dot);
                 }
             });

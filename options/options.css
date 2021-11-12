@@ -3,7 +3,8 @@ button {
 }
 
 form {
-    padding: 0px 15px;
+    /* padding: 0px 15px; */
+    padding-right: 15px;
 }
 
 .option {
@@ -136,8 +137,8 @@ button {
   background-color: #eee;
   color: #444;
   cursor: pointer;
-  padding: 18px 6px;
-  width: 100%;
+  padding: 18px 12px;
+  width: 96%;
   border: none;
   text-align: left;
   outline: none;
@@ -168,4 +169,5 @@ button {
 
 #google-tiles-version {
   text-align: center;
+  padding-bottom: 3px;
 }

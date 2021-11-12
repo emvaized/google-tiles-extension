@@ -90,11 +90,6 @@ function init() {
     localDomain = window.location.href.substring(0, 30).split('/')[2];
     setLayout();
 
-    // window.addEventListener('popstate', function () {
-    //   setLayout();
-    //   if (configs.debugMode) console.log('Google Tiles reproccessed updated page');
-    // });
-
   } catch (error) {
     console.log('Google Tiles error:');
     console.log(error);
@@ -117,7 +112,8 @@ function init() {
   document.body.style.setProperty('--gtiles-tile-margin', configs.tilesEnabled ? `0px 0px ${configs.externalPadding}px` : '0px 0px 30px 0px');
   document.body.style.setProperty('--gtiles-topbar-max-height', configs.tilesEnabled && configs.moveNavbarToSearchbar ? `${paddingWhenNavbarMoved}px` : 'unset');
 
-  console.time('Google Tiles finished proccessing page in');
+  // console.time('Google Tiles finished proccessing page in');
+  console.time('Google Tweaks finished proccessing page');
 }
 
 loadConfigs();

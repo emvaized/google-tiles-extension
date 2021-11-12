@@ -225,7 +225,7 @@
   ],
   "browser_action": {
     "default_icon": "icons/google-tiles-new-icon-96.png",
-    "default_title": "Google Tiles",
+    "default_title": "Google Tweaks",
     "default_popup": "popup/popup.html"
   },
   "options_ui": {
