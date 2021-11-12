@@ -171,3 +171,8 @@ button {
   text-align: center;
   padding-bottom: 3px;
 }
+
+
+@-moz-document url-prefix() {
+  form { padding-left: 15px;}
+}
