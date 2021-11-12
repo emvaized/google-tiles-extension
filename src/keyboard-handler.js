@@ -19,7 +19,10 @@ function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHint
     if (sidebarContainer !== null)
         var sidebarSearchResults = sidebarContainer.querySelectorAll('#g-tile');
 
-    if (configs.navigateWithKeyboard && regularSearchResults !== undefined && regularSearchResults[0] !== undefined) regularSearchResults[0].focus();
+    if (configs.navigateWithKeyboard && regularSearchResults !== undefined && regularSearchResults[0] !== undefined)
+        setTimeout(function () {
+            regularSearchResults[0].focus();
+        }, 0);
 
     /// Value used for arrow keys navigation
     var sidebarContainsWidgets = false;
