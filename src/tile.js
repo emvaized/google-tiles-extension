@@ -6,7 +6,6 @@ websiteFaviconPrototype.setAttribute('class', 'favicon favicon-loading-spinner')
 websiteFaviconPrototype.aspectRadio = 'unset';
 websiteFaviconPrototype.crossOrigin = "anonymous";
 
-
 function configureTile(tile) {
     if (tile.tagName == 'H2') return;
     if (tile.parentNode && tile.parentNode.tagName == 'A') return; /// Don't style the same tile twice
@@ -109,7 +108,8 @@ function configureTile(tile) {
                     dot.style.background = configs.keyboardFocusBorderColor;
                     dot.style.opacity = configs.focusedTileDotOpacity;
                     // dot.style.top = `${(tile.clientHeight / 2) - 5}px`;
-                    dot.style.top = `${(tile.clientHeight / 2) + (configs.externalPadding / 2) - 5}px`;
+                    const isFirefox = navigator.userAgent.indexOf("Firefox") > -1;
+                    dot.style.top = `${(tile.clientHeight / 2) + (isFirefox ? configs.externalPadding / 2 : 0) - 5}px`;
                     wrapper.prepend(dot);
                 }
             });
