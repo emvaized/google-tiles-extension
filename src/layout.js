@@ -71,8 +71,10 @@ function setLayout() {
             if (result.tagName == 'H2' || result.tagName == 'SCRIPT') {
                 /// Don't proccess
             } else if (result.tagName == 'HR') {
-                result.parentNode.removeChild(result);
+                // result.parentNode.removeChild(result);
+                result.remove();
             } else
+                // if (result.className[0] == 'g' && (result.className[1] == undefined || result.className[1] == ' ')) {
                 if (result.className[0] == 'g' && (result.className[1] == undefined || result.className[1] == ' ')) {
                     /// Regular result
                     if (configs.addFavicons || configs.simplifyDomain)
@@ -123,7 +125,8 @@ function setLayout() {
                                 if (configs.applyStyleToWidgets)
                                     result.classList.add('g');
 
-                                configureTile(result)
+                                if (result.id !== 'botstuff')
+                                    configureTile(result)
                             }
                         }
 

@@ -108,7 +108,8 @@ function configureTile(tile) {
                     dot.className = 'g-tile-focused-tile-dot';
                     dot.style.background = configs.keyboardFocusBorderColor;
                     dot.style.opacity = configs.focusedTileDotOpacity;
-                    dot.style.top = `${(tile.clientHeight / 2) - 5}px`;
+                    // dot.style.top = `${(tile.clientHeight / 2) - 5}px`;
+                    dot.style.top = `${(tile.clientHeight / 2) + (configs.externalPadding / 2) - 5}px`;
                     wrapper.prepend(dot);
                 }
             });
