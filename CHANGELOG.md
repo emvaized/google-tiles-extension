@@ -1,3 +1,10 @@
+#2.3.6
+- Fix for non-working 'color of title on hover'
+- Remove the favicon when it's default globe icon
+- Fix non-proccessed page on returning back from result page
+- Changed extension name to "Google Tweaks"
+- Other small fixes & improvements
+
 #2.3.5
 - Removed FaviconKit favicons
 - Fixed some configs not working + not affecting tile preview on options page
