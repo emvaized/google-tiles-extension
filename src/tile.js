@@ -23,6 +23,8 @@ function configureTile(tile) {
         url = tile.querySelector('a').href;
     }
 
+    var title;
+
     /// Don't wrap if calculated link is the same as url + '#'
     const linkIsValid = url !== null && url !== undefined && url !== window.location.href + '#';
 
@@ -31,7 +33,7 @@ function configureTile(tile) {
         || tile.className == shopPageCardClass) {
         wrapper.href = url;
 
-        var title = tile.querySelector('h3');
+        title = tile.querySelector('h3');
         if (title !== null)
             title.style.textDecoration = 'none'
 
@@ -215,11 +217,13 @@ function configureTileHeader(tile, url) {
                     // const ddGoFaviconUrl = 'https://icons.duckduckgo.com/ip2/' + domainForFavicon + '.ico';
                     // const websiteFaviconUrl = 'https://' + domainForFavicon + '/' + 'favicon.ico';
 
-                    // favicon.addEventListener('error', function () {
-                    //     /// Fallback favicon
-                    //     favicon.src = faviconKitFaviconUrl;
-                    //     favicon.src = googleFaviconUrl;
-                    // });
+                    favicon.addEventListener('error', function () {
+                        /// Fallback favicon
+                        // favicon.src = faviconKitFaviconUrl;
+                        // favicon.src = googleFaviconUrl;
+                        favicon.classList.remove('favicon-loading-spinner');
+
+                    });
 
                     favicon.addEventListener('load', function (ev) {
                         // if (favicon.naturalHeight == 16 && favicon.src == googleFaviconUrl) {
