@@ -38,7 +38,7 @@ var hoverBackgroundColor;
 var localDomain;
 
 function loadConfigs() {
-  let configKeys = Object.keys(configs);
+  const configKeys = Object.keys(configs);
 
   chrome.storage.local.get(
     configKeys, async function (value) {
@@ -51,8 +51,6 @@ function loadConfigs() {
         if (value[key] !== null && value[key] !== undefined)
           configs[key] = value[key];
       }
-
-      // if (document.body == null) await new Promise(resolve => setTimeout(resolve, 1));
 
       if (configs.tilesEnabled) {
         tileTransition = `background-color ${configs.hoverTransitionDuration}ms ease-out`
@@ -68,11 +66,35 @@ function loadConfigs() {
           hoverBackgroundColor = configs.hoverBackground;
         }
 
+        setVariables();
+
         if (document.readyState === "complete" || document.readyState === 'interactive') init();
         else document.addEventListener('DOMContentLoaded', init);
       }
     }
-  )
+  );
+
+}
+
+function setVariables() {
+  document.documentElement.style.setProperty('--gtiles-spinner-placeholder-url', `url(${chrome.runtime.getURL('assets/spinner.gif')})`);
+
+  document.documentElement.style.setProperty('--gtiles-tile-background', configs.addTileBackground ? `${tileBackgroundColor}` : '');
+  document.documentElement.style.setProperty('--gtiles-tile-border', `solid ${configs.focusedBorderWidth}px ${configs.addTileBorder ? configs.borderColor : 'transparent'}`);
+  document.documentElement.style.setProperty('--gtiles-tile-border-radius', `${configs.borderRadius}px`);
+  document.documentElement.style.setProperty('--gtiles-transition', tileTransition);
+  document.documentElement.style.setProperty('--gtiles-tile-padding', `${configs.innerPadding}px`);
+  document.documentElement.style.setProperty('--gtiles-tile-shadow', configs.shadowEnabled ? `0px 5px 15px rgba(0, 0, 0, ${configs.shadowOpacity})` : 'unset');
+  document.documentElement.style.setProperty('--gtiles-tile-width', configs.widerTiles ? '100%' : 'unset');
+  document.documentElement.style.setProperty('--gtiles-navbar-padding', `padding: 0px ${configs.innerPadding}px`);
+  document.documentElement.style.setProperty('--gtiles-counter-color', countedHintColor);
+  document.documentElement.style.setProperty('--gtiles-counter-opacity', configs.indexHintOpacity);
+  document.documentElement.style.setProperty('--gtiles-sidebar-width', `${configs.sidebarWidth}px`);
+  document.documentElement.style.setProperty('--gtiles-favicon-radius', `${configs.faviconRadius}px`);
+  document.documentElement.style.setProperty('--gtiles-sidebar-child-width', `${configs.sidebarWidth - (configs.innerPadding * 2)}px`);
+  document.documentElement.style.setProperty('--gtiles-tile-image-border-radius', `${configs.borderRadius}px ${configs.borderRadius}px 0px 0px`);
+  document.documentElement.style.setProperty('--gtiles-tile-margin', configs.tilesEnabled ? `0px 0px ${configs.externalPadding}px` : '0px 0px 30px 0px');
+  document.documentElement.style.setProperty('--gtiles-topbar-max-height', configs.tilesEnabled && configs.moveNavbarToSearchbar ? `${paddingWhenNavbarMoved}px` : 'unset');
 }
 
 
@@ -95,25 +117,8 @@ function init() {
     console.log(error);
   }
 
-  document.body.style.setProperty('--gtiles-tile-background', configs.addTileBackground ? `${tileBackgroundColor}` : '');
-  document.body.style.setProperty('--gtiles-tile-border', `solid ${configs.focusedBorderWidth}px ${configs.addTileBorder ? configs.borderColor : 'transparent'}`);
-  document.body.style.setProperty('--gtiles-tile-border-radius', `${configs.borderRadius}px`);
-  document.body.style.setProperty('--gtiles-transition', tileTransition);
-  document.body.style.setProperty('--gtiles-tile-padding', `${configs.innerPadding}px`);
-  document.body.style.setProperty('--gtiles-tile-shadow', configs.shadowEnabled ? `0px 5px 15px rgba(0, 0, 0, ${configs.shadowOpacity})` : 'unset');
-  document.body.style.setProperty('--gtiles-tile-width', configs.widerTiles ? '100%' : 'unset');
-  document.body.style.setProperty('--gtiles-navbar-padding', `padding: 0px ${configs.innerPadding}px`);
-  document.body.style.setProperty('--gtiles-counter-color', countedHintColor);
-  document.body.style.setProperty('--gtiles-counter-opacity', configs.indexHintOpacity);
-  document.body.style.setProperty('--gtiles-sidebar-width', `${configs.sidebarWidth}px`);
-  document.body.style.setProperty('--gtiles-favicon-radius', `${configs.faviconRadius}px`);
-  document.body.style.setProperty('--gtiles-sidebar-child-width', `${configs.sidebarWidth - (configs.innerPadding * 2)}px`);
-  document.body.style.setProperty('--gtiles-tile-image-border-radius', `${configs.borderRadius}px ${configs.borderRadius}px 0px 0px`);
-  document.body.style.setProperty('--gtiles-tile-margin', configs.tilesEnabled ? `0px 0px ${configs.externalPadding}px` : '0px 0px 30px 0px');
-  document.body.style.setProperty('--gtiles-topbar-max-height', configs.tilesEnabled && configs.moveNavbarToSearchbar ? `${paddingWhenNavbarMoved}px` : 'unset');
-
   // console.time('Google Tiles finished proccessing page in');
-  console.time('Google Tweaks finished proccessing page');
+  // console.time('Google Tweaks finished proccessing page');
 }
 
 loadConfigs();

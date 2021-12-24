@@ -180,9 +180,10 @@ g-more-link > a{
 }
 
 .favicon-loading-spinner {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/assets/spinner.gif'); 
+    /* background-image: url('chrome-extension://__MSG_@@extension_id__/assets/spinner.gif');  */
+    background-image: var(--gtiles-spinner-placeholder-url); 
     background-color: transparent;
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
 }
 
