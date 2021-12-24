@@ -175,7 +175,7 @@ g-more-link > a{
 .favicon {
     height: var(--gtiles-favicon-radius);
     width: var(--gtiles-favicon-radius);
-    padding-right: 5px;
+    margin-right: 5px;
     vertical-align: text-top;
 }
 

@@ -2,9 +2,9 @@ const linkWrapperPrototype = document.createElement('a');
 linkWrapperPrototype.id = 'g-tile';
 
 const websiteFaviconPrototype = new Image();
-websiteFaviconPrototype.setAttribute('class', 'favicon favicon-loading-spinner');
+websiteFaviconPrototype.className = 'favicon favicon-loading-spinner';
 websiteFaviconPrototype.aspectRadio = 'unset';
-websiteFaviconPrototype.crossOrigin = "anonymous";
+// websiteFaviconPrototype.crossOrigin = 'anonymous';
 
 function configureTile(tile) {
     if (tile.tagName == 'H2') return;
@@ -160,7 +160,6 @@ function configureTile(tile) {
 }
 
 function configureTileHeader(tile, url) {
-    // const domain = tile.querySelector(domainNameSelector);
     const domains = tile.querySelectorAll(domainNameSelector);
 
     if (domains != null && domains !== undefined)
@@ -179,7 +178,6 @@ function configureTileHeader(tile, url) {
                         if (domainContent.length == 2) {
                             titleText = domainContent[0];
                         } else if (domainContent.length == 3) {
-                            // titleText = domainContent[1] == 'com' || domainContent[1] == 'net' || domainContent[0].length > domainContent[1].length ? domainContent[0] : domainContent[1];
                             titleText = domainContent[1].length > domainContent[0].length ?
                                 domainContent[1] == 'google' && domainContent[0] != 'www' ? domainContent[0] : domainContent[1]
                                 :
@@ -208,31 +206,25 @@ function configureTileHeader(tile, url) {
                     if (domainForFavicon == null || domainForFavicon == undefined)
                         domainForFavicon = url;
 
-                    /// Trying to load favicon from website
-                    // const googleFaviconUrl = `https://www.google.com/s2/favicons?sz=24&domain=` + domainForFavicon;
-                    const googleFaviconUrl = `https://${localDomain}/s2/favicons?sz=24&domain=` + domainForFavicon;
-                    // const faviconKitFaviconUrl = `https://api.faviconkit.com/${domainForFavicon}/24`;
+                    /// Special fix for missing github.com icon
+                    if (domainForFavicon == 'github.com') domainForFavicon = 'github.community';
 
-                    /// Doesn't work because of CORS
+                    /// Trying to load favicon from website
+                    const googleFaviconUrl = `https://s2.googleusercontent.com/s2/favicons?domain=` + domainForFavicon + '&sz=24';
+
+                    /// Alternatives
+                    // const faviconKitFaviconUrl = `https://api.faviconkit.com/${domainForFavicon}/24`;
                     // const keewebFaciconUrl = `https://services.keeweb.info/favicon/${domainForFavicon}`;
                     // const ddGoFaviconUrl = 'https://icons.duckduckgo.com/ip2/' + domainForFavicon + '.ico';
                     // const websiteFaviconUrl = 'https://' + domainForFavicon + '/' + 'favicon.ico';
+                    // const oldGoogleFaviconUrl = `https://www.google.com/s2/favicons?sz=24&domain=` + domainForFavicon;
+                    // const anotherGoogleFaviconUrl = `https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=` + domainForFavicon;
 
                     favicon.addEventListener('error', function () {
-                        /// Fallback favicon
-                        // favicon.src = faviconKitFaviconUrl;
-                        // favicon.src = googleFaviconUrl;
                         favicon.classList.remove('favicon-loading-spinner');
-
                     });
 
                     favicon.addEventListener('load', function (ev) {
-                        // if (favicon.naturalHeight == 16 && favicon.src == googleFaviconUrl) {
-                        //     /// If Google is returning a 'globe', try to load from FaviconKit
-                        //     favicon.src = ''; /// reset 'globe' icon
-                        //     favicon.src = faviconKitFaviconUrl;
-                        //     return;
-                        // } 
                         if (favicon.naturalHeight == 16) {
                             /// If Google is returning default 'globe' icon, remove the favicon
                             favicon.remove();
