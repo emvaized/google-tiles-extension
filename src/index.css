@@ -209,3 +209,8 @@ g-inner-card {
 .kp-blk {
     background-color: transparent !important;
 }
+
+/* Fix for first news tile image overflowing */
+div.YEMaTe {
+    width: unset !important; height: unset !important;
+}
