@@ -1,3 +1,8 @@
+#2.3.7
+- Fix for first news tile image overflowing
+- Fix for non-working favicons
+- Fix favicon loading spinner not displaying in Firefox
+
 #2.3.6
 - Fix for non-working 'color of title on hover'
 - Remove the favicon when it's default globe icon
