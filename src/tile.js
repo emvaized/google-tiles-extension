@@ -249,11 +249,14 @@ function configureTileHeader(tile, url) {
                     domain.parentNode.prepend(favicon);
 
                     /// Detect tile with bottom line of links
-                    if (tile.className !== 'g') {
-                        domain.parentNode.style.position = 'absolute';
-                        domain.parentNode.style.top = `${configs.innerPadding}px`;
-                        domain.parentNode.style.left = `${configs.innerPadding}px`;
-                    }
+                    // if (tile.className !== 'g') {
+                    //     domain.parentNode.style.position = 'absolute';
+                    //     domain.parentNode.style.top = `${configs.innerPadding}px`;
+                    //     domain.parentNode.style.left = `${configs.innerPadding}px`;
+
+                    // domain.style.whiteSpace = 'nowrap';
+                    // domain.parentNode.parentNode.style.position = 'relative';
+                    // }
 
                     /// Fix dropdown button position
                     const dropdownMenu = tile.querySelector(dropdownMenuSelector);

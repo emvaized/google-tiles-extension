@@ -254,7 +254,7 @@ function setLayout() {
             setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHintsList);
         }
 
-        console.timeEnd('Google Tiles finished proccessing page in');
+        console.log('Google Tweaks finished proccessing page');
     }
 }
 
