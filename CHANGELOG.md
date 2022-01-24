@@ -1,3 +1,6 @@
+#2.3.8
+- Fix favicons shifted after new Google CSS updates
+
 #2.3.7
 - Fix for first news tile image overflowing
 - Fix for non-working favicons
