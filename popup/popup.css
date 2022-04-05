@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   min-width: 150px;
 }
 
@@ -12,26 +13,30 @@ button {
 }
 
 button img {
-  position: relative; left: 0px; top: 2px;
+  position: relative;
+  left: 0px;
+  top: 2px;
+  float: left;
 }
 
 h3 {
-    color: grey;
-    text-align: center;
+  color: grey;
+  text-align: center;
 }
 
 input {
   vertical-align: middle;
 }
 
-.enabled-checkbox, .checkboxLabel {
-    padding: 3px 0px 6px 0px;
-    /* text-align: center; */
-    cursor: pointer;
+.enabled-checkbox,
+.checkboxLabel {
+  padding: 3px 0px 6px 0px;
+  /* text-align: center; */
+  cursor: pointer;
 }
 
 .enabled-checkbox:hover {
-  background-color: rgb(0,0,0,0.1);
+  background-color: rgb(0, 0, 0, 0.1);
   transition: all 200ms ease-in-out;
   border-radius: 3px;
 }
@@ -49,7 +54,9 @@ input {
 
 
 @-moz-document url-prefix() {
-  html, body {
+
+  html,
+  body {
     min-width: 180px;
     max-width: 180px;
   }

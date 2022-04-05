@@ -167,7 +167,7 @@ function configureTileHeader(tile, url) {
             if (domain != null && domain !== undefined) {
 
                 /// Vertically align domain
-                domain.style.verticalAlign = 'baseline';
+                domain.style.verticalAlign = 'text-bottom';
 
                 /// Replace domain with simplier version
                 if (configs.simplifyDomain) {

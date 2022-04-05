@@ -46,7 +46,7 @@ document.addEventListener("click", (e) => {
 
 document.querySelector("#supportButton").addEventListener("click", function (val) {
   window.close();
-  window.open('https://emvaized.diaka.ua/donate', '_blank');
+  window.open('https://ko-fi.com/emvaized', '_blank');
 });
 document.querySelector("#githubPage").addEventListener("click", function (val) {
   window.close();
