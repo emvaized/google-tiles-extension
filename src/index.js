@@ -78,7 +78,6 @@ function loadConfigs() {
 
 function setVariables() {
   document.documentElement.style.setProperty('--gtiles-spinner-placeholder-url', `url(${chrome.runtime.getURL('assets/spinner.gif')})`);
-
   document.documentElement.style.setProperty('--gtiles-tile-background', configs.addTileBackground ? `${tileBackgroundColor}` : '');
   document.documentElement.style.setProperty('--gtiles-tile-border', `solid ${configs.focusedBorderWidth}px ${configs.addTileBorder ? configs.borderColor : 'transparent'}`);
   document.documentElement.style.setProperty('--gtiles-tile-border-radius', `${configs.borderRadius}px`);

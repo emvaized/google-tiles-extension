@@ -183,6 +183,11 @@ g-more-link>a {
     border: none;
 }
 
+/* Vertical align for url bar */
+.g cite {
+    vertical-align: text-bottom;
+}
+
 /* G-card with overriden width value */
 .nofullwidth {
     width: unset !important;
