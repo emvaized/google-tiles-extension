@@ -34,7 +34,6 @@ var tileTransition;
 
 var tileBackgroundColor;
 var hoverBackgroundColor;
-
 var localDomain;
 
 function loadConfigs() {

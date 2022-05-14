@@ -217,7 +217,7 @@ function configureTileHeader(tile, url) {
                         /// Trying to load favicon from website
                         const googleFaviconUrl = `https://s2.googleusercontent.com/s2/favicons?domain=` + domainForFavicon + '&sz=24';
 
-                        /// Alternatives
+                        /// Alternative favicon urls
                         // const faviconKitFaviconUrl = `https://api.faviconkit.com/${domainForFavicon}/24`;
                         // const keewebFaciconUrl = `https://services.keeweb.info/favicon/${domainForFavicon}`;
                         // const ddGoFaviconUrl = 'https://icons.duckduckgo.com/ip2/' + domainForFavicon + '.ico';

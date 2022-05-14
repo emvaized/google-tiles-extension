@@ -26,7 +26,6 @@ function restoreOptions() {
         if (input !== null && input !== undefined) {
           if (input.type == 'checkbox') {
             if ((result[key] !== null && result[key] == true) || (result[key] == null && configs[key] == true))
-              // if (result[key] == true)
               input.setAttribute('checked', 0)
           }
           else
@@ -52,7 +51,6 @@ function restoreOptions() {
           console.log('value: ' + inputValue.toString());
           updatePreviewTile();
           updateDisabledOptions();
-          // chrome.storage.local.set({ id: inputValue });
         })
       });
 
@@ -105,9 +103,7 @@ function updateDisabledOptions() {
   document.querySelector("#tileBackgroundOpacity").parentNode.className = document.querySelector("#addTileBackground").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#borderColor").parentNode.className = document.querySelector("#addTileBorder").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#firstNumberPressScrollsToElement").parentNode.className = document.querySelector("#numericNavigation").checked ? 'enabled-option' : 'disabled-option';
-  // document.querySelector("#sideArrowsFocusSidebarFirst").parentNode.className = document.querySelector("#navigateWithKeyboard").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#colorizeBorderAfterFavicon").parentNode.className = document.querySelector("#addFavicons").checked ? 'enabled-option' : 'disabled-option';
-  // document.querySelector("#keyboardFocusBorderColor").parentNode.className = document.querySelector("#focusedTileDifferentBorder").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#keyboardFocusBorderColor").parentNode.className = !document.querySelector("#focusedTileDifferentBorder").checked && !document.getElementById('addFocusedTileDot').checked ? 'disabled-option' : 'enabled-option';
   document.querySelector("#scaleUpFocusedResultAmount").parentNode.className = document.querySelector("#scaleUpFocusedResult").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#focusedTileDotOpacity").parentNode.className = document.querySelector("#addFocusedTileDot").checked ? 'enabled-option' : 'disabled-option';
@@ -196,40 +192,22 @@ function setCollapsibleHeaders() {
       if (content.style.maxHeight) {
         content.style.maxHeight = null;
         content.style.overflow = 'hidden';
-        // content.style.border = 'none';
       } else {
         content.style.maxHeight = content.scrollHeight + "px";
         setTimeout(function () {
           content.style.overflow = 'visible';
         }, 200);
-        // content.style.border = '1px solid #444';
       }
     });
   }
 }
 
 function saveAllOptions() {
-  // var dataToSave = {};
-
-  // keys.forEach(function (key) {
-  //   var input = document.querySelector(`#${key}`);
-  //   dataToSave[key] = input.type == 'checkbox' ? input.checked : input.value;
-  // });
-
-  // chrome.storage.local.set(dataToSave);
-
   chrome.storage.local.set(userConfigs);
 }
 
 
 function resetOptions() {
-  // var dataToSave = {};
-
-  // userConfigs.forEach(function (value, key) {
-  //   dataToSave[key] = value;
-  // });
-
-  // chrome.storage.local.set(dataToSave);
   chrome.storage.local.set(configs);
   restoreOptions();
 }
