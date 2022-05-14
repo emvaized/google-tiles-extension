@@ -9,9 +9,9 @@ websiteFaviconPrototype.aspectRadio = 'unset';
 function configureTile(tile) {
     if (tile.tagName == 'H2') return;
     if (tile.parentNode && tile.parentNode.tagName == 'A') return; /// Don't style the same tile twice
+    if (tile.innerHTML == '') tile.remove();
 
     try {
-
         /// Set url for 'a' wrapper 
         var url;
         if (tile.className == regularResultClassName || tile.firstChild.className == regularResultClassName || tile.className.toLowerCase()[0] == 'g') {
@@ -204,6 +204,7 @@ function configureTileHeader(tile, url) {
                         tile.className == regularResultClassName || tile.firstChild.className == regularResultClassName ||
                         tile.className.substring(0, 2) == 'g ' || tile.firstChild.className.substring(0, 2) == 'g '
                     )) {
+                        if (domain.parentNode.querySelector('.favicon')) return;
                         const favicon = websiteFaviconPrototype.cloneNode(true);
 
                         let domainForFavicon = url.split('/')[2];
@@ -270,9 +271,6 @@ function configureTileHeader(tile, url) {
                         }
                     }
                 } catch (e) { console.log(e); }
-
-
-
             }
         });
 }

@@ -24,8 +24,9 @@ function setLayout() {
 
         /// Workaround for the new regular results page layout
         if (mainResults.length <= 1) {
-            mainResults = Array.prototype.slice.call(document.querySelectorAll('.' + regularResultClassName));
+            // mainResults = Array.prototype.slice.call(document.querySelectorAll('.' + regularResultClassName));
             // mainResults = Array.prototype.slice.call(regularResultsColumn.querySelectorAll(`#kp-wp-tab-overview > div`));
+            mainResults = Array.prototype.slice.call(regularResultsColumn.querySelectorAll(`[jsdata]`));
         }
 
         /// Add search suggestions div to proccessed elements
@@ -126,66 +127,66 @@ function setLayout() {
                             }
 
                             /// Add scale-up effect for image results
-                            if (configs.scaleUpImageResultsOnHover) {
-                                var imageResults = result.querySelectorAll(imageResultTileSelector);
-                                const heightPadding = (imageScaleUpOnHoverAmount - 1.0) / 2;
+                            // if (configs.scaleUpImageResultsOnHover) {
+                            //     var imageResults = result.querySelectorAll(imageResultTileSelector);
+                            //     const heightPadding = (imageScaleUpOnHoverAmount - 1.0) / 2;
 
-                                if (imageResults !== null && imageResults !== undefined) {
-                                    imageResults.forEach(function (image) {
-                                        try {
-                                            const height = image.clientHeight;
+                            //     if (imageResults !== null && imageResults !== undefined) {
+                            //         imageResults.forEach(function (image) {
+                            //             try {
+                            //                 const height = image.clientHeight;
 
-                                            image.addEventListener('mouseover', function (event) {
-                                                this.setAttribute('style', `${image.parentNode.classList.contains(imageCarouselClass) ? `margin: 0px ${height * heightPadding}px;` : ''} -webkit-transform:scale(${imageScaleUpOnHoverAmount}); transform:scale(${imageScaleUpOnHoverAmount}); z-index: 1; transition: all 150ms ease-in-out; box-shadow: 0px 5px 15px rgba(0, 0, 0, ${configs.shadowOpacity}) `);
-                                            })
+                            //                 image.addEventListener('mouseover', function (event) {
+                            //                     this.setAttribute('style', `${image.parentNode.classList.contains(imageCarouselClass) ? `margin: 0px ${height * heightPadding}px;` : ''} -webkit-transform:scale(${imageScaleUpOnHoverAmount}); transform:scale(${imageScaleUpOnHoverAmount}); z-index: 1; transition: all 150ms ease-in-out; box-shadow: 0px 5px 15px rgba(0, 0, 0, ${configs.shadowOpacity}) `);
+                            //                 })
 
-                                            image.addEventListener('mouseout', function (event) {
-                                                this.setAttribute('style', `-webkit-transform:scale(1.0); transform: scale(1.0); z-index: 0; transition: all 150ms ease-in-out;`);
-                                            })
+                            //                 image.addEventListener('mouseout', function (event) {
+                            //                     this.setAttribute('style', `-webkit-transform:scale(1.0); transform: scale(1.0); z-index: 0; transition: all 150ms ease-in-out;`);
+                            //                 })
 
-                                            /// If image is inside horizontal carouosel, add margins
-                                            /// TODO: Needs a better implementation, doesn't work in current state
-                                            if (image.parentNode.classList.contains(imageCarouselClass)) {
-                                                var imageCarouselContainer = image.parentNode;
+                            //                 /// If image is inside horizontal carouosel, add margins
+                            //                 /// TODO: Needs a better implementation, doesn't work in current state
+                            //                 if (image.parentNode.classList.contains(imageCarouselClass)) {
+                            //                     var imageCarouselContainer = image.parentNode;
 
-                                                imageCarouselContainer.onmouseover = function (event) {
-                                                    imageCarouselContainer.setAttribute('style', `margin-bottom: ${height * heightPadding}px;margin-top: ${height * heightPadding}px;transition: all 150ms ease-in-out;`);
-                                                }
-                                                imageCarouselContainer.onmouseout = function () {
-                                                    imageCarouselContainer.setAttribute('style', `margin: 0px; transition: all 150ms ease-in-out;`);
-                                                }
-                                            }
-                                        } catch (error) {
-                                            console.log(error);
-                                        }
-                                    });
-                                } else {
-                                    console.log('Google Tiles: no zoomable images found');
-                                }
-                            }
+                            //                     imageCarouselContainer.onmouseover = function (event) {
+                            //                         imageCarouselContainer.setAttribute('style', `margin-bottom: ${height * heightPadding}px;margin-top: ${height * heightPadding}px;transition: all 150ms ease-in-out;`);
+                            //                     }
+                            //                     imageCarouselContainer.onmouseout = function () {
+                            //                         imageCarouselContainer.setAttribute('style', `margin: 0px; transition: all 150ms ease-in-out;`);
+                            //                     }
+                            //                 }
+                            //             } catch (error) {
+                            //                 console.log(error);
+                            //             }
+                            //         });
+                            //     } else {
+                            //         console.log('Google Tiles: no zoomable images found');
+                            //     }
+                            // }
 
                             /// Add scroll-on-hover listeners
-                            if (configs.scrollHorizontalViewOnHover) {
+                            // if (configs.scrollHorizontalViewOnHover) {
 
-                                var scrollableCards = result.querySelectorAll(scrollableCardSelector);
+                            //     var scrollableCards = result.querySelectorAll(scrollableCardSelector);
 
-                                if (scrollableCards !== null && scrollableCards !== undefined) {
-                                    /// Try to proccess 'More news' cards on news page
-                                    if (scrollableCards.length == 0)
-                                        scrollableCards = result.querySelectorAll(newsPageCardSelector);
+                            //     if (scrollableCards !== null && scrollableCards !== undefined) {
+                            //         /// Try to proccess 'More news' cards on news page
+                            //         if (scrollableCards.length == 0)
+                            //             scrollableCards = result.querySelectorAll(newsPageCardSelector);
 
-                                    if (scrollableCards !== null && scrollableCards !== undefined && scrollableCards.length > 0)
-                                        scrollableCards.forEach(function (card) {
+                            //         if (scrollableCards !== null && scrollableCards !== undefined && scrollableCards.length > 0)
+                            //             scrollableCards.forEach(function (card) {
 
-                                            card.onmouseover = function (event) {
-                                                // card.scrollIntoView({ block: 'nearest', inline: "center", behavior: "smooth" });
-                                                setTimeout(function () {
-                                                    card.scrollIntoView({ block: 'nearest', inline: "center", behavior: "smooth" });
-                                                }, configs.delayToScrollOnHover);
-                                            }
-                                        });
-                                }
-                            }
+                            //                 card.onmouseover = function (event) {
+                            //                     // card.scrollIntoView({ block: 'nearest', inline: "center", behavior: "smooth" });
+                            //                     setTimeout(function () {
+                            //                         card.scrollIntoView({ block: 'nearest', inline: "center", behavior: "smooth" });
+                            //                     }, configs.delayToScrollOnHover);
+                            //                 }
+                            //             });
+                            //     }
+                            // }
 
                         } else {
                             /// Remove bottom margin for empty divs on page
