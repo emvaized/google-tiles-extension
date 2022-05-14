@@ -1,3 +1,7 @@
+2.4.0
+- Fixed issue of extension not working on some pages
+- Removed unstable hover features
+
 2.3.9
 - Fixed misplaced favicon+site headers in youtube search result tiles
 - Changed support/donate link to Ko-Fi
