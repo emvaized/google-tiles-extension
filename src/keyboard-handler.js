@@ -162,14 +162,14 @@ function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHint
         /// Numeric keyboard focus
         if (configs.numericNavigation) {
 
-            /// Spacebar to select
+            /// Spacebar to focus next result
             if (e.keyCode == 32) {
-                if (document.activeElement.id == 'g-tile') {
-                    e.preventDefault();
-                    document.activeElement.click();
+                e.preventDefault();
 
-                    return !(e.keyCode == 32);
-                }
+                if (e.shiftKey)
+                    focusPreviousSearchResult();
+                else
+                    focusNextSearchResult();
             }
 
             const parsed = parseInt(e.key, 10);
