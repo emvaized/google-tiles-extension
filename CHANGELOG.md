@@ -1,3 +1,7 @@
+2.4.1
+- Added Dutch translation
+- Use space bar to focus next search result
+
 2.4.0
 - Fixed issue of extension not working on some pages
 - Removed unstable hover features
