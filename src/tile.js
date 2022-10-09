@@ -230,11 +230,11 @@ function configureTileHeader(tile, url) {
                         });
 
                         favicon.addEventListener('load', function (ev) {
-                            if (favicon.naturalHeight == 16) {
-                                /// If Google is returning default 'globe' icon, remove the favicon
-                                favicon.remove();
-                                return;
-                            }
+                            // if (favicon.naturalHeight == 16) {
+                            //     /// If Google is returning default 'globe' icon, remove the favicon
+                            //     favicon.remove();
+                            //     return;
+                            // }
 
                             /// Remove the loading spinner
                             favicon.classList.remove('favicon-loading-spinner');
