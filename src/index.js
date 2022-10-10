@@ -6,7 +6,7 @@ var dropdownMenuSelector = `[class='action-menu']`;
 var translatePageButtonSelector = `[class*='fl ']`;
 var columnWithRegularResultsId = 'rso';
 var columnWithImagePageResultsId = 'islrg';
-var peopleAlsoSearchForId = 'botstuff';
+var peopleAlsoSearchForId = 'bres';
 var imageResultTileSelector = `[class$='ivg-i']`;
 var imageCarouselClass = 'GNxIwf';
 var interactiveWidgetSelector = `[class$='vk_c']`;
