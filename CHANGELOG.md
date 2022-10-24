@@ -1,3 +1,8 @@
+2.4.2
+- Disable code for removing the 'globe' favicon, because of false detections
+- Update id 'people also search for' element
+- Fix positioning when moving navigation butons to the top bar
+
 2.4.1
 - Added Dutch translation
 - Use space bar to focus next search result
