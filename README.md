@@ -1,5 +1,7 @@
 # <sub><img src="https://github.com/emvaized/google-tiles-extension/blob/master/icons/google-tiles-new-icon-48.png" height="48" width="48"></sub> Google Tweaks
 
+**Note**: Most of configs in this extension are not working anymore due to Google page layout changes. Some features are now implemented by Google itself, such as favicons.
+
 Customize the looks and behavior of Google search page for better productivity
 
 * Make whole search result clickable and interactive (just like in DuckDuckGo)
