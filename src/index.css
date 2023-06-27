@@ -13,6 +13,7 @@
     box-shadow: var(--gtiles-tile-shadow);
     width: var(--gtiles-tile-width) !important;
     box-sizing: content-box;
+    left: calc(-1 * var(--gtiles-tile-padding)) !important;
 }
 
 /* Regular search result link wrapper */
@@ -250,4 +251,9 @@ div.YEMaTe {
 /* Fix for cite and favicon displaced in youtube search result */
 .ct3b9e {
     position: relative;
+}
+
+/* Make google images visible again */
+.RYdNQb div {
+    display: revert !important;
 }

@@ -118,6 +118,18 @@ function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHint
 
         e = e || window.event;
 
+        /// Spacebar to focus next result
+        if (e.keyCode == 32) {
+            e.preventDefault();
+
+            if (e.shiftKey)
+                focusPreviousSearchResult();
+            else
+                focusNextSearchResult();
+
+            return;
+        }
+
         /// Arrow keys navigation
         if (configs.navigateWithKeyboard && regularResultsColumn !== null) {
 
@@ -161,16 +173,6 @@ function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHint
 
         /// Numeric keyboard focus
         if (configs.numericNavigation) {
-
-            /// Spacebar to focus next result
-            if (e.keyCode == 32) {
-                e.preventDefault();
-
-                if (e.shiftKey)
-                    focusPreviousSearchResult();
-                else
-                    focusNextSearchResult();
-            }
 
             const parsed = parseInt(e.key, 10);
 

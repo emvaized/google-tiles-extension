@@ -1,3 +1,7 @@
+2.4.3
+- Small fixes
+- Changed defaults to disable configs which are not working anymore
+
 2.4.2
 - Disable code for removing the 'globe' favicon, because of false detections
 - Update id 'people also search for' element
