@@ -163,14 +163,6 @@ g-more-link>a {
     vertical-align: baseline;
 }
 
-.favicon-loading-spinner {
-    /* background-image: url('chrome-extension://__MSG_@@extension_id__/assets/spinner.gif');  */
-    background-image: var(--gtiles-spinner-placeholder-url);
-    background-color: transparent;
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
 /* Styling for top bar with categories, moved to search bar */
 .moved-top-bar {
     position: absolute !important;
