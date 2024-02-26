@@ -9,13 +9,12 @@ Customize the looks and behavior of Google search page for better productivity
 
 <a href="https://chrome.google.com/webstore/detail/google-tiles/cjbgjibpaopnjfbhipjfckeodbaednbg">Download for Chrome</a>
 
-
 <a href="https://addons.mozilla.orgfirefox/addon/google-tiles/">Download for Firefox</a>
 
 
 ---
 
-<strong>Note about "all tabs" permission</strong>
+### Note about "all tabs" permission
 
 Although browser may mark this addon as requiring access to all opened tabs, in fact it is not. It uses <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/content_scripts#include_globs">include_globs</a> manifest key to gain access only to Google search page and all it's local variations (such as "www.google.es", "google.com.ua" etc). 
 
