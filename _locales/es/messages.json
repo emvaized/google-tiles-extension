@@ -1,8 +1,4 @@
 {
-    "addFavicons": {
-        "message": "Agregar favicon de sitio web",
-        "description": ""
-    },
     "addFocusedTileDot": {
         "message": "Agregar un punto al mosaico enfocado",
         "description": ""
@@ -62,10 +58,6 @@
     "configure": {
         "message": "Configurar",
         "description": ""
-    },
-    "delayToScrollOnHover": {
-        "message": "Retraso antes de desplazarse por el mouse (ms)",
-        "description": "Retraso antes de comenzar a desplazarse al colocar el cursor, cuando está habilitado"
     },
     "disableTitleUnderlineOnHover": {
         "message": "Desactivar el subrayado del título al pasar el mouse",

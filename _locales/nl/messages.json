@@ -1,8 +1,4 @@
 {
-  "addFavicons": {
-    "message": "Favicon ophalen",
-    "description": ""
-  },
   "addFocusedTileDot": {
     "message": "Stip tonen op gefocuste tegel",
     "description": ""
@@ -63,20 +59,8 @@
     "message": "Instellen",
     "description": ""
   },
-  "delayToScrollOnHover": {
-    "message": "Wachttijd alvorens automatisch te scrollen (in ms)",
-    "description": "Delay before starting to scroll on hover, when it's enabled"
-  },
   "disableTitleUnderlineOnHover": {
     "message": "Titel niet onderstrepen na aanwijzen",
-    "description": ""
-  },
-  "disableExpandAnimations": {
-    "message": "Uitklapanimaties uitschakelen",
-    "description": ""
-  },
-  "disableExpandAnimationsHint": {
-    "message": "Soms bevatten zoekresultaten vervelende uitklapsecties. Met deze optie schakelt u zulke secties uit.",
     "description": ""
   },
   "enabled": {

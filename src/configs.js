@@ -1,5 +1,4 @@
 var configs = {
-    "addFavicons": false,
     "addFocusedTileDot": true,
     "addTileBackground": false,
     "addTileBorder": false,
@@ -11,8 +10,6 @@ var configs = {
     "changeCursorOverTile": true,
     "centerizeSelectedResult": true,
     "colorizeBorderAfterFavicon": false,
-    "delayToScrollOnHover": 150,
-    "disableExpandAnimations": true,
     "disableTitleUnderlineOnHover": true,
     "externalPadding": 21,
     "faviconRadius": 12,

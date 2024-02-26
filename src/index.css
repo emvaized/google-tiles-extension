@@ -277,7 +277,7 @@ g-scrolling-carousel g-inner-card div[role="heading"] {
 }
 
 /* Remove border for google's sidebar search result */
-.TQc1id .I6TXqe {
+/* .TQc1id .I6TXqe {
     border: 1px solid #dadce0;
     border: none;
 }
@@ -285,4 +285,4 @@ g-scrolling-carousel g-inner-card div[role="heading"] {
 #g-tiles-sidebar .g-tiles-proccessed {
     border-left: 1px solid #dadce0;
     padding: 15px;
-}
+} */

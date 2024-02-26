@@ -96,7 +96,6 @@ function updateDisabledOptions() {
   document.querySelector("#addTileCounter").parentNode.className = document.querySelector("#numericNavigation").checked ? 'enabled-option' : 'disabled-option';
   // document.querySelector("#numbersNavigateTabs").parentNode.className = document.querySelector("#numericNavigation").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#indexHintOpacity").parentNode.className = document.querySelector("#addTileCounter").checked && document.querySelector("#numericNavigation").checked ? 'enabled-option' : 'disabled-option';
-  // document.querySelector("#delayToScrollOnHover").parentNode.className = document.querySelector("#scrollHorizontalViewOnHover").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#showFullDomainOnHover").parentNode.className = document.querySelector("#simplifyDomain").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#titleHoverColor").parentNode.className = document.querySelector("#highlightTitleOnHover").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#tileBackgroundColor").parentNode.className = document.querySelector("#addTileBackground").checked ? 'enabled-option' : 'disabled-option';

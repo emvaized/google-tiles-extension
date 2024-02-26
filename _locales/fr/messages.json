@@ -1,8 +1,4 @@
 {
-    "addFavicons": {
-        "message": "Ajouter un favicon de site Web",
-        "description": ""
-    },
     "addFocusedTileDot": {
         "message": "Ajouter un point à la vignette ciblée",
         "description": ""
@@ -62,10 +58,6 @@
     "configure": {
         "message": "Configurer",
         "description": ""
-    },
-    "delayToScrollOnHover": {
-        "message": "Délai avant le défilement du survol (ms)",
-        "description": "Délai avant de commencer le défilement au survol, lorsqu'il est activé"
     },
     "disableTitleUnderlineOnHover": {
         "message": "Désactiver le soulignement du titre au survol",

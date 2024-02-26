@@ -1,8 +1,4 @@
 {
-    "addFavicons": {
-        "message": "Добавить иконку сайта",
-        "description": ""
-    },
     "addFocusedTileDot": {
         "message": "Добавить точку к выделенной плитке",
         "description": ""
@@ -61,10 +57,6 @@
     },
     "configure": {
         "message": "Настроить",
-        "description": ""
-    },
-    "delayToScrollOnHover": {
-        "message": "Задержка перед прокруткой наведением (мс)",
         "description": ""
     },
     "disableTitleUnderlineOnHover": {

@@ -1,8 +1,4 @@
 {
-  "addFavicons": {
-    "message": "Add website favicon",
-    "description": ""
-  },
   "addFocusedTileDot": {
     "message": "Add dot to focused tile",
     "description": ""
@@ -63,20 +59,8 @@
     "message": "Configure",
     "description": ""
   },
-  "delayToScrollOnHover": {
-    "message": "Delay before hover scrolling (ms)",
-    "description": "Delay before starting to scroll on hover, when it's enabled"
-  },
   "disableTitleUnderlineOnHover": {
     "message": "Disable title underline on hover",
-    "description": ""
-  },
-  "disableExpandAnimations": {
-    "message": "Disable expand animations",
-    "description": ""
-  },
-  "disableExpandAnimationsHint": {
-    "message": "Sometimes search results have annoying expanding sections - this option will disable them",
     "description": ""
   },
   "enabled": {
