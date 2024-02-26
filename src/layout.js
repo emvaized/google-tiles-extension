@@ -8,7 +8,9 @@ function setLayout() {
     /// Iterate regular results
     const allTiles = document.querySelectorAll(`div > .g:not(.g-tiles-proccessed):not(:has(.g))`);
     const mainResults = Array.prototype.slice.call(allTiles);
-    mainResults.forEach(function (result) {
+    for (let i = 0, n = mainResults.length, result; i < n; i++) {
+        result = mainResults[i];
+
         if (result.tagName == 'H2' || result.tagName == 'SCRIPT') {
             /// Don't proccess
         } else if (result.tagName == 'HR') {
@@ -19,7 +21,7 @@ function setLayout() {
             configureTile(result);
             result.classList.add('g-tiles-proccessed')
         }
-    })
+    }
 
     /// Detect or create sidebar container
     if (!regularResultsColumn) regularResultsColumn = document.getElementById(columnWithRegularResultsId);
@@ -61,7 +63,9 @@ function setLayout() {
             .cUnQKe:not(.g-tiles-proccessed)
         `);
         const widgetsArray = Array.prototype.slice.call(widgets);
-        widgetsArray.forEach(function (result) {
+        for (let i = 0, n = widgetsArray.length, result; i < n; i++) {
+            result = widgetsArray[i];
+
             if (result.tagName == 'H2' || result.tagName == 'SCRIPT') {
                 /// Don't proccess
             } else if (result.tagName == 'HR') {
@@ -85,7 +89,7 @@ function setLayout() {
                 /// Remove margins for empty divs on page
                 result.style.margin = '0px';
             }
-        })
+        }
     }
 
     sidebarContainer.appendChild(sidebarNewChildrenContainer);

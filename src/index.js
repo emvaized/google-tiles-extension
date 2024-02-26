@@ -127,7 +127,7 @@ function init() {
   document.addEventListener('scroll', onFirstScroll)
 
   function onFirstScroll(){
-    if (window.scrollY > 400) {
+    if (window.scrollY > 300) {
       document.removeEventListener('scroll', onFirstScroll)
       lastKnownBodyHeight = document.body.clientHeight;
       resizeObserver.observe(document.body)
