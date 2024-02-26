@@ -81,13 +81,15 @@ function setVariables() {
 
   document.documentElement.style.setProperty('--gtiles-keyboard-focus-border-color', configs.keyboardFocusBorderColor);
   document.documentElement.style.setProperty('--gtiles-focused-tile-dot-opacity', configs.focusedTileDotOpacity);
+
+  document.documentElement.style.setProperty('--gtiles-results-found-line-visibility', configs.hideNumberResultsRow ? 'hidden' : 'visible');
+  document.documentElement.style.setProperty('--gtiles-results-found-line-height', configs.hideNumberResultsRow ? '0px' : 'unset');
+  
 }
 
 let lastKnownBodyHeight;
 
 function init() {
-  // console.log('initiating google tiles script');
-
   // if (configs.moveNavbarToSearchbar)
   //   setTopBar();
 
@@ -112,7 +114,7 @@ function init() {
     resizeObserverTimeout = setTimeout(function(){
 
       if (entries[0].target.clientHeight > lastKnownBodyHeight) {
-        console.log('Body height changed:', entries[0].target.clientHeight - lastKnownBodyHeight)
+        // console.log('Body height changed:', entries[0].target.clientHeight - lastKnownBodyHeight)
         lastKnownBodyHeight = entries[0].target.clientHeight;
         setLayout()
       }
@@ -124,7 +126,6 @@ function init() {
   document.addEventListener('scroll', onFirstScroll)
 
   function onFirstScroll(){
-    console.log('scroll!')
     lastKnownBodyHeight = document.body.clientHeight;
     resizeObserver.observe(document.body)
     document.removeEventListener('scroll', onFirstScroll)

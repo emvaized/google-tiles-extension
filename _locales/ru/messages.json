@@ -115,6 +115,10 @@
         "message": "Заголовок",
         "description": ""
     },
+    "hideNumberResultsRow": {
+        "message": "Спрятать строку 'Найдено n результатов'",
+        "description": ""
+    },
     "highlightTitleOnHover": {
         "message": "Изменить цвет заголовка при наведении",
         "description": ""

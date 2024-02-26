@@ -122,6 +122,10 @@
   "header": {
     "message": "Header",
     "description": ""
+  },  
+  "hideNumberResultsRow": {
+    "message": "Hide the 'n results found' row",
+    "description": ""
   },
   "highlightTitleOnHover": {
     "message": "Change title color on hover",

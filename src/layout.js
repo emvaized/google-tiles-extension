@@ -4,7 +4,6 @@ var allResultsColumn;
 var sidebarContainer;
 
 function setLayout() {
-
     /// Iterate regular results
     var allTiles = document.querySelectorAll(`div > .g:not(.g-tiles-proccessed):not(:has(.g))`);
     var mainResults = Array.prototype.slice.call(allTiles);
@@ -12,7 +11,6 @@ function setLayout() {
         if (result.tagName == 'H2' || result.tagName == 'SCRIPT') {
             /// Don't proccess
         } else if (result.tagName == 'HR') {
-            // result.parentNode.removeChild(result);
             result.remove();
         } else {
             /// Regular result
@@ -121,15 +119,6 @@ function setLayout() {
 
     console.log('Google Tweaks finished proccessing page');
     return;
-
-}
-
-function hideNumberResultsRow() {
-    /// Hides the 'number results found' line
-    const appbar = document.getElementById('appbar');
-    appbar.style.visibility = 'hidden';
-    appbar.style.height = '0px';
-    appbar.style.paddingTop = '42px';
 
 }
 

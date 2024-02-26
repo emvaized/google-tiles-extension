@@ -294,9 +294,14 @@ div.YEMaTe {
     margin-bottom: 0 !important;
 }
 
-.ULSxyf g-section-with-header {
+g-section-with-header.ULSxyf {
     margin-bottom: var(--gtiles-tile-external-padding) !important;
     margin-top: var(--gtiles-tile-external-padding) !important;
+}
+
+.g > g-section-with-header.ULSxyf {
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
 }
 
 
@@ -314,4 +319,11 @@ div.YEMaTe {
 g-scrolling-carousel g-inner-card div[role="heading"] {
     max-height: 60px !important;
     overflow: hidden;
+}
+
+/* Hide the 'number results found' line */
+/* #appbar { */
+#appbar > div {
+    visibility: var(--gtiles-results-found-line-visibility);
+    height: var(--gtiles-results-found-line-height);
 }

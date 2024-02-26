@@ -115,6 +115,10 @@
         "message": "Encabezado",
         "description": ""
     },
+    "hideNumberResultsRow": {
+        "message": "Ocultar la fila 'n resultados encontrados'",
+        "description": ""
+    },
     "highlightTitleOnHover": {
         "message": "Cambiar el color del título al pasar el mouse",
         "description": ""
