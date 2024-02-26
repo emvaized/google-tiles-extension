@@ -4,6 +4,14 @@ var allResultsColumn;
 var sidebarContainer;
 
 function setLayout() {
+    /// If there is photo carousel on page on top, combine it with first tile for better design
+    const photoCarousel = document.querySelector('#kp-wp-tab-overview div:has(#media_result_group):not(.g-tiles-proccessed)')
+    if (photoCarousel) {
+        photoCarousel.classList.add('g-tiles-proccessed');
+        photoCarousel.style.marginBottom = configs.innerPadding + 'px';
+        document.querySelector('.g').prepend(photoCarousel)  
+    }
+
     /// Iterate regular results
     const allTiles = document.querySelectorAll(`div > .g:not(.g-tiles-proccessed):not(:has(.g))`);
     const mainResults = Array.prototype.slice.call(allTiles);
@@ -20,7 +28,6 @@ function setLayout() {
         }
     })
 
-    /// Iterate widgets
     /// Detect or create sidebar container
     if (!regularResultsColumn) regularResultsColumn = document.getElementById(columnWithRegularResultsId);
     if (!regularResultsColumnWidth) regularResultsColumnWidth = regularResultsColumn.clientWidth;
@@ -28,7 +35,6 @@ function setLayout() {
     
      if (!sidebarContainer) {
         sidebarContainer = document.getElementById('rhs');
-        console.log(sidebarContainer)
 
         if (!sidebarContainer)
             sidebarContainer = document.getElementById('g-tiles-sidebar');
@@ -49,13 +55,14 @@ function setLayout() {
         // if (configs.applyStyleToWidgets) sidebarContainer.classList.add('stylized-sidebar');
     }
 
+    /// Iterate widgets
     let sidebarHeight = sidebarContainer.scrollHeight;
     const sidebarNewChildrenContainer = document.createElement('span');
     const regularResultsNewChildrenContainer = document.createElement('span');
 
     if (configs.tryToPlaceWidgetsOnTheSide) {
         const widgets = document.querySelectorAll(`
-            #${columnWithRegularResultsId} > div:not(:has(.g-tiles-proccessed)):not(:has(#media_result_group)),
+            #${columnWithRegularResultsId} > div:not(:has(.g-tiles-proccessed)),
             #tads:not(.g-tiles-proccessed), 
             #rhsads:not(.g-tiles-proccessed), 
             #bres:not(.g-tiles-proccessed), 
@@ -88,7 +95,6 @@ function setLayout() {
             }
         })
     }
-
 
     sidebarContainer.appendChild(sidebarNewChildrenContainer);
     regularResultsColumn.appendChild(regularResultsNewChildrenContainer);

@@ -60,6 +60,7 @@ function restoreOptions() {
       document.querySelector("#navigateWithKeyboardTooltip").innerText = chrome.i18n.getMessage("navigateWithKeyboardTooltip");
       document.querySelector("#firstNumberPressScrollsToElementTooltip").innerText = chrome.i18n.getMessage("firstNumberPressScrollsToElementTooltip");
       document.querySelector("#colorizeBorderAfterFaviconTooltip").innerText = chrome.i18n.getMessage("colorizeBorderAfterFaviconTooltip");
+      document.querySelector("#sidebarWidthTooltip").innerText = chrome.i18n.getMessage("sidebarWidthTooltip");
       // document.querySelector("#moveNavbarToSearchbarTooltip").innerText = chrome.i18n.getMessage("moveNavbarToSearchbarTooltip");
 
       /// Set translated headers

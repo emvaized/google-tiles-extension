@@ -267,6 +267,10 @@
         "message": "Ширина боковой колонки",
         "description": ""
     },
+    "sidebarWidthTooltip": {
+        "message": "Применяется только к боковым колонкам, созданным этим расширением",
+        "description": ""
+    },
     "simplifyDomain": {
         "message": "Упростить домен сайта",
         "description": ""

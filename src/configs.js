@@ -46,7 +46,7 @@ var configs = {
     "sideArrowsFocusSidebarFirst": false,
     "sidebarPadding": 8,
     "sidebarWidthMultiplier": 0.75,
-    "sidebarWidth": 500,
+    "sidebarWidth": 400,
     "simplifyDomain": true,
     "tileBackgroundColor": "#FFFFFF",
     "tileBackgroundOpacity": 1.0,

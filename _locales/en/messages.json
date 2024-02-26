@@ -275,6 +275,10 @@
     "message": "Sidebar width",
     "description": ""
   },
+  "sidebarWidthTooltip": {
+    "message": "Only applies to sidebars created by this extension",
+    "description": ""
+  },
   "simplifyDomain": {
     "message": "Simplify website domain",
     "description": ""

@@ -76,13 +76,12 @@
     top: 0;
     padding-top: 0px;
     max-width: var(--gtiles-sidebar-width) !important;
-    width: var(--gtiles-sidebar-width) !important;
-    left: calc(var(--center-width) + var(--rhs-margin))
+    left: calc(var(--center-width) + var(--rhs-margin));
+    overflow: hidden;
 }
 
-/* Search suggestions container */
-/* #botstuff div {
-    margin: 0 !important;
+/* #g-tiles-sidebar * {
+    max-width: var(--gtiles-sidebar-width) !important;
 } */
 
 /* Fix right margin for accordeon tiles */
@@ -231,8 +230,11 @@ div.YEMaTe {
 
 
 /* Remove unwanted bottom margin for some results */
-.ULSxyf, .hlcw0c {
+.ULSxyf, .hlcw0c:not(:has(.g)) {
     margin-bottom: var(--gtiles-tile-external-padding) !important;
+}
+.hlcw0c {
+    margin-bottom: 0 !important;
 }
 
 #kp-wp-tab-overview > div[jsdata]:not(:has(div[aria-level="2"])) {
@@ -245,10 +247,13 @@ g-section-with-header.ULSxyf {
     margin-top: var(--gtiles-tile-external-padding) !important;
 }
 
-/* special handling for youtube search results top left padding */
+/* special handling for youtube search results */
 .g:has(div[data-vid]) .notranslate.HGLrXd.NJjxre.iUh30.ojE3Fb {
     margin-top: var(--gtiles-tile-padding) !important;
     margin-left: var(--gtiles-tile-padding) !important;
+}
+.Jb0Zif .cLjAic.K7khPe {
+    margin: 0;
 }
 
 /* make image gallery border radius consistent with extension settings  */
@@ -269,4 +274,15 @@ g-scrolling-carousel g-inner-card div[role="heading"] {
 }
 #appbar{
     visibility: var(--gtiles-results-found-border-visibility);
+}
+
+/* Remove border for google's sidebar search result */
+.TQc1id .I6TXqe {
+    border: 1px solid #dadce0;
+    border: none;
+}
+
+#g-tiles-sidebar .g-tiles-proccessed {
+    border-left: 1px solid #dadce0;
+    padding: 15px;
 }

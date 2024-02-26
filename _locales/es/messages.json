@@ -119,6 +119,10 @@
         "message": "Ocultar la fila 'n resultados encontrados'",
         "description": ""
     },
+    "hideNumberResultsRowBorder": {
+        "message": "Ocultar el borde arriba también",
+        "description": ""
+      },
     "highlightTitleOnHover": {
         "message": "Cambiar el color del título al pasar el mouse",
         "description": ""
@@ -261,6 +265,10 @@
     },
     "sidebarWidthMultiplier": {
         "message": "Ancho de la barra lateral",
+        "description": ""
+    },
+    "sidebarWidthTooltip": {
+        "message": "Solo se aplica a las barras laterales creadas por esta extensión.",
         "description": ""
     },
     "simplifyDomain": {
