@@ -80,23 +80,19 @@
     overflow: hidden;
 }
 
-/* #g-tiles-sidebar * {
-    max-width: var(--gtiles-sidebar-width) !important;
-} */
-
 /* Fix right margin for accordeon tiles */
 #botstuff .ngjNee {
     margin-right: 16px !important;
 }
 
 /* Add padding for top labels */
-[id='result-stats'] {
+/* [id='result-stats'] {
     padding: var(--gtiles-navbar-padding);
 }
 
 [id='top_nav'] {
     padding: var(--gtiles-navbar-padding);
-}
+} */
 
 /* Remove inside decorations on some search widgets */
 [class$='vk_c'],

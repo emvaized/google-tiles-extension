@@ -4,13 +4,6 @@ var allResultsColumn;
 var sidebarContainer;
 
 function setLayout() {
-    /// If there is photo carousel on page on top, combine it with first tile for better design
-    const photoCarousel = document.querySelector('#kp-wp-tab-overview div:has(#media_result_group):not(.g-tiles-proccessed)')
-    if (photoCarousel) {
-        photoCarousel.classList.add('g-tiles-proccessed');
-        photoCarousel.style.marginBottom = configs.innerPadding + 'px';
-        document.querySelector('.g').prepend(photoCarousel)  
-    }
 
     /// Iterate regular results
     const allTiles = document.querySelectorAll(`div > .g:not(.g-tiles-proccessed):not(:has(.g))`);
@@ -48,7 +41,6 @@ function setLayout() {
 
             if (regularResultsColumn !== null)
                 regularResultsColumn.parentNode.appendChild(sidebarContainer);
-
             // allResultsColumn.appendChild(sidebarContainer)
         }
 
@@ -83,11 +75,11 @@ function setLayout() {
                     /// Move widget to sidebar
                     /// If sidebar height won't exceed regular results height, move tile there
 
-                        sidebarHeight += result.clientHeight;
-                        // result.style.marginTop = `${configs.externalPadding}px`;
-                        result.style.marginTop = `22px`;
-                        sidebarNewChildrenContainer.appendChild(result);
-                        result.classList.add('g-tiles-proccessed')
+                    sidebarHeight += result.clientHeight;
+                    // result.style.marginTop = `${configs.externalPadding}px`;
+                    result.style.marginTop = `22px`;
+                    sidebarNewChildrenContainer.appendChild(result);
+                    result.classList.add('g-tiles-proccessed')
                 } 
             } else {
                 /// Remove margins for empty divs on page
@@ -135,6 +127,14 @@ function setLayout() {
                 }
             }
         }, 1);
+
+    /// If there is photo carousel on page on top, combine it with first tile for better design
+    // const photoCarousel = document.querySelector('#kp-wp-tab-overview div:has(#media_result_group):not(.g-tiles-proccessed)')
+    // if (photoCarousel) {
+    //     photoCarousel.classList.add('g-tiles-proccessed');
+    //     photoCarousel.style.marginBottom = configs.innerPadding + 'px';
+    //     document.querySelector('.g').prepend(photoCarousel)  
+    // }
 
     console.log('Google Tweaks finished proccessing page');
     return;
