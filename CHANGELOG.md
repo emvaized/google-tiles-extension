@@ -3,6 +3,7 @@
 - New option to remove "n results found" line on top, as well as it's border
 - Huge refactoring and optimization of the project – it became much lighter and faster to load
 - Some of the features had to be removed ("Add website favicons", "Apply styling to the search widgets", "Move search results on top", "Numbers navigate tabs", horizontal arrows keyboard navigation). Some of these, which are still actual in new lazy-loaded layout, may be reimplemented in the future if there will be demand from users 
+- Changed website check to a more flexible form, so that it should support more google.com subcomains
 
 2.4.3
 - Small fixes
