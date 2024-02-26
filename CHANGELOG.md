@@ -1,3 +1,9 @@
+2.5.0
+- Added test support for new Google lazy loading of next search page
+- New option to remove "n results found" line on top, as well as it's border
+- Huge refactoring and optimization of the project – it became much lighter and faster to load
+- Some of the features had to be removed ("Add website favicons", "Apply styling to the search widgets", "Move search results on top", "Numbers navigate tabs", horizontal arrows keyboard navigation). Some of these, which are still actual in new lazy-loaded layout, may be reimplemented in the future if there will be demand from users 
+
 2.4.3
 - Small fixes
 - Changed defaults to disable configs which are not working anymore
