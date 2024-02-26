@@ -1,40 +1,21 @@
-/// CSS selectors
-var regularResultClassName = 'g';
-var searchFieldSelector = `[name = 'q']`;
-var domainNameSelector = 'cite';
-var dropdownMenuSelector = `[class='action-menu']`;
-var translatePageButtonSelector = `[class*='fl ']`;
-var columnWithRegularResultsId = 'rso';
-var columnWithImagePageResultsId = 'islrg';
-var peopleAlsoSearchForId = 'bres';
-var imageResultTileSelector = `[class$='ivg-i']`;
-var imageCarouselClass = 'GNxIwf';
-var interactiveWidgetSelector = `[class$='vk_c']`;
-var nextResultsPageButtonId = 'pnnext';
-var previousResultsPageButtonId = 'pnprev';
-var scrollableCardSelector = `[role='listitem'], g-inner-card`;
-var imagesPageImageSelector = `[class*='rg_i']`;
-var newsPageCardSelector = 'g-card';
-var shopPageCardClass = 'sh-dlr__list-result';
-var regularCategoryButtonsParentId = 'hdtb-msb';
-var regularCategoryButtonSelector = '.hdtb-mitem';
-var imagesPageCategoryButtonsParentSelector = '.T47uwc';
-var imagesPageCategoryButtonSelector = `[class*='NZmxZe']`;
+/// Some CSS selectors
+const regularResultClassName = 'g';
+const searchFieldSelector = `[name = 'q']`;
+const columnWithRegularResultsId = 'rso';
+const regularCategoryButtonsParentId = 'hdtb-msb';
 
 /// Currently non-configurable variables
-var sidebarPadding = 25;
-var imageScaleUpOnHoverAmount = 1.5;
-var loadPreviews = false;
-var counterHintsOnBottom = false;
-var paddingWhenNavbarMoved = 20;
-var countedHintColor = 'grey';
-var counterHintFocusColor = '#EA4335';
+const sidebarPadding = 25;
+const counterHintsOnBottom = false;
+const paddingWhenNavbarMoved = 20;
+const countedHintColor = 'grey';
+const counterHintFocusColor = '#EA4335';
 var topBar;
 var tileTransition;
 
 var tileBackgroundColor;
 var hoverBackgroundColor;
-var localDomain;
+const regularSearchResults = []; // for keyboard navigation
 
 function loadConfigs() {
   const configKeys = Object.keys(configs);
@@ -92,32 +73,62 @@ function setVariables() {
   document.documentElement.style.setProperty('--gtiles-sidebar-child-width', `${configs.sidebarWidth - (configs.innerPadding * 2)}px`);
   document.documentElement.style.setProperty('--gtiles-tile-image-border-radius', `${configs.borderRadius}px ${configs.borderRadius}px 0px 0px`);
   document.documentElement.style.setProperty('--gtiles-tile-margin', configs.tilesEnabled ? `0px 0px ${configs.externalPadding}px` : '0px 0px 30px 0px');
-  document.documentElement.style.setProperty('--gtiles-topbar-max-height', configs.tilesEnabled && configs.moveNavbarToSearchbar ? `${paddingWhenNavbarMoved}px` : 'unset');
+  document.documentElement.style.setProperty('--gtiles-tile-external-padding', configs.tilesEnabled ? `${1.0 * configs.externalPadding + 1.0 * configs.innerPadding}px` : 'unset');
+
+  document.documentElement.style.setProperty('--gtiles-tile-background-color', configs.addTileBackground ? tileBackgroundColor : 'transparent');
+  document.documentElement.style.setProperty('--gtiles-tile-hover-background-color', hoverBackgroundColor);
+  document.documentElement.style.setProperty('--gtiles-tile-hover-title-color', configs.titleHoverColor);
+
+  document.documentElement.style.setProperty('--gtiles-keyboard-focus-border-color', configs.keyboardFocusBorderColor);
+  document.documentElement.style.setProperty('--gtiles-focused-tile-dot-opacity', configs.focusedTileDotOpacity);
 }
 
+let lastKnownBodyHeight;
 
 function init() {
   // console.log('initiating google tiles script');
 
-  if (configs.moveNavbarToSearchbar)
-    setTopBar();
-
-  // if (configs.hideNumberResultsRow)
-  //   hideNumberResultsRow();
-  // removeSearchbarShadow();
+  // if (configs.moveNavbarToSearchbar)
+  //   setTopBar();
 
   try {
-    localDomain = window.location.href.substring(0, 30).split('/')[2];
     setLayout();
-
   } catch (error) {
     console.log('Google Tiles error:');
     console.log(error);
   }
 
-  // console.time('Google Tiles finished proccessing page in');
-  // console.time('Google Tweaks finished proccessing page');
+  /// Set keyboard listeners
+  if (configs.navigateWithKeyboard || configs.numericNavigation) {
+    setTimeout(() => setKeyboardHandlers(regularResultsColumn, sidebarContainer, []), 1);
+  }
+
+  let lastKnownBodyHeight;
+  let resizeObserverTimeout;
+
+  // Create an Observer instance
+  const resizeObserver = new ResizeObserver(function(entries) { 
+    clearTimeout(resizeObserverTimeout);
+    resizeObserverTimeout = setTimeout(function(){
+
+      if (entries[0].target.clientHeight > lastKnownBodyHeight) {
+        console.log('Body height changed:', entries[0].target.clientHeight - lastKnownBodyHeight)
+        lastKnownBodyHeight = entries[0].target.clientHeight;
+        setLayout()
+      }
+    }, 100)
+  })
+
+  /// Start observing body for changed height
+  /// Initiate heavy observer only after first scroll event
+  document.addEventListener('scroll', onFirstScroll)
+
+  function onFirstScroll(){
+    console.log('scroll!')
+    lastKnownBodyHeight = document.body.clientHeight;
+    resizeObserver.observe(document.body)
+    document.removeEventListener('scroll', onFirstScroll)
+  }
 }
 
 loadConfigs();
-

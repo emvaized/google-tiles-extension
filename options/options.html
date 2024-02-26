@@ -74,9 +74,9 @@
 
             <h3 class='collapsible-header' id='faviconsHeader'></h3>
             <div class='collapsible-content'>
-                  <div class='option'> <label><input type="checkbox" id="addFavicons"> </label>
+                  <!-- <div class='option'> <label><input type="checkbox" id="addFavicons"> </label>
                   </div>
-                  <div class='option'> <label><input type="number" id="faviconRadius"> </label> </div>
+                  <div class='option'> <label><input type="number" id="faviconRadius"> </label> </div> -->
                   <div class='option'> <label><input type="checkbox" id="simplifyDomain"> </label>
                   </div>
                   <div class='option'> <label><input type="checkbox" id="showFullDomainOnHover">
@@ -128,11 +128,11 @@
                   <br />
                   <div class='option'> <label><input type="checkbox" id="applyStyleToWidgets"> </label>
                   </div>
-                  <div class='option tooltip'>
+                  <!-- <div class='option tooltip'>
                         <label><input type="checkbox" id="moveNavbarToSearchbar"> </label>
                         <span id="moveNavbarToSearchbarTooltip" class="tooltiptext">Experimental: may look bad in
                               non-maximized window</span>
-                  </div>
+                  </div> -->
                   <div class='option tooltip'>
                         <label><input type="checkbox" id="tryToPlaceWidgetsOnTheSide">
                         </label>
@@ -142,8 +142,9 @@
                   </div>
                   <div class='option'> <label><input type="checkbox" id="populatedSidebarResultsOnTop"> </label>
                   </div>
-                  <div class='option'> <label><input type="number" min='100' max='1000' step='50' id="sidebarWidth">
-                        </label>
+                  <div class='option'> <label><input type="number" min='100' max='1000' step='50' id="sidebarWidth"></label>
+                  </div>
+                  <div class='option'> <label><input type="number" min='0' max='100' step='1' id="sidebarPadding"></label>
                   </div>
 
             </div>
@@ -158,7 +159,7 @@
                               and 'Enter' to open </span>
                   </div>
                   <div class='option'> <label> <input type="checkbox" id="centerizeSelectedResult"> </label> </div>
-                  <div class='option'> <label> <input type="checkbox" id="keyboardCycle"> </label> </div>
+                  <!-- <div class='option'> <label> <input type="checkbox" id="keyboardCycle"> </label> </div> -->
                   <!-- <div class='option'> <label> <input type="checkbox" id="sideArrowsFocusSidebarFirst"> </label> </div> -->
                   <hr />
                   <div class='option'> <label> <input type="color" id="keyboardFocusBorderColor">
@@ -187,8 +188,8 @@
                               on. Pressing '0' will focus search field</span>
                   </div>
 
-                  <div class='option'> <label><input type="checkbox" id="numbersNavigateTabs"> </label>
-                  </div>
+                  <!-- <div class='option'> <label><input type="checkbox" id="numbersNavigateTabs"> </label>
+                  </div> -->
                   <div class='option tooltip'> <label><input type="checkbox" id="firstNumberPressScrollsToElement">
                         </label>
                         <span id="firstNumberPressScrollsToElementTooltip" class="tooltiptext"> </span>
@@ -205,6 +206,7 @@
 
             <!-- Custom CSS section -->
             <!-- TODO: Implement ability to set custom css selectors -->
+            
             <!-- <button type="button" id='customCssSelectors' class="collapsible">Custom CSS selectors</button>
             <div class="content">
                   <p id='customCssSelectorsWarning'>If extension doesn't work as expected, you can try to inspect Google

@@ -1,10 +1,10 @@
 /* Regular search result styling */
-.g,
-.g-blk,
-[class^='g '] {
+/* .g,.g-blk,[class^='g '] */
+#rso .g, #botstuff .g, #g-tiles-sidebar .g-tile .g
+ {
     position: relative;
     /* needed for correct placement of absolute index hints */
-    background-color: var(--gtiles-tile-background);
+    background-color: var(--gtiles-tile-background-color);
     border: var(--gtiles-tile-border);
     border-radius: var(--gtiles-tile-border-radius);
     transition: var(--gtiles-transition);
@@ -17,7 +17,7 @@
 }
 
 /* Regular search result link wrapper */
-#g-tile {
+.g-tile {
     /* color: black; */
     outline: none !important;
     text-decoration: none !important;
@@ -30,22 +30,30 @@
     text-decoration: none !important;
 }
 
-/* Focused tile dot indicator */
-.g-tile-focused-tile-dot {
-    height: 10px;
-    width: 10px;
-    border-radius: 50%;
-    position: absolute;
-    top: 60px;
-    left: -40px;
+/* set tile background color */
+.g-tile .g {
+    background-color: var(--gtiles-tile-background-color);
 }
 
+.g-tile:hover .g {
+    background-color: var(--gtiles-tile-hover-background-color) !important;
+}
+
+/* highlight title on hover */
+.g-tile .g.highlightTitleOnHover:hover h3 {
+    color: var(--gtiles-tile-hover-title-color) !important;
+}
+
+
 /* Counter index hint */
-#g-tile-counter-hint {
+.g-tile .g-tile-counter-hint {
     color: var(--gtiles-counter-color);
     opacity: var(--gtiles-counter-opacity);
     position: absolute;
     transition: all 300ms ease-out;
+    /* right: var(--gtiles-tile-padding); */
+    left: -42px;
+    /* top: var(--gtiles-tile-padding); */
 }
 
 /* Top bar height placeholder before it's moved to searchbar */
@@ -126,9 +134,9 @@
 }
 
 /* Search suggestions container */
-#botstuff div {
+/* #botstuff div {
     margin: 0 !important;
-}
+} */
 
 /* Fix right margin for accordeon tiles */
 #botstuff .ngjNee {
@@ -256,4 +264,54 @@ div.YEMaTe {
 /* Make google images visible again */
 .RYdNQb div {
     display: revert !important;
+}
+
+
+
+/* Focused tile dot indicator */
+.g-tile.add-focused-dot:focus .g::before {
+    content: "";
+    position: absolute;
+    display: inline;
+    top: 50%;
+    left: -42px;    
+    border-radius: 50%;
+    background-color: var(--gtiles-keyboard-focus-border-color);
+    opacity: var(--gtiles-focused-tile-dot-opacity);
+    height: 10px;
+    width: 10px;
+}
+
+
+/* Remove unwanted bottom margin for some results */
+.ULSxyf, .hlcw0c {
+    /* margin-bottom: var(--gtiles-tile-external-padding) !important; */
+    margin-bottom: 0 !important;
+}
+
+#kp-wp-tab-overview > div[jsdata]:not(:has(div[aria-level="2"])) {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.ULSxyf g-section-with-header {
+    margin-bottom: var(--gtiles-tile-external-padding) !important;
+    margin-top: var(--gtiles-tile-external-padding) !important;
+}
+
+
+/* special handling for youtube search results */
+.g:has(div[data-vid]) .notranslate.HGLrXd.NJjxre.iUh30.ojE3Fb {
+    margin-top: var(--gtiles-tile-padding) !important;
+    margin-left: var(--gtiles-tile-padding) !important;
+}
+
+/* make image gallery border radius consistent with extension settings  */
+.xte2qe.OXEsB.o6uAG {
+    border-radius: var(--gtiles-tile-border-radius) !important;
+}
+
+g-scrolling-carousel g-inner-card div[role="heading"] {
+    max-height: 60px !important;
+    overflow: hidden;
 }
