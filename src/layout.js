@@ -5,8 +5,8 @@ var sidebarContainer;
 
 function setLayout() {
     /// Iterate regular results
-    var allTiles = document.querySelectorAll(`div > .g:not(.g-tiles-proccessed):not(:has(.g))`);
-    var mainResults = Array.prototype.slice.call(allTiles);
+    const allTiles = document.querySelectorAll(`div > .g:not(.g-tiles-proccessed):not(:has(.g))`);
+    const mainResults = Array.prototype.slice.call(allTiles);
     mainResults.forEach(function (result) {
         if (result.tagName == 'H2' || result.tagName == 'SCRIPT') {
             /// Don't proccess
@@ -16,6 +16,7 @@ function setLayout() {
             /// Regular result
             configureTileHeader(result)
             configureTile(result);
+            result.classList.add('g-tiles-proccessed')
         }
     })
 
@@ -27,6 +28,7 @@ function setLayout() {
     
      if (!sidebarContainer) {
         sidebarContainer = document.getElementById('rhs');
+        console.log(sidebarContainer)
 
         if (!sidebarContainer)
             sidebarContainer = document.getElementById('g-tiles-sidebar');
@@ -35,47 +37,58 @@ function setLayout() {
             /// Setting up new sidebar
             sidebarContainer = document.createElement('div');
             sidebarContainer.id = 'g-tiles-sidebar';
-            sidebarContainer.style.left = `${regularResultsColumnWidth + sidebarPadding + (configs.sidebarPadding * 1.0)}px`;
-            sidebarContainer.style.paddingLeft = `${sidebarPadding}px;`;
+            // sidebarContainer.style.left = `${regularResultsColumnWidth + sidebarPadding + (configs.sidebarPadding * 1.0)}px`;
+            // sidebarContainer.style.paddingLeft = `${sidebarPadding}px;`;
 
             if (regularResultsColumn !== null)
                 regularResultsColumn.parentNode.appendChild(sidebarContainer);
+
+            // allResultsColumn.appendChild(sidebarContainer)
         }
 
-        if (configs.applyStyleToWidgets) sidebarContainer.classList.add('stylized-sidebar');
+        // if (configs.applyStyleToWidgets) sidebarContainer.classList.add('stylized-sidebar');
     }
 
     let sidebarHeight = sidebarContainer.scrollHeight;
     const sidebarNewChildrenContainer = document.createElement('span');
     const regularResultsNewChildrenContainer = document.createElement('span');
 
-    var widgets = document.querySelectorAll(`#${columnWithRegularResultsId} > div:not(:has(.g-tiles-proccessed)):not(:has(#media_result_group)),#tads, #rhsads, #bres, .cUnQKe`);
-    var widgetsArray = Array.prototype.slice.call(widgets);
-    widgetsArray.forEach(function (result) {
-        if (result.tagName == 'H2' || result.tagName == 'SCRIPT') {
-            /// Don't proccess
-        } else if (result.tagName == 'HR') {
-            // result.parentNode.removeChild(result);
-            result.remove();
-        } else if (result.clientHeight !== 0.0 && result.clientWidth !== 0.0 && result.firstChild !== undefined) {
-            /// Search widget
+    if (configs.tryToPlaceWidgetsOnTheSide) {
+        const widgets = document.querySelectorAll(`
+            #${columnWithRegularResultsId} > div:not(:has(.g-tiles-proccessed)):not(:has(#media_result_group)),
+            #tads:not(.g-tiles-proccessed), 
+            #rhsads:not(.g-tiles-proccessed), 
+            #bres:not(.g-tiles-proccessed), 
+            .cUnQKe:not(.g-tiles-proccessed)
+        `);
+        const widgetsArray = Array.prototype.slice.call(widgets);
+        widgetsArray.forEach(function (result) {
+            if (result.tagName == 'H2' || result.tagName == 'SCRIPT') {
+                /// Don't proccess
+            } else if (result.tagName == 'HR') {
+                // result.parentNode.removeChild(result);
+                result.remove();
+            } else if (result.clientHeight !== 0.0 && result.clientWidth !== 0.0 && result.firstChild !== undefined) {
+                /// Search widget
+                if (result.classList.contains('g-tiles-proccessed')) return;
 
-            if (sidebarContainer !== null && sidebarHeight + result.clientHeight <= regularResultsColumn.scrollHeight) {
-                /// Move widget to sidebar
-                /// If sidebar height won't exceed regular results height, move tile there
+                if (sidebarContainer !== null && sidebarHeight + result.clientHeight <= regularResultsColumn.scrollHeight) {
+                    /// Move widget to sidebar
+                    /// If sidebar height won't exceed regular results height, move tile there
 
-                if (configs.tryToPlaceWidgetsOnTheSide) {
-                    sidebarHeight += result.clientHeight;
-                    result.style.marginTop = `${configs.externalPadding}px`;
-                    sidebarNewChildrenContainer.appendChild(result);
-                }
-            } 
-        } else {
-            /// Remove bottom margin for empty divs on page
-            result.style.margin = '0px';
-            result.style.marginBottom = '0px';
-        }
-    })
+                        sidebarHeight += result.clientHeight;
+                        // result.style.marginTop = `${configs.externalPadding}px`;
+                        result.style.marginTop = `22px`;
+                        sidebarNewChildrenContainer.appendChild(result);
+                        result.classList.add('g-tiles-proccessed')
+                } 
+            } else {
+                /// Remove margins for empty divs on page
+                result.style.margin = '0px';
+            }
+        })
+    }
+
 
     sidebarContainer.appendChild(sidebarNewChildrenContainer);
     regularResultsColumn.appendChild(regularResultsNewChildrenContainer);

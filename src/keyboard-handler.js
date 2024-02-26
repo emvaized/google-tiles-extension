@@ -19,7 +19,7 @@ function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHint
         regularSearchResults.forEach(function (suggestionTile) {
             let counter = document.createElement('p');
             counter.className = 'g-tile-counter-hint';
-            counter.style.top = ((configs.innerPadding * 1.0)) + 'px';
+            // counter.style.top = ((configs.innerPadding * 1.0)) + 'px';
 
             // counter.style.right = `${configs.innerPadding}px`;
             numericNavigationIndex += 1;

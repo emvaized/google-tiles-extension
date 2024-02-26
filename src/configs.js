@@ -21,6 +21,7 @@ var configs = {
     "focusedTileDifferentBorder": false,
     "focusedTileDotOpacity": 0.4,
     "hideNumberResultsRow": false,
+    "hideNumberResultsRowBorder": false,
     "highlightTitleOnHover": true,
     "hoverBackground": "#f0f2f4",
     "hoverTransitionDuration": 75,

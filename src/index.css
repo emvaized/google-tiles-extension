@@ -53,7 +53,7 @@
     transition: all 300ms ease-out;
     /* right: var(--gtiles-tile-padding); */
     left: -42px;
-    /* top: var(--gtiles-tile-padding); */
+    top: var(--gtiles-tile-padding);
 }
 
 /* Top bar height placeholder before it's moved to searchbar */
@@ -75,62 +75,9 @@
     position: absolute;
     top: 0;
     padding-top: 0px;
-    min-width: var(--gtiles-sidebar-width) !important;
-}
-
-/* Styling for sidebar widgets */
-/* #rhs > div:not(.cu-container),  #rhs > g-section-with-header, #rhs > span > div { */
-#rhs.stylized-sidebar>div:not(.cu-container),
-#rhs.stylized-sidebar>g-section-with-header,
-#rhs.stylized-sidebar>span>div {
-    box-sizing: border-box !important;
-    background-color: var(--gtiles-tile-background) !important;
-    border: var(--gtiles-tile-border) !important;
-    border-radius: var(--gtiles-tile-border-radius);
-    padding: var(--gtiles-tile-padding) !important;
-    margin: var(--gtiles-tile-margin) !important;
-    box-shadow: var(--gtiles-tile-shadow);
-    width: var(--gtiles-tile-width) !important;
-}
-
-/* Add left padding for non-stylized sidebar */
-#rhs:not(.stylized-sidebar)>div:not(.cu-container),
-#rhs:not(.stylized-sidebar)>g-section-with-header,
-#rhs:not(.stylized-sidebar)>span>div {
-    padding-left: var(--gtiles-tile-padding) !important;
-}
-
-#g-tiles-sidebar.stylized-sidebar>span>div,
-#g-tiles-sidebar.stylized-sidebar>span>g-section-with-header {
-    background-color: var(--gtiles-tile-background);
-    border: var(--gtiles-tile-border);
-    border-radius: var(--gtiles-tile-border-radius);
-    transition: var(--gtiles-transition);
-    padding: var(--gtiles-tile-padding) !important;
-    margin: var(--gtiles-tile-margin) !important;
-    box-shadow: var(--gtiles-tile-shadow);
-    width: var(--gtiles-tile-width) !important;
-    max-width: var(--gtiles-sidebar-child-width) !important;
-}
-
-/* Fix for widget image overflow (maps widget suffers from this the most) */
-#rhs>span>div div,
-#g-tiles-sidebar div div {
-    max-width: var(--gtiles-sidebar-child-width) !important;
-}
-
-#g-tiles-sidebar div a[style*='height'],
-#rhs div a[style*='height'] {
-    height: auto !important;
-}
-
-/* a > g-img > img  { */
-#g-tiles-sidebar div a[style*='height']>g-img>img,
-#rhs div a[style*='height']>g-img>img {
-    max-width: var(--gtiles-sidebar-child-width);
-    min-width: var(--gtiles-sidebar-child-width);
-    height: auto !important;
-    border-radius: var(--gtiles-tile-image-border-radius);
+    max-width: var(--gtiles-sidebar-width) !important;
+    width: var(--gtiles-sidebar-width) !important;
+    left: calc(var(--center-width) + var(--rhs-margin))
 }
 
 /* Search suggestions container */
@@ -285,8 +232,7 @@ div.YEMaTe {
 
 /* Remove unwanted bottom margin for some results */
 .ULSxyf, .hlcw0c {
-    /* margin-bottom: var(--gtiles-tile-external-padding) !important; */
-    margin-bottom: 0 !important;
+    margin-bottom: var(--gtiles-tile-external-padding) !important;
 }
 
 #kp-wp-tab-overview > div[jsdata]:not(:has(div[aria-level="2"])) {
@@ -299,13 +245,7 @@ g-section-with-header.ULSxyf {
     margin-top: var(--gtiles-tile-external-padding) !important;
 }
 
-.g > g-section-with-header.ULSxyf {
-    margin-bottom: 0 !important;
-    margin-top: 0 !important;
-}
-
-
-/* special handling for youtube search results */
+/* special handling for youtube search results top left padding */
 .g:has(div[data-vid]) .notranslate.HGLrXd.NJjxre.iUh30.ojE3Fb {
     margin-top: var(--gtiles-tile-padding) !important;
     margin-left: var(--gtiles-tile-padding) !important;
@@ -316,14 +256,17 @@ g-section-with-header.ULSxyf {
     border-radius: var(--gtiles-tile-border-radius) !important;
 }
 
+/* Fix annoying huge Twitter cards */
 g-scrolling-carousel g-inner-card div[role="heading"] {
     max-height: 60px !important;
     overflow: hidden;
 }
 
 /* Hide the 'number results found' line */
-/* #appbar { */
 #appbar > div {
     visibility: var(--gtiles-results-found-line-visibility);
     height: var(--gtiles-results-found-line-height);
+}
+#appbar{
+    visibility: var(--gtiles-results-found-border-visibility);
 }

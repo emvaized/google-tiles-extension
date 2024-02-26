@@ -55,7 +55,7 @@ function restoreOptions() {
       });
 
       /// Set translated tooltips
-      document.querySelector("#moveSuggestionsToBottomTooltip").innerText = chrome.i18n.getMessage("moveSuggestionsToBottomTooltip");
+      // document.querySelector("#moveSuggestionsToBottomTooltip").innerText = chrome.i18n.getMessage("moveSuggestionsToBottomTooltip");
       document.querySelector("#numericNavigationTooltip").innerText = chrome.i18n.getMessage("numericNavigationTooltip");
       document.querySelector("#navigateWithKeyboardTooltip").innerText = chrome.i18n.getMessage("navigateWithKeyboardTooltip");
       document.querySelector("#firstNumberPressScrollsToElementTooltip").innerText = chrome.i18n.getMessage("firstNumberPressScrollsToElementTooltip");
@@ -106,6 +106,7 @@ function updateDisabledOptions() {
   document.querySelector("#scaleUpFocusedResultAmount").parentNode.className = document.querySelector("#scaleUpFocusedResult").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#focusedTileDotOpacity").parentNode.className = document.querySelector("#addFocusedTileDot").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#populatedSidebarResultsOnTop").parentNode.className = document.querySelector("#populateSidebarWithRegularResults").checked ? 'enabled-option' : 'disabled-option';
+  document.querySelector("#hideNumberResultsRowBorder").parentNode.className = document.querySelector("#hideNumberResultsRow").checked ? 'enabled-option' : 'disabled-option';
 }
 
 function updatePreviewTile() {

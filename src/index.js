@@ -83,7 +83,8 @@ function setVariables() {
   document.documentElement.style.setProperty('--gtiles-focused-tile-dot-opacity', configs.focusedTileDotOpacity);
 
   document.documentElement.style.setProperty('--gtiles-results-found-line-visibility', configs.hideNumberResultsRow ? 'hidden' : 'visible');
-  document.documentElement.style.setProperty('--gtiles-results-found-line-height', configs.hideNumberResultsRow ? '0px' : 'unset');
+  document.documentElement.style.setProperty('--gtiles-results-found-line-height', configs.hideNumberResultsRow ? '10px' : 'unset');
+  document.documentElement.style.setProperty('--gtiles-results-found-border-visibility', configs.hideNumberResultsRowBorder ? 'hidden' : 'visible');
   
 }
 

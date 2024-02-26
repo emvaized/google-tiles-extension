@@ -126,6 +126,10 @@
   "hideNumberResultsRow": {
     "message": "Hide the 'n results found' row",
     "description": ""
+  },  
+  "hideNumberResultsRowBorder": {
+    "message": "Hide top border as well",
+    "description": ""
   },
   "highlightTitleOnHover": {
     "message": "Change title color on hover",

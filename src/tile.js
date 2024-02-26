@@ -102,7 +102,6 @@ function configureTile(tile, keyboardAccessible = true) {
             }
         }
 
-        tile.classList.add('g-tiles-proccessed')
         // if (keyboardAccessible && !regularSearchResults.includes(wrapper)) regularSearchResults.push(wrapper)
         if (keyboardAccessible) regularSearchResults.push(wrapper)
 

@@ -119,6 +119,10 @@
         "message": "Спрятать строку 'Найдено n результатов'",
         "description": ""
     },
+    "hideNumberResultsRowBorder": {
+        "message": "Также спрятать линию сверху",
+        "description": ""
+    },
     "highlightTitleOnHover": {
         "message": "Изменить цвет заголовка при наведении",
         "description": ""
