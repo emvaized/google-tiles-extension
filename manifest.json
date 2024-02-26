@@ -22,7 +22,7 @@
         "src/index.css"
       ],
       "run_at": "document_start",
-      "matches": [ "*://*/*" ],
+      "matches": [ "*://*/search?q=*" ],
       "include_globs": [
         "*://www.google.*/search?*"
       ],
