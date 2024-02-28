@@ -1,6 +1,6 @@
 /* Regular search result styling */
 /* .g,.g-blk,[class^='g '] */
-#rso .g, #botstuff .g, #g-tiles-sidebar .g-tile .g
+#rso .g, #botstuff .g, .g-tiles-sidebar .g-tile .g
  {
     position: relative;
     /* needed for correct placement of absolute index hints */
@@ -71,13 +71,14 @@
     max-width: var(--gtiles-sidebar-width) !important;
 }
 
-#g-tiles-sidebar {
+.g-tiles-sidebar {
     position: absolute;
     top: 0;
     padding-top: 0px;
     max-width: var(--gtiles-sidebar-width) !important;
     left: calc(var(--center-width) + var(--rhs-margin));
     overflow: hidden;
+    height: 100%;
 }
 
 /* Fix right margin for accordeon tiles */
@@ -97,7 +98,7 @@
 /* Remove inside decorations on some search widgets */
 [class$='vk_c'],
 #rhs [class*='g-blk'],
-#g-tiles-sidebar [class*='g-blk'] .xpd {
+.g-tiles-sidebar [class*='g-blk'] .xpd {
     background-color: transparent;
     margin: 0px !important;
     padding: 0px;
@@ -270,7 +271,7 @@ g-scrolling-carousel g-inner-card div[role="heading"] {
     border: none;
 }
 
-#g-tiles-sidebar .g-tiles-proccessed {
+.g-tiles-sidebar .g-tiles-proccessed {
     border-left: 1px solid #dadce0;
     padding: 15px;
 } */

@@ -1,15 +1,14 @@
 var regularResultsColumn;
 var regularResultsColumnWidth;
 var initialResultsColumn;
-var lazyLoadedResultsColumn;
 var sidebarContainer;
 
 function setRegularResults(lazyLoaded = false) {
     if (!initialResultsColumn) initialResultsColumn = document.getElementById('center_col');
-    if (lazyLoaded && !lazyLoadedResultsColumn) lazyLoadedResultsColumn = document.getElementById('botstuff');
 
     /// Iterate regular results
-    const allTiles = (lazyLoaded ? lazyLoadedResultsColumn : initialResultsColumn).querySelectorAll(`div > .g:not(.g-tiles-proccessed):not(:has(.g))`);
+    const allTiles = initialResultsColumn.querySelectorAll(`div > .g:not(.g-tiles-proccessed):not(:has(.g))`);
+
     const mainResults = Array.prototype.slice.call(allTiles);
     for (let i = 0, n = mainResults.length, result; i < n; i++) {
         result = mainResults[i];
@@ -19,6 +18,8 @@ function setRegularResults(lazyLoaded = false) {
         } else if (result.tagName == 'HR') {
             result.remove();
         } else {
+            if (!result.hasChildNodes()) continue;
+
             /// Regular result
             configureTileHeader(result)
             configureTile(result);
@@ -27,7 +28,9 @@ function setRegularResults(lazyLoaded = false) {
     }
 }
 
-function setLayout() {
+function setLayout(lazyLoaded = false) {
+    if (ignoreClientHeightChanges) return;
+    ignoreClientHeightChanges = true;
 
     /// Detect or create sidebar container
     if (!regularResultsColumn) regularResultsColumn = document.getElementById(columnWithRegularResultsId);
@@ -37,12 +40,14 @@ function setLayout() {
         sidebarContainer = document.getElementById('rhs');
 
         if (!sidebarContainer)
-            sidebarContainer = document.getElementById('g-tiles-sidebar');
+            sidebarContainer = document.querySelector('.g-tiles-sidebar');
+        // else
+            // sidebarContainer.classList.add('g-tiles-sidebar')
 
         if (!sidebarContainer) {
             /// Setting up new sidebar
             sidebarContainer = document.createElement('div');
-            sidebarContainer.id = 'g-tiles-sidebar';
+            sidebarContainer.className = 'g-tiles-sidebar';
             // sidebarContainer.style.left = `${regularResultsColumnWidth + sidebarPadding + (configs.sidebarPadding * 1.0)}px`;
             // sidebarContainer.style.paddingLeft = `${sidebarPadding}px;`;
 
@@ -64,40 +69,48 @@ function setLayout() {
             #tads:not(.g-tiles-proccessed), 
             #rhsads:not(.g-tiles-proccessed), 
             #bres:not(.g-tiles-proccessed), 
-            .cUnQKe:not(.g-tiles-proccessed)
+            .cUnQKe:not(.g-tiles-proccessed),
+            g-section-with-header:not(.g-tiles-processed)
         `);
+        
+        // g-section-with-header:not(.g-tiles-processed):not(:has(.g-tiles-processed))
         const widgetsArray = Array.prototype.slice.call(widgets);
         for (let i = 0, n = widgetsArray.length, result; i < n; i++) {
             result = widgetsArray[i];
 
-            if (result.tagName == 'H2' || result.tagName == 'SCRIPT') {
+            if (!result.hasChildNodes() || result.tagName == 'H2' || result.tagName == 'SCRIPT') {
                 /// Don't proccess
             } else if (result.tagName == 'HR') {
-                // result.parentNode.removeChild(result);
                 result.remove();
-            } else if (result.clientHeight !== 0.0 && result.clientWidth !== 0.0 && result.firstChild !== undefined) {
+            } else if (result.clientHeight && result.clientWidth && result.firstChild) {
                 /// Search widget
                 if (result.classList.contains('g-tiles-proccessed')) return;
 
-                if (sidebarContainer !== null && sidebarHeight + result.clientHeight <= regularResultsColumn.scrollHeight) {
+                // if (sidebarContainer !== null && sidebarHeight + result.clientHeight <= regularResultsColumn.scrollHeight) {
                     /// Move widget to sidebar
                     /// If sidebar height won't exceed regular results height, move tile there
 
                     sidebarHeight += result.clientHeight;
-                    // result.style.marginTop = `${configs.externalPadding}px`;
-                    result.style.marginTop = `22px`;
+
+                    if (lazyLoaded) {
+                        result.style.position = 'absolute'
+                        result.style.top = result.getBoundingClientRect().top + 'px';
+                    }
+
                     sidebarNewChildrenContainer.appendChild(result);
+                    result.style.marginTop = `22px`;
                     result.classList.add('g-tiles-proccessed')
-                } 
+                // } 
             } else {
                 /// Remove margins for empty divs on page
                 result.style.margin = '0px';
             }
         }
+
+        regularResultsColumn.appendChild(regularResultsNewChildrenContainer);
     }
 
-    sidebarContainer.appendChild(sidebarNewChildrenContainer);
-    regularResultsColumn.appendChild(regularResultsNewChildrenContainer);
+    if (sidebarContainer) sidebarContainer.appendChild(sidebarNewChildrenContainer);
 
     /// Populate sidebar with regular results
     if (configs.populateSidebarWithRegularResults == true)
@@ -145,26 +158,10 @@ function setLayout() {
     // }
 
     console.log('Google Tweaks finished proccessing page');
+    setTimeout(function(){
+        lastKnownBodyHeight = document.body.clientHeight;
+        ignoreClientHeightChanges = false;
+    }, 1)
     return;
 
 }
-
-// function setTopBar() {
-//     /// Some experiments to place category buttons to the right of searchbox
-//     if (topBar == null)
-//         topBar = document.getElementById(regularCategoryButtonsParentId);
-//     if (topBar == null) return;
-//     const topBarParent = topBar.parentNode;
-
-//     topBarParent.removeChild(topBar);
-//     topBarParent.style.display = 'none';
-
-//     topBar.classList.add('moved-top-bar');
-//     document.querySelector('.sfbg').appendChild(topBar);
-
-//     /// Fix padding for 'results found' bar
-//     document.querySelector('.appbar').style.paddingTop = `${paddingWhenNavbarMoved}px`;
-
-//     /// Fix the position for search settings bar
-//     document.querySelector('#hdtbMenus').style.top = '30px';
-// }

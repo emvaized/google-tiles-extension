@@ -15,6 +15,7 @@ const counterHintFocusColor = '#EA4335';
 var tileTransition;
 var tileBackgroundColor;
 var hoverBackgroundColor;
+var ignoreClientHeightChanges = false;
 
 /// Store results for keyboard navigation
 const regularSearchResults = [];
@@ -91,9 +92,6 @@ function setVariables() {
 let lastKnownBodyHeight;
 
 function init() {
-  // if (configs.moveNavbarToSearchbar)
-  //   setTopBar();
-
   try {
     // setRegularResults()
     // setLayout();
@@ -113,6 +111,8 @@ function init() {
 
   // Create an Observer instance
   const resizeObserver = new ResizeObserver(function(entries) { 
+    if (ignoreClientHeightChanges) return;
+
     clearTimeout(resizeObserverTimeout);
     resizeObserverTimeout = setTimeout(function(){
 
