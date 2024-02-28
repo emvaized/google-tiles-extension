@@ -95,6 +95,7 @@ function init() {
   //   setTopBar();
 
   try {
+    setRegularResults()
     setLayout();
   } catch (error) {
     console.log('Google Tiles error:');
@@ -117,7 +118,8 @@ function init() {
       if (entries[0].target.clientHeight > lastKnownBodyHeight) {
         // console.log('Body height changed:', entries[0].target.clientHeight - lastKnownBodyHeight)
         lastKnownBodyHeight = entries[0].target.clientHeight;
-        setLayout()
+        setRegularResults(true);
+        // setLayout();
       }
     }, 100)
   })

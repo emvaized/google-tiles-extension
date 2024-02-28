@@ -1,12 +1,15 @@
 var regularResultsColumn;
 var regularResultsColumnWidth;
-var allResultsColumn;
+var initialResultsColumn;
+var lazyLoadedResultsColumn;
 var sidebarContainer;
 
-function setLayout() {
+function setRegularResults(lazyLoaded = false) {
+    if (!initialResultsColumn) initialResultsColumn = document.getElementById('center_col');
+    if (lazyLoaded && !lazyLoadedResultsColumn) lazyLoadedResultsColumn = document.getElementById('botstuff');
 
     /// Iterate regular results
-    const allTiles = document.querySelectorAll(`div > .g:not(.g-tiles-proccessed):not(:has(.g))`);
+    const allTiles = (lazyLoaded ? lazyLoadedResultsColumn : initialResultsColumn).querySelectorAll(`div > .g:not(.g-tiles-proccessed):not(:has(.g))`);
     const mainResults = Array.prototype.slice.call(allTiles);
     for (let i = 0, n = mainResults.length, result; i < n; i++) {
         result = mainResults[i];
@@ -22,11 +25,13 @@ function setLayout() {
             result.classList.add('g-tiles-proccessed')
         }
     }
+}
+
+function setLayout() {
 
     /// Detect or create sidebar container
     if (!regularResultsColumn) regularResultsColumn = document.getElementById(columnWithRegularResultsId);
     if (!regularResultsColumnWidth) regularResultsColumnWidth = regularResultsColumn.clientWidth;
-    if (!allResultsColumn) allResultsColumn = document.getElementById('rcnt');
     
      if (!sidebarContainer) {
         sidebarContainer = document.getElementById('rhs');
@@ -43,7 +48,6 @@ function setLayout() {
 
             if (regularResultsColumn !== null)
                 regularResultsColumn.parentNode.appendChild(sidebarContainer);
-            // allResultsColumn.appendChild(sidebarContainer)
         }
 
         // if (configs.applyStyleToWidgets) sidebarContainer.classList.add('stylized-sidebar');
