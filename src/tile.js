@@ -8,8 +8,9 @@ function configureTile(tile, keyboardAccessible = true) {
 
     try {
         /// Set url for 'a' wrapper 
-        var url;
-        if (tile.className == regularResultClassName || tile.firstChild.className == regularResultClassName || tile.className.toLowerCase()[0] == 'g') {
+        let url;
+        // if (tile.className == regularResultClassName || tile.firstChild.className == regularResultClassName || tile.className.toLowerCase()[0] == 'g') {
+        if (tile.classList[0] == 'g' || tile.firstChild.className == regularResultClassName) {
             /// For regular result use first found link inside element
             url = tile.querySelector('a').href;
         }
@@ -20,9 +21,7 @@ function configureTile(tile, keyboardAccessible = true) {
         const wrapper = linkWrapperPrototype.cloneNode(true);
 
         /// Don't wrap if calculated link is the same as url + '#'
-        const linkIsValid = url !== null && url !== undefined && url !== window.location.href + '#';
-
-        if (linkIsValid && tile.className.toLowerCase()[0] == 'g') {
+        if (url && tile.className.toLowerCase()[0] == 'g') {
             wrapper.href = url;
 
             /// Disable link underline for H3 headers
@@ -53,7 +52,7 @@ function configureTile(tile, keyboardAccessible = true) {
         if (accordion !== null && accordion !== undefined) {
         } else {
             /// Wrap tile with 'a' created element
-            if (configs.wholeTileIsClickable && linkIsValid)
+            if (configs.wholeTileIsClickable && url)
                 tile.wrap(wrapper);
         }
 
