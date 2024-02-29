@@ -72,7 +72,7 @@ function setVariables() {
   document.documentElement.style.setProperty('--gtiles-tile-width', configs.widerTiles ? '100%' : 'unset');
   document.documentElement.style.setProperty('--gtiles-counter-color', countedHintColor);
   document.documentElement.style.setProperty('--gtiles-counter-opacity', configs.indexHintOpacity);
-  document.documentElement.style.setProperty('--gtiles-sidebar-width', `${configs.sidebarWidth}px`);
+  document.documentElement.style.setProperty('--gtiles-sidebar-width', configs.tryToPlaceWidgetsOnTheSide ? `${configs.sidebarWidth}px` : 'revert');
   // document.documentElement.style.setProperty('--gtiles-navbar-padding', `padding: 0px ${configs.innerPadding}px`);
   // document.documentElement.style.setProperty('--gtiles-favicon-radius', `${configs.faviconRadius}px`);
   document.documentElement.style.setProperty('--gtiles-tile-padding', `${configs.innerPadding}px`);

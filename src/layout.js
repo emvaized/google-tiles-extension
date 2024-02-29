@@ -73,7 +73,6 @@ function setSidebar(lazyLoaded = false) {
             g-section-with-header:not(.g-tiles-processed):not(:has(.g-tiles-proccessed))
         `);
         
-        // g-section-with-header:not(.g-tiles-processed):not(:has(.g-tiles-processed))
         const widgetsArray = Array.prototype.slice.call(widgets);
         for (let i = 0, n = widgetsArray.length, result; i < n; i++) {
             result = widgetsArray[i];
@@ -111,43 +110,6 @@ function setSidebar(lazyLoaded = false) {
     }
 
     if (sidebarContainer) sidebarContainer.appendChild(sidebarNewChildrenContainer);
-
-    /// Populate sidebar with regular results
-    if (configs.populateSidebarWithRegularResults == true)
-        setTimeout(function () {
-            if (configs.populateSidebarWithRegularResults !== false) {
-                sidebarHeight = sidebarContainer.clientHeight;
-
-                const regularResultsChildrenArray = regularResultsColumn.children;
-                const l = regularResultsChildrenArray.length;
-                const sidebarMovedRegularResultsContainer = document.createElement('span');
-
-                for (let i = l; i > -1; i--) {
-                    const child = regularResultsChildrenArray[i];
-                    if (child == undefined) continue;
-
-                    const childHeight = child.getBoundingClientRect().height;
-                    if (childHeight == 0.0) continue;
-
-                    // if (sidebarHeight + childHeight <= regularResultsColumn.scrollHeight - document.getElementById('footcnt').clientHeight) {
-                    if (sidebarHeight + childHeight <= regularResultsColumn.scrollHeight - 200) {
-                        try {
-                            sidebarHeight = sidebarHeight + childHeight;
-                            sidebarMovedRegularResultsContainer.prepend(child);
-
-                            if (child.firstChild != null)
-                                child.firstChild.classList.add('nofullwidth'); /// override 'width: 100%'
-                        } catch (e) { console.log(e); }
-                    } else { break; }
-                }
-                if (configs.populatedSidebarResultsOnTop) {
-                    sidebarContainer.prepend(sidebarMovedRegularResultsContainer);
-                }
-                else {
-                    sidebarContainer.appendChild(sidebarMovedRegularResultsContainer);
-                }
-            }
-        }, 1);
 
     /// If there is photo carousel on page on top, combine it with first tile for better design
     // const photoCarousel = document.querySelector('#kp-wp-tab-overview div:has(#media_result_group):not(.g-tiles-proccessed)')
