@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
   "default_locale": "en",
-  "name": "Google Tweaks — tiled google search",
-  "version": "2.5.0",
+  "name": "Google Tweaker — tiled google search",
+  "version": "2.5.1",
   "description": "__MSG_extensionDescription__",
   "icons": {
     "48": "icons/google-tiles-new-icon-48.png",
@@ -33,7 +33,7 @@
   ],
   "browser_action": {
     "default_icon": "icons/google-tiles-new-icon-96.png",
-    "default_title": "Google Tweaks",
+    "default_title": "Google Tweaker",
     "default_popup": "popup/popup.html"
   },
   "options_ui": {

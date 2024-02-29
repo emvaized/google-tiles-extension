@@ -114,7 +114,7 @@ function setSidebar(lazyLoaded = false) {
     //     document.querySelector('.g').prepend(photoCarousel)  
     // }
 
-    console.log('Google Tweaks finished proccessing page');
+    console.log('Google Tweaker finished proccessing page');
     setTimeout(function(){
         lastKnownBodyHeight = document.body.clientHeight;
         ignoreClientHeightChanges = false;

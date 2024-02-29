@@ -213,7 +213,7 @@ function resetOptions() {
 function setVersionLabel() {
   let label = document.getElementById('google-tiles-version');
   var manifestData = chrome.runtime.getManifest();
-  label.innerHTML = 'Google Tweaks ' + manifestData.version + ` (<a target='_blank' href='https://github.com/emvaized/google-tiles-extension/blob/master/CHANGELOG.md'>${chrome.i18n.getMessage("whatsNew") ?? "What's new"}</a>)`;
+  label.innerHTML = 'Google Tweaker ' + manifestData.version + ` (<a target='_blank' href='https://github.com/emvaized/google-tiles-extension/blob/master/CHANGELOG.md'>${chrome.i18n.getMessage("whatsNew") ?? "What's new"}</a>)`;
 }
 
 

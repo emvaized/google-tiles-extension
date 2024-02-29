@@ -1,3 +1,10 @@
+2.5.1
+- Changed extension name to "Google Tweaks"
+- Compatibility with more Google search widgets
+- Added option to not proccess widgets if window is too narrow (on by default)
+- "Sidebar width" option now applies to Google's own sidebar as well
+- Removed option to place normal search results in sidebar, as it makes no sense now with lazy loading list, and actually breaks it
+
 2.5.0
 - Added test support for new Google lazy loading of next search page
 - New option to remove "n results found" line on top, as well as it's border
