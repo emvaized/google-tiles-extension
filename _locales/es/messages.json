@@ -63,6 +63,10 @@
         "message": "Desactivar el subrayado del título al pasar el mouse",
         "description": ""
     },
+    "dontProccessWidgetsIfWindowNarrow": {
+        "message": "No procese widgets si la ventana es demasiado estrecha",
+        "description": ""
+    },
     "enabled": {
         "message": "Habilitado",
         "description": ""

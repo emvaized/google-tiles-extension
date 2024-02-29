@@ -63,6 +63,10 @@
         "message": "Отключить подчеркивание заголовка при наведении",
         "description": ""
     },
+    "dontProccessWidgetsIfWindowNarrow": {
+        "message": "Не обрабатывать виджеты если окно слишком узкое",
+        "description": ""
+    },
     "enabled": {
         "message": "Включено",
         "description": ""

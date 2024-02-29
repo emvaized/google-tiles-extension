@@ -11,6 +11,7 @@ var configs = {
     "centerizeSelectedResult": true,
     "colorizeBorderAfterFavicon": false,
     "disableTitleUnderlineOnHover": true,
+    "dontProccessWidgetsIfWindowNarrow": true,
     "externalPadding": 21,
     "faviconRadius": 12,
     "firstNumberPressScrollsToElement": true,

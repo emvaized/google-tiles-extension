@@ -31,6 +31,7 @@ function setRegularResults(lazyLoaded = false) {
 function setSidebar(lazyLoaded = false) {
     if (!configs.tryToPlaceWidgetsOnTheSide) return
     if (ignoreClientHeightChanges) return;
+    if (configs.dontProccessWidgetsIfWindowNarrow && window.innerWidth < configs.sidebarWidth * 3) return;
     ignoreClientHeightChanges = true;
 
     /// Detect or create sidebar container
