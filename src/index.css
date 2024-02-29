@@ -67,8 +67,12 @@
 }
 
 /* General styling for sidebar */
-#rhs {
+#rhs, #rhs.rhstc4 .VjDLd {
     max-width: var(--gtiles-sidebar-width) !important;
+    min-width: var(--gtiles-sidebar-width) !important;
+}
+#rcnt {
+    max-width: calc(var(--center-abs-margin) + var(--center-width) + var(--rhs-margin) + var(--rhs-width) + var(--lhs-refinements-width) + var(--gtiles-sidebar-width));
 }
 
 .g-tiles-sidebar {
@@ -76,6 +80,7 @@
     top: 0;
     padding-top: 0px;
     max-width: var(--gtiles-sidebar-width) !important;
+    width: var(--gtiles-sidebar-width) !important;
     left: calc(var(--center-width) + var(--rhs-margin));
     overflow: hidden;
     height: 100%;
@@ -220,9 +225,11 @@ div.YEMaTe {
 
 /* Remove unwanted bottom margin for some results */
 .ULSxyf, .hlcw0c:not(:has(.g)) {
+    margin-top: var(--gtiles-tile-external-padding) !important;
     margin-bottom: var(--gtiles-tile-external-padding) !important;
 }
-.hlcw0c {
+
+.hlcw0c, .ULSxyf:has(.g) {
     margin-bottom: 0 !important;
 }
 

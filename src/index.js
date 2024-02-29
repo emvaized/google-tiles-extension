@@ -16,10 +16,13 @@ var tileTransition;
 var tileBackgroundColor;
 var hoverBackgroundColor;
 var ignoreClientHeightChanges = false;
+let lastKnownBodyHeight;
 
 /// Store results for keyboard navigation
 const regularSearchResults = [];
 
+
+loadConfigs();
 
 function loadConfigs() {
   const configKeys = Object.keys(configs);
@@ -86,23 +89,24 @@ function setVariables() {
   document.documentElement.style.setProperty('--gtiles-results-found-line-visibility', configs.hideNumberResultsRow ? 'hidden' : 'visible');
   document.documentElement.style.setProperty('--gtiles-results-found-line-height', configs.hideNumberResultsRow ? '10px' : 'unset');
   document.documentElement.style.setProperty('--gtiles-results-found-border-visibility', configs.hideNumberResultsRowBorder ? 'hidden' : 'visible');
-
 }
-
-let lastKnownBodyHeight;
 
 function init() {
   try {
     // setRegularResults()
-    // setLayout();
+    // setSidebar();
     Promise.all([setRegularResults(), setLayout()])
   } catch (error) {
     console.log('Google Tiles error:');
     console.log(error);
   }
+}
 
-  /// Set keyboard listeners
-  if (configs.navigateWithKeyboard || configs.numericNavigation) {
+function setLayout(){
+  setSidebar();
+
+   /// Set keyboard listeners
+   if (configs.navigateWithKeyboard || configs.numericNavigation) {
     setTimeout(() => setKeyboardHandlers(regularResultsColumn, sidebarContainer, []), 1);
   }
 
@@ -115,12 +119,13 @@ function init() {
 
     clearTimeout(resizeObserverTimeout);
     resizeObserverTimeout = setTimeout(function(){
+      if (ignoreClientHeightChanges) return;
 
       if (entries[0].target.clientHeight > lastKnownBodyHeight) {
         // console.log('Body height changed:', entries[0].target.clientHeight - lastKnownBodyHeight)
         lastKnownBodyHeight = entries[0].target.clientHeight;
         setRegularResults(true);
-        // setLayout(true);
+        // setSidebar(true);
       }
     }, 100)
   })
@@ -137,5 +142,3 @@ function init() {
     }
   }
 }
-
-loadConfigs();

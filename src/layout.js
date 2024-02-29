@@ -7,7 +7,7 @@ function setRegularResults(lazyLoaded = false) {
     if (!initialResultsColumn) initialResultsColumn = document.getElementById('center_col');
 
     /// Iterate regular results
-    const allTiles = initialResultsColumn.querySelectorAll(`div > .g:not(.g-tiles-proccessed):not(:has(.g))`);
+    const allTiles = initialResultsColumn.querySelectorAll(`div > .g:not(.g-tiles-proccessed):not(:has(.g)):not(:has(g-section-with-header))`);
 
     const mainResults = Array.prototype.slice.call(allTiles);
     for (let i = 0, n = mainResults.length, result; i < n; i++) {
@@ -28,7 +28,7 @@ function setRegularResults(lazyLoaded = false) {
     }
 }
 
-function setLayout(lazyLoaded = false) {
+function setSidebar(lazyLoaded = false) {
     if (ignoreClientHeightChanges) return;
     ignoreClientHeightChanges = true;
 
@@ -70,7 +70,7 @@ function setLayout(lazyLoaded = false) {
             #rhsads:not(.g-tiles-proccessed), 
             #bres:not(.g-tiles-proccessed), 
             .cUnQKe:not(.g-tiles-proccessed),
-            g-section-with-header:not(.g-tiles-processed)
+            g-section-with-header:not(.g-tiles-processed):not(:has(.g-tiles-proccessed))
         `);
         
         // g-section-with-header:not(.g-tiles-processed):not(:has(.g-tiles-processed))
