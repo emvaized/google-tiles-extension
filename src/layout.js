@@ -7,9 +7,9 @@ function setRegularResults(lazyLoaded = false) {
     if (!initialResultsColumn) initialResultsColumn = document.getElementById('center_col');
 
     /// Iterate regular results
-    const allTiles = initialResultsColumn.querySelectorAll(`div > .g:not(.g-tiles-proccessed):not(:has(.g)):not(:has(g-section-with-header))`);
-
+    const allTiles = initialResultsColumn.querySelectorAll(`div > .g:not(.g-tiles-proccessed):not(:has(.g))`);
     const mainResults = Array.prototype.slice.call(allTiles);
+
     for (let i = 0, n = mainResults.length, result; i < n; i++) {
         result = mainResults[i];
 
@@ -29,6 +29,7 @@ function setRegularResults(lazyLoaded = false) {
 }
 
 function setSidebar(lazyLoaded = false) {
+    if (!configs.tryToPlaceWidgetsOnTheSide) return
     if (ignoreClientHeightChanges) return;
     ignoreClientHeightChanges = true;
 
@@ -41,8 +42,6 @@ function setSidebar(lazyLoaded = false) {
 
         if (!sidebarContainer)
             sidebarContainer = document.querySelector('.g-tiles-sidebar');
-        // else
-            // sidebarContainer.classList.add('g-tiles-sidebar')
 
         if (!sidebarContainer) {
             /// Setting up new sidebar
@@ -61,52 +60,47 @@ function setSidebar(lazyLoaded = false) {
     /// Iterate widgets
     let sidebarHeight = sidebarContainer.scrollHeight;
     const sidebarNewChildrenContainer = document.createElement('span');
-    const regularResultsNewChildrenContainer = document.createElement('span');
 
-    if (configs.tryToPlaceWidgetsOnTheSide) {
-        const widgets = document.querySelectorAll(`
-            #${columnWithRegularResultsId} > div:not(:has(.g-tiles-proccessed)),
-            #tads:not(.g-tiles-proccessed), 
-            #rhsads:not(.g-tiles-proccessed), 
-            #bres:not(.g-tiles-proccessed), 
-            .cUnQKe:not(.g-tiles-proccessed),
-            g-section-with-header:not(.g-tiles-processed):not(:has(.g-tiles-proccessed))
-        `);
-        
-        const widgetsArray = Array.prototype.slice.call(widgets);
-        for (let i = 0, n = widgetsArray.length, result; i < n; i++) {
-            result = widgetsArray[i];
+    const widgets = document.querySelectorAll(`
+        #${columnWithRegularResultsId} > div:not(:has(.g-tiles-proccessed)),
+        #tads:not(.g-tiles-proccessed), 
+        #rhsads:not(.g-tiles-proccessed), 
+        #bres:not(.g-tiles-proccessed), 
+        .cUnQKe:not(.g-tiles-proccessed),
+        g-section-with-header:not(.g-tiles-processed):not(:has(.g-tiles-proccessed))
+    `);
+    
+    const widgetsArray = Array.prototype.slice.call(widgets);
+    for (let i = 0, n = widgetsArray.length, result; i < n; i++) {
+        result = widgetsArray[i];
 
-            if (!result.hasChildNodes() || result.tagName == 'H2' || result.tagName == 'SCRIPT') {
-                /// Don't proccess
-            } else if (result.tagName == 'HR') {
-                result.remove();
-            } else if (result.clientHeight && result.clientWidth && result.firstChild) {
-                /// Search widget
-                if (result.classList.contains('g-tiles-proccessed')) return;
+        if (!result.hasChildNodes() || result.tagName == 'H2' || result.tagName == 'SCRIPT') {
+            /// Don't proccess
+        } else if (result.tagName == 'HR') {
+            result.remove();
+        } else if (result.clientHeight && result.clientWidth && result.firstChild) {
+            /// Search widget
+            if (result.classList.contains('g-tiles-proccessed')) return;
 
-                // if (sidebarContainer !== null && sidebarHeight + result.clientHeight <= regularResultsColumn.scrollHeight) {
-                    /// Move widget to sidebar
-                    /// If sidebar height won't exceed regular results height, move tile there
+            // if (sidebarContainer !== null && sidebarHeight + result.clientHeight <= regularResultsColumn.scrollHeight) {
+                /// Move widget to sidebar
+                /// If sidebar height won't exceed regular results height, move tile there
 
-                    sidebarHeight += result.clientHeight;
+                sidebarHeight += result.clientHeight;
 
-                    if (lazyLoaded) {
-                        result.style.position = 'absolute'
-                        result.style.top = result.getBoundingClientRect().top + 'px';
-                    }
+                if (lazyLoaded) {
+                    result.style.position = 'absolute'
+                    result.style.top = result.getBoundingClientRect().top + 'px';
+                }
 
-                    sidebarNewChildrenContainer.appendChild(result);
-                    result.style.marginTop = `22px`;
-                    result.classList.add('g-tiles-proccessed')
-                // } 
-            } else {
-                /// Remove margins for empty divs on page
-                result.style.margin = '0px';
-            }
+                sidebarNewChildrenContainer.appendChild(result);
+                result.style.marginTop = `22px`;
+                result.classList.add('g-tiles-proccessed')
+            // } 
+        } else {
+            /// Remove margins for empty divs on page
+            result.style.margin = '0px';
         }
-
-        regularResultsColumn.appendChild(regularResultsNewChildrenContainer);
     }
 
     if (sidebarContainer) sidebarContainer.appendChild(sidebarNewChildrenContainer);

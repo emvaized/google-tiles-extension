@@ -91,15 +91,6 @@
     margin-right: 16px !important;
 }
 
-/* Add padding for top labels */
-/* [id='result-stats'] {
-    padding: var(--gtiles-navbar-padding);
-}
-
-[id='top_nav'] {
-    padding: var(--gtiles-navbar-padding);
-} */
-
 /* Remove inside decorations on some search widgets */
 [class$='vk_c'],
 #rhs [class*='g-blk'],
@@ -207,7 +198,6 @@ div.YEMaTe {
 }
 
 
-
 /* Focused tile dot indicator */
 .g-tile.add-focused-dot:focus .g::before {
     content: "";
@@ -230,6 +220,7 @@ div.YEMaTe {
 }
 
 .hlcw0c, .ULSxyf:has(.g) {
+    margin-top: 0 !important;
     margin-bottom: 0 !important;
 }
 
