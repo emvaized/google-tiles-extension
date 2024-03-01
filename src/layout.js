@@ -93,13 +93,15 @@ function setSidebar(lazyLoaded = false) {
                 /// Move widget to sidebar
                 /// If sidebar height won't exceed regular results height, move tile there
 
-                sidebarHeight += result.clientHeight;
-
                 if (lazyLoaded) {
-                    result.style.position = 'absolute'
-                    result.style.top = result.getBoundingClientRect().top + 'px';
+                    const topOffset = result.getBoundingClientRect().top;
+                    if (topOffset > sidebarHeight) {
+                        result.style.position = 'absolute'
+                        result.style.top = result.getBoundingClientRect().top + 'px';
+                    }
                 }
 
+                sidebarHeight += result.clientHeight;
                 sidebarNewChildrenContainer.appendChild(result);
                 result.style.marginTop = `22px`;
                 result.classList.add('g-tiles-proccessed')
