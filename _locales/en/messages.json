@@ -159,6 +159,10 @@
     "message": "Keyboard navigation",
     "description": ""
   },
+  "moveLazyLoadedWidgets": {
+    "message": "Try to move widgets, lazy loaded on scroll, to sidebar",
+    "description": ""
+  },  
   "moveNavbarToSearchbar": {
     "message": "Move navbar to searchbar",
     "description": ""

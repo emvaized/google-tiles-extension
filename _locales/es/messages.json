@@ -159,6 +159,10 @@
         "message": "Navegación con el teclado",
         "description": ""
     },
+    "moveLazyLoadedWidgets": {
+        "message": "Intente mover los widgets, cargados de forma diferida al desplazarse, a la barra lateral",
+        "description": ""
+    },  
     "moveNavbarToSearchbar": {
         "message": "Mover la barra de navegación a la barra de búsqueda",
         "description": ""

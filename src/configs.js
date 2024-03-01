@@ -29,6 +29,7 @@ var configs = {
     "keyboardFocusBorderColor": "#1F0DAD",
     "moveNavbarToSearchbar": false,
     "moveSuggestionsToBottom": false,
+    "moveLazyLoadedWidgets": false,
     "navigateWithKeyboard": true,
     "numbersNavigateTabs": false,
     "numericNavigation": false,

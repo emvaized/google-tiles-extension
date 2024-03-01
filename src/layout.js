@@ -4,6 +4,7 @@ var initialResultsColumn;
 var sidebarContainer;
 
 function setRegularResults(lazyLoaded = false) {
+    // console.log('processing regular widgets...')
     if (!initialResultsColumn) initialResultsColumn = document.getElementById('center_col');
 
     /// Iterate regular results
@@ -33,6 +34,7 @@ function setSidebar(lazyLoaded = false) {
     if (ignoreClientHeightChanges) return;
     if (configs.dontProccessWidgetsIfWindowNarrow && window.innerWidth < configs.sidebarWidth * 3) return;
     ignoreClientHeightChanges = true;
+    // console.log('processing sidebar...')
 
     /// Detect or create sidebar container
     if (!regularResultsColumn) regularResultsColumn = document.getElementById(columnWithRegularResultsId);

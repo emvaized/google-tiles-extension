@@ -109,6 +109,7 @@ function updateDisabledOptions() {
   document.querySelector("#hideNumberResultsRowBorder").parentNode.className = document.querySelector("#hideNumberResultsRow").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#sidebarWidth").parentNode.className = document.querySelector("#tryToPlaceWidgetsOnTheSide").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#dontProccessWidgetsIfWindowNarrow").parentNode.className = document.querySelector("#tryToPlaceWidgetsOnTheSide").checked ? 'enabled-option' : 'disabled-option';
+  document.querySelector("#moveLazyLoadedWidgets").parentNode.className = document.querySelector("#tryToPlaceWidgetsOnTheSide").checked ? 'enabled-option' : 'disabled-option';
 }
 
 function updatePreviewTile() {

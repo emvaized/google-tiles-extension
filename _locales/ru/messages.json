@@ -159,6 +159,10 @@
         "message": "Клавиатурная навигация",
         "description": ""
     },
+    "moveLazyLoadedWidgets": {
+        "message": "Пытаться переместить подгруженные при прокрутке виджеты в боковую панель",
+        "description": ""
+    },  
     "moveNavbarToSearchbar": {
         "message": "Переместить панель навигации в панель поиска",
         "description": ""

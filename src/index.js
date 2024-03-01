@@ -125,7 +125,14 @@ function setLayout(){
         // console.log('Body height changed:', entries[0].target.clientHeight - lastKnownBodyHeight)
         lastKnownBodyHeight = entries[0].target.clientHeight;
         setRegularResults(true);
-        // setSidebar(true);
+
+        if (configs.moveLazyLoadedWidgets) {
+          setSidebar(true);
+          setTimeout(function(){
+            ignoreClientHeightChanges = false;
+            setRegularResults(true);
+          }, 2)
+        }
       }
     }, 100)
   })
