@@ -8,7 +8,7 @@ function setRegularResults(lazyLoaded = false) {
     if (!initialResultsColumn) initialResultsColumn = document.getElementById('center_col');
 
     /// Iterate regular results
-    const allTiles = initialResultsColumn.querySelectorAll(`div > .g:not(.g-tiles-proccessed):not(:has(.g))`);
+    const allTiles = initialResultsColumn.querySelectorAll(`div > .g:not(.g-tiles-proccessed):not(:has(.g)):not(:has(g-section-with-header))`);
     const mainResults = Array.prototype.slice.call(allTiles);
 
     for (let i = 0, n = mainResults.length, result; i < n; i++) {
@@ -19,7 +19,10 @@ function setRegularResults(lazyLoaded = false) {
         } else if (result.tagName == 'HR') {
             result.remove();
         } else {
-            if (!result.hasChildNodes()) continue;
+            if (!result.hasChildNodes()) {
+                result.remove();
+                continue;
+            }
 
             /// Regular result
             configureTileHeader(result)
@@ -72,6 +75,7 @@ function setSidebar(lazyLoaded = false) {
         .cUnQKe:not(.g-tiles-proccessed),
         g-section-with-header:not(.g-tiles-processed):not(:has(.g-tiles-proccessed))
     `);
+    // #center_col div:not(:has(.g)):has([aria-level="2"][role="heading"])
     
     const widgetsArray = Array.prototype.slice.call(widgets);
     for (let i = 0, n = widgetsArray.length, result; i < n; i++) {
