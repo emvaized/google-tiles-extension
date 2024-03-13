@@ -47,6 +47,7 @@
 /* fix #center_col# alignment with the searchbox on top */
 #center_col {
     margin-left: calc(var(--center-abs-margin) - var(--gtiles-tile-padding));
+    width: calc(var(--center-width) + var(--gtiles-tile-padding));
 }
 
 /* hide "translate result" button */
