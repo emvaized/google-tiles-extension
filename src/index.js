@@ -89,6 +89,8 @@ function setVariables() {
   document.documentElement.style.setProperty('--gtiles-results-found-line-visibility', configs.hideNumberResultsRow ? 'hidden' : 'visible');
   document.documentElement.style.setProperty('--gtiles-results-found-line-height', configs.hideNumberResultsRow ? '10px' : 'unset');
   document.documentElement.style.setProperty('--gtiles-results-found-border-visibility', configs.hideNumberResultsRowBorder ? 'hidden' : 'visible');
+
+  if (configs.tryToPlaceWidgetsOnTheSide && configs.moveTopPhotosToSidebar) document.body.classList.add('gtile-move-top-photos')
 }
 
 function init() {

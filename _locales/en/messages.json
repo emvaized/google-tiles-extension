@@ -182,6 +182,10 @@
   "moveSuggestionsToBottomTooltip": {
     "message": "Search widgets and suggestions will be shown after regular results",
     "description": ""
+  },  
+  "moveTopPhotosToSidebar": {
+    "message": "Move photos on top of page to sidebar",
+    "description": ""
   },
   "navigateWithKeyboard": {
     "message": "Use arrow keys for navigation",

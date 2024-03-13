@@ -31,6 +31,7 @@ var configs = {
     "moveNavbarToSearchbar": false,
     "moveSuggestionsToBottom": false,
     "moveLazyLoadedWidgets": false,
+    "moveTopPhotosToSidebar": false,
     "navigateWithKeyboard": true,
     "numbersNavigateTabs": false,
     "numericNavigation": false,

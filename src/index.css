@@ -284,3 +284,9 @@ g-scrolling-carousel g-inner-card div[role="heading"] {
     border-left: 1px solid #dadce0;
     padding: 15px;
 } */
+
+
+.gtile-move-top-photos #center_col #kp-wp-tab-overview div:has(#media_result_group) {display: none;}
+div[role="complementary"] div:has(#media_result_group) {
+    margin-bottom: 22px;
+}

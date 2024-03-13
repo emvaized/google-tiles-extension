@@ -183,6 +183,10 @@
         "message": "Los widgets de búsqueda y las sugerencias se mostrarán después de los resultados regulares",
         "description": ""
     },
+    "moveTopPhotosToSidebar": {
+        "message": "Mover fotos en la parte superior de la página a la barra lateral",
+        "description": ""
+    },
     "navigateWithKeyboard": {
         "message": "Utilice las teclas de flecha para navegar",
         "description": ""

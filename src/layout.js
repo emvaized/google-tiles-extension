@@ -66,6 +66,16 @@ function setSidebar(lazyLoaded = false) {
 
         // if (configs.applyStyleToWidgets) sidebarContainer.classList.add('stylized-sidebar');
     }
+    
+    // Move images on top of page to sidebar
+    if (!lazyLoaded && configs.moveTopPhotosToSidebar) {
+        try {
+            const headerImagesContainer = regularResultsColumn.querySelector('#kp-wp-tab-overview div:has(#media_result_group):not(.g-tiles-proccessed)');
+            if (headerImagesContainer) {
+                sidebarContainer.querySelector('div[role="complementary"]').prepend(headerImagesContainer) 
+            }
+        } catch(e) {}
+    }
 
     /// Iterate widgets
     let sidebarHeight = sidebarContainer.scrollHeight;

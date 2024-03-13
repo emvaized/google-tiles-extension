@@ -183,6 +183,10 @@
         "message": "Поисковые виджеты и подсказки будут показаны после обычных результатов",
         "description": ""
     },
+    "moveTopPhotosToSidebar": {
+        "message": "Переместить фото вверху страницы в сайдбар",
+        "description": ""
+    },
     "navigateWithKeyboard": {
         "message": "Использовать клавиши стрелок для навигации",
         "description": ""

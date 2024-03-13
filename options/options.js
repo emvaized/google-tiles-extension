@@ -110,6 +110,7 @@ function updateDisabledOptions() {
   document.querySelector("#sidebarWidth").parentNode.className = document.querySelector("#tryToPlaceWidgetsOnTheSide").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#dontProccessWidgetsIfWindowNarrow").parentNode.className = document.querySelector("#tryToPlaceWidgetsOnTheSide").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#moveLazyLoadedWidgets").parentNode.className = document.querySelector("#tryToPlaceWidgetsOnTheSide").checked ? 'enabled-option' : 'disabled-option';
+  document.querySelector("#moveTopPhotosToSidebar").parentNode.className = document.querySelector("#tryToPlaceWidgetsOnTheSide").checked ? 'enabled-option' : 'disabled-option';
 }
 
 function updatePreviewTile() {
