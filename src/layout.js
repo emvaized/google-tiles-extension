@@ -31,9 +31,6 @@ function setRegularResults(lazyLoaded = false) {
             result.classList.add('g-tiles-proccessed')
         }
     }
-
-    /// Hide 'translate this result' buttons
-    if (!lazyLoaded && configs.hideTranslateResultButton) initialResultsColumn.classList.add('gtile-hide-translate-result')
 }
 
 function setSidebar(lazyLoaded = false) {

@@ -51,7 +51,7 @@
 }
 
 /* hide "translate result" button */
-#center_col.gtile-hide-translate-result .g .eFM0qc.BCF2pd {
+.gtile-hide-translate-result #center_col .g .eFM0qc.BCF2pd {
     display: none !important;
 }
 
@@ -285,7 +285,7 @@ g-scrolling-carousel g-inner-card div[role="heading"] {
     padding: 15px;
 } */
 
-
+/* Remove bottom margin for sidebar photos moved from top of page */
 .gtile-move-top-photos #center_col #kp-wp-tab-overview div:has(#media_result_group) {display: none;}
 div[role="complementary"] div:has(#media_result_group) {
     margin-bottom: 22px;

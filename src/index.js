@@ -73,8 +73,6 @@ function setVariables() {
   document.documentElement.style.setProperty('--gtiles-counter-color', countedHintColor);
   document.documentElement.style.setProperty('--gtiles-counter-opacity', configs.indexHintOpacity);
   document.documentElement.style.setProperty('--gtiles-sidebar-width', configs.tryToPlaceWidgetsOnTheSide ? `${configs.sidebarWidth}px` : 'revert');
-  // document.documentElement.style.setProperty('--gtiles-navbar-padding', `padding: 0px ${configs.innerPadding}px`);
-  // document.documentElement.style.setProperty('--gtiles-favicon-radius', `${configs.faviconRadius}px`);
   document.documentElement.style.setProperty('--gtiles-tile-padding', `${configs.innerPadding}px`);
   document.documentElement.style.setProperty('--gtiles-tile-margin', configs.tilesEnabled ? `0px 0px ${configs.externalPadding}px` : '0px 0px 30px 0px');
   document.documentElement.style.setProperty('--gtiles-tile-external-padding', configs.tilesEnabled ? `${1.0 * configs.externalPadding + 1.0 * configs.innerPadding}px` : 'unset');
@@ -82,7 +80,6 @@ function setVariables() {
   document.documentElement.style.setProperty('--gtiles-tile-background-color', configs.addTileBackground ? tileBackgroundColor : 'transparent');
   document.documentElement.style.setProperty('--gtiles-tile-hover-background-color', hoverBackgroundColor);
   document.documentElement.style.setProperty('--gtiles-tile-hover-title-color', configs.titleHoverColor);
-
   document.documentElement.style.setProperty('--gtiles-keyboard-focus-border-color', configs.keyboardFocusBorderColor);
   document.documentElement.style.setProperty('--gtiles-focused-tile-dot-opacity', configs.focusedTileDotOpacity);
 
@@ -90,7 +87,11 @@ function setVariables() {
   document.documentElement.style.setProperty('--gtiles-results-found-line-height', configs.hideNumberResultsRow ? '10px' : 'unset');
   document.documentElement.style.setProperty('--gtiles-results-found-border-visibility', configs.hideNumberResultsRowBorder ? 'hidden' : 'visible');
 
+  /// Move sidebar widgets on top of page
   if (configs.tryToPlaceWidgetsOnTheSide && configs.moveTopPhotosToSidebar) document.body.classList.add('gtile-move-top-photos')
+
+  /// Hide 'translate this result' buttons
+  if (configs.hideTranslateResultButton) document.body.classList.add('gtile-hide-translate-result')
 }
 
 function init() {
