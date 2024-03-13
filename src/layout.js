@@ -77,7 +77,8 @@ function setSidebar(lazyLoaded = false) {
         #rhsads:not(.g-tiles-proccessed), 
         #bres:not(.g-tiles-proccessed), 
         .cUnQKe:not(.g-tiles-proccessed),
-        g-section-with-header:not(.g-tiles-processed):not(:has(.g-tiles-proccessed))
+        g-section-with-header:not(.g-tiles-processed):not(:has(.g-tiles-proccessed)),
+        .TzHB6b.cLjAic:has(.HnYYW)
     `);
     // #center_col div:not(:has(.g)):has([aria-level="2"][role="heading"])
     
