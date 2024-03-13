@@ -1,334 +1,251 @@
 {
     "addFocusedTileDot": {
-        "message": "Добавить точку к выделенной плитке",
-        "description": ""
+        "message": "Добавить точку к выделенной плитке"
     },
     "addTileBackground": {
-        "message": "Добавить фон для плитки",
-        "description": ""
+        "message": "Добавить фон для плитки"
     },
     "addTileBorder": {
-        "message": "Добавить рамку",
-        "description": ""
+        "message": "Добавить рамку"
     },
     "addTileCounter": {
-        "message": "Показывать номерные подсказки",
-        "description": ""
+        "message": "Показывать номерные подсказки"
     },
     "allChangesSavedAutomatically": {
-        "message": "Настройки сохраняются автоматически <br /> Обновите страницу, чтобы увидеть изменения",
-        "description": ""
+        "message": "Настройки сохраняются автоматически <br /> Обновите страницу, чтобы увидеть изменения"
     },
     "appearance": {
-        "message": "Внешний вид",
-        "description": ""
+        "message": "Внешний вид"
     },
     "applyStyleToWidgets": {
-        "message": "Применять настройки стиля к поисковым виджетам",
-        "description": ""
+        "message": "Применять настройки стиля к поисковым виджетам"
     },
     "borderColor": {
-        "message": "Цвет рамки",
-        "description": ""
+        "message": "Цвет рамки"
     },
     "borderRadius": {
-        "message": "Закругление углов (px)",
-        "description": ""
+        "message": "Закругление углов (px)"
     },
     "buyMeCoffee": {
-        "message": "Поддержать разработку",
-        "description": ""
+        "message": "Поддержать разработку"
     },
     "changeCursorOverTile": {
-        "message": "Изменить курсор над плиткой на указательный",
-        "description": ""
+        "message": "Изменить курсор над плиткой на указательный"
     },
     "centerizeSelectedResult": {
-        "message": "Отцентровать выбранный результат",
-        "description": ""
+        "message": "Отцентровать выбранный результат"
     },
     "colorizeBorderAfterFavicon": {
-        "message": "Окрасить рамку в цвет иконки сайта",
-        "description": ""
+        "message": "Окрасить рамку в цвет иконки сайта"
     },
     "colorizeBorderAfterFaviconTooltip": {
-        "message": "Эта настройка конфликтует с 'Окрашивать рамку выделенной плитки'",
-        "description": ""
+        "message": "Эта настройка конфликтует с 'Окрашивать рамку выделенной плитки'"
     },
     "configure": {
-        "message": "Настроить",
-        "description": ""
+        "message": "Настроить"
     },
     "disableTitleUnderlineOnHover": {
-        "message": "Отключить подчеркивание заголовка при наведении",
-        "description": ""
+        "message": "Отключить подчеркивание заголовка при наведении"
     },
     "dontProccessWidgetsIfWindowNarrow": {
-        "message": "Не обрабатывать виджеты если окно слишком узкое",
-        "description": ""
+        "message": "Не обрабатывать виджеты если окно слишком узкое"
     },
     "enabled": {
-        "message": "Включено",
-        "description": ""
+        "message": "Включено"
     },
     "extensionDescription": {
-        "message": "Настройте вид и поведение страницы Google-поиска по своему вкусу",
-        "description": ""
+        "message": "Настройте вид и поведение страницы Google-поиска по своему вкусу"
     },
     "externalPadding": {
-        "message": "Отступ между результатами поиска (px)",
-        "description": ""
+        "message": "Отступ между результатами поиска (px)"
     },
     "faviconRadius": {
-        "message": "Размер иконки сайта",
-        "description": ""
+        "message": "Размер иконки сайта"
     },
     "favicons": {
-        "message": "Иконки",
-        "description": ""
+        "message": "Иконки"
     },
     "firstNumberPressScrollsToElement": {
-        "message": "Первое нажатие прокручивает к элементу",
-        "description": ""
+        "message": "Первое нажатие прокручивает к элементу"
     },
     "firstNumberPressScrollsToElementTooltip": {
-        "message": "Когда отключено, первое нажатие сразу выбирает элемент",
-        "description": ""
+        "message": "Когда отключено, первое нажатие сразу выбирает элемент"
     },
     "focusedBorderWidth": {
-        "message": "Ширина рамки (px)",
-        "description": ""
+        "message": "Ширина рамки (px)"
     },
     "focusedTileDifferentBorder": {
-        "message": "Окрашивать рамку выделенной плитки",
-        "description": ""
+        "message": "Окрашивать рамку выделенной плитки"
     },
     "focusedTileDotOpacity": {
-        "message": "Прозрачность точки",
-        "description": ""
+        "message": "Прозрачность точки"
     },
     "header": {
-        "message": "Заголовок результата",
-        "description": ""
+        "message": "Заголовок результата"
     },
     "hideNumberResultsRow": {
-        "message": "Спрятать строку 'Найдено n результатов'",
-        "description": ""
+        "message": "Спрятать строку 'Найдено n результатов'"
     },
     "hideNumberResultsRowBorder": {
-        "message": "Также спрятать линию сверху",
-        "description": ""
+        "message": "Также спрятать линию сверху"
     },
     "hideTranslateResultButton": {
-        "message": "Спрятать кнопку 'Перевести эту страницу'",
-        "description": ""
+        "message": "Спрятать кнопку 'Перевести эту страницу'"
     },
     "highlightTitleOnHover": {
-        "message": "Изменить цвет заголовка при наведении",
-        "description": ""
+        "message": "Изменить цвет заголовка при наведении"
     },
     "hover": {
-        "message": "Наведение мыши",
-        "description": ""
+        "message": "Наведение мыши"
     },
     "hoverBackground": {
-        "message": "Цвет фона плитки при наведении мыши",
-        "description": ""
+        "message": "Цвет фона плитки при наведении мыши"
     },
     "hoverTransitionDuration": {
-        "message": "Продолжительность анимации наведения (ms)",
-        "description": ""
+        "message": "Продолжительность анимации наведения (ms)"
     },
     "imageScaleUpOnHoverAmount": {
-        "message": "Размер увеличения",
-        "description": ""
+        "message": "Размер увеличения"
     },
     "indexHintOpacity": {
-        "message": "Прозрачность номерных подсказок",
-        "description": ""
+        "message": "Прозрачность номерных подсказок"
     },
     "innerPadding": {
-        "message": "Внутренний отступ (px)",
-        "description": ""
+        "message": "Внутренний отступ (px)"
     },
     "keyboardCycle": {
-        "message": "Циклическая навигация (прыгнуть к первому результату после последнего)",
-        "description": ""
+        "message": "Циклическая навигация (прыгнуть к первому результату после последнего)"
     },
     "keyboardFocusBorderColor": {
-        "message": "Цвет выделения плитки",
-        "description": ""
+        "message": "Цвет выделения плитки"
     },
     "keyboardNavigation": {
-        "message": "Клавиатурная навигация",
-        "description": ""
+        "message": "Клавиатурная навигация"
     },
     "moveLazyLoadedWidgets": {
-        "message": "Пытаться переместить подгруженные при прокрутке виджеты в боковую панель",
-        "description": ""
+        "message": "Пытаться переместить подгруженные при прокрутке виджеты в боковую панель"
     },  
     "moveNavbarToSearchbar": {
-        "message": "Переместить панель навигации в панель поиска",
-        "description": ""
+        "message": "Переместить панель навигации в панель поиска"
     },
     "moveNavbarToSearchbarTooltip": {
-        "message": "Экспериментально: может плохо выглядеть в не развернутом окне или с нестандартным масштабом",
-        "description": ""
+        "message": "Экспериментально: может плохо выглядеть в не развернутом окне или с нестандартным масштабом"
     },
     "moveSuggestionsToBottom": {
-        "message": "Переместить обычные результаты наверх",
-        "description": ""
+        "message": "Переместить обычные результаты наверх"
     },
     "moveSuggestionsToBottomTooltip": {
-        "message": "Поисковые виджеты и подсказки будут показаны после обычных результатов",
-        "description": ""
+        "message": "Поисковые виджеты и подсказки будут показаны после обычных результатов"
     },
     "moveTopPhotosToSidebar": {
-        "message": "Переместить фото вверху страницы в сайдбар",
-        "description": ""
+        "message": "Переместить фото вверху страницы в сайдбар"
     },
     "navigateWithKeyboard": {
-        "message": "Использовать клавиши стрелок для навигации",
-        "description": ""
+        "message": "Использовать клавиши стрелок для навигации"
     },
     "navigateWithKeyboardTooltip": {
-        "message": "Использовать ↑ и ↓ для переключения между результатами, \n← и → для переключения страницы, и\n 'Enter' или Пробел, чтобы открыть",
-        "description": ""
+        "message": "Использовать ↑ и ↓ для переключения между результатами, \n← и → для переключения страницы, и\n 'Enter' или Пробел, чтобы открыть"
     },
     "numbersNavigateResults": {
-        "message": "Клавиши цифр переключают результаты поиска",
-        "description": ""
+        "message": "Клавиши цифр переключают результаты поиска"
     },
     "numbersNavigateTabs": {
-        "message": "Клавиши цифр переключают вкладки (выключено — результаты поиска)",
-        "description": ""
+        "message": "Клавиши цифр переключают вкладки (выключено — результаты поиска)"
     },
     "numericNavigation": {
-        "message": "Навигация клавишами цифр",
-        "description": ""
+        "message": "Навигация клавишами цифр"
     },
     "numericNavigationTooltip": {
-        "message": "Клавиша 1 сфокусирует первый элемент, 2 сфокусирует второй, и так далее. Клавиша 0 переместит фокус на поисковую строку",
-        "description": ""
+        "message": "Клавиша 1 сфокусирует первый элемент, 2 сфокусирует второй, и так далее. Клавиша 0 переместит фокус на поисковую строку"
     },
     "populateSidebarWithRegularResults": {
-        "message": "Заполнить боковую колонку обычными результатами, если есть место",
-        "description": ""
+        "message": "Заполнить боковую колонку обычными результатами, если есть место"
     },
     "populatedSidebarResultsOnTop": {
-        "message": "Поместить обычные результаты вверху боковой панели",
-        "description": ""
+        "message": "Поместить обычные результаты вверху боковой панели"
     },
     "preview": {
-        "message": "Превью плитки",
-        "description": ""
+        "message": "Превью плитки"
     },
     "resetDefaults": {
-        "message": "Сбросить настройки",
-        "description": ""
+        "message": "Сбросить настройки"
     },
     "scaleUpFocusedResult": {
-        "message": "Увеличивать сфокусированную плитку",
-        "description": ""
+        "message": "Увеличивать сфокусированную плитку"
     },
     "scaleUpFocusedResultAmount": {
-        "message": "Размер увеличения",
-        "description": ""
+        "message": "Размер увеличения"
     },
     "scaleUpImageResultsOnHover": {
-        "message": "Увеличивать результаты поиска картинок при наведении",
-        "description": ""
+        "message": "Увеличивать результаты поиска картинок при наведении"
     },
     "scrollHorizontalViewOnHover": {
-        "message": "Прокручивать горизонтальные списки наведением",
-        "description": ""
+        "message": "Прокручивать горизонтальные списки наведением"
     },
     "searchResults": {
-        "message": "Поисковая выдача",
-        "description": ""
+        "message": "Поисковая выдача"
     },
     "shadowEnabled": {
-        "message": "Добавить тень",
-        "description": ""
+        "message": "Добавить тень"
     },
     "shadowOpacity": {
-        "message": "Прозрачность тени (%)",
-        "description": ""
+        "message": "Прозрачность тени (%)"
     },
     "showFullDomainOnHover": {
-        "message": "Показывать полный адрес при наведении",
-        "description": ""
+        "message": "Показывать полный адрес при наведении"
     },
     "sideArrowsFocusSidebarFirst": {
-        "message": "← и → перемещает фокус на боковые виджеты",
-        "description": ""
+        "message": "← и → перемещает фокус на боковые виджеты"
     },
     "sidebarPadding": {
-        "message": "Отступ боковой колонки",
-        "description": ""
+        "message": "Отступ боковой колонки"
     },
     "sidebarWidth": {
-        "message": "Ширина боковой колонки (px)",
-        "description": ""
+        "message": "Ширина боковой колонки (px)"
     },
     "sidebarWidthMultiplier": {
-        "message": "Ширина боковой колонки",
-        "description": ""
+        "message": "Ширина боковой колонки"
     },
     "sidebarWidthTooltip": {
-        "message": "Применяется только к боковым колонкам, созданным этим расширением",
-        "description": ""
+        "message": "Применяется только к боковым колонкам, созданным этим расширением"
     },
     "simplifyDomain": {
-        "message": "Упростить домен сайта",
-        "description": ""
+        "message": "Упростить домен сайта"
     },
     "support": {
-        "message": "Поддержать",
-        "description": ""
+        "message": "Поддержать"
     },
     "tileBackgroundColor": {
-        "message": "Цвет фона",
-        "description": ""
+        "message": "Цвет фона"
     },
     "tileBackgroundOpacity": {
-        "message": "Прозрачность фона",
-        "description": ""
+        "message": "Прозрачность фона"
     },
     "tileHoverBackgroundOpacity": {
-        "message": "Прозрачность фона при наведении",
-        "description": ""
+        "message": "Прозрачность фона при наведении"
     },
     "tiles": {
-        "message": "Плитки",
-        "description": ""
+        "message": "Плитки"
     },
     "titleHoverColor": {
-        "message": "Цвет заголовка",
-        "description": ""
+        "message": "Цвет заголовка"
     },
     "tryToPlaceWidgetsOnTheSide": {
-        "message": "Переместить поисковые виджеты в колонку справа",
-        "description": ""
+        "message": "Переместить поисковые виджеты в колонку справа"
     },
     "visitGithub": {
-        "message": "Страница на GitHub",
-        "description": ""
+        "message": "Страница на GitHub"
     },
     "whatsNew": {
-        "message": "Что нового",
-        "description": ""
+        "message": "Что нового"
     },
     "wholeTileIsClickable": {
-        "message": "Можно кликать по всей плитке",
-        "description": ""
+        "message": "Можно кликать по всей плитке"
     },
     "widerTiles": {
-        "message": "Выровнять плитки по ширине",
-        "description": ""
+        "message": "Выровнять плитки по ширине"
     },
     "writeAReview": {
-        "message": "Написать отзыв",
-        "description": ""
+        "message": "Написать отзыв"
     }
 }

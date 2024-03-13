@@ -1,334 +1,251 @@
 {
     "addFocusedTileDot": {
-        "message": "Agregar un punto al mosaico enfocado",
-        "description": ""
+        "message": "Agregar un punto al mosaico enfocado"
     },
     "addTileBackground": {
-        "message": "Agregar fondo de mosaico",
-        "description": ""
+        "message": "Agregar fondo de mosaico"
     },
     "addTileBorder": {
-        "message": "Agregar borde",
-        "description": ""
+        "message": "Agregar borde"
     },
     "addTileCounter": {
-        "message": "Mostrar sugerencias de números",
-        "description": ""
+        "message": "Mostrar sugerencias de números"
     },
     "allChangesSavedAutomatically": {
-        "message": "La configuración se guarda automáticamente <br /> Actualiza las páginas abiertas para ver los cambios",
-        "description": ""
+        "message": "La configuración se guarda automáticamente <br /> Actualiza las páginas abiertas para ver los cambios"
     },
     "appearance": {
-        "message": "Apariencia",
-        "description": ""
+        "message": "Apariencia"
     },
     "applyStyleToWidgets": {
-        "message": "Aplicar estilo a los widgets de búsqueda",
-        "description": ""
+        "message": "Aplicar estilo a los widgets de búsqueda"
     },
     "borderColor": {
-        "message": "Color del borde",
-        "description": ""
+        "message": "Color del borde"
     },
     "borderRadius": {
-        "message": "Radio de esquina (px)",
-        "description": ""
+        "message": "Radio de esquina (px)"
     },
     "buyMeCoffee": {
-        "message": "Apoyar el desarrollo",
-        "description": ""
+        "message": "Apoyar el desarrollo"
     },
     "changeCursorOverTile": {
-        "message": "Cambiar el cursor sobre el mosaico a puntero",
-        "description": ""
+        "message": "Cambiar el cursor sobre el mosaico a puntero"
     },
     "centerizeSelectedResult": {
-        "message": "Centrar resultado seleccionado",
-        "description": ""
+        "message": "Centrar resultado seleccionado"
     },
     "colorizeBorderAfterFavicon": {
-        "message": "Colorear el borde después del favicon del sitio web",
-        "description": ""
+        "message": "Colorear el borde después del favicon del sitio web"
     },
     "colorizeBorderAfterFaviconTooltip": {
-        "message": "Esta configuración entra en conflicto con 'Borde diferente para mosaico enfocado'",
-        "description": ""
+        "message": "Esta configuración entra en conflicto con 'Borde diferente para mosaico enfocado'"
     },
     "configure": {
-        "message": "Configurar",
-        "description": ""
+        "message": "Configurar"
     },
     "disableTitleUnderlineOnHover": {
-        "message": "Desactivar el subrayado del título al pasar el mouse",
-        "description": ""
+        "message": "Desactivar el subrayado del título al pasar el mouse"
     },
     "dontProccessWidgetsIfWindowNarrow": {
-        "message": "No procese widgets si la ventana es demasiado estrecha",
-        "description": ""
+        "message": "No procese widgets si la ventana es demasiado estrecha"
     },
     "enabled": {
-        "message": "Habilitado",
-        "description": ""
+        "message": "Habilitado"
     },
     "extensionDescription": {
-        "message": "Personalice el aspecto y el comportamiento de la página de búsqueda de Google a su gusto",
-        "description": ""
+        "message": "Personalice el aspecto y el comportamiento de la página de búsqueda de Google a su gusto"
     },
     "externalPadding": {
-        "message": "Relleno entre resultados (px)",
-        "description": ""
+        "message": "Relleno entre resultados (px)"
     },
     "faviconRadius": {
-        "message": "Tamaño de favicon",
-        "description": ""
+        "message": "Tamaño de favicon"
     },
     "favicons": {
-        "message": "Favicons",
-        "description": ""
+        "message": "Favicons"
     },
     "firstNumberPressScrollsToElement": {
-        "message": "Primero presione para desplazarse al elemento",
-        "description": ""
+        "message": "Primero presione para desplazarse al elemento"
     },
     "firstNumberPressScrollsToElementTooltip": {
-        "message": "Cuando está deshabilitado, primero presione inmediatamente para seleccionar el elemento",
-        "description": ""
+        "message": "Cuando está deshabilitado, primero presione inmediatamente para seleccionar el elemento"
     },
     "focusedBorderWidth": {
-        "message": "Ancho de los bordes (px)",
-        "description": ""
+        "message": "Ancho de los bordes (px)"
     },
     "focusedTileDifferentBorder": {
-        "message": "Borde diferente para mosaico enfocado",
-        "description": ""
+        "message": "Borde diferente para mosaico enfocado"
     },
     "focusedTileDotOpacity": {
-        "message": "Opacidad de puntos",
-        "description": ""
+        "message": "Opacidad de puntos"
     },
     "header": {
-        "message": "Título del resultado",
-        "description": ""
+        "message": "Título del resultado"
     },
     "hideNumberResultsRow": {
-        "message": "Ocultar la fila 'n resultados encontrados'",
-        "description": ""
+        "message": "Ocultar la fila 'n resultados encontrados'"
     },
     "hideNumberResultsRowBorder": {
-        "message": "Ocultar el borde arriba también",
-        "description": ""
+        "message": "Ocultar el borde arriba también"
     },
     "hideTranslateResultButton": {
-        "message": "Ocultar el botón 'traducir este resultado'",
-        "description": ""
+        "message": "Ocultar el botón 'traducir este resultado'"
     },
     "highlightTitleOnHover": {
-        "message": "Cambiar el color del título al pasar el mouse",
-        "description": ""
+        "message": "Cambiar el color del título al pasar el mouse"
     },
     "hover": {
-        "message": "Colocar el cursor",
-        "description": ""
+        "message": "Colocar el cursor"
     },
     "hoverBackground": {
-        "message": "Color de fondo del mosaico al pasar el mouse",
-        "description": ""
+        "message": "Color de fondo del mosaico al pasar el mouse"
     },
     "hoverTransitionDuration": {
-        "message": "Duración de la transición de desplazamiento (ms)",
-        "description": ""
+        "message": "Duración de la transición de desplazamiento (ms)"
     },
     "imageScaleUpOnHoverAmount": {
-        "message": "Cantidad de escalado",
-        "description": ""
+        "message": "Cantidad de escalado"
     },
     "indexHintOpacity": {
-        "message": "Opacidad de la sugerencia de índice",
-        "description": ""
+        "message": "Opacidad de la sugerencia de índice"
     },
     "innerPadding": {
-        "message": "Relleno interior (px)",
-        "description": ""
+        "message": "Relleno interior (px)"
     },
     "keyboardCycle": {
-        "message": "Navegación cíclica (saltar al primer resultado después del último)",
-        "description": ""
+        "message": "Navegación cíclica (saltar al primer resultado después del último)"
     },
     "keyboardFocusBorderColor": {
-        "message": "Color de resaltado de la baldosa enfocada",
-        "description": ""
+        "message": "Color de resaltado de la baldosa enfocada"
     },
     "keyboardNavigation": {
-        "message": "Navegación con el teclado",
-        "description": ""
+        "message": "Navegación con el teclado"
     },
     "moveLazyLoadedWidgets": {
-        "message": "Intente mover los widgets, cargados de forma diferida al desplazarse, a la barra lateral",
-        "description": ""
+        "message": "Intente mover los widgets, cargados de forma diferida al desplazarse, a la barra lateral"
     },  
     "moveNavbarToSearchbar": {
-        "message": "Mover la barra de navegación a la barra de búsqueda",
-        "description": ""
+        "message": "Mover la barra de navegación a la barra de búsqueda"
     },
     "moveNavbarToSearchbarTooltip": {
-        "message": "Experimental: puede verse mal en una ventana no maximizada o con escala no regular",
-        "description": ""
+        "message": "Experimental: puede verse mal en una ventana no maximizada o con escala no regular"
     },
     "moveSuggestionsToBottom": {
-        "message": "Mover los resultados de búsqueda habituales a la parte superior",
-        "description": ""
+        "message": "Mover los resultados de búsqueda habituales a la parte superior"
     },
     "moveSuggestionsToBottomTooltip": {
-        "message": "Los widgets de búsqueda y las sugerencias se mostrarán después de los resultados regulares",
-        "description": ""
+        "message": "Los widgets de búsqueda y las sugerencias se mostrarán después de los resultados regulares"
     },
     "moveTopPhotosToSidebar": {
-        "message": "Mover fotos en la parte superior de la página a la barra lateral",
-        "description": ""
+        "message": "Mover fotos en la parte superior de la página a la barra lateral"
     },
     "navigateWithKeyboard": {
-        "message": "Utilice las teclas de flecha para navegar",
-        "description": ""
+        "message": "Utilice las teclas de flecha para navegar"
     },
     "navigateWithKeyboardTooltip": {
-        "message": "Use las teclas ↑ y ↓ para navegar por los resultados, ← y → para cambiar las páginas, y 'Enter' para abrir",
-        "description": ""
+        "message": "Use las teclas ↑ y ↓ para navegar por los resultados, ← y → para cambiar las páginas, y 'Enter' para abrir"
     },
     "numbersNavigateResults": {
-        "message": "Las teclas numéricas permiten navegar por los resultados de la búsqueda",
-        "description": ""
+        "message": "Las teclas numéricas permiten navegar por los resultados de la búsqueda"
     },
     "numbersNavigateTabs": {
-        "message": "Las teclas numéricas navegan por las pestañas (navegan por los resultados de búsqueda cuando están desactivadas)",
-        "description": ""
+        "message": "Las teclas numéricas navegan por las pestañas (navegan por los resultados de búsqueda cuando están desactivadas)"
     },
     "numericNavigation": {
-        "message": "Navegación con teclas numéricas",
-        "description": ""
+        "message": "Navegación con teclas numéricas"
     },
     "numericNavigationTooltip": {
-        "message": "Al presionar la tecla 1 se enfocará el primer elemento, el 2 enfocará el segundo, y así sucesivamente. Al presionar 0 se enfocará el campo de búsqueda",
-        "description": ""
+        "message": "Al presionar la tecla 1 se enfocará el primer elemento, el 2 enfocará el segundo, y así sucesivamente. Al presionar 0 se enfocará el campo de búsqueda"
     },
     "populateSidebarWithRegularResults": {
-        "message": "Complete la barra lateral con resultados regulares cuando tenga espacio",
-        "description": ""
+        "message": "Complete la barra lateral con resultados regulares cuando tenga espacio"
     },
     "populatedSidebarResultsOnTop": {
-        "message": "Coloque los resultados regulares en la parte superior de la barra lateral",
-        "description": ""
+        "message": "Coloque los resultados regulares en la parte superior de la barra lateral"
     },
     "preview": {
-        "message": "Vista previa del mosaico",
-        "description": ""
+        "message": "Vista previa del mosaico"
     },
     "resetDefaults": {
-        "message": "Restaurar valores predeterminados",
-        "description": ""
+        "message": "Restaurar valores predeterminados"
     },
     "scaleUpFocusedResult": {
-        "message": "Escalaresultado enfocado ",
-        "description": ""
+        "message": "Escalaresultado enfocado "
     },
     "scaleUpFocusedResultAmount": {
-        "message": "Cantidad de escalado",
-        "description": ""
+        "message": "Cantidad de escalado"
     },
     "scaleUpImageResultsOnHover": {
-        "message": "Escala los resultados de la imagen al pasar el mouse",
-        "description": ""
+        "message": "Escala los resultados de la imagen al pasar el mouse"
     },
     "scrollHorizontalViewOnHover": {
-        "message": "Desplazarse por las vistas horizontales con el cursor",
-        "description": ""
+        "message": "Desplazarse por las vistas horizontales con el cursor"
     },
     "searchResults": {
-        "message": "Resultados de la búsqueda",
-        "description": ""
+        "message": "Resultados de la búsqueda"
     },
     "shadowEnabled": {
-        "message": "Agregar sombra",
-        "description": ""
+        "message": "Agregar sombra"
     },
     "shadowOpacity": {
-        "message": "Opacidad de sombras (%)",
-        "description": ""
+        "message": "Opacidad de sombras (%)"
     },
     "showFullDomainOnHover": {
-        "message": "Mostrar el dominio completo al pasar el mouse",
-        "description": ""
+        "message": "Mostrar el dominio completo al pasar el mouse"
     },
     "sideArrowsFocusSidebarFirst": {
-        "message": "Las teclas ← y → cambian el enfoque a la barra lateral",
-        "description": ""
+        "message": "Las teclas ← y → cambian el enfoque a la barra lateral"
     },
     "sidebarPadding": {
-        "message": "Relleno de la barra lateral",
-        "description": ""
+        "message": "Relleno de la barra lateral"
     },
     "sidebarWidth": {
-        "message": "Ancho de la barra lateral (px)",
-        "description": ""
+        "message": "Ancho de la barra lateral (px)"
     },
     "sidebarWidthMultiplier": {
-        "message": "Ancho de la barra lateral",
-        "description": ""
+        "message": "Ancho de la barra lateral"
     },
     "sidebarWidthTooltip": {
-        "message": "Solo se aplica a las barras laterales creadas por esta extensión.",
-        "description": ""
+        "message": "Solo se aplica a las barras laterales creadas por esta extensión."
     },
     "simplifyDomain": {
-        "message": "Simplificar el dominio del sitio web",
-        "description": ""
+        "message": "Simplificar el dominio del sitio web"
     },
     "support": {
-        "message": "Apoyar",
-        "description": ""
+        "message": "Apoyar"
     },
     "tileBackgroundColor": {
-        "message": "Color de fondo",
-        "description": ""
+        "message": "Color de fondo"
     },
     "tileBackgroundOpacity": {
-        "message": "Opacidad de fondo",
-        "description": ""
+        "message": "Opacidad de fondo"
     },
     "tileHoverBackgroundOpacity": {
-        "message": "Opacidad de fondo al pasar el mouse",
-        "description": ""
+        "message": "Opacidad de fondo al pasar el mouse"
     },
     "tiles": {
-        "message": "Azulejos",
-        "description": ""
+        "message": "Azulejos"
     },
     "titleHoverColor": {
-        "message": "Color del título",
-        "description": ""
+        "message": "Color del título"
     },
     "tryToPlaceWidgetsOnTheSide": {
-        "message": "Mover los widgets de búsqueda a la columna de la derecha",
-        "description": ""
+        "message": "Mover los widgets de búsqueda a la columna de la derecha"
     },
     "visitGithub": {
-        "message": "Visita la página de GitHub",
-        "description": ""
+        "message": "Visita la página de GitHub"
     },
     "whatsNew": {
-        "message": "Qué hay de nuevo",
-        "description": ""
+        "message": "Qué hay de nuevo"
     },
     "wholeTileIsClickable": {
-        "message": "Se puede hacer clic en el mosaico completo",
-        "description": ""
+        "message": "Se puede hacer clic en el mosaico completo"
     },
     "widerTiles": {
-        "message": "Alinear mosaicos por ancho",
-        "description": ""
+        "message": "Alinear mosaicos por ancho"
     },
     "writeAReview": {
-        "message": "Escribe una reseña",
-        "description": ""
+        "message": "Escribe una reseña"
     }
 }

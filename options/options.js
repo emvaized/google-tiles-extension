@@ -55,13 +55,10 @@ function restoreOptions() {
       });
 
       /// Set translated tooltips
-      // document.querySelector("#moveSuggestionsToBottomTooltip").innerText = chrome.i18n.getMessage("moveSuggestionsToBottomTooltip");
       document.querySelector("#numericNavigationTooltip").innerText = chrome.i18n.getMessage("numericNavigationTooltip");
       document.querySelector("#navigateWithKeyboardTooltip").innerText = chrome.i18n.getMessage("navigateWithKeyboardTooltip");
       document.querySelector("#firstNumberPressScrollsToElementTooltip").innerText = chrome.i18n.getMessage("firstNumberPressScrollsToElementTooltip");
       document.querySelector("#colorizeBorderAfterFaviconTooltip").innerText = chrome.i18n.getMessage("colorizeBorderAfterFaviconTooltip");
-      // document.querySelector("#sidebarWidthTooltip").innerText = chrome.i18n.getMessage("sidebarWidthTooltip");
-      // document.querySelector("#moveNavbarToSearchbarTooltip").innerText = chrome.i18n.getMessage("moveNavbarToSearchbarTooltip");
 
       /// Set translated headers
       document.querySelector("#previewHeader").innerText = chrome.i18n.getMessage("preview");
@@ -70,11 +67,9 @@ function restoreOptions() {
       document.querySelector("#hoverHeader").innerText = chrome.i18n.getMessage("hover");
       document.querySelector("#searchResultsHeader").innerText = chrome.i18n.getMessage("searchResults");
       document.querySelector("#keyboardNavigationHeader").innerText = chrome.i18n.getMessage("keyboardNavigation");
-      // document.querySelector("#allChangesSavedAutomaticallyHeader").innerHTML = '💾 ' + chrome.i18n.getMessage("allChangesSavedAutomatically");
       document.querySelector("#allChangesSavedAutomaticallyHeader").innerHTML = chrome.i18n.getMessage("allChangesSavedAutomatically");
 
       /// Translate footer buttons
-      // document.querySelector("#resetButton").innerHTML = chrome.i18n.getMessage("resetDefaults");
       document.querySelector("#writeAReviewButton").innerHTML = chrome.i18n.getMessage("writeAReview");
       document.querySelector("#githubButton").innerHTML = chrome.i18n.getMessage("visitGithub") + document.querySelector("#githubButton").innerHTML;
       document.querySelector("#donateButton").innerHTML = chrome.i18n.getMessage("buyMeCoffee") + document.querySelector("#donateButton").innerHTML;
@@ -89,12 +84,10 @@ function restoreOptions() {
 
 function updateDisabledOptions() {
   document.querySelector("#shadowOpacity").parentNode.className = document.querySelector("#shadowEnabled").checked ? 'enabled-option' : 'disabled-option';
-  // document.querySelector("#keyboardCycle").parentNode.className = document.querySelector("#navigateWithKeyboard").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#keyboardFocusBorderColor").parentNode.className = document.querySelector("#navigateWithKeyboard").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#focusedBorderWidth").parentNode.className = document.querySelector("#addTileBorder").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#colorizeBorderAfterFavicon").parentNode.parentNode.className = document.querySelector("#addTileBorder").checked ? 'option tooltip enabled-option' : 'option tooltip disabled-option';
   document.querySelector("#addTileCounter").parentNode.className = document.querySelector("#numericNavigation").checked ? 'enabled-option' : 'disabled-option';
-  // document.querySelector("#numbersNavigateTabs").parentNode.className = document.querySelector("#numericNavigation").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#indexHintOpacity").parentNode.className = document.querySelector("#addTileCounter").checked && document.querySelector("#numericNavigation").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#showFullDomainOnHover").parentNode.className = document.querySelector("#simplifyDomain").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#titleHoverColor").parentNode.className = document.querySelector("#highlightTitleOnHover").checked ? 'enabled-option' : 'disabled-option';
@@ -105,7 +98,6 @@ function updateDisabledOptions() {
   document.querySelector("#keyboardFocusBorderColor").parentNode.className = !document.querySelector("#focusedTileDifferentBorder").checked && !document.getElementById('addFocusedTileDot').checked ? 'disabled-option' : 'enabled-option';
   document.querySelector("#scaleUpFocusedResultAmount").parentNode.className = document.querySelector("#scaleUpFocusedResult").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#focusedTileDotOpacity").parentNode.className = document.querySelector("#addFocusedTileDot").checked ? 'enabled-option' : 'disabled-option';
-  // document.querySelector("#populatedSidebarResultsOnTop").parentNode.className = document.querySelector("#populateSidebarWithRegularResults").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#hideNumberResultsRowBorder").parentNode.className = document.querySelector("#hideNumberResultsRow").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#sidebarWidth").parentNode.className = document.querySelector("#tryToPlaceWidgetsOnTheSide").checked ? 'enabled-option' : 'disabled-option';
   document.querySelector("#dontProccessWidgetsIfWindowNarrow").parentNode.className = document.querySelector("#tryToPlaceWidgetsOnTheSide").checked ? 'enabled-option' : 'disabled-option';

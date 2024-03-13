@@ -1,306 +1,230 @@
 {
   "addFocusedTileDot": {
-    "message": "Stip tonen op gefocuste tegel",
-    "description": ""
+    "message": "Stip tonen op gefocuste tegel"
   },
   "addTileBackground": {
-    "message": "Tegelachtergrond instellen",
-    "description": ""
+    "message": "Tegelachtergrond instellen"
   },
   "addTileBorder": {
-    "message": "Kader tonen",
-    "description": ""
+    "message": "Kader tonen"
   },
   "addTileCounter": {
-    "message": "Snelkeuzegetallen tonen",
-    "description": ""
+    "message": "Snelkeuzegetallen tonen"
   },
   "allChangesSavedAutomatically": {
-    "message": "De instellingen worden automatisch opgeslagen. <br /> Herlaad geopende pagina's om de aanpassingen te bekijken.",
-    "description": ""
+    "message": "De instellingen worden automatisch opgeslagen. <br /> Herlaad geopende pagina's om de aanpassingen te bekijken."
   },
   "appearance": {
-    "message": "Vormgeving",
-    "description": ""
+    "message": "Vormgeving"
   },
   "applyStyleToWidgets": {
-    "message": "Stijl toepassen op zoekwidgets",
-    "description": ""
+    "message": "Stijl toepassen op zoekwidgets"
   },
   "borderColor": {
-    "message": "Kaderkleur",
-    "description": ""
+    "message": "Kaderkleur"
   },
   "borderRadius": {
-    "message": "Hoekstraal (in px)",
-    "description": ""
+    "message": "Hoekstraal (in px)"
   },
   "buyMeCoffee": {
-    "message": "Ondersteun de ontwikkeling",
-    "description": ""
+    "message": "Ondersteun de ontwikkeling"
   },
   "changeCursorOverTile": {
-    "message": "Cursor op aangewezen tegel als aanwijzer tonen",
-    "description": ""
+    "message": "Cursor op aangewezen tegel als aanwijzer tonen"
   },
   "centerizeSelectedResult": {
-    "message": "Resultaat centreren",
-    "description": ""
+    "message": "Resultaat centreren"
   },
   "colorizeBorderAfterFavicon": {
-    "message": "Kaderkleur opmaken op basis van faviconkleuren",
-    "description": ""
+    "message": "Kaderkleur opmaken op basis van faviconkleuren"
   },
   "colorizeBorderAfterFaviconTooltip": {
-    "message": "Deze instelling botst met ‘Kader van gefocuste tegel markeren’.",
-    "description": ""
+    "message": "Deze instelling botst met ‘Kader van gefocuste tegel markeren’."
   },
   "configure": {
-    "message": "Instellen",
-    "description": ""
+    "message": "Instellen"
   },
   "disableTitleUnderlineOnHover": {
-    "message": "Titel niet onderstrepen na aanwijzen",
-    "description": ""
+    "message": "Titel niet onderstrepen na aanwijzen"
   },
   "enabled": {
-    "message": "Ingeschakeld",
-    "description": ""
+    "message": "Ingeschakeld"
   },
   "extensionDescription": {
-    "message": "Zet de vormgeving en het gedrag van de Google-zoekpagina naar eigen hand",
-    "description": ""
+    "message": "Zet de vormgeving en het gedrag van de Google-zoekpagina naar eigen hand"
   },
   "externalPadding": {
-    "message": "Opvulling tussen resultaten (in px)",
-    "description": ""
+    "message": "Opvulling tussen resultaten (in px)"
   },
   "faviconRadius": {
-    "message": "Favicongrootte",
-    "description": ""
+    "message": "Favicongrootte"
   },
   "favicons": {
-    "message": "Favicons",
-    "description": ""
+    "message": "Favicons"
   },
   "firstNumberPressScrollsToElement": {
-    "message": "Eén keer drukken om naar element te scrollen",
-    "description": ""
+    "message": "Eén keer drukken om naar element te scrollen"
   },
   "firstNumberPressScrollsToElementTooltip": {
-    "message": "Schakel uit om direct het eerste element te selecteren.",
-    "description": ""
+    "message": "Schakel uit om direct het eerste element te selecteren."
   },
   "focusedBorderWidth": {
-    "message": "Kaderbreedte (in px)",
-    "description": ""
+    "message": "Kaderbreedte (in px)"
   },
   "focusedTileDifferentBorder": {
-    "message": "Kader van gefocuste tegel markeren",
-    "description": ""
+    "message": "Kader van gefocuste tegel markeren"
   },
   "focusedTileDotOpacity": {
-    "message": "Doorzichtheid van stip",
-    "description": ""
+    "message": "Doorzichtheid van stip"
   },
   "header": {
-    "message": "Kop",
-    "description": ""
+    "message": "Kop"
   },
   "highlightTitleOnHover": {
-    "message": "Andere titelkleur tonen na aanwijzen",
-    "description": ""
+    "message": "Andere titelkleur tonen na aanwijzen"
   },
   "hover": {
-    "message": "Aanwijzen",
-    "description": ""
+    "message": "Aanwijzen"
   },
   "hoverBackground": {
-    "message": "Tegelachtergrondkleur na aanwijzen",
-    "description": ""
+    "message": "Tegelachtergrondkleur na aanwijzen"
   },
   "hoverTransitionDuration": {
-    "message": "Overgangsduur van aanwijsanimatie (in ms)",
-    "description": ""
+    "message": "Overgangsduur van aanwijsanimatie (in ms)"
   },
   "imageScaleUpOnHoverAmount": {
-    "message": "Vergroting",
-    "description": ""
+    "message": "Vergroting"
   },
   "indexHintOpacity": {
-    "message": "Doorzichtigheid van overzicht",
-    "description": ""
+    "message": "Doorzichtigheid van overzicht"
   },
   "innerPadding": {
-    "message": "Binnenste opvulling (in px)",
-    "description": ""
+    "message": "Binnenste opvulling (in px)"
   },
   "keyboardCycle": {
-    "message": "Oneindig navigeren (ga na laatste resultaat terug naar het eerste)",
-    "description": ""
+    "message": "Oneindig navigeren (ga na laatste resultaat terug naar het eerste)"
   },
   "keyboardFocusBorderColor": {
-    "message": "Markeerkleur van gefocuste tegel",
-    "description": ""
+    "message": "Markeerkleur van gefocuste tegel"
   },
   "keyboardNavigation": {
-    "message": "Toetsenbordnavigatie",
-    "description": ""
+    "message": "Toetsenbordnavigatie"
   },
   "moveNavbarToSearchbar": {
-    "message": "Navigatiebalk verplaatsen naar zoekbalk",
-    "description": ""
+    "message": "Navigatiebalk verplaatsen naar zoekbalk"
   },
   "moveNavbarToSearchbarTooltip": {
-    "message": "Experimenteel: dit kan storingen vertonen in ongemaximaliseerde vensters of vensters met een afwijkende schaal.",
-    "description": ""
+    "message": "Experimenteel: dit kan storingen vertonen in ongemaximaliseerde vensters of vensters met een afwijkende schaal."
   },
   "moveSuggestionsToBottom": {
-    "message": "Normale zoekresultaten bovenaan tonen",
-    "description": ""
+    "message": "Normale zoekresultaten bovenaan tonen"
   },
   "moveSuggestionsToBottomTooltip": {
-    "message": "Zoekwidgets en suggesties worden ná zoekresultaten getoond.",
-    "description": ""
+    "message": "Zoekwidgets en suggesties worden ná zoekresultaten getoond."
   },
   "navigateWithKeyboard": {
-    "message": "Pijltjestoetsnavigatie gebruiken",
-    "description": ""
+    "message": "Pijltjestoetsnavigatie gebruiken"
   },
   "navigateWithKeyboardTooltip": {
-    "message": "Gebruik ↑ en ↓ om door resultaten te bladeren, \n← en → om van pagina te wisselen en\n enter of spatiebalk om te openen.",
-    "description": ""
+    "message": "Gebruik ↑ en ↓ om door resultaten te bladeren, \n← en → om van pagina te wisselen en\n enter of spatiebalk om te openen."
   },
   "numbersNavigateResults": {
-    "message": "Getallenrij gebruiken om door zoekresultaten te bladeren",
-    "description": ""
+    "message": "Getallenrij gebruiken om door zoekresultaten te bladeren"
   },
   "numbersNavigateTabs": {
-    "message": "Getallenrij gebruiken om van tabblad te wisselen (indien uitgeschakeld: zoekresultaten)",
-    "description": ""
+    "message": "Getallenrij gebruiken om van tabblad te wisselen (indien uitgeschakeld: zoekresultaten)"
   },
   "numericNavigation": {
-    "message": "Cijfernavigatie",
-    "description": ""
+    "message": "Cijfernavigatie"
   },
   "numericNavigationTooltip": {
-    "message": "Druk op 1 om het eerste element te focussen, 2 om het tweede te focussen, enz. Druk op 0 om het zoekveld te focussen.",
-    "description": ""
+    "message": "Druk op 1 om het eerste element te focussen, 2 om het tweede te focussen, enz. Druk op 0 om het zoekveld te focussen."
   },
   "populateSidebarWithRegularResults": {
-    "message": "Zoekresultaten in zijbalk tonen (indien voldoende ruimte)",
-    "description": ""
+    "message": "Zoekresultaten in zijbalk tonen (indien voldoende ruimte)"
   },
   "populatedSidebarResultsOnTop": {
-    "message": "Normale zoekresultaten bovenaan zoekbalk tonen",
-    "description": ""
+    "message": "Normale zoekresultaten bovenaan zoekbalk tonen"
   },
   "preview": {
-    "message": "Tegelvoorvertoning",
-    "description": ""
+    "message": "Tegelvoorvertoning"
   },
   "resetDefaults": {
-    "message": "Standaardwaarden herstellen",
-    "description": ""
+    "message": "Standaardwaarden herstellen"
   },
   "scaleUpFocusedResult": {
-    "message": "Gefocust resultaat vergroten",
-    "description": ""
+    "message": "Gefocust resultaat vergroten"
   },
   "scaleUpFocusedResultAmount": {
-    "message": "Vergroting",
-    "description": ""
+    "message": "Vergroting"
   },
   "scaleUpImageResultsOnHover": {
-    "message": "Afbeeldingen vergroten na aanwijzen",
-    "description": ""
+    "message": "Afbeeldingen vergroten na aanwijzen"
   },
   "scrollHorizontalViewOnHover": {
-    "message": "Horizontale weergaven verschuiven na aanwijzen",
-    "description": ""
+    "message": "Horizontale weergaven verschuiven na aanwijzen"
   },
   "searchResults": {
-    "message": "Zoekresultaten",
-    "description": ""
+    "message": "Zoekresultaten"
   },
   "shadowEnabled": {
-    "message": "Schaduw tonen",
-    "description": ""
+    "message": "Schaduw tonen"
   },
   "shadowOpacity": {
-    "message": "Shaduwdoorzichtigheid (in %)",
-    "description": ""
+    "message": "Shaduwdoorzichtigheid (in %)"
   },
   "showFullDomainOnHover": {
-    "message": "Volledige domeinnaam tonen na aanwijzen",
-    "description": ""
+    "message": "Volledige domeinnaam tonen na aanwijzen"
   },
   "sideArrowsFocusSidebarFirst": {
-    "message": "← en → om focus in zijbalk te verleggen",
-    "description": ""
+    "message": "← en → om focus in zijbalk te verleggen"
   },
   "sidebarPadding": {
-    "message": "Zijbalkopvulling",
-    "description": ""
+    "message": "Zijbalkopvulling"
   },
   "sidebarWidth": {
-    "message": "Zijbalkbreedte (in px)",
-    "description": ""
+    "message": "Zijbalkbreedte (in px)"
   },
   "sidebarWidthMultiplier": {
-    "message": "Zijbalkbreedte",
-    "description": ""
+    "message": "Zijbalkbreedte"
   },
   "simplifyDomain": {
-    "message": "Vereenvoudigde domeinnamen tonen",
-    "description": ""
+    "message": "Vereenvoudigde domeinnamen tonen"
   },
   "support": {
-    "message": "Ondersteuning",
-    "description": ""
+    "message": "Ondersteuning"
   },
   "tileBackgroundColor": {
-    "message": "Achtergrondkleur",
-    "description": ""
+    "message": "Achtergrondkleur"
   },
   "tileBackgroundOpacity": {
-    "message": "Achtergronddoorzichtheid",
-    "description": ""
+    "message": "Achtergronddoorzichtheid"
   },
   "tileHoverBackgroundOpacity": {
-    "message": "Achtergronddoorzichtheid na aanwijzen",
-    "description": ""
+    "message": "Achtergronddoorzichtheid na aanwijzen"
   },
   "tiles": {
-    "message": "Tegels",
-    "description": ""
+    "message": "Tegels"
   },
   "titleHoverColor": {
-    "message": "Titelkleur",
-    "description": ""
+    "message": "Titelkleur"
   },
   "tryToPlaceWidgetsOnTheSide": {
-    "message": "Zoekwidgets in rechterkolom tonen",
-    "description": ""
+    "message": "Zoekwidgets in rechterkolom tonen"
   },
   "visitGithub": {
-    "message": "GitHub-pagina openen",
-    "description": ""
+    "message": "GitHub-pagina openen"
   },
   "whatsNew": {
-    "message": "Wijzigingslog",
-    "description": ""
+    "message": "Wijzigingslog"
   },
   "wholeTileIsClickable": {
-    "message": "Gehele tegel aanklikbaar maken",
-    "description": ""
+    "message": "Gehele tegel aanklikbaar maken"
   },
   "widerTiles": {
-    "message": "Tegels uitlijnen op basis van breedte",
-    "description": ""
+    "message": "Tegels uitlijnen op basis van breedte"
   },
   "writeAReview": {
-    "message": "Recensie schrijven",
-    "description": ""
+    "message": "Recensie schrijven"
   }
 }

@@ -1,334 +1,251 @@
 {
   "addFocusedTileDot": {
-    "message": "Add dot to focused tile",
-    "description": ""
+    "message": "Add dot to focused tile"
   },
   "addTileBackground": {
-    "message": "Add tile background",
-    "description": ""
+    "message": "Add tile background"
   },
   "addTileBorder": {
-    "message": "Add border",
-    "description": ""
+    "message": "Add border"
   },
   "addTileCounter": {
-    "message": "Show number hints",
-    "description": ""
+    "message": "Show number hints"
   },
   "allChangesSavedAutomatically": {
-    "message": "Settings are saved automatically <br /> Update open pages to see changes",
-    "description": ""
+    "message": "Settings are saved automatically <br /> Update open pages to see changes"
   },
   "appearance": {
-    "message": "Appearance",
-    "description": ""
+    "message": "Appearance"
   },
   "applyStyleToWidgets": {
-    "message": "Apply styling to search widgets",
-    "description": ""
+    "message": "Apply styling to search widgets"
   },
   "borderColor": {
-    "message": "Border color",
-    "description": ""
+    "message": "Border color"
   },
   "borderRadius": {
-    "message": "Corner radius (px)",
-    "description": ""
+    "message": "Corner radius (px)"
   },
   "buyMeCoffee": {
-    "message": "Support development",
-    "description": ""
+    "message": "Support development"
   },
   "changeCursorOverTile": {
-    "message": "Change cursor over tile to pointer",
-    "description": ""
+    "message": "Change cursor over tile to pointer"
   },
   "centerizeSelectedResult": {
-    "message": "Centerize selected result",
-    "description": ""
+    "message": "Centerize selected result"
   },
   "colorizeBorderAfterFavicon": {
-    "message": "Colorize border after website favicon",
-    "description": ""
+    "message": "Colorize border after website favicon"
   },
   "colorizeBorderAfterFaviconTooltip": {
-    "message": "This setting conflicts with 'Highlight border for focused tile'",
-    "description": ""
+    "message": "This setting conflicts with 'Highlight border for focused tile'"
   },
   "configure": {
-    "message": "Configure",
-    "description": ""
+    "message": "Configure"
   },
   "disableTitleUnderlineOnHover": {
-    "message": "Disable title underline on hover",
-    "description": ""
+    "message": "Disable title underline on hover"
   },  
   "dontProccessWidgetsIfWindowNarrow": {
-    "message": "Don't proccess widgets if window is too narrow",
-    "description": ""
+    "message": "Don't proccess widgets if window is too narrow"
   },
   "enabled": {
-    "message": "Enabled",
-    "description": ""
+    "message": "Enabled"
   },
   "extensionDescription": {
-    "message": "Customize the looks and behavior of Google search page as for your liking",
-    "description": ""
+    "message": "Customize the looks and behavior of Google search page as for your liking"
   },
   "externalPadding": {
-    "message": "Padding between results (px)",
-    "description": ""
+    "message": "Padding between results (px)"
   },
   "faviconRadius": {
-    "message": "Favicon size",
-    "description": ""
+    "message": "Favicon size"
   },
   "favicons": {
-    "message": "Favicons",
-    "description": ""
+    "message": "Favicons"
   },
   "firstNumberPressScrollsToElement": {
-    "message": "First press scrolls to element",
-    "description": ""
+    "message": "First press scrolls to element"
   },
   "firstNumberPressScrollsToElementTooltip": {
-    "message": "When disabled, first press immediately selects element",
-    "description": ""
+    "message": "When disabled, first press immediately selects element"
   },
   "focusedBorderWidth": {
-    "message": "Borders width (px)",
-    "description": ""
+    "message": "Borders width (px)"
   },
   "focusedTileDifferentBorder": {
-    "message": "Highlight border for focused tile",
-    "description": ""
+    "message": "Highlight border for focused tile"
   },
   "focusedTileDotOpacity": {
-    "message": "Dot opacity",
-    "description": ""
+    "message": "Dot opacity"
   },
   "header": {
-    "message": "Result header",
-    "description": ""
+    "message": "Result header"
   },  
   "hideNumberResultsRow": {
-    "message": "Hide the 'n results found' row",
-    "description": ""
+    "message": "Hide the 'n results found' row"
   },  
   "hideNumberResultsRowBorder": {
-    "message": "Hide top border as well",
-    "description": ""
+    "message": "Hide top border as well"
   },  
   "hideTranslateResultButton": {
-    "message": "Hide 'translate this result' button",
-    "description": ""
+    "message": "Hide 'translate this result' button"
   },
   "highlightTitleOnHover": {
-    "message": "Change title color on hover",
-    "description": ""
+    "message": "Change title color on hover"
   },
   "hover": {
-    "message": "Hover",
-    "description": ""
+    "message": "Hover"
   },
   "hoverBackground": {
-    "message": "Tile background color on hover",
-    "description": ""
+    "message": "Tile background color on hover"
   },
   "hoverTransitionDuration": {
-    "message": "Hover transition duration (ms)",
-    "description": ""
+    "message": "Hover transition duration (ms)"
   },
   "imageScaleUpOnHoverAmount": {
-    "message": "Scale up amount",
-    "description": ""
+    "message": "Scale up amount"
   },
   "indexHintOpacity": {
-    "message": "Index hint opacity",
-    "description": ""
+    "message": "Index hint opacity"
   },
   "innerPadding": {
-    "message": "Inner padding (px)",
-    "description": ""
+    "message": "Inner padding (px)"
   },
   "keyboardCycle": {
-    "message": "Cycle navigation (jump to first result after last)",
-    "description": ""
+    "message": "Cycle navigation (jump to first result after last)"
   },
   "keyboardFocusBorderColor": {
-    "message": "Focused tile's highlight color",
-    "description": ""
+    "message": "Focused tile's highlight color"
   },
   "keyboardNavigation": {
-    "message": "Keyboard navigation",
-    "description": ""
+    "message": "Keyboard navigation"
   },
   "moveLazyLoadedWidgets": {
-    "message": "Try to move widgets, lazy loaded on scroll, to sidebar",
-    "description": ""
+    "message": "Try to move widgets, lazy loaded on scroll, to sidebar"
   },  
   "moveNavbarToSearchbar": {
-    "message": "Move navbar to searchbar",
-    "description": ""
+    "message": "Move navbar to searchbar"
   },
   "moveNavbarToSearchbarTooltip": {
-    "message": "Experimental: may look bad in non-maximized window or with non-regular scale",
-    "description": ""
+    "message": "Experimental: may look bad in non-maximized window or with non-regular scale"
   },
   "moveSuggestionsToBottom": {
-    "message": "Move regular search results on top",
-    "description": ""
+    "message": "Move regular search results on top"
   },
   "moveSuggestionsToBottomTooltip": {
-    "message": "Search widgets and suggestions will be shown after regular results",
-    "description": ""
+    "message": "Search widgets and suggestions will be shown after regular results"
   },  
   "moveTopPhotosToSidebar": {
-    "message": "Move photos on top of page to sidebar",
-    "description": ""
+    "message": "Move photos on top of page to sidebar"
   },
   "navigateWithKeyboard": {
-    "message": "Use arrow keys for navigation",
-    "description": ""
+    "message": "Use arrow keys for navigation"
   },
   "navigateWithKeyboardTooltip": {
-    "message": "Use ↑ and ↓ keys to navigate results, \n← and → to swtich pages, and\n 'Enter' or Spacebar to open",
-    "description": ""
+    "message": "Use ↑ and ↓ keys to navigate results, \n← and → to swtich pages, and\n 'Enter' or Spacebar to open"
   },
   "numbersNavigateResults": {
-    "message": "Number keys navigate search results",
-    "description": ""
+    "message": "Number keys navigate search results"
   },
   "numbersNavigateTabs": {
-    "message": "Number keys navigate tabs (search resuls when turned off)",
-    "description": ""
+    "message": "Number keys navigate tabs (search resuls when turned off)"
   },
   "numericNavigation": {
-    "message": "Numeric keys navigation",
-    "description": ""
+    "message": "Numeric keys navigation"
   },
   "numericNavigationTooltip": {
-    "message": "Pressing key 1 will focus first element, 2 will focus second, and so on. Pressing 0 will focus search field",
-    "description": ""
+    "message": "Pressing key 1 will focus first element, 2 will focus second, and so on. Pressing 0 will focus search field"
   },
   "populateSidebarWithRegularResults": {
-    "message": "Populate sidebar with regular results when it has space",
-    "description": ""
+    "message": "Populate sidebar with regular results when it has space"
   },
   "populatedSidebarResultsOnTop": {
-    "message": "Place regular results on top of sidebar",
-    "description": ""
+    "message": "Place regular results on top of sidebar"
   },
   "preview": {
-    "message": "Tile preview",
-    "description": ""
+    "message": "Tile preview"
   },
   "resetDefaults": {
-    "message": "Restore defaults",
-    "description": ""
+    "message": "Restore defaults"
   },
   "scaleUpFocusedResult": {
-    "message": "Scale up focused result",
-    "description": ""
+    "message": "Scale up focused result"
   },
   "scaleUpFocusedResultAmount": {
-    "message": "Scale up amount",
-    "description": ""
+    "message": "Scale up amount"
   },
   "scaleUpImageResultsOnHover": {
-    "message": "Scale up image results on hover",
-    "description": ""
+    "message": "Scale up image results on hover"
   },
   "scrollHorizontalViewOnHover": {
-    "message": "Scroll horizontal views with hover",
-    "description": ""
+    "message": "Scroll horizontal views with hover"
   },
   "searchResults": {
-    "message": "Search results",
-    "description": ""
+    "message": "Search results"
   },
   "shadowEnabled": {
-    "message": "Add shadow",
-    "description": ""
+    "message": "Add shadow"
   },
   "shadowOpacity": {
-    "message": "Shadows opacity (%)",
-    "description": ""
+    "message": "Shadows opacity (%)"
   },
   "showFullDomainOnHover": {
-    "message": "Show full domain on hover",
-    "description": ""
+    "message": "Show full domain on hover"
   },
   "sideArrowsFocusSidebarFirst": {
-    "message": "← and → keys switch focus to sidebar",
-    "description": ""
+    "message": "← and → keys switch focus to sidebar"
   },
   "sidebarPadding": {
-    "message": "Sidebar padding",
-    "description": ""
+    "message": "Sidebar padding"
   },
   "sidebarWidth": {
-    "message": "Sidebar width (px)",
-    "description": ""
+    "message": "Sidebar width (px)"
   },
   "sidebarWidthMultiplier": {
-    "message": "Sidebar width",
-    "description": ""
+    "message": "Sidebar width"
   },
   "sidebarWidthTooltip": {
-    "message": "Only applies to sidebars created by this extension",
-    "description": ""
+    "message": "Only applies to sidebars created by this extension"
   },
   "simplifyDomain": {
-    "message": "Simplify website domain",
-    "description": ""
+    "message": "Simplify website domain"
   },
   "support": {
-    "message": "Support",
-    "description": ""
+    "message": "Support"
   },
   "tileBackgroundColor": {
-    "message": "Background color",
-    "description": ""
+    "message": "Background color"
   },
   "tileBackgroundOpacity": {
-    "message": "Background opacity",
-    "description": ""
+    "message": "Background opacity"
   },
   "tileHoverBackgroundOpacity": {
-    "message": "Hover background opacity",
-    "description": ""
+    "message": "Hover background opacity"
   },
   "tiles": {
-    "message": "Tiles",
-    "description": ""
+    "message": "Tiles"
   },
   "titleHoverColor": {
-    "message": "Title color",
-    "description": ""
+    "message": "Title color"
   },
   "tryToPlaceWidgetsOnTheSide": {
-    "message": "Move search widgets to the right column",
-    "description": ""
+    "message": "Move search widgets to the right column"
   },
   "visitGithub": {
-    "message": "Visit GitHub page",
-    "description": ""
+    "message": "Visit GitHub page"
   },
   "whatsNew": {
-    "message": "What's new",
-    "description": ""
+    "message": "What's new"
   },
   "wholeTileIsClickable": {
-    "message": "Whole tile is clickable",
-    "description": ""
+    "message": "Whole tile is clickable"
   },
   "widerTiles": {
-    "message": "Align tiles by width",
-    "description": ""
+    "message": "Align tiles by width"
   },
   "writeAReview": {
-    "message": "Write a review",
-    "description": ""
+    "message": "Write a review"
   }
 }
