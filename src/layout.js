@@ -25,8 +25,9 @@ function setRegularResults(lazyLoaded = false) {
             }
 
             /// Regular result
-            configureTileHeader(result)
-            configureTile(result);
+            // configureTileHeader(result)
+            // configureTile(result);
+            Promise.all([configureTile(result), configureTileHeader(result)])
             result.classList.add('g-tiles-proccessed')
         }
     }
