@@ -22,9 +22,9 @@
         "src/index.css"
       ],
       "run_at": "document_start",
-      "matches": [ "*://*/search?q=*" ],
+      "matches": [ "*://*/search?*q=*" ],
       "include_globs": [
-        "*://www.google.*/search?*"
+        "*://www.google.*/search?*q=*"
       ],
       "exclude_globs": [
         "*://www.google.*/search?*&tbm=*"
