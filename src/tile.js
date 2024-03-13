@@ -128,8 +128,4 @@ function configureTileHeader(tile) {
             });
         }
     }
-
-    if (configs.hideTranslateResultButton) {
-        tile.classList.add('gtile-hide-translate-result')
-    }
 }
