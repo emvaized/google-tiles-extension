@@ -119,6 +119,10 @@
         "message": "Также спрятать линию сверху",
         "description": ""
     },
+    "hideTranslateResultButton": {
+        "message": "Спрятать кнопку 'Перевести эту страницу'",
+        "description": ""
+    },
     "highlightTitleOnHover": {
         "message": "Изменить цвет заголовка при наведении",
         "description": ""

@@ -49,6 +49,11 @@
     margin-left: calc(var(--center-abs-margin) - var(--gtiles-tile-padding));
 }
 
+/* hide "translate result" button */
+.gtile-hide-translate-result .eFM0qc.BCF2pd {
+    display: none !important;
+}
+
 
 /* Counter index hint */
 .g-tile .g-tile-counter-hint {

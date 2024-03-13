@@ -20,6 +20,7 @@ var configs = {
     "focusedTileDotOpacity": 0.4,
     "hideNumberResultsRow": false,
     "hideNumberResultsRowBorder": false,
+    "hideTranslateResultButton": false,
     "highlightTitleOnHover": true,
     "hoverBackground": "#f0f2f4",
     "hoverTransitionDuration": 75,

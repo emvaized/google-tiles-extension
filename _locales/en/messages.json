@@ -118,6 +118,10 @@
   "hideNumberResultsRowBorder": {
     "message": "Hide top border as well",
     "description": ""
+  },  
+  "hideTranslateResultButton": {
+    "message": "Hide 'translate this result' button",
+    "description": ""
   },
   "highlightTitleOnHover": {
     "message": "Change title color on hover",

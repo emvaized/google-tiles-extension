@@ -118,7 +118,11 @@
     "hideNumberResultsRowBorder": {
         "message": "Ocultar el borde arriba también",
         "description": ""
-      },
+    },
+    "hideTranslateResultButton": {
+        "message": "Ocultar el botón 'traducir este resultado'",
+        "description": ""
+    },
     "highlightTitleOnHover": {
         "message": "Cambiar el color del título al pasar el mouse",
         "description": ""
