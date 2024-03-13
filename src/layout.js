@@ -67,6 +67,7 @@ function setSidebar(lazyLoaded = false) {
     // Move images on top of page to sidebar
     if (!lazyLoaded && configs.moveTopPhotosToSidebar) {
         try {
+            /// consider apply to #kp-wp-tab-overview div:has(block-component) as well
             const headerImagesContainer = regularResultsColumn.querySelector('#kp-wp-tab-overview div:has(#media_result_group):not(.g-tiles-proccessed)');
             if (headerImagesContainer) {
                 sidebarContainer.querySelector('div[role="complementary"]').prepend(headerImagesContainer) 

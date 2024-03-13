@@ -93,8 +93,12 @@
     max-width: var(--gtiles-sidebar-width) !important;
     width: var(--gtiles-sidebar-width) !important;
     left: calc(var(--center-width) + var(--rhs-margin));
-    overflow: hidden;
+    overflow: auto;
     height: 100%;
+}
+
+.g-tiles-sidebar .card-section, .g-tiles-sidebar .nawv0d, .g-tiles-sidebar .KFFQ0c.xKf9F {
+    max-width: var(--gtiles-sidebar-width);
 }
 
 /* Fix right margin for accordeon tiles */
