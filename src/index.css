@@ -44,6 +44,11 @@
     color: var(--gtiles-tile-hover-title-color) !important;
 }
 
+/* fix #center_col# alignment with the searchbox on top */
+#center_col {
+    margin-left: calc(var(--center-abs-margin) - var(--gtiles-tile-padding));
+}
+
 
 /* Counter index hint */
 .g-tile .g-tile-counter-hint {
