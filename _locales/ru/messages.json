@@ -108,7 +108,7 @@
         "description": ""
     },
     "header": {
-        "message": "Заголовок",
+        "message": "Заголовок результата",
         "description": ""
     },
     "hideNumberResultsRow": {

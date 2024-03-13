@@ -108,7 +108,7 @@
         "description": ""
     },
     "header": {
-        "message": "Encabezado",
+        "message": "Título del resultado",
         "description": ""
     },
     "hideNumberResultsRow": {
