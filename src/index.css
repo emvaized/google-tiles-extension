@@ -215,7 +215,6 @@ div.YEMaTe {
     display: revert !important;
 }
 
-
 /* Focused tile dot indicator */
 .g-tile.add-focused-dot:focus .g::before {
     content: "";
@@ -229,7 +228,6 @@ div.YEMaTe {
     height: 10px;
     width: 10px;
 }
-
 
 /* Remove unwanted bottom margin for some results */
 .ULSxyf, .hlcw0c:not(:has(.g)) {

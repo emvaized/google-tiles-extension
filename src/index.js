@@ -12,7 +12,6 @@ const countedHintColor = 'grey';
 const counterHintFocusColor = '#EA4335';
 
 /// Variables to store calculated values
-var tileTransition;
 var tileBackgroundColor;
 var hoverBackgroundColor;
 var ignoreClientHeightChanges = false;
@@ -39,59 +38,52 @@ function loadConfigs() {
           configs[key] = value[key];
       }
 
-      if (configs.tilesEnabled) {
-        tileTransition = `background-color ${configs.hoverTransitionDuration}ms ease-out`
+      try {
+        let color = hexToRgb(configs.tileBackgroundColor);
+        tileBackgroundColor = `rgba(${color.red}, ${color.green}, ${color.blue},${configs.tileBackgroundOpacity})`;
 
-        try {
-          let color = hexToRgb(configs.tileBackgroundColor);
-          tileBackgroundColor = `rgba(${color.red}, ${color.green}, ${color.blue},${configs.tileBackgroundOpacity})`;
-
-          let hColor = hexToRgb(configs.hoverBackground);
-          hoverBackgroundColor = `rgba(${hColor.red}, ${hColor.green}, ${hColor.blue}, ${configs.tileHoverBackgroundOpacity})`;
-        } catch (e) {
-          tileBackgroundColor = configs.tileBackgroundColor;
-          hoverBackgroundColor = configs.hoverBackground;
-        }
-
-        setVariables();
-
-        if (document.readyState === "complete" || document.readyState === 'interactive') init();
-        else document.addEventListener('DOMContentLoaded', init);
+        let hColor = hexToRgb(configs.hoverBackground);
+        hoverBackgroundColor = `rgba(${hColor.red}, ${hColor.green}, ${hColor.blue}, ${configs.tileHoverBackgroundOpacity})`;
+      } catch (e) {
+        tileBackgroundColor = configs.tileBackgroundColor;
+        hoverBackgroundColor = configs.hoverBackground;
       }
+
+      setVariables(configs);
+
+      if (document.readyState === "complete" || document.readyState === 'interactive') init();
+      else document.addEventListener('DOMContentLoaded', init);
     }
   );
-
 }
 
-function setVariables() {
-  document.documentElement.style.setProperty('--gtiles-tile-background', configs.addTileBackground ? `${tileBackgroundColor}` : '');
-  document.documentElement.style.setProperty('--gtiles-tile-border', `solid ${configs.focusedBorderWidth}px ${configs.addTileBorder ? configs.borderColor : 'transparent'}`);
-  document.documentElement.style.setProperty('--gtiles-tile-border-radius', `${configs.borderRadius}px`);
-  document.documentElement.style.setProperty('--gtiles-transition', tileTransition);
-  document.documentElement.style.setProperty('--gtiles-tile-shadow', configs.shadowEnabled ? `0px 5px 15px rgba(0, 0, 0, ${configs.shadowOpacity})` : 'unset');
-  document.documentElement.style.setProperty('--gtiles-tile-width', configs.widerTiles ? '100%' : 'unset');
+function setVariables(cfg) {
+  document.documentElement.style.setProperty('--gtiles-tile-background', cfg.addTileBackground ? `${tileBackgroundColor}` : '');
+  document.documentElement.style.setProperty('--gtiles-tile-border', `solid ${cfg.focusedBorderWidth}px ${cfg.addTileBorder ? cfg.borderColor : 'transparent'}`);
+  document.documentElement.style.setProperty('--gtiles-tile-border-radius', `${cfg.borderRadius}px`);
+  document.documentElement.style.setProperty('--gtiles-transition', `background-color ${cfg.hoverTransitionDuration}ms ease-out`);
+  document.documentElement.style.setProperty('--gtiles-tile-shadow', cfg.shadowEnabled ? `0px 5px 15px rgba(0, 0, 0, ${cfg.shadowOpacity})` : 'unset');
+  document.documentElement.style.setProperty('--gtiles-tile-width', cfg.widerTiles ? '100%' : 'unset');
   document.documentElement.style.setProperty('--gtiles-counter-color', countedHintColor);
-  document.documentElement.style.setProperty('--gtiles-counter-opacity', configs.indexHintOpacity);
-  document.documentElement.style.setProperty('--gtiles-sidebar-width', configs.tryToPlaceWidgetsOnTheSide ? `${configs.sidebarWidth}px` : 'revert');
-  document.documentElement.style.setProperty('--gtiles-tile-padding', `${configs.innerPadding}px`);
-  document.documentElement.style.setProperty('--gtiles-tile-margin', configs.tilesEnabled ? `0px 0px ${configs.externalPadding}px` : '0px 0px 30px 0px');
-  document.documentElement.style.setProperty('--gtiles-tile-external-padding', configs.tilesEnabled ? `${1.0 * configs.externalPadding + 1.0 * configs.innerPadding}px` : 'unset');
-
-  document.documentElement.style.setProperty('--gtiles-tile-background-color', configs.addTileBackground ? tileBackgroundColor : 'transparent');
+  document.documentElement.style.setProperty('--gtiles-counter-opacity', cfg.indexHintOpacity);
+  document.documentElement.style.setProperty('--gtiles-sidebar-width', cfg.tryToPlaceWidgetsOnTheSide ? `${cfg.sidebarWidth}px` : 'revert');
+  document.documentElement.style.setProperty('--gtiles-tile-padding', `${cfg.innerPadding}px`);
+  document.documentElement.style.setProperty('--gtiles-tile-margin', `0px 0px ${cfg.externalPadding}px`);
+  document.documentElement.style.setProperty('--gtiles-tile-external-padding', `${1.0 * cfg.externalPadding + 1.0 * cfg.innerPadding}px`);
+  document.documentElement.style.setProperty('--gtiles-tile-background-color', cfg.addTileBackground ? tileBackgroundColor : 'transparent');
   document.documentElement.style.setProperty('--gtiles-tile-hover-background-color', hoverBackgroundColor);
-  document.documentElement.style.setProperty('--gtiles-tile-hover-title-color', configs.titleHoverColor);
-  document.documentElement.style.setProperty('--gtiles-keyboard-focus-border-color', configs.keyboardFocusBorderColor);
-  document.documentElement.style.setProperty('--gtiles-focused-tile-dot-opacity', configs.focusedTileDotOpacity);
-
-  document.documentElement.style.setProperty('--gtiles-results-found-line-visibility', configs.hideNumberResultsRow ? 'hidden' : 'visible');
-  document.documentElement.style.setProperty('--gtiles-results-found-line-height', configs.hideNumberResultsRow ? '10px' : 'unset');
-  document.documentElement.style.setProperty('--gtiles-results-found-border-visibility', configs.hideNumberResultsRowBorder ? 'hidden' : 'visible');
+  document.documentElement.style.setProperty('--gtiles-tile-hover-title-color', cfg.titleHoverColor);
+  document.documentElement.style.setProperty('--gtiles-keyboard-focus-border-color', cfg.keyboardFocusBorderColor);
+  document.documentElement.style.setProperty('--gtiles-focused-tile-dot-opacity', cfg.focusedTileDotOpacity);
+  document.documentElement.style.setProperty('--gtiles-results-found-line-visibility', cfg.hideNumberResultsRow ? 'hidden' : 'visible');
+  document.documentElement.style.setProperty('--gtiles-results-found-line-height', cfg.hideNumberResultsRow ? '10px' : 'unset');
+  document.documentElement.style.setProperty('--gtiles-results-found-border-visibility', cfg.hideNumberResultsRowBorder ? 'hidden' : 'visible');
 
   /// Move sidebar widgets on top of page
-  if (configs.tryToPlaceWidgetsOnTheSide && configs.moveTopPhotosToSidebar) document.body.classList.add('gtile-move-top-photos')
+  if (cfg.tryToPlaceWidgetsOnTheSide && cfg.moveTopPhotosToSidebar) document.body.classList.add('gtile-move-top-photos')
 
   /// Hide 'translate this result' buttons
-  if (configs.hideTranslateResultButton) document.body.classList.add('gtile-hide-translate-result')
+  if (cfg.hideTranslateResultButton) document.body.classList.add('gtile-hide-translate-result')
 }
 
 function init() {

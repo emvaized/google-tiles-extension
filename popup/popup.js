@@ -17,13 +17,12 @@ function restoreOptions() {
   const githubButton = document.querySelector('#githubPage');
   githubButton.innerHTML = githubButton.innerHTML + ' ' + 'Github';
 
-  var enabledCheckbox = document.querySelector('#tilesEnabled');
-  enabledCheckbox.parentNode.innerHTML = chrome.i18n.getMessage("enabled") + enabledCheckbox.parentNode.innerHTML;
-
-  chrome.storage.local.get(
-    'tilesEnabled', function (res) {
-      document.querySelector("#tilesEnabled").checked = res.tilesEnabled ?? true;
-    });
+  // var enabledCheckbox = document.querySelector('#tilesEnabled');
+  // enabledCheckbox.parentNode.innerHTML = chrome.i18n.getMessage("enabled") + enabledCheckbox.parentNode.innerHTML;
+  // chrome.storage.local.get(
+  //   'tilesEnabled', function (res) {
+  //     document.querySelector("#tilesEnabled").checked = res.tilesEnabled ?? true;
+  //   });
 }
 
 function setVersionLabel() {
