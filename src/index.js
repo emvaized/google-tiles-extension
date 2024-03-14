@@ -12,8 +12,6 @@ const countedHintColor = 'grey';
 const counterHintFocusColor = '#EA4335';
 
 /// Variables to store calculated values
-var tileBackgroundColor;
-var hoverBackgroundColor;
 var ignoreClientHeightChanges = false;
 let lastKnownBodyHeight;
 
@@ -38,17 +36,6 @@ function loadConfigs() {
           configs[key] = value[key];
       }
 
-      try {
-        let color = hexToRgb(configs.tileBackgroundColor);
-        tileBackgroundColor = `rgba(${color.red}, ${color.green}, ${color.blue},${configs.tileBackgroundOpacity})`;
-
-        let hColor = hexToRgb(configs.hoverBackground);
-        hoverBackgroundColor = `rgba(${hColor.red}, ${hColor.green}, ${hColor.blue}, ${configs.tileHoverBackgroundOpacity})`;
-      } catch (e) {
-        tileBackgroundColor = configs.tileBackgroundColor;
-        hoverBackgroundColor = configs.hoverBackground;
-      }
-
       setVariables(configs);
 
       if (document.readyState === "complete" || document.readyState === 'interactive') init();
@@ -58,7 +45,6 @@ function loadConfigs() {
 }
 
 function setVariables(cfg) {
-  document.documentElement.style.setProperty('--gtiles-tile-background', cfg.addTileBackground ? `${tileBackgroundColor}` : '');
   document.documentElement.style.setProperty('--gtiles-tile-border', `solid ${cfg.focusedBorderWidth}px ${cfg.addTileBorder ? cfg.borderColor : 'transparent'}`);
   document.documentElement.style.setProperty('--gtiles-tile-border-radius', `${cfg.borderRadius}px`);
   document.documentElement.style.setProperty('--gtiles-transition', `background-color ${cfg.hoverTransitionDuration}ms ease-out`);
@@ -70,14 +56,27 @@ function setVariables(cfg) {
   document.documentElement.style.setProperty('--gtiles-tile-padding', `${cfg.innerPadding}px`);
   document.documentElement.style.setProperty('--gtiles-tile-margin', `0px 0px ${cfg.externalPadding}px`);
   document.documentElement.style.setProperty('--gtiles-tile-external-padding', `${1.0 * cfg.externalPadding + 1.0 * cfg.innerPadding}px`);
-  document.documentElement.style.setProperty('--gtiles-tile-background-color', cfg.addTileBackground ? tileBackgroundColor : 'transparent');
-  document.documentElement.style.setProperty('--gtiles-tile-hover-background-color', hoverBackgroundColor);
   document.documentElement.style.setProperty('--gtiles-tile-hover-title-color', cfg.titleHoverColor);
   document.documentElement.style.setProperty('--gtiles-keyboard-focus-border-color', cfg.keyboardFocusBorderColor);
   document.documentElement.style.setProperty('--gtiles-focused-tile-dot-opacity', cfg.focusedTileDotOpacity);
   document.documentElement.style.setProperty('--gtiles-results-found-line-visibility', cfg.hideNumberResultsRow ? 'hidden' : 'visible');
   document.documentElement.style.setProperty('--gtiles-results-found-line-height', cfg.hideNumberResultsRow ? '10px' : 'unset');
   document.documentElement.style.setProperty('--gtiles-results-found-border-visibility', cfg.hideNumberResultsRowBorder ? 'hidden' : 'visible');
+
+  /// Calculate background color for tiles
+  let tileBackgroundColor, hoverBackgroundColor;
+  try {
+    const color = hexToRgb(cfg.tileBackgroundColor);
+    tileBackgroundColor = `rgba(${color.red}, ${color.green}, ${color.blue},${cfg.tileBackgroundOpacity})`;
+
+    const hColor = hexToRgb(cfg.hoverBackground);
+    hoverBackgroundColor = `rgba(${hColor.red}, ${hColor.green}, ${hColor.blue}, ${cfg.tileHoverBackgroundOpacity})`;
+  } catch (e) {
+    tileBackgroundColor = cfg.tileBackgroundColor;
+    hoverBackgroundColor = cfg.hoverBackground;
+  }
+  document.documentElement.style.setProperty('--gtiles-tile-background-color', cfg.addTileBackground ? tileBackgroundColor : 'transparent');
+  document.documentElement.style.setProperty('--gtiles-tile-hover-background-color', hoverBackgroundColor);
 
   /// Move sidebar widgets on top of page
   if (cfg.tryToPlaceWidgetsOnTheSide && cfg.moveTopPhotosToSidebar) document.body.classList.add('gtile-move-top-photos')

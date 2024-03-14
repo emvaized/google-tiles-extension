@@ -1,4 +1,4 @@
-var configs = {
+const configs = {
     "addFocusedTileDot": true,
     "addTileBackground": false,
     "addTileBorder": false,
