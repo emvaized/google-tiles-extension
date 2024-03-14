@@ -1,3 +1,10 @@
+2.5.2
+- Added option to hide 'translate this result' button
+- Extended list of supported widgets moved to sidebar
+- Fix for scripts not working on some pages
+- Improved tiles alignment with the searchbox on top
+- Project cleanup and performance optimizations
+
 2.5.1
 - Changed extension name to "Google Tweaks"
 - Compatibility with more Google search widgets
@@ -10,7 +17,7 @@
 - New option to remove "n results found" line on top, as well as it's border
 - Huge refactoring and optimization of the project – it became much lighter and faster to load
 - Some of the features had to be removed ("Add website favicons", "Apply styling to the search widgets", "Move search results on top", "Numbers navigate tabs", horizontal arrows keyboard navigation). Some of these, which are still actual in new lazy-loaded layout, may be reimplemented in the future if there will be demand from users 
-- Changed website check to a more flexible form, so that it should support more google.com subcomains
+- Changed website check to a more flexible form, so that it should support more google.com subdomains
 
 2.4.3
 - Small fixes

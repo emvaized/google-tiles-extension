@@ -35,12 +35,11 @@ function setSidebar(lazyLoaded = false) {
     if (ignoreClientHeightChanges) return;
     if (configs.dontProccessWidgetsIfWindowNarrow && window.innerWidth < configs.sidebarWidth * 3) return;
     ignoreClientHeightChanges = true;
-    // console.log('processing sidebar...')
 
     /// Detect or create sidebar container
     if (!regularResultsColumn) regularResultsColumn = document.getElementById(columnWithRegularResultsId);
     if (!regularResultsColumnWidth) regularResultsColumnWidth = regularResultsColumn.clientWidth;
-    
+
      if (!sidebarContainer) {
         sidebarContainer = document.getElementById('rhs');
 
@@ -52,11 +51,8 @@ function setSidebar(lazyLoaded = false) {
             sidebarContainer = document.createElement('div');
             sidebarContainer.className = 'g-tiles-sidebar';
 
-            if (regularResultsColumn !== null)
-                regularResultsColumn.parentNode.appendChild(sidebarContainer);
+            if (regularResultsColumn) regularResultsColumn.parentNode.appendChild(sidebarContainer);
         }
-
-        // if (configs.applyStyleToWidgets) sidebarContainer.classList.add('stylized-sidebar');
     }
     
     // Move images on top of page to sidebar
@@ -81,7 +77,7 @@ function setSidebar(lazyLoaded = false) {
         .TzHB6b.cLjAic:has(.HnYYW),
         .ULSxyf:not(:has(.g))
     `);
-    
+
     const widgetsArray = Array.prototype.slice.call(widgets);
     for (let i = 0, n = widgetsArray.length, result; i < n; i++) {
         result = widgetsArray[i];
