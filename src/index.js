@@ -2,14 +2,6 @@
 const regularResultClassName = 'g';
 const searchFieldSelector = `[name = 'q']`;
 const columnWithRegularResultsId = 'rso';
-const regularCategoryButtonsParentId = 'hdtb-msb';
-
-/// Currently non-configurable variables
-const sidebarPadding = 25;
-const counterHintsOnBottom = false;
-const paddingWhenNavbarMoved = 20;
-const countedHintColor = 'grey';
-const counterHintFocusColor = '#EA4335';
 
 /// Variables to store calculated values
 var ignoreClientHeightChanges = false;
@@ -50,7 +42,7 @@ function setVariables(cfg) {
   document.documentElement.style.setProperty('--gtiles-transition', `background-color ${cfg.hoverTransitionDuration}ms ease-out`);
   document.documentElement.style.setProperty('--gtiles-tile-shadow', cfg.shadowEnabled ? `0px 5px 15px rgba(0, 0, 0, ${cfg.shadowOpacity})` : 'unset');
   document.documentElement.style.setProperty('--gtiles-tile-width', cfg.widerTiles ? '100%' : 'unset');
-  document.documentElement.style.setProperty('--gtiles-counter-color', countedHintColor);
+  document.documentElement.style.setProperty('--gtiles-counter-color', 'grey');
   document.documentElement.style.setProperty('--gtiles-counter-opacity', cfg.indexHintOpacity);
   document.documentElement.style.setProperty('--gtiles-sidebar-width', cfg.tryToPlaceWidgetsOnTheSide ? `${cfg.sidebarWidth}px` : 'revert');
   document.documentElement.style.setProperty('--gtiles-tile-padding', `${cfg.innerPadding}px`);

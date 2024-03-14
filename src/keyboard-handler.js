@@ -1,10 +1,6 @@
-
 function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHintsList) {
-
     document.addEventListener('keydown', (e) => checkKey(e))
-
     const searchField = document.querySelector(searchFieldSelector);
-
     let focusedRegularResult = 0;
 
     if (configs.navigateWithKeyboard && regularSearchResults !== undefined && regularSearchResults[0] !== undefined)
@@ -12,33 +8,23 @@ function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHint
             regularSearchResults[0].focus();
         }, 0);
 
-    let numericNavigationIndex = 0;
-
     // if (configs.addTileCounter && configs.numericNavigation && configs.numbersNavigateTabs == false) {
     if (configs.addTileCounter && configs.numericNavigation) {
-        regularSearchResults.forEach(function (suggestionTile) {
-            let counter = document.createElement('p');
+        for (let i = 0, n = 10; i < n; i++ ) {
+            const counter = document.createElement('p');
             counter.className = 'g-tile-counter-hint';
             // counter.style.top = ((configs.innerPadding * 1.0)) + 'px';
-
             // counter.style.right = `${configs.innerPadding}px`;
-            numericNavigationIndex += 1;
-            counter.innerText = numericNavigationIndex;
-            if (numericNavigationIndex < 10) {
-                counterHintsList.push(counter);
-                // suggestionTile.firstChild.appendChild(counter);
-                let divChild = suggestionTile.querySelector('.g');
-                if (divChild) divChild.appendChild(counter);
-            }
-        })
+            counter.innerText = i + 1;
+            counterHintsList.push(counter);
+            const divChild = regularSearchResults[i].querySelector('.g');
+            if (divChild) divChild.appendChild(counter);
+        }
     }
-
 
     function checkKey(e) {
         /// Dont listen for number or arrow keys when searchfield is focused
         if (document.activeElement === searchField || document.activeElement.tagName === 'INPUT') return;
-
-        e = e || window.event;
 
         /// Spacebar to focus next result
         if (e.keyCode == 32) {
@@ -81,7 +67,6 @@ function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHint
             if (parsed == 0) {
                 /// Focus the search field
                 e.preventDefault();
-
                 searchField.focus();
 
                 /// select all text in text field
@@ -101,7 +86,6 @@ function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHint
                     resultToFocus.click();
                 } else {
                     animateCounterFocus(parsed - 1);
-
                     resultToFocus.focus();
                     resultToFocus.scrollIntoView({ block: 'center', inline: "nearest", behavior: "smooth" });
                 }
@@ -111,10 +95,10 @@ function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHint
 
     function animateCounterFocus(index) {
         let focusedCounterHint = counterHintsList[index];
-        focusedCounterHint.style.color = counterHintFocusColor;
+        focusedCounterHint.style.color = '#EA4335';
         focusedCounterHint.style.opacity = 1.0;
         setTimeout(function () {
-            focusedCounterHint.style.color = countedHintColor;
+            focusedCounterHint.style.color = 'grey';
             focusedCounterHint.style.opacity = configs.indexHintOpacity;
         }, 300);
     }
@@ -128,9 +112,7 @@ function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHint
                 regularSearchResults[focusedRegularResult].scrollIntoView({ block: 'center', inline: "nearest", behavior: "smooth" });
 
         } else {
-            // if (configs.keyboardCycle) {
-            //     focusLastSearchResult();
-            // }
+            // if (configs.keyboardCycle) {focusLastSearchResult();}
         }
     }
 
@@ -143,10 +125,7 @@ function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHint
                 regularSearchResults[focusedRegularResult].scrollIntoView({ block: 'center', inline: "nearest", behavior: "smooth" });
 
         } else {
-            // if (configs.keyboardCycle) {
-            //     focusFirstSearchResult();
-            // }
+            // if (configs.keyboardCycle) {focusFirstSearchResult();}
         }
     }
 }
-

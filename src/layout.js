@@ -3,8 +3,7 @@ var regularResultsColumnWidth;
 var initialResultsColumn;
 var sidebarContainer;
 
-function setRegularResults(lazyLoaded = false) {
-    // console.log('processing regular widgets...')
+function setRegularResults() {
     if (!initialResultsColumn) initialResultsColumn = document.getElementById('center_col');
 
     /// Iterate regular results
@@ -25,8 +24,6 @@ function setRegularResults(lazyLoaded = false) {
             }
 
             /// Regular result
-            // configureTileHeader(result)
-            // configureTile(result);
             Promise.all([configureTile(result), configureTileHeader(result)])
             result.classList.add('g-tiles-proccessed')
         }
@@ -54,8 +51,6 @@ function setSidebar(lazyLoaded = false) {
             /// Setting up new sidebar
             sidebarContainer = document.createElement('div');
             sidebarContainer.className = 'g-tiles-sidebar';
-            // sidebarContainer.style.left = `${regularResultsColumnWidth + sidebarPadding + (configs.sidebarPadding * 1.0)}px`;
-            // sidebarContainer.style.paddingLeft = `${sidebarPadding}px;`;
 
             if (regularResultsColumn !== null)
                 regularResultsColumn.parentNode.appendChild(sidebarContainer);
@@ -76,20 +71,16 @@ function setSidebar(lazyLoaded = false) {
     }
 
     /// Iterate widgets
-    let sidebarHeight = sidebarContainer.scrollHeight;
+    let sidebarHeight = sidebarContainer.clientHeight;
     const sidebarNewChildrenContainer = document.createElement('span');
 
     const widgets = document.querySelectorAll(`
         #${columnWithRegularResultsId} > div:not(:has(.g-tiles-proccessed)),
-        #tads:not(.g-tiles-proccessed), 
-        #rhsads:not(.g-tiles-proccessed), 
-        #bres:not(.g-tiles-proccessed), 
-        .cUnQKe:not(.g-tiles-proccessed),
+        #tads, #rhsads, #bres, .cUnQKe,
         g-section-with-header:not(.g-tiles-processed):not(:has(.g-tiles-proccessed)),
         .TzHB6b.cLjAic:has(.HnYYW),
-        .ULSxyf:not(:has(.g)):not(.g-tiles-proccessed)
+        .ULSxyf:not(:has(.g))
     `);
-    // #center_col div:not(:has(.g)):has([aria-level="2"][role="heading"])
     
     const widgetsArray = Array.prototype.slice.call(widgets);
     for (let i = 0, n = widgetsArray.length, result; i < n; i++) {
@@ -101,25 +92,23 @@ function setSidebar(lazyLoaded = false) {
             result.remove();
         } else if (result.clientHeight && result.clientWidth && result.firstChild) {
             /// Search widget
-            if (result.classList.contains('g-tiles-proccessed')) return;
+            if (result.classList.contains('g-tiles-proccessed')) continue;
 
-            // if (sidebarContainer !== null && sidebarHeight + result.clientHeight <= regularResultsColumn.scrollHeight) {
-                /// Move widget to sidebar
-                /// If sidebar height won't exceed regular results height, move tile there
+            /// Move widget to sidebar
+            /// If sidebar height won't exceed regular results height, move tile there
 
-                if (lazyLoaded) {
-                    const topOffset = result.getBoundingClientRect().top;
-                    if (topOffset > sidebarHeight) {
-                        result.style.position = 'absolute'
-                        result.style.top = result.getBoundingClientRect().top + 'px';
-                    }
+            if (lazyLoaded) {
+                const topOffset = result.getBoundingClientRect().top;
+                if (topOffset >= sidebarHeight) {
+                    result.style.position = 'absolute'
+                    result.style.top = topOffset + 'px';
                 }
+            }
 
-                sidebarHeight += result.clientHeight;
-                sidebarNewChildrenContainer.appendChild(result);
-                result.style.marginTop = `22px`;
-                result.classList.add('g-tiles-proccessed')
-            // } 
+            sidebarHeight += result.clientHeight;
+            sidebarNewChildrenContainer.appendChild(result);
+            result.style.marginTop = `22px`;
+            result.classList.add('g-tiles-proccessed')
         } else {
             /// Remove margins for empty divs on page
             result.style.margin = '0px';
@@ -142,5 +131,4 @@ function setSidebar(lazyLoaded = false) {
         ignoreClientHeightChanges = false;
     }, 1)
     return;
-
 }

@@ -3,8 +3,6 @@ linkWrapperPrototype.className = 'g-tile';
 
 function configureTile(tile, keyboardAccessible = true) {
     if (tile.tagName == 'H2') return;
-    if (tile.parentNode && tile.parentNode.tagName == 'A') return; /// Don't style the same tile twice
-    if (tile.innerHTML == '') tile.remove();
 
     try {
         /// Set url for 'a' wrapper 

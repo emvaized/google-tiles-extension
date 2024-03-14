@@ -1,7 +1,7 @@
 /* Regular search result styling */
 /* .g,.g-blk,[class^='g '] */
 #rso .g, #botstuff .g, .g-tiles-sidebar .g-tile .g
- {
+{
     position: relative;
     /* needed for correct placement of absolute index hints */
     background-color: var(--gtiles-tile-background-color);
@@ -94,7 +94,6 @@
     width: var(--gtiles-sidebar-width) !important;
     left: calc(var(--center-width) + var(--rhs-margin));
     overflow: visible;
-    height: 100%;
 }
 
 .g-tiles-sidebar .card-section,
