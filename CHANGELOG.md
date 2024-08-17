@@ -1,3 +1,8 @@
+2.5.5
+- Migrated to Manifest V3 to comply with new Chrome Web Store requirements
+- Released code is now minified, and extension should now become much faster and lighter
+- Slightly updated extension icon
+
 2.5.2
 - Added option to hide 'translate this result' button
 - Extended list of supported widgets moved to sidebar
