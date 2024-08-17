@@ -8,10 +8,10 @@ Customize the looks and behavior of Google search page for better productivity
 * Utilize horizontal screen space and scroll less by moving search widgets to the right sidebar, basically getting 2-column view
 
 
-Get for Firefox: <br>
+Firefox (>109.0) <br>
 <a href="https://addons.mozilla.org/firefox/addon/google-tiles/"><img src="https://user-images.githubusercontent.com/585534/107280546-7b9b2a00-6a26-11eb-8f9f-f95932f4bfec.png" alt="Get for Firefox"></a>
 
-Get for Chrome (Edge, Brave, Vivaldi etc): <br> 
+Chrome (Edge, Brave, Vivaldi etc) <br> 
 <a href="https://chrome.google.com/webstore/detail/google-tiles/cjbgjibpaopnjfbhipjfckeodbaednbg"><img src="https://user-images.githubusercontent.com/585534/107280622-91a8ea80-6a26-11eb-8d07-77c548b28665.png" alt="Get for Chrome"></a>
 
 
@@ -29,8 +29,8 @@ This addon doesn't have access to any other pages you open, which you can verify
 ## Support
 If you really enjoy this product, please consider supporting its further development by making a small donation! 
 
-Ko-Fi: <br>
+Ko-Fi <br>
 <a href="https://ko-fi.com/emvaized"><img src="https://user-images.githubusercontent.com/7586345/125668092-55af2a45-aa7d-4795-93ed-de0a9a2828c5.png" alt="Support on Ko-fi" height="35"></a>   
 
-PayPal: <br>
+PayPal <br>
 <a href="https://www.paypal.com/donate/?business=2KDNGXNUVZW7N&no_recurring=0&currency_code=USD"><img src="https://www.paypalobjects.com/en_US/DK/i/btn/btn_donateCC_LG.gif" height="35" width="70"/></a> 
