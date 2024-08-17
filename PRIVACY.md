@@ -1,0 +1,5 @@
+Although browser may mark this addon as requiring access to all opened tabs, in fact it is not. It uses <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/content_scripts#include_globs">include_globs</a> manifest key to gain access only to Google search page and all it's local variations (such as "www.google.es", "google.com.ua" etc). It requires this permission to detect Google search page urls, and run on these pages only in order to function properly. 
+
+This browser extension does not collect or send any personal data to any third parties. The only stored information is user's configs, and it is stored locally and does not contain any unauthorized personal information. 
+
+This extension is not anyhow affiliated with Google or its employees, and does not try to pretend to be created by this company.
