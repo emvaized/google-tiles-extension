@@ -1,3 +1,6 @@
 /Firefox
 *.zip
+.DS_Store
 .directory
+node_modules/
+dist/
