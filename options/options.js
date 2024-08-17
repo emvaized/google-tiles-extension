@@ -223,7 +223,7 @@ function hexToRgb(hex) {
 document.addEventListener("DOMContentLoaded", restoreOptions);
 document.querySelector("form").addEventListener("reset", resetOptions);
 document.querySelector("#donateButton").addEventListener("click", function (val) {
-  window.open('https://ko-fi.com/emvaized', '_blank');
+  window.open('https://github.com/emvaized/google-tiles-extension?tab=readme-ov-file#support', '_blank');
 });
 document.querySelector("#githubButton").addEventListener("click", function (val) {
   window.open('https://github.com/emvaized/google-tiles-extension', '_blank');

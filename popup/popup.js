@@ -45,7 +45,7 @@ document.addEventListener("click", (e) => {
 
 document.querySelector("#supportButton").addEventListener("click", function (val) {
   window.close();
-  window.open('https://ko-fi.com/emvaized', '_blank');
+  window.open('https://github.com/emvaized/google-tiles-extension?tab=readme-ov-file#support', '_blank');
 });
 document.querySelector("#githubPage").addEventListener("click", function (val) {
   window.close();
