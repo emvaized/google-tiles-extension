@@ -5,8 +5,8 @@
   "version": "2.5.2",
   "description": "__MSG_extensionDescription__",
   "icons": {
-    "48": "icons/google-tiles-new-icon-48.png",
-    "96": "icons/google-tiles-new-icon-96.png"
+    "48": "icons/icon-new.png",
+    "96": "icons/icon-new.png"
   },
   "content_scripts": [
     {
@@ -32,7 +32,7 @@
     }
   ],
   "action": {
-    "default_icon": "icons/google-tiles-new-icon-96.png",
+    "default_icon": "icons/icon-new.png",
     "default_title": "Google Tweaker",
     "default_popup": "popup/popup.html"
   },

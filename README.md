@@ -1,4 +1,4 @@
-# <sub><img src="./icons/google-tiles-new-icon-48.png" height="48" width="48"></sub> Google Tweaker
+# <sub><img src="./icons/icon-new.png" height="48" width="48"></sub> Google Tweaker
 
 Customize the looks and behavior of Google search page for better productivity
 
