@@ -2,6 +2,8 @@
 const regularResultClassName = 'g';
 const searchFieldSelector = `[name = 'q']`;
 const columnWithRegularResultsId = 'rso';
+const nextResultsPageButtonId = 'pnnext';
+const previousResultsPageButtonId = 'pnprev';
 
 /// Variables to store calculated values
 var ignoreClientHeightChanges = false;

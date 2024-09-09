@@ -1,3 +1,6 @@
+2.5.6
+- Bring back the ability to switch pages with left and right arrow keys
+
 2.5.5
 - Migrated to Manifest V3 to comply with new Chrome Web Store requirements
 - Released code is now minified, and extension should now become much faster and lighter

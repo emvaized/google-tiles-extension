@@ -50,10 +50,11 @@ function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHint
                 focusNextSearchResult();
             } else if (e.keyCode == '37') {
                 /// left arrow
-
+                goToPreviousPage();
             } else if (e.keyCode == '39') {
                 /// right arrow
                 e.preventDefault();
+                goToNextPage();
             }
         }
 
@@ -128,4 +129,16 @@ function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHint
             // if (configs.keyboardCycle) {focusFirstSearchResult();}
         }
     }
+}
+
+function goToPreviousPage() {
+    var prevPageButton = document.getElementById(previousResultsPageButtonId);
+    if (prevPageButton !== null)
+        prevPageButton.click();
+}
+
+function goToNextPage() {
+    var nextPageButton = document.getElementById(nextResultsPageButtonId);
+    if (nextPageButton !== null)
+        nextPageButton.click();
 }
