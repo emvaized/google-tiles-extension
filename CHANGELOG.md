@@ -1,3 +1,8 @@
+2.5.7
+- Added config for spacebar action (select focused, scroll to next, none)
+- Changed extension name to "Google Search Tweaker"
+- Excluded non "all results" search tabs from proccessing to avoid problems
+
 2.5.6
 - Bring back the ability to switch pages with left and right arrow keys
 
