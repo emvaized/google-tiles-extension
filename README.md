@@ -1,4 +1,4 @@
-# <sub><img src="./icons/icon-new.png" height="48" width="48"></sub> Google Tweaker
+# <sub><img src="./icons/icon-new.png" height="48" width="48"></sub> Google Search Tweaker (tiled google search)
 
 Customize the looks and behavior of Google search page for better productivity
 
@@ -21,12 +21,11 @@ Although browser may mark this addon as requiring access to all opened tabs, in 
 
 This addon doesn't have access to any other pages you open, which you can verify by checking the extensions dropdown in the toolbar. This confusion comes from limitations of <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/content_scripts#matches">matches</a> manifest key, which doesn't support precise subdomain matching.
 
+## Support
+If you really enjoy this product, please consider supporting its further development by making a small donation! 
+
+<a href="https://ko-fi.com/emvaized"><img src="https://cdn.prod.website-files.com/5c14e387dab576fe667689cf/64f1a9ddd0246590df69ea0b_kofi_long_button_red%25402x-p-800.png" alt="Support on Ko-fi" height="40"></a> &nbsp; <a href="https://liberapay.com/emvaized/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg" height="40"></a> &nbsp; <a href="https://emvaized.github.io/donate/bitcoin/"><img src="https://github.com/emvaized/emvaized.github.io/blob/main/donate/bitcoin/assets/bitcoin-donate-button.png?raw=true" alt="Donate Bitcoin" height="40" /></a> 
 
 ## Building
 - `npm install` to install all dependencies
 - `npm run build` to generate `dist` folder with minimized code of the extension
-
-## Support
-If you really enjoy this product, please consider supporting its further development by making a small donation! 
-
-<a href="https://ko-fi.com/emvaized"><img src="https://cdn.prod.website-files.com/5c14e387dab576fe667689cf/64f1a9ddd0246590df69ea0b_kofi_long_button_red%25402x-p-800.png" alt="Support on Ko-fi" height="40"></a> &nbsp; <a href="https://liberapay.com/emvaized/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg" height="40"></a> &nbsp; <a href="https://emvaized.github.io/donate/bitcoin/"><img src="https://github.com/emvaized/emvaized.github.io/blob/main/donate/bitcoin/assets/bitcoin-donate-button.png?raw=true" alt="Donate Bitcoin" height="40" /></a>
