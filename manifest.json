@@ -27,6 +27,7 @@
         "*://www.google.*/search?*q=*"
       ],
       "exclude_globs": [
+        "*://www.google.*/search?*&udm=*",
         "*://www.google.*/search?*&tbm=*"
       ]
     }
