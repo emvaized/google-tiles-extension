@@ -29,11 +29,11 @@
     "buyMeCoffee": {
         "message": "Поддержать разработку"
     },
-    "changeCursorOverTile": {
-        "message": "Изменить курсор над плиткой на указательный"
-    },
     "centerizeSelectedResult": {
         "message": "Отцентровать выбранный результат"
+    },
+    "changeCursorOverTile": {
+        "message": "Изменить курсор над плиткой на указательный"
     },
     "colorizeBorderAfterFavicon": {
         "message": "Окрасить рамку в цвет иконки сайта"
@@ -124,7 +124,7 @@
     },
     "moveLazyLoadedWidgets": {
         "message": "Пытаться переместить подгруженные при прокрутке виджеты в боковую панель"
-    },  
+    },
     "moveNavbarToSearchbar": {
         "message": "Переместить панель навигации в панель поиска"
     },
@@ -145,6 +145,9 @@
     },
     "navigateWithKeyboardTooltip": {
         "message": "Использовать ↑ и ↓ для переключения между результатами, \n← и → для переключения страницы, и\n 'Enter' или Пробел, чтобы открыть"
+    },
+    "none": {
+        "message": "Нет"
     },
     "numbersNavigateResults": {
         "message": "Клавиши цифр переключают результаты поиска"
@@ -182,8 +185,14 @@
     "scrollHorizontalViewOnHover": {
         "message": "Прокручивать горизонтальные списки наведением"
     },
+    "scrollToNext": {
+        "message": "Прокрутить к следующему результату"
+    },
     "searchResults": {
         "message": "Поисковая выдача"
+    },
+    "selectFocused": {
+        "message": "Выбрать сфокусированный результат"
     },
     "shadowEnabled": {
         "message": "Добавить тень"
@@ -211,6 +220,9 @@
     },
     "simplifyDomain": {
         "message": "Упростить домен сайта"
+    },
+    "spacebarAction": {
+        "message": "Действие при нажатии пробела"
     },
     "support": {
         "message": "Поддержать"

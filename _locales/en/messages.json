@@ -29,11 +29,11 @@
   "buyMeCoffee": {
     "message": "Support development"
   },
-  "changeCursorOverTile": {
-    "message": "Change cursor over tile to pointer"
-  },
   "centerizeSelectedResult": {
     "message": "Centerize selected result"
+  },
+  "changeCursorOverTile": {
+    "message": "Change cursor over tile to pointer"
   },
   "colorizeBorderAfterFavicon": {
     "message": "Colorize border after website favicon"
@@ -46,7 +46,7 @@
   },
   "disableTitleUnderlineOnHover": {
     "message": "Disable title underline on hover"
-  },  
+  },
   "dontProccessWidgetsIfWindowNarrow": {
     "message": "Don't proccess widgets if window is too narrow"
   },
@@ -82,13 +82,13 @@
   },
   "header": {
     "message": "Result header"
-  },  
+  },
   "hideNumberResultsRow": {
     "message": "Hide the 'n results found' row"
-  },  
+  },
   "hideNumberResultsRowBorder": {
     "message": "Hide top border as well"
-  },  
+  },
   "hideTranslateResultButton": {
     "message": "Hide 'translate this result' button"
   },
@@ -124,7 +124,7 @@
   },
   "moveLazyLoadedWidgets": {
     "message": "Try to move widgets, lazy loaded on scroll, to sidebar"
-  },  
+  },
   "moveNavbarToSearchbar": {
     "message": "Move navbar to searchbar"
   },
@@ -136,7 +136,7 @@
   },
   "moveSuggestionsToBottomTooltip": {
     "message": "Search widgets and suggestions will be shown after regular results"
-  },  
+  },
   "moveTopPhotosToSidebar": {
     "message": "Move photos on top of page to sidebar"
   },
@@ -145,6 +145,9 @@
   },
   "navigateWithKeyboardTooltip": {
     "message": "Use ↑ and ↓ keys to navigate results, \n← and → to swtich pages, and\n 'Enter' or Spacebar to open"
+  },
+  "none": {
+    "message": "None"
   },
   "numbersNavigateResults": {
     "message": "Number keys navigate search results"
@@ -182,8 +185,14 @@
   "scrollHorizontalViewOnHover": {
     "message": "Scroll horizontal views with hover"
   },
+  "scrollToNext": {
+    "message": "Scroll to next result"
+  },
   "searchResults": {
     "message": "Search results"
+  },
+  "selectFocused": {
+    "message": "Select focused result"
   },
   "shadowEnabled": {
     "message": "Add shadow"
@@ -211,6 +220,9 @@
   },
   "simplifyDomain": {
     "message": "Simplify website domain"
+  },
+  "spacebarAction": {
+    "message": "Action on spacebar press"
   },
   "support": {
     "message": "Support"

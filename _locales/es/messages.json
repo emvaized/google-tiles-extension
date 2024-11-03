@@ -29,11 +29,11 @@
     "buyMeCoffee": {
         "message": "Apoyar el desarrollo"
     },
-    "changeCursorOverTile": {
-        "message": "Cambiar el cursor sobre el mosaico a puntero"
-    },
     "centerizeSelectedResult": {
         "message": "Centrar resultado seleccionado"
+    },
+    "changeCursorOverTile": {
+        "message": "Cambiar el cursor sobre el mosaico a puntero"
     },
     "colorizeBorderAfterFavicon": {
         "message": "Colorear el borde después del favicon del sitio web"
@@ -124,7 +124,7 @@
     },
     "moveLazyLoadedWidgets": {
         "message": "Intente mover los widgets, cargados de forma diferida al desplazarse, a la barra lateral"
-    },  
+    },
     "moveNavbarToSearchbar": {
         "message": "Mover la barra de navegación a la barra de búsqueda"
     },
@@ -145,6 +145,9 @@
     },
     "navigateWithKeyboardTooltip": {
         "message": "Use las teclas ↑ y ↓ para navegar por los resultados, ← y → para cambiar las páginas, y 'Enter' para abrir"
+    },
+    "none": {
+        "message": "Ninguno"
     },
     "numbersNavigateResults": {
         "message": "Las teclas numéricas permiten navegar por los resultados de la búsqueda"
@@ -182,8 +185,14 @@
     "scrollHorizontalViewOnHover": {
         "message": "Desplazarse por las vistas horizontales con el cursor"
     },
+    "scrollToNext": {
+        "message": "Desplazarse al siguiente resultado"
+    },
     "searchResults": {
         "message": "Resultados de la búsqueda"
+    },
+    "selectFocused": {
+        "message": "Seleccionar resultado enfocado"
     },
     "shadowEnabled": {
         "message": "Agregar sombra"
@@ -211,6 +220,9 @@
     },
     "simplifyDomain": {
         "message": "Simplificar el dominio del sitio web"
+    },
+    "spacebarAction": {
+        "message": "Acción al presionar la barra espaciadora"
     },
     "support": {
         "message": "Apoyar"

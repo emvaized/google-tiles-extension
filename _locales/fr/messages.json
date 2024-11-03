@@ -29,11 +29,11 @@
     "buyMeCoffee": {
         "message": "Soutenir le développement"
     },
-    "changeCursorOverTile": {
-        "message": "Changer le curseur sur la tuile en pointeur"
-    },
     "centerizeSelectedResult": {
         "message": "Centrer le résultat sélectionné"
+    },
+    "changeCursorOverTile": {
+        "message": "Changer le curseur sur la tuile en pointeur"
     },
     "colorizeBorderAfterFavicon": {
         "message": "Coloriser la bordure après le favicon du site Web"
@@ -128,6 +128,9 @@
     "navigateWithKeyboardTooltip": {
         "message": "Utilisez les touches ↑ et ↓ pour parcourir les résultats, ← et → pour changer de page et 'Enter' pour ouvrir"
     },
+    "none": {
+        "message": "Aucun"
+    },
     "numbersNavigateResults": {
         "message": "Les touches numériques parcourent les résultats de la recherche"
     },
@@ -164,8 +167,14 @@
     "scrollHorizontalViewOnHover": {
         "message": "Faire défiler les vues horizontales avec survol"
     },
+    "scrollToNext": {
+        "message": "Faire défiler jusqu'au résultat suivant"
+    },
     "searchResults": {
         "message": "Résultats de la recherche"
+    },
+    "selectFocused": {
+        "message": "Sélectionner le résultat ciblé"
     },
     "shadowEnabled": {
         "message": "Ajouter une ombre"
@@ -190,6 +199,9 @@
     },
     "simplifyDomain": {
         "message": "Simplifier le domaine du site Web"
+    },
+    "spacebarAction": {
+        "message": "Action sur appui sur la barre d'espace"
     },
     "support": {
         "message": "Soutenir"

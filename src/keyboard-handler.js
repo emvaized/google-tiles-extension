@@ -28,12 +28,21 @@ function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHint
 
         /// Spacebar to focus next result
         if (e.keyCode == 32) {
-            e.preventDefault();
+            switch(configs.spacebarAction){
+                case "selectFocused": {
+                    e.preventDefault();
+                    document.activeElement.click();
+                } break;
+                case "scrollToNext": {
+                    e.preventDefault();
 
-            if (e.shiftKey)
-                focusPreviousSearchResult();
-            else
-                focusNextSearchResult();
+                    if (e.shiftKey)
+                        focusPreviousSearchResult();
+                    else
+                        focusNextSearchResult();
+                } break;
+                case "none": {} break;
+            }
             return;
         }
 

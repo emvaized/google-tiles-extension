@@ -29,11 +29,11 @@
   "buyMeCoffee": {
     "message": "Ondersteun de ontwikkeling"
   },
-  "changeCursorOverTile": {
-    "message": "Cursor op aangewezen tegel als aanwijzer tonen"
-  },
   "centerizeSelectedResult": {
     "message": "Resultaat centreren"
+  },
+  "changeCursorOverTile": {
+    "message": "Cursor op aangewezen tegel als aanwijzer tonen"
   },
   "colorizeBorderAfterFavicon": {
     "message": "Kaderkleur opmaken op basis van faviconkleuren"
@@ -128,6 +128,9 @@
   "navigateWithKeyboardTooltip": {
     "message": "Gebruik ↑ en ↓ om door resultaten te bladeren, \n← en → om van pagina te wisselen en\n enter of spatiebalk om te openen."
   },
+  "none": {
+    "message": "None"
+  },
   "numbersNavigateResults": {
     "message": "Getallenrij gebruiken om door zoekresultaten te bladeren"
   },
@@ -164,8 +167,14 @@
   "scrollHorizontalViewOnHover": {
     "message": "Horizontale weergaven verschuiven na aanwijzen"
   },
+  "scrollToNext": {
+    "message": "Scroll naar volgend resultaat"
+  },
   "searchResults": {
     "message": "Zoekresultaten"
+  },
+  "selectFocused": {
+    "message": "Selecteer gefocust resultaat"
   },
   "shadowEnabled": {
     "message": "Schaduw tonen"
@@ -190,6 +199,9 @@
   },
   "simplifyDomain": {
     "message": "Vereenvoudigde domeinnamen tonen"
+  },
+  "spacebarAction": {
+    "message": "Actie bij indrukken spatiebalk"
   },
   "support": {
     "message": "Ondersteuning"

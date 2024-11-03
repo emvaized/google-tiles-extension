@@ -49,6 +49,7 @@ const configs = {
     "sidebarWidthMultiplier": 0.75,
     "sidebarWidth": 500,
     "simplifyDomain": true,
+    "spacebarAction": 'selectFocused', // possible values: selectFocused, scrollToNext, none
     "tileBackgroundColor": "#FFFFFF",
     "tileBackgroundOpacity": 1.0,
     "tileHoverBackgroundOpacity": 1.0,

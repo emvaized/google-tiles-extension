@@ -24,16 +24,35 @@ function restoreOptions() {
 
         /// Set input value
         if (input !== null && input !== undefined) {
-          if (input.type == 'checkbox') {
-            if ((result[key] !== null && result[key] == true) || (result[key] == null && configs[key] == true))
-              input.setAttribute('checked', 0)
-          }
-          else
-            input.setAttribute('value', result[key] ?? configs[key]);
+          if (input.tagName == 'SELECT') {
+            let options = input.querySelectorAll('option');
+            if (options !== null)
+                options.forEach(function (option) {
+                    let selectedValue = result[key] ?? configs[key];
+                    if (option.value == selectedValue) option.setAttribute('selected', true);
 
-          /// Set translated label for input
-          if (!input.parentNode.innerHTML.includes(chrome.i18n.getMessage(key)))
-            input.parentNode.innerHTML += chrome.i18n.getMessage(key);
+                    try {
+                        if (chrome.i18n.getMessage(option.innerHTML) != '')
+                            option.innerHTML = chrome.i18n.getMessage(option.innerHTML);
+                        else if (chrome.i18n.getMessage(option['value']) != '')
+                            option.innerHTML = chrome.i18n.getMessage(option['value']);
+                    } catch (e) { }
+
+                });
+                 /// Set translated label for input
+              if (!input.parentNode.innerHTML.includes(chrome.i18n.getMessage(key)))
+                input.parentNode.innerHTML = chrome.i18n.getMessage(key) +' ' + input.parentNode.innerHTML;
+          } else {
+            if (input.type == 'checkbox') {
+              if ((result[key] !== null && result[key] == true) || (result[key] == null && configs[key] == true))
+                input.setAttribute('checked', 0)
+            } else
+              input.setAttribute('value', result[key] ?? configs[key]);
+
+            /// Set translated label for input
+            if (!input.parentNode.innerHTML.includes(chrome.i18n.getMessage(key)))
+              input.parentNode.innerHTML += chrome.i18n.getMessage(key);
+          }
         }
       });
 
