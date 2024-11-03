@@ -31,11 +31,14 @@ function setKeyboardHandlers(regularResultsColumn, sidebarContainer, counterHint
             switch(configs.spacebarAction){
                 case "selectFocused": {
                     e.preventDefault();
-                    document.activeElement.click();
+                    if (e.shiftKey) {
+                        focusNextSearchResult();
+                    } else {
+                        document.activeElement.click();
+                    }
                 } break;
                 case "scrollToNext": {
                     e.preventDefault();
-
                     if (e.shiftKey)
                         focusPreviousSearchResult();
                     else
