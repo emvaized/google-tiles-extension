@@ -101,39 +101,43 @@ function setLayout(){
   let lastKnownBodyHeight;
   let resizeObserverTimeout;
 
-  // Create an Observer instance
-  const resizeObserver = new ResizeObserver(function(entries) { 
-    if (ignoreClientHeightChanges) return;
-
-    clearTimeout(resizeObserverTimeout);
-    resizeObserverTimeout = setTimeout(function(){
+  // Create an Observer instance for infinite scroll 
+  // Initialize only if no bottom page navigation found
+  const navigation = document.querySelector('div[role="navigation"] table');
+  if (!navigation){
+    const resizeObserver = new ResizeObserver(function(entries) { 
       if (ignoreClientHeightChanges) return;
-
-      if (entries[0].target.clientHeight > lastKnownBodyHeight) {
-        // console.log('Body height changed:', entries[0].target.clientHeight - lastKnownBodyHeight)
-        lastKnownBodyHeight = entries[0].target.clientHeight;
-        setRegularResults(true);
-
-        if (configs.moveLazyLoadedWidgets) {
-          setSidebar(true);
-          setTimeout(function(){
-            ignoreClientHeightChanges = false;
-            setRegularResults(true);
-          }, 2)
+  
+      clearTimeout(resizeObserverTimeout);
+      resizeObserverTimeout = setTimeout(function(){
+        if (ignoreClientHeightChanges) return;
+  
+        if (entries[0].target.clientHeight > lastKnownBodyHeight) {
+          // console.log('Body height changed:', entries[0].target.clientHeight - lastKnownBodyHeight)
+          lastKnownBodyHeight = entries[0].target.clientHeight;
+          setRegularResults(true);
+  
+          if (configs.moveLazyLoadedWidgets) {
+            setSidebar(true);
+            setTimeout(function(){
+              ignoreClientHeightChanges = false;
+              setRegularResults(true);
+            }, 2)
+          }
         }
+      }, 100)
+    })
+  
+    /// Start observing body for changed height
+    /// Initiate heavy observer only after first scroll event
+    document.addEventListener('scroll', onFirstScroll)
+  
+    function onFirstScroll(){
+      if (window.scrollY > 300) {
+        document.removeEventListener('scroll', onFirstScroll)
+        lastKnownBodyHeight = document.body.clientHeight;
+        resizeObserver.observe(document.body)
       }
-    }, 100)
-  })
-
-  /// Start observing body for changed height
-  /// Initiate heavy observer only after first scroll event
-  document.addEventListener('scroll', onFirstScroll)
-
-  function onFirstScroll(){
-    if (window.scrollY > 300) {
-      document.removeEventListener('scroll', onFirstScroll)
-      lastKnownBodyHeight = document.body.clientHeight;
-      resizeObserver.observe(document.body)
     }
   }
 }
