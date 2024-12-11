@@ -1,23 +1,27 @@
 html,
 body {
-  min-width: 150px;
+  min-width: 210px;
+  max-width: 210px;
+  width: 210px;
   font-family: sans-serif;
 }
 
 button {
-  margin: 5px auto;
-  padding: 4px;
-  text-align: center;
+  margin: 4px auto;
+  padding: 2px;
+  /* text-align: center; */
   font-size: 1.0em;
   cursor: pointer;
   width: 100%;
+  text-align: left;
 }
 
 button img {
   position: relative;
   left: 0px;
   top: 2px;
-  float: left;
+  /* float: left; */
+  display: inline;
 }
 
 h3 {
@@ -47,9 +51,9 @@ input {
 }
 
 #extension-version {
-  text-align: center;
+  /* text-align: center; */
   width: 100%;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
   margin-top: 3px;
 }
 
