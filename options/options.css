@@ -174,5 +174,8 @@ button {
 
 
 @-moz-document url-prefix() {
+  body {
+      font-family: sans-serif; 
+  }
   form { padding-left: 15px;}
 }
