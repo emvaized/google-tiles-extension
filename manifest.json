@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "default_locale": "en",
   "name": "Google Search Tweaker — tiled google search",
-  "version": "2.5.7",
+  "version": "2.5.8",
   "description": "__MSG_extensionDescription__",
   "icons": {
     "48": "icons/icon-new.png",

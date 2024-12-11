@@ -1,3 +1,7 @@
+### 2.5.8
+- Fix shifted main results after Google search layout update
+- Small appearance improvements for options page and extension popup
+
 ### 2.5.7
 - Added config for spacebar action (select focused, scroll to next, none)
 - Changed extension name to "Google Search Tweaker"
