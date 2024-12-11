@@ -45,10 +45,10 @@
 }
 
 /* fix #center_col# alignment with the searchbox on top */
-#center_col {
+/* #center_col {
     margin-left: calc(var(--center-abs-margin) - var(--gtiles-tile-padding));
     width: calc(var(--center-width) + var(--gtiles-tile-padding));
-}
+} */
 
 /* hide "translate result" button */
 .gtile-hide-translate-result #center_col .g .eFM0qc.BCF2pd {
