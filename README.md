@@ -1,6 +1,6 @@
 # <sub><img src="./src/icon.png" height="45" width="45"></sub> Better Google Search
 
-I was always pissed that Google Search pages started using "G" icon, which doesn't resemble anything related to the search itself. So I wrote this tiny extension which replaces it with a themed magnifying glass icon, similar to a Bing one. 
+I was always annoyed that Google Search pages started using "G" icon, which doesn't resemble anything related to the search itself. So I wrote this tiny extension which replaces it with a themed magnifying glass icon, similar to a Bing one. 
 
 In addition, it provides few smaller tweaks to make using the service a little easier. For now only works on [google.com](google.com) domains, not local ones ([google.ru](google.ru), [google.es](google.es) etc).
 
