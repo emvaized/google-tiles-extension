@@ -146,7 +146,12 @@
             } else if (e.keyCode == 32) {
                 /// Spacebar
                 e.preventDefault();
-                document.activeElement.click();
+
+                if (e.shiftKey){
+                    focusNextResult();
+                } else {
+                    document.activeElement.click();
+                }
                 return;
             }
         })
