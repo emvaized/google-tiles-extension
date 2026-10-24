@@ -17,7 +17,7 @@ All options can be toggled from the settings page.
 <img src="./assets/screenshot.png">
 
 ### Development history
-This script was originally called [Google Search Tweaker](https://github.com/emvaized/google-tiles-extension), which I created back in 2021. Eventually I abandoned it because it became tedious to keep up with constantly changing layout of the Google search page. With version `3.0` I rewrote it from scratch as much simpler and faster script. It is super lightweight, and can now also be used as a Userscript.
+This script was originally called [Google Search Tweaker](https://github.com/emvaized/google-tiles-extension), which I created back in 2021. Eventually I abandoned it because it became tedious to keep up with constantly changing layout of the Google search page. With version `3.0` I rewrote it from scratch as much simpler and faster script. It is super lightweight, and can now also be used as a Userscript (see on [Greasy Fork](https://greasyfork.org/ru/scripts/545768-better-google-search)).
 
 ## Support
 If you really enjoy this product, please consider supporting its further development by making a small donation! 
