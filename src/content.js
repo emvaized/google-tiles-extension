@@ -1,8 +1,12 @@
 // ==UserScript==
 // @name         Better Google Search
 // @namespace    http://tampermonkey.net/
-// @version      3.0.0
+// @version      3.0.01
 // @description  Small tweaks to make Google Search page easier to use
+// @homepageURL  https://github.com/emvaized/google-tiles-extension/tree/master
+// @downloadURL  https://raw.githubusercontent.com/emvaized/google-tiles-extension/refs/heads/master/src/content.js
+// @author       emvaized
+// @license      GPLv3
 // @match        https://www.google.com/search*
 // @match        https://www.google.*.*/search*
 // @match        https://www.google.*/search*
