@@ -1,0 +1,17 @@
+{
+    "extensionDescription": {
+        "message": "Petites améliorations pour faciliter l'utilisation de la page de recherche Google"
+    },
+    "changeFavicon": {
+        "message": "Remplacer le favicon par une icône de loupe"
+    },
+    "wrapResultsInLinks": {
+        "message": "Rendre l'ensemble du résultat de recherche cliquable (comme sur DuckDuckGo)"
+    },
+    "addKeyboardNavigation": {
+        "message": "Ajouter la navigation au clavier avec les touches fléchées"
+    },
+    "removeHttps": {
+        "message": "Supprimer https:// et http:// des URL"
+    }
+}

@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "default_locale": "en",
+  "name": "Better Google Search",
+  "version": "3.0.0",
+  "description": "__MSG_extensionDescription__",
+  "icons": {
+    "48": "icon.png",
+    "96": "icon.png",
+    "128": "icon.png"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "google_tiles@emvaized.com",
+      "strict_min_version": "109.0"
+    }
+  },
+  "options_ui": {
+    "page": "options/options.html"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://www.google.com/search*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_end"
+    }
+  ]
+}

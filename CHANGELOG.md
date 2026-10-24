@@ -1,3 +1,13 @@
+### 3.0.0
+- Rewrote the extension from scratch to be more minimalistic and lightweight
+- Update extension icon and name to "Better Google Search"
+- Majority of options were removed, only core ones remained: 
+    - Make whole search result clickable (like in DuckDuckGo)
+    - Add keyboard navigation with arrow keys
+    - Remove `https://` and `http://` from urls (_disabled_ by default)
+- New feature added: Change favicon to a magnifying glass icon
+- Script is now also available to be used as a userscript
+
 ### 2.5.8
 - Fix shifted main results after Google search layout update
 - Small appearance improvements for options page and extension popup

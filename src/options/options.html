@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Better Google Search - Settings</title>
+    <style>
+        body {background-color: transparent; font-family: sans-serif;}
+        .option{padding:4px;}
+        .hint{opacity: 0.5; margin: 16px 8px;}
+    </style>
+</head>
+<body>
+    <main>
+        <div class='option'>
+            <input type="checkbox" id="changeFavicon"></input>
+            <label for="changeFavicon">Change favicon to a magnifying glass icon</label>
+        </div>
+
+        <div class='option'>
+            <input type="checkbox" id="wrapResultsInLinks"></input>
+            <label for="wrapResultsInLinks">Make whole search result clickable (like in DuckDuckGo)</label>
+        </div>
+
+        <div class='option'>
+            <input type="checkbox" id="addKeyboardNavigation"></input>
+            <label for="addKeyboardNavigation">Add keyboard navigation with arrow keys</label>
+        </div>
+
+        <div class='option'>
+            <input type="checkbox" id="removeHttps"></input>
+            <label for="removeHttps">Remove https:// from urls</label>
+        </div>
+
+        <div class="hint">⚠ Update pages to apply changes</div>
+        <script src="./options.js"></script>
+    </main>
+</body>
+</html>

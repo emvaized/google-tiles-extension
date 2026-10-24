@@ -1,0 +1,17 @@
+{
+    "extensionDescription": {
+        "message": "Набор небольших улучшений для страницы поиска Google"
+    },
+    "changeFavicon": {
+        "message": "Поменять иконку вкладки на лупу"
+    },
+    "wrapResultsInLinks": {
+        "message": "Сделать весь результат поиска кликабельным (как в DuckDuckGo)"
+    },
+    "addKeyboardNavigation": {
+        "message": "Добавить клавитурную навигацию стрелками между результатами"
+    },
+    "removeHttps": {
+        "message": "Убрать https:// и http:// из ссылок"
+    }
+}
