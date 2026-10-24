@@ -21,4 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         })
     });
+
+    const hintTranslation = chrome.i18n.getMessage('refreshHint');
+    if (hintTranslation) document.getElementById('refreshHint').innerText = '⚠ ' + hintTranslation;
 });

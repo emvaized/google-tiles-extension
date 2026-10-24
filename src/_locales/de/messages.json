@@ -1,0 +1,20 @@
+{
+    "extensionDescription": {
+        "message": "Kleine Anpassungen, die die Google-Suche benutzerfreundlicher machen"
+    },
+    "changeFavicon": {
+        "message": "Favicon durch ein Lupensymbol ersetzen"
+    },
+    "wrapResultsInLinks": {
+        "message": "Gesamte Suchergebnisse anklickbar machen (wie bei DuckDuckGo)"
+    },
+    "addKeyboardNavigation": {
+        "message": "Tastaturnavigation mit den Pfeiltasten hinzufügen"
+    },
+    "removeHttps": {
+        "message": "https:// und http:// aus URLs entfernen"
+    },
+    "refreshHint": {
+        "message": "Seiten neu laden, um Änderungen zu übernehmen"
+    }
+}

@@ -13,5 +13,8 @@
     },
     "removeHttps": {
         "message": "Supprimer https:// et http:// des URL"
+    },
+    "refreshHint": {
+        "message": "Actualisez les pages pour que les modifications soient prises en compte"
     }
 }
