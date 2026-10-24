@@ -80,7 +80,7 @@
     }
 
     // Make whole tile clickable
-    let divs = document.querySelectorAll('.MjjYud'), divsLength = divs.length;
+    let divs = document.querySelectorAll('.MjjYud:not(:has(table)), .Y6JuXb'), divsLength = divs.length;
     // console.log(divs);
     if (divsLength < 1){
         divs = document.querySelectorAll('#rso > div:has(a)');
@@ -94,7 +94,7 @@
         if (!tile.isConnected) continue;
         if (!tile.clientHeight || tile.clientHeight < 1) continue;
         if (!tile.querySelector('h3')) continue; // exclude widgets
-        if (tile.querySelector('mark')) continue; // exclude widgets
+        if (tile.querySelector('mark') || tile.querySelector('ul')) continue; // exclude widgets and gemini
 
         const link = tile.querySelector('a');
         if (link){
