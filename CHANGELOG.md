@@ -1,3 +1,9 @@
+### 3.0.1
+- Improve detection for results with multiple links
+- Improve exclusion of Gemini summaries
+- Focus next result on shift+spacebar
+- Update translations
+
 ### 3.0.0
 - Rewrote the extension from scratch to be more minimalistic and lightweight
 - Update extension icon and name to "Better Google Search"

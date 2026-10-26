@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "default_locale": "en",
   "name": "Better Google Search",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "__MSG_extensionDescription__",
   "icons": {
     "48": "icon.png",
